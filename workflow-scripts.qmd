@@ -152,7 +152,7 @@ report-draft-notes.txt
 ```
 
 La numeración de los scripts clave hace que sea obvio en qué orden ejecutarlos y un esquema de nombres consistente hace que sea más fácil ver qué varía.
-Además, las cifras se etiquetan de manera similar, los informes se distinguen por las fechas incluidas en los nombres de los archivos y se cambia el nombre de `temp` a `report-draft-notes` para describir mejor su contenido.
+Además, los gráficos se etiquetan de manera similar, los informes se distinguen por las fechas incluidas en los nombres de los archivos y se cambia el nombre de `temp` a `report-draft-notes` para describir mejor su contenido.
 Si tiene muchos archivos en un directorio, se recomienda llevar la organización un paso más allá y colocar diferentes tipos de archivos (guiones, figuras, etc.) en diferentes directorios.
 
 ## Proyectos
