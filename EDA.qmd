@@ -264,7 +264,7 @@ Si ha encontrado valores inusuales en su conjunto de datos y simplemente desea c
       mutate(y = if_else(y < 3 | y > 20, NA, y))
     ```
 
-It's not obvious where you should plot missing values, so ggplot2 doesn't include them in the plot, but it does warn that they've been removed:
+No es obvio dónde se deben graficar los valores faltantes, por lo que ggplot2 no los incluye en el gráfico, pero sí advierte que se han eliminado:
 
 ```{r}
 #| dev: "png"
