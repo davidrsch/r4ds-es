@@ -62,10 +62,10 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(aes(color = class)) +
   geom_smooth(se = FALSE) +
   labs(
-    x = "Motor desplazamiento (L)",
+    x = "Cilindrada del motor (L)",
     y = "Economía de combustible en carretera (mpg)",
     color = "Tipo de coche",
-    title = "Eficiencia de combustible generalmente disminuye con el tamaño del motor",
+    title = "Eficiencia de combustible generalmente disminuye con la cilindrada del motor",
     subtitle = "Dos plazas son una excepción debido a su peso ligero",
     caption = "Datos de fueleconomy.gov"
   )
