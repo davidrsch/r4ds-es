@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>6&nbsp; Flujo de trabajo: scripts y proyectos – R para la Ciencia de Datos (2e)</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8374bc3c6bea72a3c9f8b2214211636f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -117,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -474,7 +477,7 @@ Figura&nbsp;6.1: Al abrir el editor de secuencias de comandos, se agrega un nuev
 <span class="header-section-number">6.1.1</span> Código en ejecución</h3>
 <p>El editor de secuencias de comandos es un lugar excelente para crear gráficas de ggplot2 complejas o largas secuencias de manipulaciones de dplyr. La clave para usar el editor de secuencias de comandos de manera efectiva es memorizar uno de los atajos de teclado más importantes: Cmd/Ctrl + Enter. Esto ejecuta la expresión de R actual en la consola. Por ejemplo, tome el siguiente código.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>not_cancelled <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
@@ -482,7 +485,7 @@ Figura&nbsp;6.1: Al abrir el editor de secuencias de comandos, se agrega un nuev
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>not_cancelled <span class="sc">|&gt;</span> </span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(dep_delay))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si su cursor está en █, al presionar Cmd/Ctrl + Enter se ejecutará el comando completo que genera <code>not_cancelled</code>. También moverá el cursor a la siguiente declaración (comenzando con <code>not_cancelled |&gt;</code>). Eso hace que sea más fácil recorrer el script completo presionando repetidamente Cmd/Ctrl + Enter.</p>
 <p>En lugar de ejecutar su código expresión por expresión, también puede ejecutar el script completo en un solo paso con Cmd/Ctrl + Shift + S. Hacer esto regularmente es una excelente manera de asegurarse de haber capturado todas las partes importantes de su código en el script.</p>
@@ -585,7 +588,7 @@ Figura&nbsp;6.2: Copie estas opciones en sus opciones de RStudio para iniciar si
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Servidor RStudio
+<span class="screen-reader-only">Nota</span>Servidor RStudio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -605,14 +608,14 @@ Servidor RStudio
 </div>
 <p>Y puede imprimir esto en código de R ejecutando <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/Users/hadley/Documents/r4ds"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "/Users/hadley/Documents/r4ds"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En esta sesión de R, el directorio de trabajo actual (piense en él como “inicio”) está en la carpeta Documentos de hadley, en una subcarpeta llamada r4ds. Este código devolverá un resultado diferente cuando lo ejecute, porque su computadora tiene una estructura de directorio diferente a la de Hadley.</p>
 <p>Como usuario principiante de R, está bien dejar que su directorio de trabajo sea su directorio de inicio, directorio de documentos o cualquier otro directorio extraño en su computadora. Pero llevas varios capítulos en este libro y ya no eres un principiante. Muy pronto debería evolucionar para organizar sus proyectos en directorios y, cuando trabaje en un proyecto, establecer el directorio de trabajo de R en el directorio asociado.</p>
 <p>Puede configurar el directorio de trabajo desde R pero <strong>nosotros</strong> <strong>no lo recomendamos</strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"/path/to/my/CoolProject"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"/path/to/my/CoolProject"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay una mejor manera; una manera que también lo coloca en el camino para administrar su trabajo de R como un experto. Así es el <strong>proyecto</strong> de <strong>RStudio</strong>.</p>
 </section><section id="proyectos-de-rstudio" class="level3" data-number="6.2.3"><h3 data-number="6.2.3" class="anchored" data-anchor-id="proyectos-de-rstudio">
@@ -633,18 +636,18 @@ Figura&nbsp;6.3: Para crear un nuevo proyecto: (arriba) primero haga clic en Nue
 <p>Llame a su proyecto <code>r4ds</code> y piense detenidamente en qué subdirectorio coloca el proyecto. Si no lo guarda en un lugar sensato, ¡será difícil encontrarlo en el futuro!</p>
 <p>Una vez que se complete este proceso, obtendrá un nuevo proyecto de RStudio solo para este libro. Verifique que el “hogar” de su proyecto sea el directorio de trabajo actual:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] /Users/hadley/Documents/r4ds</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] /Users/hadley/Documents/r4ds</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora ingrese los siguientes comandos en el editor de secuencias de comandos y guarde el archivo, llamándolo “diamantes.R”. Luego, cree una nueva carpeta llamada “datos”. Puede hacerlo haciendo clic en el botón “Nueva carpeta” en el panel Archivos en RStudio. Finalmente, ejecute el script completo que guardará un archivo PNG y CSV en el directorio de su proyecto. No se preocupe por los detalles, los aprenderá más adelante en el libro.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"diamonds.png"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="st">"datos/diamonds.csv"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="st">"datos/diamonds.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Salga de RStudio. Inspeccione la carpeta asociada con su proyecto — observe el archivo <code>.Rproj</code>. Haga doble clic en ese archivo para volver a abrir el proyecto. Observe que vuelve a donde lo dejó: es el mismo directorio de trabajo e historial de comandos, y todos los archivos en los que estaba trabajando todavía están abiertos. Sin embargo, debido a que siguió nuestras instrucciones anteriores, tendrá un entorno completamente nuevo, lo que garantiza que está comenzando desde cero.</p>
 <p>De la forma específica de su sistema operativo favorito, busque <code>diamonds.png</code> en su computadora y encontrará el PNG (no es de extrañar), pero <em>también el script que lo creó</em> (<code>diamonds.R</code>). ¡Esta es una gran victoria! Un día querrás rehacer una figura o simplemente entender de dónde vino. Si guarda rigurosamente las figuras en archivos <strong>con código de R</strong> y nunca con el mouse o el portapapeles, ¡podrá reproducir trabajos antiguos con facilidad!</p>
@@ -792,13 +795,14 @@ Figura&nbsp;6.3: Para crear un nuevo proyecto: (arriba) primero haga clic en Nue
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

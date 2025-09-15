@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>20&nbsp; Hojas de calculo – R para la Ciencia de Datos (2e)</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8374bc3c6bea72a3c9f8b2214211636f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -117,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -473,9 +476,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">20.2.1</span> Requisitos previos</h3>
 <p>En esta sección, aprenderá a cargar datos de hojas de cálculo de Excel en R con el paquete <strong>readxl</strong>. Este paquete es tidyverse no central, por lo que debe cargarlo explícitamente, pero se instala automáticamente cuando instala el paquete tidyverse. Más tarde, también usaremos el paquete writexl, que nos permite crear hojas de cálculo de Excel.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/writexl/">writexl</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/writexl/">writexl</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="empezando" class="level3" data-number="20.2.2"><h3 data-number="20.2.2" class="anchored" data-anchor-id="empezando">
 <span class="header-section-number">20.2.2</span> Empezando</h3>
@@ -506,11 +509,11 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 </div>
 <p>El primer argumento de <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> es la ruta al archivo a leer.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/students.xlsx"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/students.xlsx"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> leerá el archivo como un tibble.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
 <span><span class="co">#&gt;   `Student ID` `Full Name`      favourite.food     mealPlan            AGE  </span></span>
 <span><span class="co">#&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt;</span></span>
@@ -519,14 +522,14 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 <span><span class="co">#&gt; 3            3 Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
 <span><span class="co">#&gt; 4            4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
-<span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenemos seis estudiantes en los datos y cinco variables en cada estudiante. Sin embargo, hay algunas cosas que podríamos querer abordar en este conjunto de datos:</p>
 <ol type="1">
 <li>
 <p>Los nombres de las columnas están por todas partes. Puede proporcionar nombres de columna que sigan un formato coherente; recomendamos <code>snake_case</code> usando el argumento <code>col_names</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
 <span>  <span class="st">"data/students.xlsx"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
@@ -539,11 +542,11 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 <span><span class="co">#&gt; 4 3          Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
 <span><span class="co">#&gt; 5 4          Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 6 5          Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
-<span><span class="co">#&gt; 7 6          Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 7 6          Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Desafortunadamente, esto no funcionó del todo. Ahora tenemos los nombres de las variables que queremos, pero lo que antes era la fila del encabezado ahora aparece como la primera observación en los datos. Puede omitir explícitamente esa fila usando el argumento <code>skip</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
 <span>  <span class="st">"data/students.xlsx"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
 <span>  skip <span class="op">=</span> <span class="fl">1</span></span>
@@ -556,13 +559,13 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 <span><span class="co">#&gt; 3          3 Jayendra Lyne    N/A                Breakfast and lunch 7    </span></span>
 <span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
-<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p>En la columna <code>favourite_food</code>, una de las observaciones es <code>N/A</code>, que significa “no disponible”, pero actualmente no se reconoce como <code>NA</code> (tenga en cuenta el contraste entre este <code>N/A</code> y la edad de el cuarto estudiante de la lista). Puede especificar qué cadenas de caracteres deben reconocerse como <code>NA</code>s con el argumento <code>na</code>. De forma predeterminada, solo <code>""</code> (cadena vacía o, en el caso de leer desde una hoja de cálculo, una celda vacía o una celda con la fórmula <code>=NA()</code>) se reconoce como <code>NA</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
 <span>  <span class="st">"data/students.xlsx"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
 <span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -576,13 +579,13 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 <span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
 <span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
-<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p>Otro problema pendiente es que <code>age</code> se lee como una variable de carácter, pero en realidad debería ser numérico. Al igual que con <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> y amigos para leer datos de archivos planos, puede proporcionar un argumento <code>col_types</code> a <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> y especificar los tipos de columna para las variables que lee. Sin embargo, la sintaxis es un poco diferente. Sus opciones son <code>"skip"</code>, <code>"guess"</code>, <code>"logical"</code>, <code>"numeric"</code>, <code>"date"</code>, <code>"text"</code> o <code>"list"</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
 <span>  <span class="st">"data/students.xlsx"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
 <span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -598,11 +601,11 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 <span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
 <span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch    NA</span></span>
-<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Sin embargo, esto tampoco produjo el resultado deseado. Al especificar que la edad, <code>age</code>, debe ser numérica, hemos convertido la única celda con la entrada no numérica (que tenía el valor <code>five</code>) en <code>NA</code>. En este caso, deberíamos leer la edad como <code>"texto"</code> y luego hacer el cambio una vez que los datos estén cargados en R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span></span>
 <span>  <span class="st">"data/students.xlsx"</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
 <span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -625,7 +628,7 @@ Figura&nbsp;20.1: Hoja de cálculo llamada students.xlsx en Excel.
 <span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7</span></span>
 <span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only             NA</span></span>
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5</span></span>
-<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only              6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ol>
@@ -648,7 +651,7 @@ Figura&nbsp;20.2: Hoja de cálculo llamada penguins.xlsx en Excel que contiene t
 </div>
 <p>Puede leer una sola hoja de trabajo desde una hoja de cálculo con el argumento <code>sheet</code> en <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>. El valor predeterminado, en el que nos hemos basado hasta ahora, es la primera hoja.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 52 × 8</span></span>
 <span><span class="co">#&gt;   species island    bill_length_mm     bill_depth_mm      flipper_length_mm</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;            </span></span>
@@ -659,11 +662,11 @@ Figura&nbsp;20.2: Hoja de cálculo llamada penguins.xlsx en Excel que contiene t
 <span><span class="co">#&gt; 5 Adelie  Torgersen 36.700000000000003 19.3               193              </span></span>
 <span><span class="co">#&gt; 6 Adelie  Torgersen 39.299999999999997 20.6               190              </span></span>
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;chr&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;chr&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Algunas variables que parecen contener datos numéricos se leen como caracteres debido a que la cadena de caracteres <code>"NA"</code> no se reconoce como verdadera <code>NA</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_torgersen</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_torgersen</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">penguins_torgersen</span></span>
 <span><span class="co">#&gt; # A tibble: 52 × 8</span></span>
@@ -676,30 +679,30 @@ Figura&nbsp;20.2: Hoja de cálculo llamada penguins.xlsx en Excel que contiene t
 <span><span class="co">#&gt; 5 Adelie  Torgersen           36.7          19.3               193</span></span>
 <span><span class="co">#&gt; 6 Adelie  Torgersen           39.3          20.6               190</span></span>
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Alternativamente, puede usar <code><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets()</a></code> para obtener información sobre todas las hojas de trabajo en una hoja de cálculo de Excel y luego leer las que le interesan.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/excel_sheets.html">excel_sheets</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Una vez que sepa los nombres de las hojas de trabajo, puede leerlas individualmente con <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_biscoe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Biscoe Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
-<span><span class="va">penguins_dream</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Dream Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_biscoe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Biscoe Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span>
+<span><span class="va">penguins_dream</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/penguins.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"Dream Island"</span>, na <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En este caso, el conjunto de datos completo de pingüinos se distribuye en tres hojas de trabajo en la hoja de cálculo. Cada hoja de cálculo tiene el mismo número de columnas pero diferente número de filas.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">penguins_torgersen</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">penguins_torgersen</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 52  8</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">penguins_biscoe</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 168   8</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">penguins_dream</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 124   8</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 124   8</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Podemos juntarlos con <code><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">penguins_torgersen</span>, <span class="va">penguins_biscoe</span>, <span class="va">penguins_dream</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">penguins_torgersen</span>, <span class="va">penguins_biscoe</span>, <span class="va">penguins_dream</span><span class="op">)</span></span>
 <span><span class="va">penguins</span></span>
 <span><span class="co">#&gt; # A tibble: 344 × 8</span></span>
 <span><span class="co">#&gt;   species island    bill_length_mm bill_depth_mm flipper_length_mm</span></span>
@@ -711,7 +714,7 @@ Figura&nbsp;20.2: Hoja de cálculo llamada penguins.xlsx en Excel que contiene t
 <span><span class="co">#&gt; 5 Adelie  Torgersen           36.7          19.3               193</span></span>
 <span><span class="co">#&gt; 6 Adelie  Torgersen           39.3          20.6               190</span></span>
 <span><span class="co">#&gt; # ℹ 338 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a> hablaremos sobre formas de realizar este tipo de tareas sin código repetitivo.</p>
 </section><section id="leer-parte-de-una-hoja" class="level3" data-number="20.2.5"><h3 data-number="20.2.5" class="anchored" data-anchor-id="leer-parte-de-una-hoja">
@@ -731,7 +734,7 @@ Figura&nbsp;20.3: Hoja de cálculo llamada death.xlsx en Excel.
 </div>
 <p>Esta hoja de cálculo es una de las hojas de cálculo de ejemplo proporcionadas en el paquete readxl. Puede usar la función <code><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example()</a></code> para ubicar la hoja de cálculo en su sistema en el directorio donde está instalado el paquete. Esta función devuelve la ruta a la hoja de cálculo, que puede usar en <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code> como de costumbre.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example</a></span><span class="op">(</span><span class="st">"deaths.xlsx"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/readxl_example.html">readxl_example</a></span><span class="op">(</span><span class="st">"deaths.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">deaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">deaths_path</span><span class="op">)</span></span>
 <span><span class="co">#&gt; New names:</span></span>
 <span><span class="co">#&gt; • `` -&gt; `...2`</span></span>
@@ -749,12 +752,12 @@ Figura&nbsp;20.3: Hoja de cálculo llamada death.xlsx en Excel.
 <span><span class="co">#&gt; 4 Name                Profession Age   Has kids Date of birth Date of death  </span></span>
 <span><span class="co">#&gt; 5 David Bowie         musician   69    TRUE     17175         42379          </span></span>
 <span><span class="co">#&gt; 6 Carrie Fisher       actor      60    TRUE     20749         42731          </span></span>
-<span><span class="co">#&gt; # ℹ 12 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 12 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Las tres filas superiores y las cuatro filas inferiores no forman parte del marco de datos. Es posible eliminar estas filas superfluas usando los argumentos <code>skip</code> y <code>n_max</code>, pero recomendamos usar rangos de celdas. En Excel, la celda superior izquierda es <code>A1</code>. A medida que se mueve por las columnas hacia la derecha, la etiqueta de la celda se mueve hacia abajo en el alfabeto, es decir, <code>B1</code>, <code>C1</code>, etc. Y a medida que se mueve hacia abajo en una columna, el número en la etiqueta de la celda aumenta, es decir, <code>A2</code>, <code>A3</code>, etc.</p>
 <p>Aquí, los datos que queremos leer comienzan en la celda <code>A5</code> y terminan en la celda <code>F15</code>. En notación de hoja de cálculo, esto es <code>A5:F15</code>, que proporcionamos al argumento <code>range</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">deaths_path</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">deaths_path</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 6</span></span>
 <span><span class="co">#&gt;   Name          Profession   Age `Has kids` `Date of birth`    </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;      &lt;dbl&gt; &lt;lgl&gt;      &lt;dttm&gt;             </span></span>
@@ -765,7 +768,7 @@ Figura&nbsp;20.3: Hoja de cálculo llamada death.xlsx en Excel.
 <span><span class="co">#&gt; 5 Prince        musician      57 TRUE       1958-06-07 00:00:00</span></span>
 <span><span class="co">#&gt; 6 Alan Rickman  actor         69 FALSE      1946-02-21 00:00:00</span></span>
 <span><span class="co">#&gt; # ℹ 4 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: `Date of death` &lt;dttm&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more variable: `Date of death` &lt;dttm&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="tipos-de-datos" class="level3" data-number="20.2.6"><h3 data-number="20.2.6" class="anchored" data-anchor-id="tipos-de-datos">
 <span class="header-section-number">20.2.6</span> Tipos de datos</h3>
@@ -794,7 +797,7 @@ Figura&nbsp;20.3: Hoja de cálculo llamada death.xlsx en Excel.
 <span class="header-section-number">20.2.7</span> Escribir en Excel</h3>
 <p>Vamos a crear un pequeño marco de datos que luego podamos escribir. Tenga en cuenta que <code>item</code> es un factor y <code>quantity</code> es un número entero.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bake_sale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bake_sale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  item     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"brownie"</span>, <span class="st">"cupcake"</span>, <span class="st">"cookie"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  quantity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">8</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
@@ -805,11 +808,11 @@ Figura&nbsp;20.3: Hoja de cálculo llamada death.xlsx en Excel.
 <span><span class="co">#&gt;   &lt;fct&gt;      &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 brownie       10</span></span>
 <span><span class="co">#&gt; 2 cupcake        5</span></span>
-<span><span class="co">#&gt; 3 cookie         8</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3 cookie         8</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede volver a escribir datos en el disco como un archivo de Excel usando <code><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx()</a></code> del <a href="https://docs.ropensci.org/writexl/">paquete writexl</a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx</a></span><span class="op">(</span><span class="va">bake_sale</span>, path <span class="op">=</span> <span class="st">"data/bake-sale.xlsx"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx</a></span><span class="op">(</span><span class="va">bake_sale</span>, path <span class="op">=</span> <span class="st">"data/bake-sale.xlsx"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="#fig-bake-sale-excel" class="quarto-xref">Figura&nbsp;<span>20.4</span></a> muestra cómo se ven los datos en Excel. Tenga en cuenta que los nombres de las columnas están incluidos y en negrita. Estos se pueden desactivar configurando los argumentos <code>col_names</code> y <code>format_headers</code> en <code>FALSE</code>.</p>
 <div class="cell">
@@ -826,13 +829,13 @@ Figura&nbsp;20.4: Hoja de cálculo llamada bake_sale.xlsx en Excel.
 </div>
 <p>Al igual que la lectura de un CSV, la información sobre el tipo de datos se pierde cuando volvemos a leer los datos. Esto hace que los archivos de Excel no sean confiables para almacenar en caché los resultados intermedios. Para ver alternativas, consulte <a href="data-import.html#sec-writing-to-a-file" class="quarto-xref"><span>Sección 7.5</span></a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bake-sale.xlsx"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"data/bake-sale.xlsx"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt;   item    quantity</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 brownie       10</span></span>
 <span><span class="co">#&gt; 2 cupcake        5</span></span>
-<span><span class="co">#&gt; 3 cookie         8</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3 cookie         8</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="salida-formateada" class="level3" data-number="20.2.8"><h3 data-number="20.2.8" class="anchored" data-anchor-id="salida-formateada">
 <span class="header-section-number">20.2.8</span> Salida formateada</h3>
@@ -942,8 +945,8 @@ Figura&nbsp;20.4: Hoja de cálculo llamada bake_sale.xlsx en Excel.
 <span class="header-section-number">20.3.1</span> Requisitos previos</h3>
 <p>Esta sección también se centrará en las hojas de cálculo, pero esta vez cargará datos de una hoja de cálculo de Google con el paquete <strong>googlesheets4</strong>. Este paquete también es tidyverse no central, debe cargarlo explícitamente.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org">googlesheets4</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org">googlesheets4</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Una nota rápida sobre el nombre del paquete: googlesheets4 usa v4 de <a href="https://developers.google.com/sheets/api/">Sheets API v4</a> para proporcionar una interfaz R a Google Sheets, de ahí el nombre.</p>
 </section><section id="empezando-1" class="level3" data-number="20.3.2"><h3 data-number="20.3.2" class="anchored" data-anchor-id="empezando-1">
@@ -968,10 +971,10 @@ Figura&nbsp;20.5: Google Sheet llamó a los estudiantes en una ventana del naveg
 </div>
 <p>El primer argumento de <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> es la URL del archivo a leer, y devuelve un tibble:&lt;https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w&gt;. No es agradable trabajar con estas URL, por lo que a menudo querrá identificar una hoja por su ID.</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w"</span></span>
 <span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">students_sheet_id</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from students.</span></span>
 <span><span class="co">#&gt; ✔ Range Sheet1.</span></span>
@@ -984,11 +987,11 @@ Figura&nbsp;20.5: Google Sheet llamó a los estudiantes en una ventana del naveg
 <span><span class="co">#&gt; 3            3 Jayendra Lyne    N/A                Breakfast and lunch &lt;dbl&gt; </span></span>
 <span><span class="co">#&gt; 4            4 Leon Rossini     Anchovies          Lunch only          &lt;NULL&gt;</span></span>
 <span><span class="co">#&gt; 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch &lt;chr&gt; </span></span>
-<span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          &lt;dbl&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6            6 Güvenç Attila    Ice cream          Lunch only          &lt;dbl&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Al igual que hicimos con <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, podemos proporcionar nombres de columnas, cadenas NA y tipos de columnas a <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span></span>
 <span>  <span class="va">students_sheet_id</span>,</span>
 <span>  col_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"student_id"</span>, <span class="st">"full_name"</span>, <span class="st">"favourite_food"</span>, <span class="st">"meal_plan"</span>, <span class="st">"age"</span><span class="op">)</span>,</span>
 <span>  skip <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -1007,12 +1010,12 @@ Figura&nbsp;20.5: Google Sheet llamó a los estudiantes en una ventana del naveg
 <span><span class="co">#&gt; 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7    </span></span>
 <span><span class="co">#&gt; 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt; </span></span>
 <span><span class="co">#&gt; 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five </span></span>
-<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6          6 Güvenç Attila    Ice cream          Lunch only          6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta que aquí definimos los tipos de columna de manera un poco diferente, usando códigos cortos. Por ejemplo, “dcccc” significa “doble, carácter, carácter, carácter, carácter”.</p>
 <p>También es posible leer hojas individuales de Google Sheets. Leamos la hoja “Isla Torgersen” de la <a href="https://pos.it/r4ds-penguins">Hoja de Google de pingüinos</a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins_sheet_id</span> <span class="op">&lt;-</span> <span class="st">"1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY"</span></span>
 <span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span>, sheet <span class="op">=</span> <span class="st">"Torgersen Island"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from penguins.</span></span>
 <span><span class="co">#&gt; ✔ Range ''Torgersen Island''.</span></span>
@@ -1026,16 +1029,16 @@ Figura&nbsp;20.5: Google Sheet llamó a los estudiantes en una ventana del naveg
 <span><span class="co">#&gt; 5 Adelie  Torgersen &lt;dbl [1]&gt;      &lt;dbl [1]&gt;     &lt;dbl [1]&gt;        </span></span>
 <span><span class="co">#&gt; 6 Adelie  Torgersen &lt;dbl [1]&gt;      &lt;dbl [1]&gt;     &lt;dbl [1]&gt;        </span></span>
 <span><span class="co">#&gt; # ℹ 46 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;list&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 3 more variables: body_mass_g &lt;list&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede obtener una lista de todas las hojas dentro de una Hoja de Google con <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_properties.html">sheet_names</a></span><span class="op">(</span><span class="va">penguins_sheet_id</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Torgersen Island" "Biscoe Island"    "Dream Island"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finalmente, al igual que con <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, podemos leer una parte de una hoja de cálculo de Google definiendo un <code>range</code> en <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code>. Tenga en cuenta que también estamos usando la función <code><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example()</a></code> a continuación para ubicar una hoja de cálculo de Google de ejemplo que viene con el paquete googlesheets4.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deaths_url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_examples.html">gs4_example</a></span><span class="op">(</span><span class="st">"deaths"</span><span class="op">)</span></span>
 <span><span class="va">deaths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet</a></span><span class="op">(</span><span class="va">deaths_url</span>, range <span class="op">=</span> <span class="st">"A5:F15"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Reading from deaths.</span></span>
 <span><span class="co">#&gt; ✔ Range A5:F15.</span></span>
@@ -1050,17 +1053,17 @@ Figura&nbsp;20.5: Google Sheet llamó a los estudiantes en una ventana del naveg
 <span><span class="co">#&gt; 5 Prince        musician      57 TRUE       1958-06-07 00:00:00</span></span>
 <span><span class="co">#&gt; 6 Alan Rickman  actor         69 FALSE      1946-02-21 00:00:00</span></span>
 <span><span class="co">#&gt; # ℹ 4 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: `Date of death` &lt;dttm&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more variable: `Date of death` &lt;dttm&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="escribir-en-hojas-de-cálculo-de-google" class="level3" data-number="20.3.4"><h3 data-number="20.3.4" class="anchored" data-anchor-id="escribir-en-hojas-de-cálculo-de-google">
 <span class="header-section-number">20.3.4</span> Escribir en Hojas de cálculo de Google</h3>
 <p>Puede escribir desde R a Hojas de cálculo de Google con <code><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet()</a></code>. El primer argumento es el marco de datos para escribir, y el segundo argumento es el nombre (u otro identificador) de la Hoja de Google para escribir:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si desea escribir sus datos en una hoja (de trabajo) específica dentro de una hoja de cálculo de Google, también puede especificarlo con el argumento <code>sheet</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span>, sheet <span class="op">=</span> <span class="st">"Sales"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/sheet_write.html">write_sheet</a></span><span class="op">(</span><span class="va">bake_sale</span>, ss <span class="op">=</span> <span class="st">"bake-sale"</span>, sheet <span class="op">=</span> <span class="st">"Sales"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="autenticación" class="level3" data-number="20.3.5"><h3 data-number="20.3.5" class="anchored" data-anchor-id="autenticación">
 <span class="header-section-number">20.3.5</span> Autenticación</h3>
@@ -1216,13 +1219,14 @@ Figura&nbsp;20.5: Google Sheet llamó a los estudiantes en una ventana del naveg
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

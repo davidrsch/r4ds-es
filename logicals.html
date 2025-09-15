@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>12&nbsp; Vectores lógicos – R para la Ciencia de Datos (2e)</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8374bc3c6bea72a3c9f8b2214211636f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -117,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -486,18 +489,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">12.1.1</span> Requisitos previos</h3>
 <p>La mayoría de las funciones que aprenderá en este capítulo son proporcionadas por la base R, por lo que no necesitamos el tidyverse, pero igual lo cargaremos para poder usar <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, y amigos para trabajar con data frames. También continuaremos extrayendo ejemplos del conjunto de datos <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Sin embargo, a medida que empecemos a cubrir más herramientas, no siempre habrá un ejemplo real perfecto. Así que empezaremos a inventar algunos datos ficticios con <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">13</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">*</span> <span class="fl">2</span></span>
-<span><span class="co">#&gt; [1]  2  4  6 10 14 22 26</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1]  2  4  6 10 14 22 26</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto facilita la explicación de funciones individuales a costa de dificultar ver cómo podría aplicarse a sus problemas de datos. Solo recuerda que cualquier manipulación que hagamos a un vector flotante, puedes hacerla a una variable dentro de un data frame con <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> y amigos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 2</span></span>
@@ -509,13 +512,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4     5    10</span></span>
 <span><span class="co">#&gt; 5     7    14</span></span>
 <span><span class="co">#&gt; 6    11    22</span></span>
-<span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more row</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="comparaciones" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="comparaciones">
 <span class="header-section-number">12.2</span> Comparaciones</h2>
 <p>Una forma muy común de crear un vector lógico es a través de una comparación numérica con <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code> y <code>==</code>. Hasta ahora, en su mayoría hemos creado variables lógicas de manera transitoria dentro de <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> — se calculan, usan y luego se descartan. Por ejemplo, el siguiente filtro encuentra todas las salidas diurnas que llegan aproximadamente a tiempo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 172,286 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
@@ -527,11 +530,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5  2013     1     1      606            610        -4      837            845</span></span>
 <span><span class="co">#&gt; 6  2013     1     1      607            607         0      858            915</span></span>
 <span><span class="co">#&gt; # ℹ 172,280 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es útil saber que este es un atajo y que puedes crear explícitamente las variables lógicas subyacentes con <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    daytime <span class="op">=</span> <span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span>,</span>
 <span>    approx_ontime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span>,</span>
@@ -546,59 +549,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4      544       -18 FALSE   TRUE         </span></span>
 <span><span class="co">#&gt; 5      554       -25 FALSE   FALSE        </span></span>
 <span><span class="co">#&gt; 6      554        12 FALSE   TRUE         </span></span>
-<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto es particularmente útil para la lógica más complicada porque nombrar los pasos intermedios facilita la lectura del código y la verificación de que cada paso se haya calculado correctamente.</p>
 <p>Con todo, el filtro inicial es equivalente a:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    daytime <span class="op">=</span> <span class="va">dep_time</span> <span class="op">&gt;</span> <span class="fl">600</span> <span class="op">&amp;</span> <span class="va">dep_time</span> <span class="op">&lt;</span> <span class="fl">2000</span>,</span>
 <span>    approx_ontime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">20</span>,</span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">daytime</span> <span class="op">&amp;</span> <span class="va">approx_ontime</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">daytime</span> <span class="op">&amp;</span> <span class="va">approx_ontime</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sec-fp-comparison" class="level3" data-number="12.2.1"><h3 data-number="12.2.1" class="anchored" data-anchor-id="sec-fp-comparison">
 <span class="header-section-number">12.2.1</span> Comparación de punto flotante</h3>
 <p>Cuidado con usar <code>==</code> con números. Por ejemplo, parece que este vector contiene los números 1 y 2:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">49</span> <span class="op">*</span> <span class="fl">49</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">49</span> <span class="op">*</span> <span class="fl">49</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 1 2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 1 2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pero si los prueba para la igualdad, obtiene FALSE, <code>FALSE</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE FALSE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>¿Qué está sucediendo? Las computadoras almacenan números con un número fijo de posiciones decimales, por lo que no hay forma de representar exactamente 1/49 o <code>sqrt(2)</code> y los cálculos subsiguientes estarán ligeramente desviados. Podemos ver los valores exactos llamando a <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> con el argumento <code>digits</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.9999999999999999 2.0000000000000004</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.9999999999999999 2.0000000000000004</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede ver por qué R por defecto redondea estos números; realmente están muy cerca de lo que esperas.</p>
 <p>Ahora que ha visto por qué <code>==</code> está fallando, ¿qué puede hacer al respecto? Una opción es usar <code><a href="https://dplyr.tidyverse.org/reference/near.html">dplyr::near()</a></code> que ignora las pequeñas diferencias:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/near.html">near</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE TRUE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/near.html">near</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="sec-na-comparison" class="level3" data-number="12.2.2"><h3 data-number="12.2.2" class="anchored" data-anchor-id="sec-na-comparison">
 <span class="header-section-number">12.2.2</span> Valores faltantes</h3>
 <p>Los valores faltantes representan lo desconocido, por lo que son “contagiosos”: casi cualquier operación que involucre un valor desconocido también será desconocida:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">NA</span> <span class="op">&gt;</span> <span class="fl">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">NA</span> <span class="op">&gt;</span> <span class="fl">5</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="fl">10</span> <span class="op">==</span> <span class="cn">NA</span></span>
-<span><span class="co">#&gt; [1] NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El resultado más confuso es este:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">NA</span> <span class="op">==</span> <span class="cn">NA</span></span>
-<span><span class="co">#&gt; [1] NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="cn">NA</span> <span class="op">==</span> <span class="cn">NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es más fácil entender por qué esto es cierto si proporcionamos artificialmente un poco más de contexto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># No sabemos cuántos años tiene María.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># No sabemos cuántos años tiene María.</span></span>
 <span><span class="va">edad_maria</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span></span>
 <span><span class="co"># No sabemos cuántos años tiene Juan.</span></span>
@@ -607,15 +610,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># ¿María y Juan tienen la misma edad?</span></span>
 <span><span class="va">edad_maria</span> <span class="op">==</span> <span class="va">edad_juan</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
-<span><span class="co"># ¡No sabemos!</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># ¡No sabemos!</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Entonces, si desea encontrar todos los vuelos en los que falta <code>dep_time</code>, el siguiente código no funciona porque <code>dep_time == NA</code> generará <code>NA</code> para cada fila, y <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> elimina automáticamente los valores faltantes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op">==</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 0 × 19</span></span>
 <span><span class="co">#&gt; # ℹ 19 variables: year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;, dep_time &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   sched_dep_time &lt;int&gt;, dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; #   sched_dep_time &lt;int&gt;, dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En su lugar, necesitaremos una nueva herramienta: <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>.</p>
 </section><section id="is.na" class="level3" data-number="12.2.3"><h3 data-number="12.2.3" class="anchored" data-anchor-id="is.na">
@@ -623,16 +626,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </h3>
 <p><code>is.na(x)</code> funciona con cualquier tipo de vector y devuelve TRUE, <code>TRUE</code>, para los valores faltantes y FALSE, <code>FALSE</code>, para todo lo demás:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">NA</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">NA</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="cn">NA</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] FALSE  TRUE FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Podemos usar <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> para encontrar todas las filas a las que les falta <code>dep_time</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 8,255 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
@@ -644,11 +647,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5  2013     1     2       NA           1540        NA       NA           1747</span></span>
 <span><span class="co">#&gt; 6  2013     1     2       NA           1620        NA       NA           1746</span></span>
 <span><span class="co">#&gt; # ℹ 8,249 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> también puede ser útil en <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>. <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> generalmente coloca todos los valores faltantes al final, pero puede anular este valor predeterminado ordenando primero por <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 842 × 19</span></span>
@@ -676,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5  2013     1     1      517            515         2      830            819</span></span>
 <span><span class="co">#&gt; 6  2013     1     1      533            529         4      850            830</span></span>
 <span><span class="co">#&gt; # ℹ 836 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Volveremos para cubrir los valores faltantes con más profundidad en <a href="missing-values.html" class="quarto-xref"><span>Capítulo 18</span></a>.</p>
 </section><section id="ejercicios" class="level3" data-number="12.2.4"><h3 data-number="12.2.4" class="anchored" data-anchor-id="ejercicios">
@@ -704,7 +707,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span class="header-section-number">12.3.1</span> Valores Faltantes</h3>
 <p>Las reglas para los valores faltantes en el álgebra booleana son un poco difíciles de explicar porque parecen inconsistentes a primera vista:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -716,19 +719,19 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt;   &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;</span></span>
 <span><span class="co">#&gt; 1 TRUE  NA    TRUE </span></span>
 <span><span class="co">#&gt; 2 FALSE FALSE NA   </span></span>
-<span><span class="co">#&gt; 3 NA    NA    NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3 NA    NA    NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Para entender lo que está pasando, piense en <code>NA | TRUE</code> (<code>NA</code> o <code>TRUE</code>). Un valor faltante en un vector lógico significa que el valor podría ser <code>TRUE</code> o <code>FALSE</code>. <code>TRUE | TRUE</code> y <code>FALSE | TRUE</code> son ambos <code>TRUE</code> porque al menos uno de ellos es <code>TRUE</code>. <code>NA | TRUE</code> también debe ser <code>TRUE</code> porque <code>NA</code> puede ser <code>TRUE</code> o <code>FALSE</code>. Sin embargo <code>NA | FALSE</code> es <code>FALSE</code> porque <code>NA</code> puede ser <code>TRUE</code> o <code>FALSE</code> Se aplica un razonamiento similar con <code>NA &amp; FALSE</code>.</p>
 </section><section id="sec-order-operations-boolean" class="level3" data-number="12.3.2"><h3 data-number="12.3.2" class="anchored" data-anchor-id="sec-order-operations-boolean">
 <span class="header-section-number">12.3.2</span> Orden de operaciones</h3>
 <p>Tenga en cuenta que el orden de las operaciones no funciona como en inglés. Tome el siguiente código que encuentra todos los vuelos que salieron en noviembre o diciembre:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">12</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es posible que tenga la tentación de escribirlo como diría en inglés: “Buscar todos los vuelos que partieron en noviembre o diciembre”.:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">11</span> <span class="op">|</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 336,776 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
@@ -740,11 +743,11 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 5  2013     1     1      554            600        -6      812            837</span></span>
 <span><span class="co">#&gt; 6  2013     1     1      554            558        -4      740            728</span></span>
 <span><span class="co">#&gt; # ℹ 336,770 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este código no da error, pero tampoco parece haber funcionado. ¿Qué está sucediendo? Aquí, R primero evalúa <code>month == 11</code> creando un vector lógico, al que llamamos <code>nov</code>. Calcula <code>nov | 12</code>. Cuando usa un número con un operador lógico, convierte todo menos 0 en <code>TRUE</code>, por lo que esto es equivalente a <code>nov | TRUE</code> que siempre será <code>TRUE</code>, por lo que se seleccionarán todas las filas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    nov <span class="op">=</span> <span class="va">month</span> <span class="op">==</span> <span class="fl">11</span>,</span>
 <span>    final <span class="op">=</span> <span class="va">nov</span> <span class="op">|</span> <span class="fl">12</span>,</span>
@@ -759,33 +762,33 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 4     1 FALSE TRUE </span></span>
 <span><span class="co">#&gt; 5     1 FALSE TRUE </span></span>
 <span><span class="co">#&gt; 6     1 FALSE TRUE </span></span>
-<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="in" class="level3" data-number="12.3.3"><h3 data-number="12.3.3" class="anchored" data-anchor-id="in">
 <span class="header-section-number">12.3.3</span> <code>%in%</code>
 </h3>
 <p>Una manera fácil de evitar el problema de poner tus <code>==</code>s y <code>|</code>s en el orden correcto es usar <code>%in%</code>. <code>x %in% y</code> devuelve un vector lógico de la misma longitud que <code>x</code> que es <code>TRUE</code> cada vez que un valor en <code>x</code> está en cualquier parte de <code>y</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">11</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">11</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</span></span>
 <span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"i"</span>, <span class="st">"o"</span>, <span class="st">"u"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Entonces, para encontrar todos los vuelos en noviembre y diciembre, podríamos escribir:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta que <code>%in%</code> obedece reglas diferentes para <code>NA</code> y <code>==</code>, ya que <code>NA %in% NA</code> es <code>TRUE</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op">==</span> <span class="cn">NA</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op">==</span> <span class="cn">NA</span></span>
 <span><span class="co">#&gt; [1] NA NA NA</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="cn">NA</span></span>
-<span><span class="co">#&gt; [1] FALSE FALSE  TRUE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] FALSE FALSE  TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto puede ser un atajo útil:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0800</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 8,803 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
@@ -797,7 +800,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 5  2013     1     1       NA           1500        NA       NA           1825</span></span>
 <span><span class="co">#&gt; 6  2013     1     1       NA            600        NA       NA            901</span></span>
 <span><span class="co">#&gt; # ℹ 8,797 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="ejercicios-1" class="level3" data-number="12.3.4"><h3 data-number="12.3.4" class="anchored" data-anchor-id="ejercicios-1">
 <span class="header-section-number">12.3.4</span> Ejercicios</h3>
@@ -813,7 +816,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <p>Hay dos resúmenes lógicos principales: <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> y <code><a href="https://rdrr.io/r/base/all.html">all()</a></code>. <code>any(x)</code> es el equivalente de <code>|</code>; devolverá <code>TRUE</code> si hay algún <code>TRUE</code> en <code>x</code>. <code>all(x)</code> es equivalente a <code>&amp;</code>; devolverá <code>TRUE</code> solo si todos los valores de <code>x</code> son <code>TRUE</code>. Como casi todas las funciones de resumen, puede hacer que los valores faltantes desaparezcan con <code>na.rm = TRUE</code>.</p>
 <p>Por ejemplo, podríamos usar <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> y <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> para averiguar si todos los vuelos se retrasaron a la salida como máximo una hora o si algún vuelo se retrasó a la llegada cinco horas o más. Y usar <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> nos permite hacer eso por día:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    all_delayed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;=</span> <span class="fl">60</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -829,7 +832,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 4  2013     1     4 FALSE       FALSE         </span></span>
 <span><span class="co">#&gt; 5  2013     1     5 FALSE       TRUE          </span></span>
 <span><span class="co">#&gt; 6  2013     1     6 FALSE       FALSE         </span></span>
-<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En la mayoría de los casos, sin embargo, <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> y <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> son un poco toscos, y sería bueno poder obtener un poco más de detalles sobre cuántos valores son <code>TRUE</code> o <code>FALSE</code>. Eso nos lleva a los resúmenes numéricos.</p>
 </section><section id="sec-numeric-summaries-of-logicals" class="level3" data-number="12.4.2"><h3 data-number="12.4.2" class="anchored" data-anchor-id="sec-numeric-summaries-of-logicals">
@@ -837,7 +840,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <p>Cuando usa un vector lógico en un contexto numérico, <code>TRUE</code> se convierte en 1 y <code>FALSE</code> se convierte en 0. Esto hace que <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> y <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> sean muy útiles con vectores lógicos porque <code>sum(x)</code> da el número de <code>TRUE</code>s y <code>mean(x)</code> da la proporción de <code>TRUE</code>s (porque <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> es simplemente <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> dividido por <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>).</p>
 <p>Eso, por ejemplo, nos permite ver la proporción de vuelos que se retrasaron a la salida como máximo una hora y la cantidad de vuelos que se retrasaron a la llegada cinco horas o más:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    proportion_delayed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;=</span> <span class="fl">60</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -853,14 +856,14 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 4  2013     1     4              0.953                0</span></span>
 <span><span class="co">#&gt; 5  2013     1     5              0.964                1</span></span>
 <span><span class="co">#&gt; 6  2013     1     6              0.959                0</span></span>
-<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="subconjunto-lógico" class="level3" data-number="12.4.3"><h3 data-number="12.4.3" class="anchored" data-anchor-id="subconjunto-lógico">
 <span class="header-section-number">12.4.3</span> Subconjunto lógico</h3>
 <p>Hay un uso final para los vectores lógicos en los resúmenes: puede usar un vector lógico para filtrar una sola variable a un subconjunto de interés. Esto hace uso del operador base <code>[</code> (subconjunto pronunciado), sobre el que obtendrá más información en <a href="base-R.html#sec-subset-many" class="quarto-xref"><span>Sección 27.2</span></a>.</p>
 <p>Imagine que quisiéramos ver el retraso promedio solo para los vuelos que realmente se retrasaron. Una forma de hacerlo sería filtrar primero los vuelos y luego calcular el retraso promedio:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -877,12 +880,12 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 4  2013     1     4   28.3   297</span></span>
 <span><span class="co">#&gt; 5  2013     1     5   22.6   238</span></span>
 <span><span class="co">#&gt; 6  2013     1     6   24.4   381</span></span>
-<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto funciona, pero ¿y si también quisiéramos calcular el retraso promedio de los vuelos que llegaron temprano? Tendríamos que realizar un paso de filtro por separado y luego descubrir cómo combinar los dos marcos de datos juntos [^ lógicos-3]. En su lugar, podría usar <code>[</code> para realizar un filtrado en línea: <code>arr_delay[arr_delay &gt; 0]</code> generará solo los retrasos de llegada positivos.</p>
 <p>Esto lleva a:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    behind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">[</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -899,7 +902,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 4  2013     1     4   28.3 -17.0   915</span></span>
 <span><span class="co">#&gt; 5  2013     1     5   22.6 -14.0   720</span></span>
 <span><span class="co">#&gt; 6  2013     1     6   24.4 -13.6   832</span></span>
-<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>También tenga en cuenta la diferencia en el tamaño del grupo: en el primer fragmento <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> da el número de vuelos retrasados por día; en el segundo, <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> da el número total de vuelos.</p>
 </section><section id="ejercicios-2" class="level3" data-number="12.4.4"><h3 data-number="12.4.4" class="anchored" data-anchor-id="ejercicios-2">
@@ -916,31 +919,31 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <p>Si quiere usar un valor cuando una condición es <code>TRUE</code> y otro valor cuando es <code>FALSE</code>, puede usar <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">dplyr::if_else()</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Siempre usarás los tres primeros argumentos de <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>. El primer argumento, <code>condition</code>, es un vector lógico, el segundo, <code>true</code>, da la salida cuando la condición es verdadera, y el tercero, <code>false</code>, da la salida si la condición es falsa.</p>
 <p>Comencemos con un ejemplo simple de etiquetar un vector numérico como “+ve” (positivo) o “-ve” (negativo):</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="st">"+ve"</span>, <span class="st">"-ve"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "-ve" "+ve" "+ve" "+ve" NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "-ve" "+ve" "+ve" "+ve" NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay un cuarto argumento opcional, <code>missing</code> que se usará si la entrada es <code>NA</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="st">"+ve"</span>, <span class="st">"-ve"</span>, <span class="st">"???"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "-ve" "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="st">"+ve"</span>, <span class="st">"-ve"</span>, <span class="st">"???"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "-ve" "+ve" "+ve" "+ve" "???"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>También puede usar vectores para los argumentos <code>true</code> y <code>false</code>. Por ejemplo, esto nos permite crear una implementación mínima de <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="op">-</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]  3  2  1  0  1  2  3 NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="op">-</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1]  3  2  1  0  1  2  3 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hasta ahora, todos los argumentos han usado los mismos vectores, pero, por supuesto, puede mezclarlos y combinarlos. Por ejemplo, podría implementar una versión simple de <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce()</a></code> como esta:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span>, <span class="va">y1</span>, <span class="va">x1</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 3 1 2 6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 3 1 2 6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es posible que haya notado una pequeña infelicidad en nuestro ejemplo de etiquetado anterior: cero no es ni positivo ni negativo. Podríamos resolver esto agregando un <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> adicional:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">0</span>, <span class="st">"0"</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="st">"-ve"</span>, <span class="st">"+ve"</span><span class="op">)</span>, <span class="st">"???"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "0"   "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">0</span>, <span class="st">"0"</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="st">"-ve"</span>, <span class="st">"+ve"</span><span class="op">)</span>, <span class="st">"???"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "0"   "+ve" "+ve" "+ve" "???"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto ya es un poco difícil de leer, y puedes imaginar que solo sería más difícil si tuvieras más condiciones. En su lugar, puede cambiar a <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code>.</p>
 </section><section id="case_when" class="level3" data-number="12.5.2"><h3 data-number="12.5.2" class="anchored" data-anchor-id="case_when">
@@ -949,44 +952,44 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <p><code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> de dplyr está inspirado en la declaración <code>CASE</code> de SQL y proporciona una forma flexible de realizar diferentes cálculos para diferentes condiciones. Tiene una sintaxis especial que, lamentablemente, no se parece a nada que vayas a usar en tidyverse. Toma pares que parecen <code>condition ~ output</code>. <code>condition</code> debe ser un vector lógico; cuando es <code>TRUE</code>, se usará <code>output</code>.</p>
 <p>Esto significa que podríamos recrear nuestro anterior <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> anidado de la siguiente manera:</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">x</span> <span class="op">==</span> <span class="fl">0</span>   <span class="op">~</span> <span class="st">"0"</span>,</span>
 <span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>    <span class="op">~</span> <span class="st">"-ve"</span>, </span>
 <span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>    <span class="op">~</span> <span class="st">"+ve"</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">~</span> <span class="st">"???"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "0"   "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "0"   "+ve" "+ve" "+ve" "???"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto es más código, pero también es más explícito.</p>
 <p>Para explicar cómo funciona <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>, exploremos algunos casos más simples. Si ninguno de los casos coincide, la salida obtiene un <code>NA</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
 <span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" NA    "+ve" "+ve" "+ve" NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" NA    "+ve" "+ve" "+ve" NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Use <code>.default</code> si desea crear un valor catch all “predeterminado”:</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"-ve"</span>,</span>
 <span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
 <span>  .default <span class="op">=</span> <span class="st">"???"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "???" "+ve" "+ve" "+ve" "???"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] "-ve" "-ve" "-ve" "???" "+ve" "+ve" "+ve" "???"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y tenga en cuenta que si coinciden varias condiciones, solo se utilizará la primera:</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"+ve"</span>,</span>
 <span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"big"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] NA    NA    NA    NA    "+ve" "+ve" "+ve" NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] NA    NA    NA    NA    "+ve" "+ve" "+ve" NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Al igual que con <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>, puede usar variables en ambos lados de <code>~</code> y puede mezclar y combinar variables según sea necesario para su problema. Por ejemplo, podríamos usar <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> para proporcionar algunas etiquetas legibles por humanos para el retraso de llegada:</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    status <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span>      <span class="op">~</span> <span class="st">"cancelado"</span>,</span>
@@ -1007,14 +1010,14 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span><span class="co">#&gt; 4       -18 temprano</span></span>
 <span><span class="co">#&gt; 5       -25 temprano</span></span>
 <span><span class="co">#&gt; 6        12 a tiempo</span></span>
-<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga cuidado al escribir este tipo de declaraciones complejas <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>; mis primeros dos intentos usaron una combinación de <code>&lt;</code> y <code>&gt;</code> y seguí creando accidentalmente condiciones superpuestas.</p>
 </section><section id="tipos-compatibles" class="level3" data-number="12.5.3"><h3 data-number="12.5.3" class="anchored" data-anchor-id="tipos-compatibles">
 <span class="header-section-number">12.5.3</span> Tipos compatibles</h3>
 <p>Tenga en cuenta que tanto <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> como <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> requieren tipos <strong>compatibles</strong> en la salida. Si no son compatibles, verá errores como este:</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="st">"a"</span>, <span class="fl">1</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="st">"a"</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `if_else()`:</span></span>
 <span><span class="co">#&gt; ! Can't combine `true` &lt;character&gt; and `false` &lt;double&gt;.</span></span>
 <span></span>
@@ -1023,7 +1026,7 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
 <span>  <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>  <span class="op">~</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `case_when()`:</span></span>
-<span><span class="co">#&gt; ! Can't combine `..1 (right)` &lt;logical&gt; and `..2 (right)` &lt;datetime&lt;local&gt;&gt;.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; ! Can't combine `..1 (right)` &lt;logical&gt; and `..2 (right)` &lt;datetime&lt;local&gt;&gt;.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En general, relativamente pocos tipos son compatibles, porque la conversión automática de un tipo de vector a otro es una fuente común de errores. Estos son los casos más importantes que son compatibles:</p>
 <ul>
@@ -1170,13 +1173,14 @@ Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

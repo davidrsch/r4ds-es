@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>23&nbsp; Datos jerárquicos – R para la Ciencia de Datos (2e)</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8374bc3c6bea72a3c9f8b2214211636f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -117,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -485,15 +488,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">23.1.1</span> Requisitos previos</h3>
 <p>En este capítulo, usaremos muchas funciones de tidyr, un miembro central de tidyverse. También usaremos repurrrsive para proporcionar algunos conjuntos de datos interesantes para la práctica de rectángulos, y terminaremos usando jsonlite para leer archivos JSON en listas R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jennybc.github.io/repurrrsive/">repurrrsive</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="listas" class="level2" data-number="23.2"><h2 data-number="23.2" class="anchored" data-anchor-id="listas">
 <span class="header-section-number">23.2</span> Listas</h2>
 <p>Hasta ahora, ha trabajado con marcos de datos que contienen vectores simples como enteros, números, caracteres, fechas y horas y factores. Estos vectores son simples porque son homogéneos: cada elemento es del mismo tipo de datos. Si quieres almacenar elementos de diferentes tipos en el mismo vector, necesitarás una <strong>lista</strong>, que creas con <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="st">"a"</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="st">"a"</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">x1</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; [1] 1 2 3 4</span></span>
@@ -502,11 +505,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] "a"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A menudo es conveniente nombrar los componentes, o <strong>hijos</strong>, de una lista, lo que puede hacer de la misma manera que se nombran las columnas de un tibble:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, b <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, c <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, b <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, c <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">x2</span></span>
 <span><span class="co">#&gt; $a</span></span>
 <span><span class="co">#&gt; [1] 1 2</span></span>
@@ -515,11 +518,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] 1 2 3</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $c</span></span>
-<span><span class="co">#&gt; [1] 1 2 3 4</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 1 2 3 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Incluso para estas listas tan simples, la impresión ocupa bastante espacio. Una alternativa útil es <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>, que genera una visualización compacta de la <strong>estructura</strong>, restando énfasis al contenido:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 3</span></span>
 <span><span class="co">#&gt;  $ : int [1:4] 1 2 3 4</span></span>
 <span><span class="co">#&gt;  $ : chr "a"</span></span>
@@ -528,14 +531,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; List of 3</span></span>
 <span><span class="co">#&gt;  $ a: int [1:2] 1 2</span></span>
 <span><span class="co">#&gt;  $ b: int [1:3] 1 2 3</span></span>
-<span><span class="co">#&gt;  $ c: int [1:4] 1 2 3 4</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  $ c: int [1:4] 1 2 3 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Como puede ver, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> muestra cada hijo de la lista en su propia línea. Muestra el nombre, si está presente, luego una abreviatura del tipo, luego los primeros valores.</p>
 <section id="jerarquía" class="level3" data-number="23.2.1"><h3 data-number="23.2.1" class="anchored" data-anchor-id="jerarquía">
 <span class="header-section-number">23.2.1</span> Jerarquía</h3>
 <p>Las listas pueden contener cualquier tipo de objeto, incluidas otras listas. Esto los hace adecuados para representar estructuras jerárquicas (en forma de árbol):</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">x3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 2</span></span>
 <span><span class="co">#&gt;  $ :List of 2</span></span>
@@ -543,11 +546,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   ..$ : num 2</span></span>
 <span><span class="co">#&gt;  $ :List of 2</span></span>
 <span><span class="co">#&gt;   ..$ : num 3</span></span>
-<span><span class="co">#&gt;   ..$ : num 4</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;   ..$ : num 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto es notablemente diferente a <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, que genera un vector plano:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1 2 3 4</span></span>
 <span></span>
 <span><span class="va">x4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
@@ -556,11 +559,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;  $ : num 1</span></span>
 <span><span class="co">#&gt;  $ : num 2</span></span>
 <span><span class="co">#&gt;  $ : num 3</span></span>
-<span><span class="co">#&gt;  $ : num 4</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  $ : num 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A medida que las listas se vuelven más complejas, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> se vuelve más útil, ya que le permite ver la jerarquía de un vistazo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">x5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 2</span></span>
 <span><span class="co">#&gt;  $ : num 1</span></span>
@@ -571,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   .. ..$ :List of 2</span></span>
 <span><span class="co">#&gt;   .. .. ..$ : num 4</span></span>
 <span><span class="co">#&gt;   .. .. ..$ :List of 1</span></span>
-<span><span class="co">#&gt;   .. .. .. ..$ : num 5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;   .. .. .. ..$ : num 5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A medida que las listas se vuelven aún más grandes y complejas, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> eventualmente comienza a fallar, y deberá cambiar a <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <a href="#fig-view-collapsed" class="quarto-xref">Figura&nbsp;<span>23.1</span></a> muestra el resultado de llamar a <code>View(x5)</code>. El visor comienza mostrando solo el nivel superior de la lista, pero puede expandir interactivamente cualquiera de los componentes para ver más, como en <a href="#fig-view-expand-1" class="quarto-xref">Figura&nbsp;<span>23.2</span></a>. RStudio también le mostrará el código que necesita para acceder a ese elemento, como en <a href="#fig-view-expand-2" class="quarto-xref">Figura&nbsp;<span>23.3</span></a>. Volveremos sobre cómo funciona este código en <a href="base-R.html#sec-subset-one" class="quarto-xref"><span>Sección 27.3</span></a>.</p>
 <div class="cell">
@@ -615,7 +618,7 @@ Figura&nbsp;23.3: Puede repetir esta operación tantas veces como sea necesario 
 <p>Las listas también pueden vivir dentro de un tibble, donde las llamamos columnas de lista. Las columnas de lista son útiles porque le permiten colocar objetos en un tibble que normalmente no pertenecerían allí. En particular, las columnas de lista se usan mucho en el ecosistema <a href="https://www.tidymodels.org">tidymodels</a>, porque le permiten almacenar cosas como resultados de modelos o remuestreos en un marco de datos.</p>
 <p>Aquí hay un ejemplo simple de una columna de lista:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, </span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>,</span>
 <span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
@@ -625,16 +628,16 @@ Figura&nbsp;23.3: Puede repetir esta operación tantas veces como sea necesario 
 <span><span class="co">#&gt;       x y     z         </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;list&gt;    </span></span>
 <span><span class="co">#&gt; 1     1 a     &lt;list [2]&gt;</span></span>
-<span><span class="co">#&gt; 2     2 b     &lt;list [3]&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2     2 b     &lt;list [3]&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>No hay nada especial acerca de las listas en un tibble; se comportan como cualquier otra columna:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
 <span><span class="co">#&gt;       x y     z         </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;list&gt;    </span></span>
-<span><span class="co">#&gt; 1     1 a     &lt;list [2]&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 1     1 a     &lt;list [2]&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Computar con columnas de lista es más difícil, pero eso se debe a que computar con listas es más difícil en general; volveremos a eso en <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>. En este capítulo, nos centraremos en convertir columnas de lista en variables regulares para que pueda usar sus herramientas existentes en ellas.</p>
 <p>El método de impresión predeterminado solo muestra un resumen aproximado del contenido. La columna de la lista podría ser arbitrariamente compleja, por lo que no hay una buena manera de imprimirla. Si desea verlo, deberá extraer solo una columna de la lista y aplicar una de las técnicas que aprendió anteriormente, como <code>df |&gt; pull(z) |&gt; str()</code> o <code>df |&gt; pull(z) |&gt; Ver()</code>.</p>
@@ -644,27 +647,27 @@ Figura&nbsp;23.3: Puede repetir esta operación tantas veces como sea necesario 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-R base
+<span class="screen-reader-only">Nota</span>R base
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Es posible poner una lista en una columna de un <code>data.frame</code>, pero es mucho más complicado porque <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> trata una lista como una lista de columnas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   x.1.3 x.3.5</span></span>
 <span><span class="co">#&gt; 1     1     3</span></span>
 <span><span class="co">#&gt; 2     2     4</span></span>
-<span><span class="co">#&gt; 3     3     5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3     3     5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede obligar a <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> a tratar una lista como una lista de filas envolviéndola en la lista <code><a href="https://rdrr.io/r/base/AsIs.html">I()</a></code>, pero el resultado no se imprime particularmente bien:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1, 2"</span>, <span class="st">"3, 4, 5"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;         x       y</span></span>
 <span><span class="co">#&gt; 1    1, 2    1, 2</span></span>
-<span><span class="co">#&gt; 2 3, 4, 5 3, 4, 5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 3, 4, 5 3, 4, 5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es más fácil usar columnas de lista con tibbles porque <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> trata las listas como vectores y el método de impresión ha sido diseñado teniendo en cuenta las listas.</p>
 </div>
@@ -674,22 +677,22 @@ R base
 <p>Ahora que ha aprendido los conceptos básicos de las listas y las columnas de lista, exploremos cómo puede volver a convertirlas en filas y columnas regulares. Aquí usaremos datos de muestra muy simples para que puedas tener una idea básica; en la siguiente sección cambiaremos a datos reales.</p>
 <p>Las columnas de lista tienden a presentarse en dos formas básicas: con nombre y sin nombre. Cuando los niños tienen <strong>nombre</strong>, tienden a tener los mismos nombres en todas las filas. Por ejemplo, en <code>df1</code>, cada elemento de la columna de lista <code>y</code> tiene dos elementos llamados <code>a</code> y <code>b</code>. Las columnas de lista con nombre se separan naturalmente en columnas: cada elemento con nombre se convierte en una nueva columna con nombre.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>,</span>
 <span>  <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">11</span>, b <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
 <span>  <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">21</span>, b <span class="op">=</span> <span class="fl">22</span><span class="op">)</span>,</span>
 <span>  <span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">31</span>, b <span class="op">=</span> <span class="fl">32</span><span class="op">)</span>,</span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Cuando los elementos secundarios <strong>no tienen nombre</strong>, la cantidad de elementos tiende a variar de una fila a otra. Por ejemplo, en <code>df2</code>, los elementos de la columna de lista <code>y</code> no tienen nombre y varían en longitud de uno a tres. Las columnas de lista sin nombre se anulan naturalmente en filas: obtendrá una fila para cada niño.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span></span>
 <span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>,</span>
 <span>  <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">12</span>, <span class="fl">13</span><span class="op">)</span>,</span>
 <span>  <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">21</span><span class="op">)</span>,</span>
 <span>  <span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">31</span>, <span class="fl">32</span><span class="op">)</span>,</span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>tidyr proporciona dos funciones para estos dos casos: <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> y <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code>. Las siguientes secciones explican cómo funcionan.</p>
 <section id="unnest_wider" class="level3" data-number="23.3.1"><h3 data-number="23.3.1" class="anchored" data-anchor-id="unnest_wider">
@@ -697,32 +700,32 @@ R base
 </h3>
 <p>Cuando cada fila tiene la misma cantidad de elementos con los mismos nombres, como <code>df1</code>, es natural poner cada componente en su propia columna con <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;       x     a     b</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1     1    11    12</span></span>
 <span><span class="co">#&gt; 2     2    21    22</span></span>
-<span><span class="co">#&gt; 3     3    31    32</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3     3    31    32</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Por defecto, los nombres de las nuevas columnas provienen exclusivamente de los nombres de los elementos de la lista, pero puedes usar el argumento <code>names_sep</code> para solicitar que combinen el nombre de la columna y el nombre del elemento. Esto es útil para eliminar la ambigüedad de los nombres repetidos.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">y</span>, names_sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;       x   y_a   y_b</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1     1    11    12</span></span>
 <span><span class="co">#&gt; 2     2    21    22</span></span>
-<span><span class="co">#&gt; 3     3    31    32</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3     3    31    32</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="unnest_longer" class="level3" data-number="23.3.2"><h3 data-number="23.3.2" class="anchored" data-anchor-id="unnest_longer">
 <span class="header-section-number">23.3.2</span> <code>unnest_longer()</code>
 </h3>
 <p>Cuando cada fila contiene una lista sin nombre, lo más natural es poner cada elemento en su propia fila con <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
 <span><span class="co">#&gt;       x     y</span></span>
@@ -732,11 +735,11 @@ R base
 <span><span class="co">#&gt; 3     1    13</span></span>
 <span><span class="co">#&gt; 4     2    21</span></span>
 <span><span class="co">#&gt; 5     3    31</span></span>
-<span><span class="co">#&gt; 6     3    32</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6     3    32</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Observe cómo <code>x</code> se duplica para cada elemento dentro de <code>y</code>: obtenemos una fila de salida para cada elemento dentro de la columna de lista. Pero, ¿qué sucede si uno de los elementos está vacío, como en el siguiente ejemplo?</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>,</span>
 <span>  <span class="st">"a"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>  <span class="st">"b"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
@@ -748,22 +751,22 @@ R base
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 a         1</span></span>
 <span><span class="co">#&gt; 2 a         2</span></span>
-<span><span class="co">#&gt; 3 b         3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3 b         3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Obtenemos cero filas en la salida, por lo que la fila desaparece efectivamente. Si desea conservar esa fila, agrega <code>NA</code> en <code>y</code>, configure <code>keep_empty = TRUE</code>.</p>
 </section><section id="tipos-inconsistentes" class="level3" data-number="23.3.3"><h3 data-number="23.3.3" class="anchored" data-anchor-id="tipos-inconsistentes">
 <span class="header-section-number">23.3.3</span> Tipos inconsistentes</h3>
 <p>¿Qué sucede si anulas una columna de lista que contiene diferentes tipos de vectores? Por ejemplo, tome el siguiente conjunto de datos donde la columna de lista <code>y</code> contiene dos números, un caracter y un lógico, que normalmente no se pueden mezclar en una sola columna.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>,</span>
 <span>  <span class="st">"a"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>  <span class="st">"b"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="cn">TRUE</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> siempre mantiene el conjunto de columnas sin cambios, mientras cambia el número de filas. ¿Qué es lo que ocurre? ¿Cómo <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> produce cinco filas mientras mantiene todo en <code>y</code>?</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 2</span></span>
 <span><span class="co">#&gt;   x     y        </span></span>
@@ -771,7 +774,7 @@ R base
 <span><span class="co">#&gt; 1 a     &lt;dbl [1]&gt;</span></span>
 <span><span class="co">#&gt; 2 b     &lt;chr [1]&gt;</span></span>
 <span><span class="co">#&gt; 3 b     &lt;lgl [1]&gt;</span></span>
-<span><span class="co">#&gt; 4 b     &lt;dbl [1]&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 4 b     &lt;dbl [1]&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Como puede ver, la salida contiene una columna de lista, pero cada elemento de la columna de lista contiene un solo elemento. Debido a que <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> no puede encontrar un tipo común de vector, mantiene los tipos originales en una columna de lista. Quizás se pregunte si esto rompe el mandamiento de que todos los elementos de una columna deben ser del mismo tipo. No lo hace: cada elemento es una lista, aunque los contenidos sean de diferentes tipos.</p>
 <p>Tratar con tipos inconsistentes es un desafío y los detalles dependen de la naturaleza precisa del problema y sus objetivos, pero lo más probable es que necesite herramientas de <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>.</p>
@@ -793,11 +796,11 @@ R base
 <li>
 <p>De vez en cuando se encuentra con marcos de datos con varias columnas de lista con valores alineados. Por ejemplo, en el siguiente marco de datos, los valores de <code>y</code> y <code>z</code> están alineados (es decir, <code>y</code> y <code>z</code> siempre tendrán la misma longitud dentro de una fila, y el primer valor de <code>y</code> corresponde a el primer valor de <code>z</code>). ¿Qué sucede si aplica dos llamadas <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> a este marco de datos? ¿Cómo puedes preservar la relación entre <code>x</code> e <code>y</code>? (Sugerencia: lea atentamente la documentación).</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>, <span class="op">~</span><span class="va">z</span>,</span>
 <span>  <span class="st">"a"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"y-a-1"</span>, <span class="st">"y-a-2"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"z-a-1"</span>, <span class="st">"z-a-2"</span><span class="op">)</span>,</span>
 <span>  <span class="st">"b"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"y-b-1"</span>, <span class="st">"y-b-2"</span>, <span class="st">"y-b-3"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"z-b-1"</span>, <span class="st">"z-b-2"</span>, <span class="st">"z-b-3"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ol></section></section><section id="casos-de-estudio" class="level2" data-number="23.4"><h2 data-number="23.4" class="anchored" data-anchor-id="casos-de-estudio">
@@ -808,7 +811,7 @@ R base
 <p>Empezaremos con <code>gh_repos</code>. Esta es una lista que contiene datos sobre una colección de repositorios de GitHub recuperados mediante la API de GitHub. Es una lista muy anidada, por lo que es difícil mostrar la estructura en este libro; recomendamos explorar un poco por su cuenta con <code>View(gh_repos)</code> antes de continuar.</p>
 <p><code>gh_repos</code> es una lista, pero nuestras herramientas funcionan con columnas de lista, por lo que comenzaremos poniéndola en un tibble. Llamamos a esta columna <code>json</code> por razones que veremos más adelante.</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">gh_repos</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">gh_repos</span><span class="op">)</span></span>
 <span><span class="va">repos</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 1</span></span>
 <span><span class="co">#&gt;   json       </span></span>
@@ -818,11 +821,11 @@ R base
 <span><span class="co">#&gt; 3 &lt;list [30]&gt;</span></span>
 <span><span class="co">#&gt; 4 &lt;list [26]&gt;</span></span>
 <span><span class="co">#&gt; 5 &lt;list [30]&gt;</span></span>
-<span><span class="co">#&gt; 6 &lt;list [30]&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6 &lt;list [30]&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este tibble contiene 6 filas, una fila para cada hijo de <code>gh_repos</code>. Cada fila contiene una lista sin nombre con 26 o 30 filas. Como estos no tienen nombre, comenzaremos con <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> para poner a cada niño en su propia fila:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 176 × 1</span></span>
 <span><span class="co">#&gt;   json             </span></span>
@@ -833,11 +836,11 @@ R base
 <span><span class="co">#&gt; 4 &lt;named list [68]&gt;</span></span>
 <span><span class="co">#&gt; 5 &lt;named list [68]&gt;</span></span>
 <span><span class="co">#&gt; 6 &lt;named list [68]&gt;</span></span>
-<span><span class="co">#&gt; # ℹ 170 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 170 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A primera vista, puede parecer que no hemos mejorado la situación: aunque tenemos más filas (176 en lugar de 6), cada elemento de <code>json</code> sigue siendo una lista. Sin embargo, hay una diferencia importante: ahora cada elemento es una lista <strong>nombrada</strong>, por lo que podemos usar <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> para poner cada elemento en su propia columna:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; # A tibble: 176 × 68</span></span>
@@ -850,21 +853,21 @@ R base
 <span><span class="co">#&gt; 5 61620661 citest      gaborcsardi/cite… &lt;named list&gt; FALSE   https://github…</span></span>
 <span><span class="co">#&gt; 6 33907457 clisymbols  gaborcsardi/clis… &lt;named list&gt; FALSE   https://github…</span></span>
 <span><span class="co">#&gt; # ℹ 170 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 62 more variables: description &lt;chr&gt;, fork &lt;lgl&gt;, url &lt;chr&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 62 more variables: description &lt;chr&gt;, fork &lt;lgl&gt;, url &lt;chr&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto ha funcionado, pero el resultado es un poco abrumador: ¡hay tantas columnas que tibble ni siquiera las imprime todas! Podemos verlos todos con <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>; y aquí nos fijamos en los 10 primeros:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "id"          "name"        "full_name"   "owner"       "private"    </span></span>
-<span><span class="co">#&gt;  [6] "html_url"    "description" "fork"        "url"         "forks_url"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  [6] "html_url"    "description" "fork"        "url"         "forks_url"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Vamos a sacar algunos que parecen interesantes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">full_name</span>, <span class="va">owner</span>, <span class="va">description</span><span class="op">)</span></span>
@@ -877,12 +880,12 @@ R base
 <span><span class="co">#&gt; 4 34924886 gaborcsardi/baseimports &lt;named list [17]&gt; Do we get warnings for …</span></span>
 <span><span class="co">#&gt; 5 61620661 gaborcsardi/citest      &lt;named list [17]&gt; Test R package and repo…</span></span>
 <span><span class="co">#&gt; 6 33907457 gaborcsardi/clisymbols  &lt;named list [17]&gt; Unicode symbols for CLI…</span></span>
-<span><span class="co">#&gt; # ℹ 170 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 170 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede usar esto para volver a comprender cómo se estructuró <code>gh_repos</code>: cada niño era un usuario de GitHub que contenía una lista de hasta 30 repositorios de GitHub que crearon.</p>
 <p><code>owner</code> es otra columna de lista, y dado que contiene una lista con nombre, podemos usar <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> para obtener los valores:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">full_name</span>, <span class="va">owner</span>, <span class="va">description</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -893,11 +896,11 @@ R base
 <span><span class="co">#&gt; ✖ These names are duplicated:</span></span>
 <span><span class="co">#&gt;   ℹ `id`, from `owner`.</span></span>
 <span><span class="co">#&gt; ℹ Use `names_sep` to disambiguate using the column name.</span></span>
-<span><span class="co">#&gt; ℹ Or use `names_repair` to specify a repair strategy.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; ℹ Or use `names_repair` to specify a repair strategy.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Oh, oh, esta columna de lista también contiene una columna <code>id</code> y no podemos tener dos columnas <code>id</code> en el mismo marco de datos. Como se sugiere, usemos <code>names_sep</code> para resolver el problema:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">full_name</span>, <span class="va">owner</span>, <span class="va">description</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -912,14 +915,14 @@ R base
 <span><span class="co">#&gt; 5 61620661 gaborcsardi/citest      gaborcsardi   660288 https://avatars.gith…</span></span>
 <span><span class="co">#&gt; 6 33907457 gaborcsardi/clisymbols  gaborcsardi   660288 https://avatars.gith…</span></span>
 <span><span class="co">#&gt; # ℹ 170 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 15 more variables: owner_gravatar_id &lt;chr&gt;, owner_url &lt;chr&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 15 more variables: owner_gravatar_id &lt;chr&gt;, owner_url &lt;chr&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto proporciona otro amplio conjunto de datos, pero puede tener la sensación de que <code>owner</code> parece contener una gran cantidad de datos adicionales sobre la persona que “posee” el repositorio.</p>
 </section><section id="datos-relacionales" class="level3" data-number="23.4.2"><h3 data-number="23.4.2" class="anchored" data-anchor-id="datos-relacionales">
 <span class="header-section-number">23.4.2</span> Datos relacionales</h3>
 <p>Los datos anidados a veces se usan para representar datos que normalmente distribuiríamos en varios marcos de datos. Por ejemplo, tome <code>got_chars</code> que contiene datos sobre los personajes que aparecen en los libros y series de televisión de Game of Thrones. Al igual que <code>gh_repos</code>, es una lista, por lo que comenzamos convirtiéndola en una columna de lista de un tibble:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">got_chars</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">got_chars</span><span class="op">)</span></span>
 <span><span class="va">chars</span></span>
 <span><span class="co">#&gt; # A tibble: 30 × 1</span></span>
 <span><span class="co">#&gt;   json             </span></span>
@@ -930,11 +933,11 @@ R base
 <span><span class="co">#&gt; 4 &lt;named list [18]&gt;</span></span>
 <span><span class="co">#&gt; 5 &lt;named list [18]&gt;</span></span>
 <span><span class="co">#&gt; 6 &lt;named list [18]&gt;</span></span>
-<span><span class="co">#&gt; # ℹ 24 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 24 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La columna <code>json</code> contiene elementos con nombre, por lo que comenzaremos ampliándola:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 30 × 18</span></span>
 <span><span class="co">#&gt;   url                    id name            gender culture    born           </span></span>
@@ -946,11 +949,11 @@ R base
 <span><span class="co">#&gt; 5 https://www.anapio…  1166 Areo Hotah      Male   "Norvoshi" "In 257 AC or …</span></span>
 <span><span class="co">#&gt; 6 https://www.anapio…  1267 Chett           Male   ""         "At Hag's Mire"</span></span>
 <span><span class="co">#&gt; # ℹ 24 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 12 more variables: died &lt;chr&gt;, alive &lt;lgl&gt;, titles &lt;list&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 12 more variables: died &lt;chr&gt;, alive &lt;lgl&gt;, titles &lt;list&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y seleccionando algunas columnas para que sea más fácil de leer:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">&lt;-</span> <span class="va">chars</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">characters</span> <span class="op">&lt;-</span> <span class="va">chars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">name</span>, <span class="va">gender</span>, <span class="va">culture</span>, <span class="va">born</span>, <span class="va">died</span>, <span class="va">alive</span><span class="op">)</span></span>
 <span><span class="va">characters</span></span>
@@ -964,11 +967,11 @@ R base
 <span><span class="co">#&gt; 5  1166 Areo Hotah        Male   "Norvoshi" "In 257 AC or be… ""             </span></span>
 <span><span class="co">#&gt; 6  1267 Chett             Male   ""         "At Hag's Mire"   "In 299 AC, at…</span></span>
 <span><span class="co">#&gt; # ℹ 24 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: alive &lt;lgl&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more variable: alive &lt;lgl&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este conjunto de datos también contiene muchas columnas de lista:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.list</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 30 × 8</span></span>
@@ -980,11 +983,11 @@ R base
 <span><span class="co">#&gt; 4  1109 &lt;chr [1]&gt; &lt;chr [1]&gt;  &lt;NULL&gt;      &lt;chr [1]&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   </span></span>
 <span><span class="co">#&gt; 5  1166 &lt;chr [1]&gt; &lt;chr [1]&gt;  &lt;chr [1]&gt;   &lt;chr [3]&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   </span></span>
 <span><span class="co">#&gt; 6  1267 &lt;chr [1]&gt; &lt;chr [1]&gt;  &lt;NULL&gt;      &lt;chr [2]&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   </span></span>
-<span><span class="co">#&gt; # ℹ 24 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 24 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Exploremos la columna <code>títulos</code>. Es una columna de lista sin nombre, por lo que la dividiremos en filas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">titles</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">titles</span><span class="op">)</span></span>
@@ -997,11 +1000,11 @@ R base
 <span><span class="co">#&gt; 4  1052 Master of Coin (former)                             </span></span>
 <span><span class="co">#&gt; 5  1074 Lord Captain of the Iron Fleet                      </span></span>
 <span><span class="co">#&gt; 6  1074 Master of the Iron Victory                          </span></span>
-<span><span class="co">#&gt; # ℹ 53 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 53 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es posible que espere ver estos datos en su propia tabla porque sería fácil unirlos a los datos de los caracteres según sea necesario. Hagámoslo, lo que requiere poca limpieza: eliminar las filas que contienen cadenas vacías y cambiar el nombre de <code>titles</code> a <code>title</code> ya que cada fila ahora solo contiene un solo título.</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">titles</span> <span class="op">&lt;-</span> <span class="va">chars</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">titles</span> <span class="op">&lt;-</span> <span class="va">chars</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">titles</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">titles</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1017,14 +1020,14 @@ R base
 <span><span class="co">#&gt; 4  1052 Master of Coin (former)                             </span></span>
 <span><span class="co">#&gt; 5  1074 Lord Captain of the Iron Fleet                      </span></span>
 <span><span class="co">#&gt; 6  1074 Master of the Iron Victory                          </span></span>
-<span><span class="co">#&gt; # ℹ 46 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 46 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Podría imaginarse crear una tabla como esta para cada una de las columnas de la lista y luego usar uniones para combinarlas con los datos de los caracteres según lo necesite.</p>
 </section><section id="profundamente-anidado" class="level3" data-number="23.4.3"><h3 data-number="23.4.3" class="anchored" data-anchor-id="profundamente-anidado">
 <span class="header-section-number">23.4.3</span> Profundamente anidado</h3>
 <p>Terminaremos estos estudios de caso con una columna de lista que está muy anidada y requiere rondas repetidas de <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> y <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> para desentrañar: <code>gmaps_cities</code>. Este es un tibble de dos columnas que contiene cinco nombres de ciudades y los resultados del uso de la <a href="https://developers.google.com/maps/documentation/geocoding">API de codificación geográfica</a> de Google para determinar su ubicación:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gmaps_cities</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gmaps_cities</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 2</span></span>
 <span><span class="co">#&gt;   city       json            </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;      &lt;list&gt;          </span></span>
@@ -1032,11 +1035,11 @@ R base
 <span><span class="co">#&gt; 2 Washington &lt;named list [2]&gt;</span></span>
 <span><span class="co">#&gt; 3 New York   &lt;named list [2]&gt;</span></span>
 <span><span class="co">#&gt; 4 Chicago    &lt;named list [2]&gt;</span></span>
-<span><span class="co">#&gt; 5 Arlington  &lt;named list [2]&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 5 Arlington  &lt;named list [2]&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>json</code> es una columna de lista con nombres internos, por lo que comenzamos con un <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gmaps_cities</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gmaps_cities</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
 <span><span class="co">#&gt;   city       results    status</span></span>
@@ -1045,11 +1048,11 @@ R base
 <span><span class="co">#&gt; 2 Washington &lt;list [2]&gt; OK    </span></span>
 <span><span class="co">#&gt; 3 New York   &lt;list [1]&gt; OK    </span></span>
 <span><span class="co">#&gt; 4 Chicago    &lt;list [1]&gt; OK    </span></span>
-<span><span class="co">#&gt; 5 Arlington  &lt;list [2]&gt; OK</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 5 Arlington  &lt;list [2]&gt; OK</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto nos da el estado, <code>status</code>, y los resultados, <code>results</code>. Dejaremos la columna de estado ya que todos están <code>OK</code>; en un análisis real, también querrá capturar todas las filas donde <code>status != "OK"</code> y descubrir qué salió mal. <code>results</code> es una lista sin nombre, con uno o dos elementos (veremos por qué en breve), así que la dividiremos en filas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gmaps_cities</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gmaps_cities</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">status</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
@@ -1062,11 +1065,11 @@ R base
 <span><span class="co">#&gt; 4 New York   &lt;named list [5]&gt;</span></span>
 <span><span class="co">#&gt; 5 Chicago    &lt;named list [5]&gt;</span></span>
 <span><span class="co">#&gt; 6 Arlington  &lt;named list [5]&gt;</span></span>
-<span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more row</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora <code>results</code> es una lista con nombre, así que usaremos <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="va">gmaps_cities</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">&lt;-</span> <span class="va">gmaps_cities</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">status</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -1082,12 +1085,12 @@ R base
 <span><span class="co">#&gt; 5 Chicago    &lt;list [4]&gt;         Chicago, IL, USA    &lt;named list [4]&gt;</span></span>
 <span><span class="co">#&gt; 6 Arlington  &lt;list [4]&gt;         Arlington, TX, USA  &lt;named list [4]&gt;</span></span>
 <span><span class="co">#&gt; # ℹ 1 more row</span></span>
-<span><span class="co">#&gt; # ℹ 2 more variables: place_id &lt;chr&gt;, types &lt;list&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 2 more variables: place_id &lt;chr&gt;, types &lt;list&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora podemos ver por qué dos ciudades obtuvieron dos resultados: Washington igualó tanto al estado de Washington como a Washington, DC, y Arlington igualó a Arlington, Virginia y Arlington, Texas.</p>
 <p>Hay pocos lugares diferentes a los que podríamos ir desde aquí. Es posible que deseemos determinar la ubicación exacta de la coincidencia, que se almacena en la columna de la lista <code>geometry</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">city</span>, <span class="va">formatted_address</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 6</span></span>
@@ -1100,11 +1103,11 @@ R base
 <span><span class="co">#&gt; 5 Chicago    Chicago, IL, USA    &lt;named list [2]&gt; &lt;named list&gt; APPROXIMATE  </span></span>
 <span><span class="co">#&gt; 6 Arlington  Arlington, TX, USA  &lt;named list [2]&gt; &lt;named list&gt; APPROXIMATE  </span></span>
 <span><span class="co">#&gt; # ℹ 1 more row</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: viewport &lt;list&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more variable: viewport &lt;list&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Eso nos da nuevos límites, <code>bounds</code>, (una región rectangular) y ubicación, <code>location</code>, (un punto). Podemos anular <code>location</code> para ver la latitud (<code>lat</code>) y la longitud (<code>lng</code>):</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">city</span>, <span class="va">formatted_address</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">location</span><span class="op">)</span></span>
@@ -1118,11 +1121,11 @@ R base
 <span><span class="co">#&gt; 5 Chicago    Chicago, IL, USA    &lt;named list [2]&gt;  41.9  -87.6 APPROXIMATE  </span></span>
 <span><span class="co">#&gt; 6 Arlington  Arlington, TX, USA  &lt;named list [2]&gt;  32.7  -97.1 APPROXIMATE  </span></span>
 <span><span class="co">#&gt; # ℹ 1 more row</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: viewport &lt;list&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more variable: viewport &lt;list&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Extraer los límites requiere algunos pasos más:</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">city</span>, <span class="va">formatted_address</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co"># focus on the variables of interest</span></span>
@@ -1137,11 +1140,11 @@ R base
 <span><span class="co">#&gt; 4 New York   New York, NY, USA   &lt;named list [2]&gt; &lt;named list [2]&gt;</span></span>
 <span><span class="co">#&gt; 5 Chicago    Chicago, IL, USA    &lt;named list [2]&gt; &lt;named list [2]&gt;</span></span>
 <span><span class="co">#&gt; 6 Arlington  Arlington, TX, USA  &lt;named list [2]&gt; &lt;named list [2]&gt;</span></span>
-<span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more row</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Luego renombramos <code>southwest</code> y <code>northeast</code> (las esquinas del rectángulo) para que podamos usar <code>names_sep</code> para crear nombres cortos pero evocadores:</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">city</span>, <span class="va">formatted_address</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">!</span><span class="va">location</span><span class="op">:</span><span class="va">viewport</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -1157,12 +1160,12 @@ R base
 <span><span class="co">#&gt; 4 New York   New York, NY, USA     40.9  -73.7   40.5  -74.3</span></span>
 <span><span class="co">#&gt; 5 Chicago    Chicago, IL, USA      42.0  -87.5   41.6  -87.9</span></span>
 <span><span class="co">#&gt; 6 Arlington  Arlington, TX, USA    32.8  -97.0   32.6  -97.2</span></span>
-<span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more row</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta cómo desanidamos dos columnas simultáneamente proporcionando un vector de nombres de variables a <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code>.</p>
 <p>Una vez que haya descubierto la ruta para llegar a los componentes que le interesan, puede extraerlos directamente usando otra función tidyr, <code><a href="https://tidyr.tidyverse.org/reference/hoist.html">hoist()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">locations</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">city</span>, <span class="va">formatted_address</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">hoist</a></span><span class="op">(</span></span>
 <span>    <span class="va">geometry</span>,</span>
@@ -1170,7 +1173,7 @@ R base
 <span>    sw_lat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bounds"</span>, <span class="st">"southwest"</span>, <span class="st">"lat"</span><span class="op">)</span>,</span>
 <span>    ne_lng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bounds"</span>, <span class="st">"northeast"</span>, <span class="st">"lng"</span><span class="op">)</span>,</span>
 <span>    sw_lng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bounds"</span>, <span class="st">"southwest"</span>, <span class="st">"lng"</span><span class="op">)</span>,</span>
-<span>  <span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si estos casos de estudio han abierto su apetito por más rectangulares de la vida real, puede ver algunos ejemplos más en `vignette(“rectangling”, package = “tidyr”)</p>
 </section><section id="ejercicios-1" class="level3" data-number="23.4.4"><h3 data-number="23.4.4" class="anchored" data-anchor-id="ejercicios-1">
@@ -1182,7 +1185,7 @@ R base
 <li>
 <p>Explique el siguiente código línea por línea. ¿Por qué es interesante? ¿Por qué funciona para <code>got_chars</code> pero podría no funciona en general?</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">got_chars</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">got_chars</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.list</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
@@ -1190,7 +1193,7 @@ R base
 <span>    names_to <span class="op">=</span> <span class="st">"name"</span>, </span>
 <span>    values_to <span class="op">=</span> <span class="st">"value"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span>  </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li><p>En <code>gmaps_cities</code>, ¿qué contiene <code>address_components</code>? ¿Por qué varía la longitud entre filas? Des anidalo apropiadamente para averiguarlo. (Pista: <code>types</code> siempre parece contener dos elementos. ¿Hace que sea más fácil trabajar con <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> que con <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code>?) .</p></li>
@@ -1213,7 +1216,7 @@ R base
 <span class="header-section-number">23.5.2</span> jsonlite</h3>
 <p>Para convertir JSON en estructuras de datos R, recomendamos el paquete jsonlite, de Jeroen Ooms. Usaremos solo dos funciones jsonlite: <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">read_json()</a></code> y <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json()</a></code>. En la vida real, usará <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">read_json()</a></code> para leer un archivo JSON del disco. Por ejemplo, el paquete repurrsive también proporciona la fuente de <code>gh_user</code> como un archivo JSON y puede leerlo con <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">read_json()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Una ruta a un archivo json dentro del paquete:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Una ruta a un archivo json dentro del paquete:</span></span>
 <span><span class="fu"><a href="https://jennybc.github.io/repurrrsive/reference/gh_users_json.html">gh_users_json</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "/home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.4/x86_64-pc-linux-gnu/repurrrsive/1.1.0/83cf8bf4ada1dca8cfe94111c2a691d7/repurrrsive/extdata/gh_users.json"</span></span>
 <span></span>
@@ -1222,11 +1225,11 @@ R base
 <span></span>
 <span><span class="co"># Verifique que sea igual a los datos que estábamos usando anteriormente</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">gh_users</span>, <span class="va">gh_users2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En este libro, también usaremos <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json()</a></code>, ya que toma una cadena que contiene JSON, lo que lo hace bueno para generar ejemplos simples. Para comenzar, aquí hay tres conjuntos de datos JSON simples, comenzando con un número, luego colocando algunos números en una matriz y luego colocando esa matriz en un objeto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="st">'1'</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="st">'1'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  int 1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="st">'[1, 2, 3]'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 3</span></span>
@@ -1238,14 +1241,14 @@ R base
 <span><span class="co">#&gt;  $ x:List of 3</span></span>
 <span><span class="co">#&gt;   ..$ : int 1</span></span>
 <span><span class="co">#&gt;   ..$ : int 2</span></span>
-<span><span class="co">#&gt;   ..$ : int 3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;   ..$ : int 3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>jsonlite tiene otra función importante llamada <code><a href="https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html">fromJSON()</a></code>. No lo usamos aquí porque realiza una simplificación automática (<code>simplifyVector = TRUE</code>). Esto a menudo funciona bien, particularmente en casos simples, pero creemos que es mejor que usted mismo haga el rectángulo para que sepa exactamente lo que está sucediendo y pueda manejar más fácilmente las estructuras anidadas más complicadas.</p>
 </section><section id="comenzando-el-proceso-de-rectangular" class="level3" data-number="23.5.3"><h3 data-number="23.5.3" class="anchored" data-anchor-id="comenzando-el-proceso-de-rectangular">
 <span class="header-section-number">23.5.3</span> Comenzando el proceso de rectangular</h3>
 <p>En la mayoría de los casos, los archivos JSON contienen una única matriz de nivel superior porque están diseñados para proporcionar datos sobre varias “cosas”, p.ej., varias páginas, varios registros o varios resultados. En este caso, comenzará su rectángulo con <code>tibble(json)</code> para que cada elemento se convierta en una fila:</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">json</span> <span class="op">&lt;-</span> <span class="st">'[</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">json</span> <span class="op">&lt;-</span> <span class="st">'[</span></span>
 <span><span class="st">  {"name": "John", "age": 34},</span></span>
 <span><span class="st">  {"name": "Susan", "age": 27}</span></span>
 <span><span class="st">]'</span></span>
@@ -1263,11 +1266,11 @@ R base
 <span><span class="co">#&gt;   name    age</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 John     34</span></span>
-<span><span class="co">#&gt; 2 Susan    27</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 Susan    27</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En casos más raros, el archivo JSON consta de un solo objeto JSON de nivel superior, que representa una “cosa”. En este caso, deberá iniciar el proceso de rectangular envolviéndolo en una lista, antes de colocarlo en un tibble.</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">json</span> <span class="op">&lt;-</span> <span class="st">'{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">json</span> <span class="op">&lt;-</span> <span class="st">'{</span></span>
 <span><span class="st">  "status": "OK", </span></span>
 <span><span class="st">  "results": [</span></span>
 <span><span class="st">    {"name": "John", "age": 34},</span></span>
@@ -1290,18 +1293,18 @@ R base
 <span><span class="co">#&gt;   status name    age</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 OK     John     34</span></span>
-<span><span class="co">#&gt; 2 OK     Susan    27</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 OK     Susan    27</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Alternativamente, puede acceder al JSON analizado y comenzar con la parte que realmente le interesa:</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>results <span class="op">=</span> <span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span><span class="op">$</span><span class="va">results</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>results <span class="op">=</span> <span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="va">json</span><span class="op">)</span><span class="op">$</span><span class="va">results</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;   name    age</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 John     34</span></span>
-<span><span class="co">#&gt; 2 Susan    27</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 Susan    27</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="ejercicios-2" class="level3" data-number="23.5.4"><h3 data-number="23.5.4" class="anchored" data-anchor-id="ejercicios-2">
 <span class="header-section-number">23.5.4</span> Ejercicios</h3>
@@ -1309,7 +1312,7 @@ R base
 <li>
 <p>Rectángulo <code>df_col</code> y <code>df_row</code> a continuación. Representan las dos formas de codificar un marco de datos en JSON.</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">json_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="st">'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">json_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://jeroen.r-universe.dev/jsonlite/reference/read_json.html">parse_json</a></span><span class="op">(</span><span class="st">'</span></span>
 <span><span class="st">  {</span></span>
 <span><span class="st">    "x": ["a", "x", "z"],</span></span>
 <span><span class="st">    "y": [10, null, 3]</span></span>
@@ -1324,7 +1327,7 @@ R base
 <span><span class="st">'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">json_col</span><span class="op">)</span><span class="op">)</span> </span>
-<span><span class="va">df_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">json_row</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">df_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>json <span class="op">=</span> <span class="va">json_row</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ol></section></section><section id="resumen" class="level2" data-number="23.6"><h2 data-number="23.6" class="anchored" data-anchor-id="resumen">
@@ -1454,13 +1457,14 @@ R base
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>13&nbsp; Números – R para la Ciencia de Datos (2e)</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8374bc3c6bea72a3c9f8b2214211636f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -117,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -491,29 +494,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">13.1.1</span> Requisitos previos</h3>
 <p>Este capítulo utiliza principalmente funciones de base R, que están disponibles sin cargar ningún paquete. Pero aún necesitamos el tidyverse porque usaremos estas funciones básicas de R dentro de las funciones de tidyverse como <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. Como en el último capítulo, usaremos ejemplos reales de nycflights13, así como ejemplos de juguetes hechos con <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> y <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="haciendo-úmeros" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="haciendo-úmeros">
 <span class="header-section-number">13.2</span> Haciendo úmeros</h2>
 <p>En la mayoría de los casos, obtendrá números ya registrados en uno de los tipos numéricos de R: entero o doble. En algunos casos, sin embargo, los encontrará como cadenas, posiblemente porque los creó al girar desde los encabezados de columna o porque algo salió mal en su proceso de importación de datos.</p>
 <p>readr proporciona dos funciones útiles para analizar cadenas en números: <code><a href="https://readr.tidyverse.org/reference/parse_atomic.html">parse_double()</a></code> y <code><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number()</a></code>. Usa <code><a href="https://readr.tidyverse.org/reference/parse_atomic.html">parse_double()</a></code> cuando tengas números escritos como cadenas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1.2"</span>, <span class="st">"5.6"</span>, <span class="st">"1e3"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1.2"</span>, <span class="st">"5.6"</span>, <span class="st">"1e3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">parse_double</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]    1.2    5.6 1000.0</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1]    1.2    5.6 1000.0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Usa <code><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number()</a></code> cuando la cadena contenga texto no numérico que quieras ignorar. Esto es particularmente útil para datos de moneda y porcentajes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"$1,234"</span>, <span class="st">"USD 3,513"</span>, <span class="st">"59%"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"$1,234"</span>, <span class="st">"USD 3,513"</span>, <span class="st">"59%"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1234 3513   59</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 1234 3513   59</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="sec-counts" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="sec-counts">
 <span class="header-section-number">13.3</span> Contar</h2>
 <p>Es sorprendente la cantidad de ciencia de datos que puede hacer con solo conteos y un poco de aritmética básica, por lo que dplyr se esfuerza por hacer que contar sea lo más fácil posible con <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>. Esta función es excelente para realizar exploraciones y comprobaciones rápidas durante el análisis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 105 × 2</span></span>
 <span><span class="co">#&gt;   dest      n</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt;</span></span>
@@ -523,12 +526,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 ANC       8</span></span>
 <span><span class="co">#&gt; 5 ATL   17215</span></span>
 <span><span class="co">#&gt; 6 AUS    2439</span></span>
-<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(A pesar de los consejos en <a href="workflow-style.html" class="quarto-xref"><span>Capítulo 4</span></a>, generalmente colocamos <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> en una sola línea porque generalmente se usa en la consola para verificar rápidamente que un cálculo funciona como se esperaba.)</p>
 <p>Si desea ver los valores más comunes, agregue <code>sort = TRUE</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">dest</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">dest</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 105 × 2</span></span>
 <span><span class="co">#&gt;   dest      n</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt;</span></span>
@@ -538,12 +541,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 BOS   15508</span></span>
 <span><span class="co">#&gt; 5 MCO   14082</span></span>
 <span><span class="co">#&gt; 6 CLT   14064</span></span>
-<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y recuerda que si quieres ver todos los valores, puedes usar <code>|&gt; View()</code> o <code>|&gt; print(n = Inf)</code>.</p>
 <p>Puede realizar el mismo cálculo “a mano” con <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code>. Esto es útil porque le permite calcular otros resúmenes al mismo tiempo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -558,21 +561,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 ANC       8 -2.5 </span></span>
 <span><span class="co">#&gt; 5 ATL   17215 11.3 </span></span>
 <span><span class="co">#&gt; 6 AUS    2439  6.02</span></span>
-<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> es una función de resumen especial que no toma ningún argumento y en su lugar accede a información sobre el grupo “actual”. Esto significa que solo funciona dentro de los verbos dplyr:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `n()`:</span></span>
 <span><span class="co">#&gt; ! Must only be used inside data-masking verbs like `mutate()`,</span></span>
-<span><span class="co">#&gt;   `filter()`, and `group_by()`.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;   `filter()`, and `group_by()`.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay un par de variantes de <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> que pueden resultarle útiles:</p>
 <ul>
 <li>
 <p><code>n_distinct(x)</code> cuenta el número de valores distintos (únicos) de una o más variables. Por ejemplo, podríamos averiguar qué destinos son atendidos por la mayoría de los transportistas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>carriers <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">carrier</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">carriers</span><span class="op">)</span><span class="op">)</span></span>
@@ -585,13 +588,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 ORD          7</span></span>
 <span><span class="co">#&gt; 5 TPA          7</span></span>
 <span><span class="co">#&gt; 6 AUS          6</span></span>
-<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p>Una cuenta ponderada es una suma. Por ejemplo, podría “contar” el número de millas que voló cada avión:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">tailnum</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>miles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">distance</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4,044 × 2</span></span>
@@ -603,17 +606,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 N102UW   25722</span></span>
 <span><span class="co">#&gt; 5 N103US   24619</span></span>
 <span><span class="co">#&gt; 6 N104UW   25157</span></span>
-<span><span class="co">#&gt; # ℹ 4,038 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 4,038 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Los recuentos ponderados son un problema común, por lo que <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> tiene un argumento <code>wt</code> que hace lo mismo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">tailnum</span>, wt <span class="op">=</span> <span class="va">distance</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">tailnum</span>, wt <span class="op">=</span> <span class="va">distance</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p>Puede contar los valores perdidos combinando <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> y <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. En el conjunto de datos de <code>flights</code>, esto representa los vuelos que se cancelan:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n_cancelled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; # A tibble: 105 × 2</span></span>
@@ -625,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 ANC             0</span></span>
 <span><span class="co">#&gt; 5 ATL           317</span></span>
 <span><span class="co">#&gt; 6 AUS            21</span></span>
-<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 99 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ul>
@@ -647,25 +650,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Introdujimos los conceptos básicos de aritmética (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>) en <a href="workflow-basics.html" class="quarto-xref"><span>Capítulo 2</span></a> y los hemos usado mucho desde entonces. Estas funciones no necesitan una gran cantidad de explicación porque hacen lo que aprendiste en la escuela primaria. Pero necesitamos hablar brevemente sobre las <strong>reglas de reciclaje</strong> que determinan lo que sucede cuando los lados izquierdo y derecho tienen diferentes longitudes. Esto es importante para operaciones como <code>flights |&gt; mutate(air_time = air_time / 60)</code> porque hay 336.776 números a la izquierda de <code>/</code> pero solo uno a la derecha.</p>
 <p>R maneja las longitudes que no coinciden <strong>reciclando</strong> o repitiendo el vector corto. Podemos ver esto en funcionamiento más fácilmente si creamos algunos vectores fuera de un data frame:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">/</span> <span class="fl">5</span></span>
 <span><span class="co">#&gt; [1] 0.2 0.4 2.0 4.0</span></span>
 <span><span class="co"># is shorthand for</span></span>
 <span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.2 0.4 2.0 4.0</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 0.2 0.4 2.0 4.0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En general, solo desea reciclar números individuales (es decir, vectores de longitud 1), pero R reciclará cualquier vector de longitud más corta. Por lo general (pero no siempre) le da una advertencia si el vector más largo no es un múltiplo del más corto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  1  4 10 40</span></span>
 <span><span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in x * c(1, 2, 3): longer object length is not a multiple of shorter</span></span>
 <span><span class="co">#&gt; object length</span></span>
-<span><span class="co">#&gt; [1]  1  4 30 20</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1]  1  4 30 20</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Estas reglas de reciclaje también se aplican a las comparaciones lógicas (<code>==</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>) y pueden conducir a un resultado sorprendente si accidentalmente usa <code>==</code> en lugar de <code>%in%</code> y el data frame tiene un número desafortunado de filas. Por ejemplo, tome este código que intenta encontrar todos los vuelos en enero y febrero:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 25,977 × 19</span></span>
 <span><span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time</span></span>
@@ -677,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5  2013     1     1      557            600        -3      838            846</span></span>
 <span><span class="co">#&gt; 6  2013     1     1      558            600        -2      849            851</span></span>
 <span><span class="co">#&gt; # ℹ 25,971 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El código se ejecuta sin errores, pero no devuelve lo que desea. Debido a las reglas de reciclaje, encuentra vuelos en filas impares que partieron en enero y vuelos en filas pares que partieron en febrero. Y, lamentablemente, no hay ninguna advertencia porque <code>flights</code> tiene un número par de filas.</p>
 <p>Para protegerlo de este tipo de fallas silenciosas, la mayoría de las funciones de tidyverse utilizan una forma más estricta de reciclaje que solo recicla valores únicos. Desafortunadamente, eso no ayuda aquí, ni en muchos otros casos, porque el cálculo clave lo realiza la función base R <code>==</code>, no <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>.</p>
@@ -685,7 +688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">13.4.2</span> Mínimo y máximo</h3>
 <p>Las funciones aritméticas trabajan con pares de variables. Dos funciones estrechamente relacionadas son <code><a href="https://rdrr.io/r/base/Extremes.html">pmin()</a></code> y <code><a href="https://rdrr.io/r/base/Extremes.html">pmax()</a></code>, que cuando se les dan dos o más variables devolverán el valor más pequeño o más grande en cada fila:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">x</span>, <span class="op">~</span><span class="va">y</span>,</span>
 <span>  <span class="fl">1</span>,  <span class="fl">3</span>,</span>
 <span>  <span class="fl">5</span>,  <span class="fl">2</span>,</span>
@@ -702,11 +705,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1     1     3     1     3</span></span>
 <span><span class="co">#&gt; 2     5     2     2     5</span></span>
-<span><span class="co">#&gt; 3     7    NA     7     7</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3     7    NA     7     7</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta que estas son diferentes a las funciones de resumen <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> y <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> que toman múltiples observaciones y devuelven un solo valor. Puedes darte cuenta de que has usado la forma incorrecta cuando todos los mínimos y todos los máximos tienen el mismo valor:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -716,20 +719,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1     1     3     1     7</span></span>
 <span><span class="co">#&gt; 2     5     2     1     7</span></span>
-<span><span class="co">#&gt; 3     7    NA     1     7</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 3     7    NA     1     7</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="aritmética-modular" class="level3" data-number="13.4.3"><h3 data-number="13.4.3" class="anchored" data-anchor-id="aritmética-modular">
 <span class="header-section-number">13.4.3</span> Aritmética modular</h3>
 <p>La aritmética modular es el nombre técnico del tipo de matemática que hacías antes de aprender sobre los lugares decimales, es decir, la división que produce un número entero y un resto. En R, <code>%/%</code> realiza la división de enteros y <code>%%</code> calcula el resto:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">3</span></span>
 <span><span class="co">#&gt;  [1] 0 0 1 1 1 2 2 2 3 3</span></span>
 <span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">3</span></span>
-<span><span class="co">#&gt;  [1] 1 2 0 1 2 0 1 2 0 1</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  [1] 1 2 0 1 2 0 1 2 0 1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La aritmética modular es útil para el conjunto de datos <code>flights</code>, porque podemos usarla para desempaquetar la variable <code>sched_dep_time</code> en <code>hour</code> y <code>minute</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    hour <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">100</span>,</span>
 <span>    minute <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">100</span>,</span>
@@ -744,17 +747,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4            545     5     45</span></span>
 <span><span class="co">#&gt; 5            600     6      0</span></span>
 <span><span class="co">#&gt; 6            558     5     58</span></span>
-<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 336,770 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Podemos combinar eso con el truco <code>mean(is.na(x))</code> de <a href="logicals.html#sec-logical-summaries" class="quarto-xref"><span>Sección 12.4</span></a> para ver cómo varía la proporción de vuelos cancelados a lo largo del día. Los resultados se muestran en <a href="#fig-prop-cancelled" class="quarto-xref">Figura&nbsp;<span>13.1</span></a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span>hour <span class="op">=</span> <span class="va">sched_dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>prop_cancelled <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_time</span><span class="op">)</span><span class="op">)</span>, n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">hour</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">hour</span>, y <span class="op">=</span> <span class="va">prop_cancelled</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-prop-cancelled" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Un gráfico de líneas que muestra cómo cambia la proporción de vuelos cancelados a lo largo de el transcurso del día. La proporción comienza baja en torno al 0,5% en 5 a.m., luego aumenta constantemente a lo largo del día hasta alcanzar su punto máximo el 4% a las 19 h. La proporción de vuelos cancelados cae rápidamente bajando a alrededor del 1% para la medianoche.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-prop-cancelled-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -773,93 +776,93 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span class="header-section-number">13.4.5</span> Redondeo</h3>
 <p>Usa <code>round(x)</code> para redondear un número al entero más cercano:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 123</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 123</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede controlar la precisión del redondeo con el segundo argumento dígitos, <code>digits</code>. <code>round(x, digits)</code> se redondea al <code>10^-n</code> más cercano, por lo que <code>digits = 2</code> se redondea al 0,01 más cercano. Esta definición es útil porque implica que <code>round(x, -3)</code> se redondeará al millar más cercano, lo que de hecho sucede:</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span>, <span class="fl">2</span><span class="op">)</span>  <span class="co"># dos dígitos</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span>, <span class="fl">2</span><span class="op">)</span>  <span class="co"># dos dígitos</span></span>
 <span><span class="co">#&gt; [1] 123.46</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span>, <span class="fl">1</span><span class="op">)</span>  <span class="co"># un dígito</span></span>
 <span><span class="co">#&gt; [1] 123.5</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="co"># redondear a la decena más cercana</span></span>
 <span><span class="co">#&gt; [1] 120</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">123.456</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span> <span class="co"># redondear a la centena más cercana</span></span>
-<span><span class="co">#&gt; [1] 100</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 100</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay una rareza con <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> que parece sorprendente a primera vista:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">2.5</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 2 2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="fl">2.5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2 2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> utiliza lo que se conoce como “redondear la mitad a par” o redondeo bancario: si un número está a medio camino entre dos enteros, se redondeará al entero <strong>par</strong>. Esta es una buena estrategia porque mantiene el redondeo imparcial: la mitad de todos los 0,5 se redondean hacia arriba y la otra mitad hacia abajo.</p>
 <p><code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> se empareja con <code><a href="https://rdrr.io/r/base/Round.html">floor()</a></code> que siempre redondea hacia abajo y <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code> que siempre redondea hacia arriba:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123.456</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">123.456</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 123</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 124</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 124</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Estas funciones no tienen un argumento dígitos, <code>digits</code>, por lo que puede reducir, redondear y luego volver a aumentar:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Redondear hacia abajo a los dos dígitos más cercanos</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Redondear hacia abajo a los dos dígitos más cercanos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.01</span></span>
 <span><span class="co">#&gt; [1] 123.45</span></span>
 <span><span class="co"># Redondea hacia arriba a los dos dígitos más cercanos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.01</span></span>
-<span><span class="co">#&gt; [1] 123.46</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 123.46</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puedes usar la misma técnica si quieres <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> a un múltiplo de algún otro número:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Redondea al múltiplo más cercano de 4</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Redondea al múltiplo más cercano de 4</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fl">4</span></span>
 <span><span class="co">#&gt; [1] 124</span></span>
 <span></span>
 <span><span class="co"># Redondear al 0,25 más cercano</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.25</span></span>
-<span><span class="co">#&gt; [1] 123.5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 123.5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="cortar-números-en-rangos" class="level3" data-number="13.4.6"><h3 data-number="13.4.6" class="anchored" data-anchor-id="cortar-números-en-rangos">
 <span class="header-section-number">13.4.6</span> Cortar números en rangos</h3>
 <p>Use <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> para dividir (también conocido como bin) un vector numérico en cubos discretos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">x</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] (0,5]   (0,5]   (0,5]   (5,10]  (10,15] (15,20]</span></span>
-<span><span class="co">#&gt; Levels: (0,5] (5,10] (10,15] (15,20]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Levels: (0,5] (5,10] (10,15] (15,20]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Los cortes no necesitan estar espaciados uniformemente:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">x</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">x</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] (0,5]    (0,5]    (0,5]    (5,10]   (10,100] (10,100]</span></span>
-<span><span class="co">#&gt; Levels: (0,5] (5,10] (10,100]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Levels: (0,5] (5,10] (10,100]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Opcionalmente, puede proporcionar sus propias etiquetas, <code>labels</code>. Tenga en cuenta que debe haber una etiqueta, <code>labels</code>, menos que rupturas, <code>breaks</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">x</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">x</span>, </span>
 <span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span>, </span>
 <span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sm"</span>, <span class="st">"md"</span>, <span class="st">"lg"</span>, <span class="st">"xl"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] sm sm sm md lg xl</span></span>
-<span><span class="co">#&gt; Levels: sm md lg xl</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Levels: sm md lg xl</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Cualquier valor fuera del rango de las rupturas se convertirá en <code>NA</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="op">-</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">30</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="op">-</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">30</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">y</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] &lt;NA&gt;   &lt;NA&gt;   (0,5]  (5,10] &lt;NA&gt;  </span></span>
-<span><span class="co">#&gt; Levels: (0,5] (5,10] (10,15] (15,20]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Levels: (0,5] (5,10] (10,15] (15,20]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Consulte la documentación para ver otros argumentos útiles como <code>right</code> e <code>include.lowest</code>, que controlan si los intervalos son <code>[a, b)</code> o <code>(a, b]</code> y si el intervalo más bajo debe ser <code>[a, b]</code>.</p>
 </section><section id="sec-cumulative-and-rolling-aggregates" class="level3" data-number="13.4.7"><h3 data-number="13.4.7" class="anchored" data-anchor-id="sec-cumulative-and-rolling-aggregates">
 <span class="header-section-number">13.4.7</span> Agregados acumulativos y rodantes</h3>
 <p>Base R proporciona <code><a href="https://rdrr.io/r/base/cumsum.html">cumsum()</a></code>, <code><a href="https://rdrr.io/r/base/cumsum.html">cumprod()</a></code>, <code><a href="https://rdrr.io/r/base/cumsum.html">cummin()</a></code>, <code><a href="https://rdrr.io/r/base/cumsum.html">cummax()</a></code> para ejecutar, o acumular, sumas, productos, mínimos y máximos. dplyr proporciona <code><a href="https://dplyr.tidyverse.org/reference/cumall.html">cummean()</a></code> para medios acumulativos. Las sumas acumulativas tienden a ser las más importantes en la práctica:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  1  3  6 10 15 21 28 36 45 55</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt;  [1]  1  3  6 10 15 21 28 36 45 55</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si necesita agregados rodantes o deslizantes más complejos, pruebe el paquete <a href="https://slider.r-lib.org/">slider</a>.</p>
 </section><section id="ejercicios-1" class="level3" data-number="13.4.8"><h3 data-number="13.4.8" class="anchored" data-anchor-id="ejercicios-1">
@@ -870,10 +873,10 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <li>
 <p>Actualmente, <code>dep_time</code> y <code>sched_dep_time</code> son convenientes de ver, pero difíciles de calcular porque en realidad no son números continuos. Puede ver el problema básico ejecutando el siguiente código: hay un intervalo entre cada hora.</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">day</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sched_dep_time</span>, y <span class="op">=</span> <span class="va">dep_delay</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Conviértalos a una representación más veraz del tiempo (ya sean horas fraccionarias o minutos desde la medianoche).</p>
 </li>
@@ -885,18 +888,18 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span class="header-section-number">13.5.1</span> Rangos</h3>
 <p>dplyr proporciona una serie de funciones de clasificación inspiradas en SQL, pero siempre debe comenzar con <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">dplyr::min_rank()</a></code>. Utiliza el método típico para tratar los empates, p.ej., 1°, 2°, 2°, 4°.</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]  1  2  2  4  5 NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1]  1  2  2  4  5 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tenga en cuenta que los valores más pequeños obtienen los rangos más bajos; usa <code>desc(x)</code> para dar a los valores más grandes los rangos más pequeños:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]  5  3  3  2  1 NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1]  5  3  3  2  1 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank()</a></code> no hace lo que necesita, observe las variantes <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">dplyr::row_number()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">dplyr::dense_rank()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/percent_rank.html">dplyr::percent_rank()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/percent_rank.html">dplyr:: cume_dist()</a></code>. Consulte la documentación para obtener más información.</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    row_number <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
@@ -912,12 +915,12 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span><span class="co">#&gt; 3     2          3          2         0.25       0.6</span></span>
 <span><span class="co">#&gt; 4     3          4          3         0.75       0.8</span></span>
 <span><span class="co">#&gt; 5     4          5          4         1          1  </span></span>
-<span><span class="co">#&gt; 6    NA         NA         NA        NA         NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 6    NA         NA         NA        NA         NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede lograr muchos de los mismos resultados eligiendo el argumento <code>ties.method</code> adecuado para basar el <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> de R; probablemente también querrá configurar <code>na.last = "keep"</code> para mantener <code>NA</code>s como <code>NA</code>.</p>
 <p><code><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number()</a></code> también se puede usar sin ningún argumento dentro de un verbo dplyr. En este caso, dará el número de la fila “current”. Cuando se combina con <code>%%</code> o <code>%/%</code>, esta puede ser una herramienta útil para dividir datos en grupos de tamaño similar:</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
@@ -934,31 +937,31 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span><span class="co">#&gt; 4     4     3            0                   1</span></span>
 <span><span class="co">#&gt; 5     5     4            1                   1</span></span>
 <span><span class="co">#&gt; 6     6     5            2                   1</span></span>
-<span><span class="co">#&gt; # ℹ 4 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 4 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="compensaciones" class="level3" data-number="13.5.2"><h3 data-number="13.5.2" class="anchored" data-anchor-id="compensaciones">
 <span class="header-section-number">13.5.2</span> Compensaciones</h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">dplyr::lead()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">dplyr::lag()</a></code> le permiten referirse a los valores justo antes o justo después del valor “actual”. Devuelven un vector de la misma longitud que la entrada, rellenado con NA al principio o al final:</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">11</span>, <span class="fl">11</span>, <span class="fl">19</span>, <span class="fl">35</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">11</span>, <span class="fl">11</span>, <span class="fl">19</span>, <span class="fl">35</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] NA  2  5 11 11 19</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]  5 11 11 19 35 NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1]  5 11 11 19 35 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>
 <p><code>x - lag(x)</code> te da la diferencia entre el valor actual y el anterior.</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] NA  3  6  0  8 16</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] NA  3  6  0  8 16</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li>
 <p><code>x == lag(x)</code> le indica cuándo cambia el valor actual.</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">==</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]    NA FALSE FALSE  TRUE FALSE FALSE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">==</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1]    NA FALSE FALSE  TRUE FALSE FALSE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 </ul>
@@ -967,13 +970,13 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span class="header-section-number">13.5.3</span> Identificadores consecutivos</h3>
 <p>A veces desea iniciar un nuevo grupo cada vez que ocurre algún evento. Por ejemplo, cuando está mirando los datos del sitio web, es común querer dividir los eventos en sesiones, donde comienza una nueva sesión después de un intervalo de más de <code>x</code> minutos desde la última actividad. Por ejemplo, imagina que tienes las veces que alguien visitó un sitio web:</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">12</span>, <span class="fl">15</span>, <span class="fl">17</span>, <span class="fl">19</span>, <span class="fl">20</span>, <span class="fl">27</span>, <span class="fl">28</span>, <span class="fl">30</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y calculó el tiempo entre cada evento y descubrió si hay una brecha lo suficientemente grande como para calificar:</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="va">events</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">events</span> <span class="op">&lt;-</span> <span class="va">events</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    diff <span class="op">=</span> <span class="va">time</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">time</span>, default <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    has_gap <span class="op">=</span> <span class="va">diff</span> <span class="op">&gt;=</span> <span class="fl">5</span></span>
@@ -988,11 +991,11 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span><span class="co">#&gt; 4     3     1 FALSE  </span></span>
 <span><span class="co">#&gt; 5     5     2 FALSE  </span></span>
 <span><span class="co">#&gt; 6    10     5 TRUE   </span></span>
-<span><span class="co">#&gt; # ℹ 8 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 8 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pero, ¿cómo pasamos de ese vector lógico a algo que podamos <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>? <code><a href="https://rdrr.io/r/base/cumsum.html">cumsum()</a></code>, de <a href="#sec-cumulative-and-rolling-aggregates" class="quarto-xref"><span>Sección 13.4.7</span></a>, viene al rescate como brecha, es decir, <code>has_gap</code> es <code>TRUE</code>, incrementará <code>group</code> en uno (<a href="logicals.html#sec-numeric-summaries-of-logicals" class="quarto-xref"><span>Sección 12.4.2</span></a>):</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">events</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">events</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>  group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">has_gap</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 14 × 4</span></span>
@@ -1004,18 +1007,18 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span><span class="co">#&gt; 4     3     1 FALSE       0</span></span>
 <span><span class="co">#&gt; 5     5     2 FALSE       0</span></span>
 <span><span class="co">#&gt; 6    10     5 TRUE        1</span></span>
-<span><span class="co">#&gt; # ℹ 8 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 8 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Otro enfoque para crear variables de agrupación es <code><a href="https://dplyr.tidyverse.org/reference/consecutive_id.html">consecutive_id()</a></code>, que inicia un nuevo grupo cada vez que cambia uno de sus argumentos. Por ejemplo, inspirado por <a href="https://stackoverflow.com/questions/27482712">esta pregunta de stackoverflow</a>, imagine que tiene un data frame con un montón de valores repetidos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"b"</span><span class="op">)</span>,</span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">10</span>, <span class="fl">199</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si desea conservar la primera fila de cada <code>x</code> repetida, puede usar <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/consecutive_id.html">consecutive_id()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/consecutive_id.html">consecutive_id</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
@@ -1028,7 +1031,7 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span><span class="co">#&gt; 4 d         3     4</span></span>
 <span><span class="co">#&gt; 5 e         9     5</span></span>
 <span><span class="co">#&gt; 6 a         4     6</span></span>
-<span><span class="co">#&gt; # ℹ 1 more row</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 1 more row</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="ejercicios-2" class="level3" data-number="13.5.4"><h3 data-number="13.5.4" class="anchored" data-anchor-id="ejercicios-2">
 <span class="header-section-number">13.5.4</span> Ejercicios</h3>
@@ -1041,7 +1044,7 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <li>
 <p>Los retrasos suelen tener una correlación temporal: incluso una vez que se ha resuelto el problema que causó el retraso inicial, los vuelos posteriores se retrasan para permitir que salgan los vuelos anteriores. Utilizando <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code>, explore cómo se relaciona el retraso promedio de un vuelo durante una hora con el retraso promedio de la hora anterior.</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>hour <span class="op">=</span> <span class="va">dep_time</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">hour</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
@@ -1049,7 +1052,7 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </li>
 <li><p>Mira cada destino. ¿Puedes encontrar vuelos que sean sospechosamente rápidos (es decir, vuelos que representen un posible error de ingreso de datos)? Calcule el tiempo de aire de un vuelo en relación con el vuelo más corto a ese destino. ¿Qué vuelos se retrasaron más en el aire?</p></li>
@@ -1062,7 +1065,7 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <p>Hasta ahora, hemos usado principalmente <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> para resumir el centro de un vector de valores. Como hemos visto en <a href="data-transform.html#sec-sample-size" class="quarto-xref"><span>Sección 3.6</span></a>, debido a que la media es la suma dividida por el recuento, es sensible incluso a unos pocos valores inusualmente altos o bajos. Una alternativa es usar <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>, que encuentra un valor que se encuentra en el “medio” del vector, es decir, el 50 % de los valores está por encima y el 50 % por debajo. Dependiendo de la forma de la distribución de la variable que le interese, la media o la mediana pueden ser una mejor medida del centro. Por ejemplo, para distribuciones simétricas generalmente informamos la media, mientras que para distribuciones asimétricas generalmente informamos la mediana.</p>
 <p><a href="#fig-mean-vs-median" class="quarto-xref">Figura&nbsp;<span>13.2</span></a> compara la media con la mediana del retraso de salida (en minutos) para cada destino. El retraso mediano siempre es menor que el retraso medio porque los vuelos a veces salen varias horas tarde, pero nunca salen varias horas antes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -1072,7 +1075,7 @@ Figura&nbsp;13.1: Un gráfico de líneas con la hora de salida programada en el 
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mean</span>, y <span class="op">=</span> <span class="va">median</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">1</span>, intercept <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-mean-vs-median" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Todos los puntos caen por debajo de una línea de 45°, lo que significa que el retraso mediano es siempre menor que el retraso medio. La mayoría de los puntos están agrupados en un región densa de media [0, 20] y mediana [-5, 5]. como el retraso medio aumenta, la dispersión de la mediana también aumenta. Hay dos puntos periféricos con media ~60, mediana ~30 y media ~85, mediana ~55.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mean-vs-median-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1090,7 +1093,7 @@ Figura&nbsp;13.2: Un diagrama de dispersión que muestra las diferencias de resu
 <p>¿Qué pasa si estás interesado en lugares que no sean el centro? <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> y <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> le darán los valores más grandes y más pequeños. Otra herramienta poderosa es <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code>, que es una generalización de la mediana: <code>quantile(x, 0.25)</code> encontrará el valor de <code>x</code> que es mayor que el 25% de los valores, <code>quantile(x, 0.5)</code> es equivalente a la mediana, y <code>quantile(x, 0.95)</code> encontrará el valor que es mayor que el 95% de los valores.</p>
 <p>Para los datos de <code>flights</code>, es posible que desee observar el cuantil del 95 % de los retrasos en lugar del máximo, ya que ignorará el 5 % de la mayoría de los vuelos retrasados, lo que puede ser bastante extremo.</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -1106,14 +1109,14 @@ Figura&nbsp;13.2: Un diagrama de dispersión que muestra las diferencias de resu
 <span><span class="co">#&gt; 4  2013     1     4   288  60  </span></span>
 <span><span class="co">#&gt; 5  2013     1     5   327  41  </span></span>
 <span><span class="co">#&gt; 6  2013     1     6   202  51  </span></span>
-<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="dispersión" class="level3" data-number="13.6.3"><h3 data-number="13.6.3" class="anchored" data-anchor-id="dispersión">
 <span class="header-section-number">13.6.3</span> Dispersión</h3>
 <p>A veces, no está tan interesado en dónde se encuentra la mayor parte de los datos, sino en cómo se distribuyen. Dos resúmenes de uso común son la desviación estándar, <code>sd(x)</code>, y el rango intercuartílico, <code><a href="https://rdrr.io/r/stats/IQR.html">IQR()</a></code>. No explicaremos <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> aquí porque probablemente ya estés familiarizado con él, pero <code><a href="https://rdrr.io/r/stats/IQR.html">IQR()</a></code> podría ser nuevo — es <code>quantile(x, 0.75) - quantile(x, 0.25)</code> y le da el rango que contiene el 50% medio de los datos.</p>
 <p>Podemos usar esto para revelar una pequeña rareza en los datos de <code>vuelos</code>. Es de esperar que la dispersión de la distancia entre el origen y el destino sea cero, ya que los aeropuertos siempre están en el mismo lugar. Pero el siguiente código hace que parezca que un aeropuerto, <a href="https://en.wikipedia.org/wiki/Eagle_County_Regional_Airport">EGE</a>, podría haberse mudado.</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    distance_iqr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">distance</span><span class="op">)</span>, </span>
@@ -1125,7 +1128,7 @@ Figura&nbsp;13.2: Un diagrama de dispersión que muestra las diferencias de resu
 <span><span class="co">#&gt;   origin dest  distance_iqr     n</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 EWR    EGE              1   110</span></span>
-<span><span class="co">#&gt; 2 JFK    EGE              1   103</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 JFK    EGE              1   103</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="distribuciones" class="level3" data-number="13.6.4"><h3 data-number="13.6.4" class="anchored" data-anchor-id="distribuciones">
 <span class="header-section-number">13.6.4</span> Distribuciones</h3>
@@ -1145,10 +1148,10 @@ Figura&nbsp;13.3: (Izquierda) El histograma de los datos completos está extrema
 </div>
 <p>También es una buena idea verificar que las distribuciones de los subgrupos se parezcan al todo. En el gráfico siguiente se superponen 365 polígonos de frecuencia de <code>dep_delay</code>, uno para cada día. Las distribuciones parecen seguir un patrón común, lo que sugiere que está bien usar el mismo resumen para cada día.</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dep_delay</span> <span class="op">&lt;</span> <span class="fl">120</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dep_delay</span>, group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">day</span>, <span class="va">month</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="numbers_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" alt="La distribución de `dep_delay` está muy sesgada hacia la derecha con un pico fuerte  ligeramente inferior a 0. Los 365 polígonos de frecuencia se superponen en  su mayoría formando una espesa capa negra." width="576"></p>
@@ -1162,7 +1165,7 @@ Figura&nbsp;13.3: (Izquierda) El histograma de los datos completos está extrema
 <p>Hay un último tipo de resumen que es útil para los vectores numéricos, pero también funciona con cualquier otro tipo de valor: extraer un valor en una posición específica: <code>primero(x)</code>, <code>último(x)</code> y <code>nth(x, n)</code>.</p>
 <p>Por ejemplo, podemos encontrar la primera, quinta y la última salida de cada día:</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    first_dep <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">dep_time</span>, na_rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
@@ -1181,13 +1184,13 @@ Figura&nbsp;13.3: (Izquierda) El histograma de los datos completos está extrema
 <span><span class="co">#&gt; 4  2013     1     4        25       531     2358</span></span>
 <span><span class="co">#&gt; 5  2013     1     5        14       534     2357</span></span>
 <span><span class="co">#&gt; 6  2013     1     6        16       555     2355</span></span>
-<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(NB: Debido a que las funciones dplyr usan <code>_</code> para separar los componentes de la función y los nombres de los argumentos, estas funciones usan <code>na_rm</code> en lugar de <code>na.rm</code>.)</p>
 <p>Si está familiarizado con <code>[</code>, al que volveremos en <a href="base-R.html#sec-subset-many" class="quarto-xref"><span>Sección 27.2</span></a>, es posible que se pregunte si alguna vez necesitará estas funciones. Hay tres razones: el argumento <code>default</code> le permite proporcionar un valor predeterminado si la posición especificada no existe, el argumento <code>order_by</code> le permite anular localmente el orden de las filas y el argumento <code>na_rm</code> le permite eliminar los valores perdidos.</p>
 <p>La extracción de valores en posiciones es complementaria al filtrado en rangos. El filtrado le brinda todas las variables, con cada observación en una fila separada:</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">sched_dep_time</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">r</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -1202,7 +1205,7 @@ Figura&nbsp;13.3: (Izquierda) El histograma de los datos completos está extrema
 <span><span class="co">#&gt; 5  2013     1     2       42           2359        43      518            442</span></span>
 <span><span class="co">#&gt; 6  2013     1     2      458            500        -2      703            650</span></span>
 <span><span class="co">#&gt; # ℹ 1,189 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 12 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 12 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="con-mutate" class="level3" data-number="13.6.6"><h3 data-number="13.6.6" class="anchored" data-anchor-id="con-mutate">
 <span class="header-section-number">13.6.6</span> Con <code>mutate()</code>
@@ -1351,13 +1354,14 @@ Figura&nbsp;13.3: (Izquierda) El histograma de los datos completos está extrema
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

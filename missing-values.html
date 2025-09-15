@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>18&nbsp; Valores faltanres – R para la Ciencia de Datos (2e)</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8374bc3c6bea72a3c9f8b2214211636f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -87,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
+    "search-no-results-text": "No se han encontrado resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -117,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -468,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">18.1.1</span> Requisitos previos</h3>
 <p>Las funciones para trabajar con datos faltantes provienen principalmente de dplyr y tidyr, que son miembros centrales de tidyverse.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="valores-perdidos-explícitos" class="level2" data-number="18.2"><h2 data-number="18.2" class="anchored" data-anchor-id="valores-perdidos-explícitos">
 <span class="header-section-number">18.2</span> Valores perdidos explícitos</h2>
@@ -477,17 +480,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">18.2.1</span> Última observación llevada adelante</h3>
 <p>Un uso común para los valores faltantes es como una comodidad para la entrada de datos. Cuando los datos se ingresan a mano, los valores que faltan a veces indican que el valor en la fila anterior se ha repetido (o trasladado):</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span><span class="va">person</span>,           <span class="op">~</span><span class="va">treatment</span>, <span class="op">~</span><span class="va">response</span>,</span>
 <span>  <span class="st">"Derrick Whitmore"</span>, <span class="fl">1</span>,         <span class="fl">7</span>,</span>
 <span>  <span class="cn">NA</span>,                 <span class="fl">2</span>,         <span class="fl">10</span>,</span>
 <span>  <span class="cn">NA</span>,                 <span class="fl">3</span>,         <span class="cn">NA</span>,</span>
 <span>  <span class="st">"Katherine Burke"</span>,  <span class="fl">1</span>,         <span class="fl">4</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede completar estos valores faltantes con <code><a href="https://tidyr.tidyverse.org/reference/fill.html">tidyr::fill()</a></code>. Funciona como <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, tomando un conjunto de columnas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">treatment</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">treatment</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/fill.html">fill</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
 <span><span class="co">#&gt;   person           treatment response</span></span>
@@ -495,40 +498,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 1 Derrick Whitmore         1        7</span></span>
 <span><span class="co">#&gt; 2 Derrick Whitmore         2       10</span></span>
 <span><span class="co">#&gt; 3 Derrick Whitmore         3       10</span></span>
-<span><span class="co">#&gt; 4 Katherine Burke          1        4</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 4 Katherine Burke          1        4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este tratamiento a veces se denomina “última observación realizada”, o <strong>locf</strong> (del inglés “last observation carried forward”) para abreviar. Puede usar el argumento <code>.direction</code> para completar los valores faltantes que se han generado de formas más exóticas.</p>
 </section><section id="valores-fijos" class="level3" data-number="18.2.2"><h3 data-number="18.2.2" class="anchored" data-anchor-id="valores-fijos">
 <span class="header-section-number">18.2.2</span> Valores fijos</h3>
 <p>Algunas veces, los valores faltantes representan algún valor fijo y conocido, más comúnmente 0. Puedes usar <code><a href="https://dplyr.tidyverse.org/reference/coalesce.html">dplyr::coalesce()</a></code> para reemplazarlos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/coalesce.html">coalesce</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1 4 5 7 0</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 1 4 5 7 0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A veces te encontrarás con el problema opuesto en el que algún valor concreto en realidad representa un valor faltante. Por lo general, esto surge en los datos generados por un software antiguo que no tiene una forma adecuada de representar los valores faltantes, por lo que debe usar algún valor especial como 99 o -999.</p>
 <p>Si es posible, maneje esto cuando lea los datos, por ejemplo, usando el argumento <code>na</code> para <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code>, p.ej., <code>read_csv(ruta, na = "99")</code>. Si descubre el problema más tarde, o su fuente de datos no proporciona una forma de manejarlo, puede usar <code><a href="https://dplyr.tidyverse.org/reference/na_if.html">dplyr::na_if()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="op">-</span><span class="fl">99</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="op">-</span><span class="fl">99</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span><span class="op">(</span><span class="va">x</span>, <span class="op">-</span><span class="fl">99</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1]  1  4  5  7 NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1]  1  4  5  7 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="nan" class="level3" data-number="18.2.3"><h3 data-number="18.2.3" class="anchored" data-anchor-id="nan">
 <span class="header-section-number">18.2.3</span> NaN</h3>
 <p>Antes de continuar, hay un tipo especial de valor faltante que encontrará de vez en cuando: un <code>NaN</code> (pronunciado “nan”), del inglés <strong>n</strong>ot <strong>a</strong> <strong>n</strong>number. No es tan importante saberlo porque generalmente se comporta como <code>NA</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NaN</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">*</span> <span class="fl">10</span></span>
 <span><span class="co">#&gt; [1]  NA NaN</span></span>
 <span><span class="va">x</span> <span class="op">==</span> <span class="fl">1</span></span>
 <span><span class="co">#&gt; [1] NA NA</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE TRUE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] TRUE TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En el raro caso de que necesites distinguir un <code>NA</code> de un <code>NaN</code>, puedes usar <code>is.nan(x)</code>.</p>
 <p>Por lo general, encontrará un <code>NaN</code> cuando realice una operación matemática que tenga un resultado indeterminado:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span> <span class="op">/</span> <span class="fl">0</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span> <span class="op">/</span> <span class="fl">0</span> </span>
 <span><span class="co">#&gt; [1] NaN</span></span>
 <span><span class="fl">0</span> <span class="op">*</span> <span class="cn">Inf</span></span>
 <span><span class="co">#&gt; [1] NaN</span></span>
@@ -536,17 +539,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [1] NaN</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in sqrt(-1): NaNs produced</span></span>
-<span><span class="co">#&gt; [1] NaN</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] NaN</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="sec-missing-implicit" class="level2" data-number="18.3"><h2 data-number="18.3" class="anchored" data-anchor-id="sec-missing-implicit">
 <span class="header-section-number">18.3</span> Valores perdidos implícitos</h2>
 <p>Hasta ahora hemos hablado de los valores que faltan <strong>explícitamente</strong>, es decir, puede ver un <code>NA</code> en sus datos. Pero los valores faltantes también pueden faltar <strong>implícitamente</strong>, si una fila completa de datos simplemente está ausente de los datos. Ilustremos la diferencia con un conjunto de datos simple que registra el precio de algunas acciones cada trimestre:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  year  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2021</span>, <span class="fl">2021</span><span class="op">)</span>,</span>
 <span>  qtr   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>   <span class="fl">1</span>,    <span class="fl">2</span>,    <span class="fl">3</span>,    <span class="fl">4</span>,    <span class="fl">2</span>,    <span class="fl">3</span>,    <span class="fl">4</span><span class="op">)</span>,</span>
 <span>  price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.88</span>, <span class="fl">0.59</span>, <span class="fl">0.35</span>,   <span class="cn">NA</span>, <span class="fl">0.92</span>, <span class="fl">0.17</span>, <span class="fl">2.66</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este conjunto de datos tiene dos observaciones faltantes:</p>
 <ul>
@@ -563,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">18.3.1</span> Pivotar</h3>
 <p>Ya ha visto una herramienta que puede hacer explícitas las faltas implícitas y viceversa: pivotar. Ampliar los datos puede hacer que los valores faltantes implícitos sean explícitos porque cada combinación de filas y columnas nuevas debe tener algún valor. Por ejemplo, si hacemos pivotar <code>stocks</code> para colocar el <code>qtr</code> en las columnas, ambos valores faltantes se vuelven explícitos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>    names_from <span class="op">=</span> <span class="va">qtr</span>, </span>
 <span>    values_from <span class="op">=</span> <span class="va">price</span></span>
@@ -572,14 +575,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;    year   `1`   `2`   `3`   `4`</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  2020  1.88  0.59  0.35 NA   </span></span>
-<span><span class="co">#&gt; 2  2021 NA     0.92  0.17  2.66</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2  2021 NA     0.92  0.17  2.66</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>De forma predeterminada, hacer que los datos duren más tiempo conserva los valores faltantes explícitos, pero si son valores faltantes estructuralmente que solo existen porque los datos no están ordenados, puede descartarlos (hacerlos implícitos) configurando <code>values_drop_na = TRUE</code>. Consulte los ejemplos en <a href="data-tidy.html#sec-tidy-data" class="quarto-xref"><span>Sección 5.2</span></a> para obtener más detalles.</p>
 </section><section id="completo" class="level3" data-number="18.3.2"><h3 data-number="18.3.2" class="anchored" data-anchor-id="completo">
 <span class="header-section-number">18.3.2</span> Completo</h3>
 <p><code><a href="https://tidyr.tidyverse.org/reference/complete.html">tidyr::complete()</a></code> te permite generar valores perdidos explícitos proporcionando un conjunto de variables que definen la combinación de filas que deberían existir. Por ejemplo, sabemos que todas las combinaciones de <code>year</code> y <code>qtr</code> deben existir en los datos de <code>stocks</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">qtr</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 8 × 3</span></span>
 <span><span class="co">#&gt;    year   qtr price</span></span>
@@ -590,11 +593,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4  2020     4 NA   </span></span>
 <span><span class="co">#&gt; 5  2021     1 NA   </span></span>
 <span><span class="co">#&gt; 6  2021     2  0.92</span></span>
-<span><span class="co">#&gt; # ℹ 2 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 2 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Por lo general, llamará a <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> con los nombres de las variables existentes, completando las combinaciones que faltan. Sin embargo, a veces las variables individuales están incompletas, por lo que puede proporcionar sus propios datos. Por ejemplo, es posible que sepa que se supone que el conjunto de datos de <code>stocks</code> se ejecutará desde 2019 hasta 2021, por lo que podría proporcionar explícitamente esos valores para <code>year</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stocks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2019</span><span class="op">:</span><span class="fl">2021</span>, <span class="va">qtr</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 12 × 3</span></span>
 <span><span class="co">#&gt;    year   qtr price</span></span>
@@ -605,7 +608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4  2019     4 NA   </span></span>
 <span><span class="co">#&gt; 5  2020     1  1.88</span></span>
 <span><span class="co">#&gt; 6  2020     2  0.59</span></span>
-<span><span class="co">#&gt; # ℹ 6 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 6 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si el rango de una variable es correcto, pero no todos los valores están presentes, puede usar <code>full_seq(x, 1)</code> para generar todos los valores desde <code>min(x)</code> hasta <code>max(x)</code> separados por 1.</p>
 <p>En algunos casos, el conjunto completo de observaciones no puede generarse mediante una simple combinación de variables. En ese caso, puede hacer manualmente lo que <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> hace por usted: crear un marco de datos que contenga todas las filas que deberían existir (usando cualquier combinación de técnicas que necesite), luego combínelo con su conjunto de datos original con <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">dplyr ::full_join()</a></code>.</p>
@@ -614,7 +617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Esto nos lleva a otra forma importante de revelar observaciones que faltan implícitamente: las uniones. Aprenderá más sobre las uniones en <a href="joins.html" class="quarto-xref"><span>Capítulo 19</span></a>, pero queríamos mencionarlas rápidamente aquí, ya que a menudo solo puede saber que faltan valores en un conjunto de datos cuando lo compara con otro.</p>
 <p><code>dplyr::anti_join(x, y)</code> es una herramienta particularmente útil aquí porque selecciona solo las filas en <code>x</code> que no tienen una coincidencia en <code>y</code>. Por ejemplo, podemos usar dos <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code>s para revelar que nos falta información para cuatro aeropuertos y 722 aviones mencionados en <code>flights</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span>faa <span class="op">=</span> <span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -641,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 4 N730MQ </span></span>
 <span><span class="co">#&gt; 5 N9EAMQ </span></span>
 <span><span class="co">#&gt; 6 N532UA </span></span>
-<span><span class="co">#&gt; # ℹ 716 more rows</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # ℹ 716 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="ejercicios" class="level3" data-number="18.3.4"><h3 data-number="18.3.4" class="anchored" data-anchor-id="ejercicios">
 <span class="header-section-number">18.3.4</span> Ejercicios</h3>
@@ -651,37 +654,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">18.4</span> Factores y grupos vacíos</h2>
 <p>Un último tipo de ausencia es el grupo vacío, un grupo que no contiene ninguna observación, que puede surgir cuando se trabaja con factores. Por ejemplo, imagina que tenemos un conjunto de datos que contiene información sobre la salud de las personas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  name   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ikaia"</span>, <span class="st">"Oletta"</span>, <span class="st">"Leriah"</span>, <span class="st">"Dashay"</span>, <span class="st">"Tresaun"</span><span class="op">)</span>,</span>
 <span>  smoker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span>, <span class="st">"no"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"no"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  age    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">88</span>, <span class="fl">75</span>, <span class="fl">47</span>, <span class="fl">56</span><span class="op">)</span>,</span>
-<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y queremos contar el número de fumadores con <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 2</span></span>
 <span><span class="co">#&gt;   smoker     n</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1 no         5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 1 no         5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este conjunto de datos solo contiene no fumadores, pero sabemos que existen fumadores; el grupo de no fumadores está vacío. Podemos solicitar a <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> que mantenga todos los grupos, incluso aquellos que no se ven en los datos usando <code>.drop = FALSE</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">smoker</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">smoker</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;   smoker     n</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1 yes        0</span></span>
-<span><span class="co">#&gt; 2 no         5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 no         5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El mismo principio se aplica a los ejes discretos de ggplot2, que también eliminarán los niveles que no tengan ningún valor. Puede obligarlos a que se muestren proporcionando <code>drop = FALSE</code> en el eje discreto apropiado:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">health</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">smoker</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">health</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">smoker</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">health</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">smoker</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -694,7 +697,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>El mismo problema surge de manera más general con <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code>. Y de nuevo puedes usar <code>.drop = FALSE</code> para conservar todos los niveles de los factores:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">smoker</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -707,11 +710,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   smoker     n mean_age min_age max_age sd_age</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 yes        0      NaN     Inf    -Inf   NA  </span></span>
-<span><span class="co">#&gt; 2 no         5       60      34      88   21.6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 no         5       60      34      88   21.6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aquí obtenemos algunos resultados interesantes porque al resumir un grupo vacío, las funciones de resumen se aplican a vectores de longitud cero. Hay una distinción importante entre los vectores vacíos, que tienen una longitud de 0, y los valores faltantes, cada uno de los cuales tiene una longitud de 1.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Un vector que contiene dos valores faltantes</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Un vector que contiene dos valores faltantes</span></span>
 <span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2</span></span>
@@ -719,12 +722,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># Un vector que no contiene nada</span></span>
 <span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [1] 0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Todas las funciones de resumen funcionan con vectores de longitud cero, pero pueden devolver resultados sorprendentes a primera vista. Aquí vemos que <code>mean(age)</code> devuelve <code>NaN</code> porque <code>mean(age)</code> = <code>sum(age)/length(age)</code> que aquí es 0/0. <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> y <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> devuelven -Inf e Inf para vectores vacíos, por lo que si combina los resultados con un vector no vacío de nuevos datos y vuelve a calcular, obtendrá el mínimo o el máximo de los nuevos datos[^ valores perdidos-1].</p>
 <p>A veces, un enfoque más simple es realizar el resumen y luego hacer explícitas las faltas implícitas con <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">health</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -738,7 +741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;   smoker     n mean_age min_age max_age sd_age</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;  &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 yes       NA       NA      NA      NA   NA  </span></span>
-<span><span class="co">#&gt; 2 no         5       60      34      88   21.6</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; 2 no         5       60      34      88   21.6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>El principal inconveniente de este enfoque es que obtienes un <code>NA</code> para el conteo, aunque sabes que debería ser cero.</p>
 </section><section id="resumen" class="level2" data-number="18.5"><h2 data-number="18.5" class="anchored" data-anchor-id="resumen">
@@ -865,13 +868,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
