@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>9&nbsp; Capas – R para la Ciencia de Datos (2e)</title>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4fe16c4d3c1a6fe7403158d845eec253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-137d6603e742c47c828ffe5e80dd4ea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r4dses">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/davidrsch/r4ds-es">
             Traducción
             </a>
           </li>
@@ -594,7 +594,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-shapes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Mapeo entre formas y los números que las representan: 0 - cuadrado hueco, 1 - círculo hueco, 2 - triángulo hueco apuntando hacia arriba, 3 - símbolo de adición, 4 - cruz, 5 - rombo hueco, 6 - triángulo hueco apuntando hacia abajo, 7 - cruz en un cuadrado, 8 - asterisco, 9 - símbolo de adición en un rombo, 10 - símbolo de adición en un círculo, 11 - triángulos hacia arriba y hacia abajo huecos, 12 - símbolo de adición en un cuadrado, 13 - cruz superpuesta a un círculo, 14 - cuadrado y triángulo apuntando hacia arriba, 15 - cuadrado relleno, 16 - círculo relleno, 17 - triángulo relleno apuntando hacia arriba, 18 - rombo relleno, 19 - círculo relleno, 20 - viñeta (círculo más pequeño), 21 - círculo con relleno y borde, 22 - cuadrado con relleno y borde, 23 - rombo con relleno y borde, 24 - triángulo apuntando hacia arriba con relleno y borde, 25 - triángulo apuntando hacia abajo con relleno y borde.">
+<div id="fig-shapes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mapeo entre formas y los números que las representan: 0 - cuadrado hueco, 1 - círculo hueco, 2 - triángulo hueco apuntando hacia arriba, 3 - símbolo de adición, 4 - cruz, 5 - rombo hueco, 6 - triángulo hueco apuntando hacia abajo, 7 - cruz en un cuadrado, 8 - asterisco, 9 - símbolo de adición en un rombo, 10 - símbolo de adición en un círculo, 11 - triángulos hacia arriba y hacia abajo huecos, 12 - símbolo de adición en un cuadrado, 13 - cruz superpuesta a un círculo, 14 - cuadrado y triángulo apuntando hacia arriba, 15 - cuadrado relleno, 16 - círculo relleno, 17 - triángulo relleno apuntando hacia arriba, 18 - rombo relleno, 19 - círculo relleno, 20 - viñeta (círculo más pequeño), 21 - círculo con relleno y borde, 22 - cuadrado con relleno y borde, 23 - rombo con relleno y borde, 24 - triángulo apuntando hacia arriba con relleno y borde, 25 - triángulo apuntando hacia abajo con relleno y borde." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-shapes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="layers_files/figure-html/fig-shapes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Mapeo entre formas y los números que las representan: 0 - cuadrado hueco, 1 - círculo hueco, 2 - triángulo hueco apuntando hacia arriba, 3 - símbolo de adición, 4 - cruz, 5 - rombo hueco, 6 - triángulo hueco apuntando hacia abajo, 7 - cruz en un cuadrado, 8 - asterisco, 9 - símbolo de adición en un rombo, 10 - símbolo de adición en un círculo, 11 - triángulos hacia arriba y hacia abajo huecos, 12 - símbolo de adición en un cuadrado, 13 - cruz superpuesta a un círculo, 14 - cuadrado y triángulo apuntando hacia arriba, 15 - cuadrado relleno, 16 - círculo relleno, 17 - triángulo relleno apuntando hacia arriba, 18 - rombo relleno, 19 - círculo relleno, 20 - viñeta (círculo más pequeño), 21 - círculo con relleno y borde, 22 - cuadrado con relleno y borde, 23 - rombo con relleno y borde, 24 - triángulo apuntando hacia arriba con relleno y borde, 25 - triángulo apuntando hacia abajo con relleno y borde." width="576">
 </div>
@@ -1230,15 +1230,15 @@ Figura&nbsp;9.3: Pasos para pasar de datos sin procesar a una tabla de frecuenci
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
 
-  //Deffining urls
+  //Defining urls
   const originalURL = "https://github.com/hadley/r4ds";
-  const translationURL = "https://github.com/davidrsch/r4dses";
+  const translationURL = "https://github.com/davidrsch/r4ds-es";
 
-  //Deffining texts
+  //Defining texts
   const edit_text = "Editar esta página";
   const issue_text = "Informar de un problema"
 
-  //Deffining git_i
+  //Defining git_i
   const git_i = '<div><i class="bi bi-github"></i></div>';
 
   // Adding TOC if not exist
