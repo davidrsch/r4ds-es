@@ -28,7 +28,7 @@ book:
           - text: Original
             url: https://github.com/hadley/r4ds
           - text: Traducción
-            url: https://github.com/davidrsch/r4dses
+            url: https://github.com/davidrsch/r4ds-es
   page-navigation: true
   chapters:
     - index.qmd
