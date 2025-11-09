@@ -5,6 +5,7 @@ project:
 book:
   title: "R para la Ciencia de Datos (2e)"
   reader-mode: true
+  site-url: https://davidrsch.github.io/r4ds-es/
 
   page-footer:
     left: |
