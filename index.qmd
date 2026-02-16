@@ -15,6 +15,10 @@ Si habla otro idioma es posible que le interesen las traducciones disponibles gr
 -   [Turco](https://tr.r4ds.hadley.nz)
 -   [Portuguese](https://pt.r4ds.hadley.nz)
 
+y también hay traducciones de la segunda edición:
+
+-   [Español](https://davidrsch.github.io/r4ds-es/)
+
 Puede encontrar respuestas sugeridas a los ejercicios en el libro en <https://mine-cetinkaya-rundel.github.io/r4ds-solutions>.
 
 Tenga en cuenta que R4DS utiliza un [Código de conducta del colaborador](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). Al contribuir a este libro, usted acepta cumplir con sus términos.

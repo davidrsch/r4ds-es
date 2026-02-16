@@ -407,7 +407,7 @@ dplyr proporciona una serie de funciones de clasificación inspiradas en SQL, pe
 Utiliza el método típico para tratar los empates, p.ej., 1°, 2°, 2°, 4°.
 
 ```{r}
-x <- c(1, 2, 2, 3, 4, NA)
+x <- c(1, 5, 5, 17, 22, NA)
 min_rank(x)
 ```
 

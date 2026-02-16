@@ -215,7 +215,7 @@ Y queremos contar el número de fumadores con `dplyr::count()`:
 health |> count(smoker)
 ```
 
-Este conjunto de datos solo contiene no fumadores, pero sabemos que existen fumadores; el grupo de no fumadores está vacío.
+Este conjunto de datos solo contiene no fumadores, pero sabemos que existen fumadores; el grupo de fumadores está vacío.
 Podemos solicitar a `count()` que mantenga todos los grupos, incluso aquellos que no se ven en los datos usando `.drop = FALSE`:
 
 ```{r}

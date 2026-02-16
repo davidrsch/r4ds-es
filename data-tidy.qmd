@@ -521,7 +521,7 @@ Aquí solo hay una columna, pero en general puede haber cualquier cantidad de co
 
 ```{r}
 df |> 
-  select(-measurement, -value) |> 
+  select(!measurement & !value) |> 
   distinct()
 ```
 
@@ -529,7 +529,7 @@ df |>
 
 ```{r}
 df |> 
-  select(-measurement, -value) |> 
+  select(!measurement & !value) |> 
   distinct() |> 
   mutate(x = NA, y = NA, z = NA)
 ```

@@ -122,7 +122,9 @@ Pero si su cadena contiene `)"`, puede usar `r"[]"` o `r"{}"`, y si eso aún no 
 
 ### Otros caracteres especiales
 
-Además de `\"`, `\'` y `\\`, hay otros caracteres especiales que pueden ser útiles. Los más comunes son `\n`, una nueva línea y `\t`, tabulador. A veces también verá cadenas que contienen escapes Unicode que comienzan con `\u` o `\U`. Esta es una forma de escribir caracteres no ingleses que funcionan en todos los sistemas. Puede ver la lista completa de otros caracteres especiales en `?Quote`.
+Además de `"`, `'` y `\`, hay otros caracteres especiales que pueden ser útiles.
+Los más comunes son `\n`, una nueva línea y `\t`, tabulador. A veces también verá cadenas que contienen escapes Unicode que comienzan con `\u` o `\U`.
+Esta es una forma de escribir caracteres no ingleses que funcionan en todos los sistemas. Puede ver la lista completa de otros caracteres especiales en `?Quote`.
 
 ```{r}
 x <- c("one\ntwo", "one\ttwo", "\u00b5", "\U0001f604")
@@ -370,7 +372,7 @@ Comencemos por depurar el problema:
 ```{r}
 debug <- df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z"),
     too_few = "debug"
@@ -378,15 +380,15 @@ debug <- df |>
 debug
 ```
 
-Cuando usa el modo de depuración, obtiene tres columnas adicionales agregadas a la salida: `x_ok`, `x_pieces` y `x_remainder` (si separa una variable con un nombre diferente, obtendrá un prefijo diferente).
-Aquí, `x_ok` te permite encontrar rápidamente las entradas que fallaron:
+Cuando usa el modo de depuración, obtiene tres columnas adicionales agregadas a la salida: `a_ok`, `a_pieces` y `a_remainder` (si separa una variable con un nombre diferente, obtendrá un prefijo diferente).
+Aquí, `a_ok` te permite encontrar rápidamente las entradas que fallaron:
 
 ```{r}
-debug |> filter(!x_ok)
+debug |> filter(!a_ok)
 ```
 
-`x_pieces` nos dice cuántas piezas se encontraron, en comparación con las 3 esperadas (la longitud de `names`).
-`x_remainder` no es útil cuando hay muy pocas piezas, pero lo veremos de nuevo en breve.
+`a_pieces` nos dice cuántas piezas se encontraron, en comparación con las 3 esperadas (la longitud de `names`).
+`a_remainder` no es útil cuando hay muy pocas piezas, pero lo veremos de nuevo en breve.
 
 A veces, mirar esta información de depuración revelará un problema con su estrategia de delimitación o sugerirá que necesita hacer más preprocesamiento antes de separarse.
 En ese caso, solucione el problema aguas arriba y asegúrese de eliminar `too_few = "debug"` para asegurarse de que los nuevos problemas se conviertan en errores.
@@ -397,7 +399,7 @@ Ese es el trabajo de `too_few = "align_start"` y `too_few = "align_end"` que le 
 ```{r}
 df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z"),
     too_few = "align_start"
@@ -408,27 +410,27 @@ Los mismos principios se aplican si tiene demasiadas piezas:
 
 ```{r}
 #| error: true
-df <- tibble(x = c("1-1-1", "1-1-2", "1-3-5-6", "1-3-2", "1-3-5-7-9"))
+df <- tibble(a = c("1-1-1", "1-1-2", "1-3-5-6", "1-3-2", "1-3-5-7-9"))
 
 df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z")
   )
 ```
 
-Pero ahora, cuando depuramos el resultado, puedes ver el propósito de `x_remainder`:
+Pero ahora, cuando depuramos el resultado, puedes ver el propósito de `a_remainder`:
 
 ```{r}
 debug <- df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z"),
     too_many = "debug"
   )
-debug |> filter(!x_ok)
+debug |> filter(!a_ok)
 ```
 
 Tiene un conjunto ligeramente diferente de opciones para manejar demasiadas piezas: puede "soltar" silenciosamente cualquier pieza adicional o "fusionarlas" todas en la columna final:
@@ -436,7 +438,7 @@ Tiene un conjunto ligeramente diferente de opciones para manejar demasiadas piez
 ```{r}
 df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z"),
     too_many = "drop"
@@ -445,7 +447,7 @@ df |>
 
 df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z"),
     too_many = "merge"

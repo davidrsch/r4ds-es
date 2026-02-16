@@ -706,8 +706,6 @@ y2024 / days(1)
 
 3.  Escribe una función que, dado tu cumpleaños (como una fecha), devuelva la edad que tienes en años.
 
-4.  ¿Por qué `(today() %--% (today() + years(1))) / months(1)` no puede funcionar?
-
 ## Zonas horarias
 
 Las zonas horarias son un tema enormemente complicado debido a su interacción con las entidades geopolíticas.

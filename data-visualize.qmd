@@ -718,12 +718,23 @@ Usando este gráfico, podemos ver que todos los pingüinos Gentoo viven en la is
 #| fig-alt: >
 #|   Gráficos de barras de especies de pingüinos por isla (Biscoe, Dream y Torgersen) 
 #|   las barras están escaladas a la misma altura, lo que lo convierte en un gráfico de frecuencias
-#|   relativas
+#|   relativas. El eje y está etiquetado "count" por defecto.
 ggplot(penguins, aes(x = island, fill = species)) +
   geom_bar(position = "fill")
 ```
 
 Al crear estos gráficos de barras, asignamos la variable que se separará en barras a la estética `x` y la variable que cambiará los colores dentro de las barras a la estética `fill`.
+Desafortunadamente, ggplot2 etiqueta el eje y como "count" de forma predeterminada, pero esto se puede modificar añadiendo la capa `labs()`, donde podemos establecer la etiqueta del eje y como `"proporción"`.
+
+```{r}
+#| fig-alt: |
+#|  Gráficos de barras de especies de pingüinos por isla (Biscoe, Dream y Torgersen)
+#| las barras están escaladas a la misma altura, lo que lo convierte en un gráfico de frecuencias
+#| relativas. El eje y está etiquetado "proporción".
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "fill") +
+  labs(y = "proporción")
+```
 
 ### Dos variables numéricas
 

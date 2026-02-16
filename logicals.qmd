@@ -199,7 +199,7 @@ Volveremos para cubrir los valores faltantes con más profundidad en @sec-missin
 Una vez que tenga varios vectores lógicos, puede combinarlos usando álgebra booleana.
 En R, `&` es "y", `|` es "o", `!` es "no", y `xor()` es exclusivo o [^logicals-2].
 Por ejemplo, `df |> filter(!is.na(x))` encuentra todas las filas donde no falta `x` y `df |> filter(x < -10 | x > 0)` encuentra todas las filas donde `x` es menor que -10 o mayor que 0.
-@fig-bool-ops muestra el conjunto completo de operaciones booleanas y cómo funcionan.
+@fig-bool-ops muestra ejemplos de operaciones booleanas comúnmente utilizadas y cómo funcionan.
 
 [^logicals-2]: Es decir, `xor(x, y)` es TRUE si x es TRUE, o y es TRUE, pero no ambos.
     Así es como solemos usar "o" en inglés.
@@ -210,7 +210,7 @@ Por ejemplo, `df |> filter(!is.na(x))` encuentra todas las filas donde no falta 
 #| echo: false
 #| out-width: NULL
 #| fig-cap: > 
-#|    El conjunto completo de operaciones booleanas. `x` es el círculo a la
+#|    Ub conjunto de operaciones booleanas comúnmente utilizadas. `x` es el círculo a la
 #|    izquierda, `y` es el círculo de la derecha, y la región sombreada muestra
 #|    qué partes selecciona cada operador.
 #| fig-alt: >

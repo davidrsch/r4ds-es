@@ -40,6 +40,7 @@ library(tidyverse)
 Imagina que tienes este tibble simple y quieres contar el número de observaciones y calcular la mediana de cada columna.
 
 ```{r}
+set.seed(1014)
 df <- tibble(
   a = rnorm(10),
   b = rnorm(10),
@@ -83,6 +84,7 @@ Hay dos técnicas de selección adicionales que son particularmente útiles para
 `everything()` es sencillo: selecciona todas las columnas (no agrupadas):
 
 ```{r}
+set.seed(1014)
 df <- tibble(
   grp = sample(2, 10, replace = TRUE),
   a = rnorm(10),
@@ -141,6 +143,7 @@ Motivemos este problema con un ejemplo simple: ¿qué sucede si tenemos algunos 
 `median()` propaga esos valores perdidos, dándonos un resultado subóptimo:
 
 ```{r}
+set.seed(1014)
 rnorm_na <- function(n, n_na, mean = 0, sd = 1) {
   sample(c(rnorm(n - n_na, mean = mean, sd = sd), rep(NA, n_na)))
 }
@@ -358,6 +361,7 @@ Esta es una técnica útil para conocer porque a veces te encontrarás con un pr
 Por ejemplo, imagine que nuestro data frame contiene valores y pesos y queremos calcular una media ponderada:
 
 ```{r}
+set.seed(1014)
 df_paired <- tibble(
   a_val = rnorm(10),
   a_wts = runif(10),
@@ -465,6 +469,7 @@ Casi siempre usarás tres argumentos:
     Casi siempre quieres que esto sea `TRUE`.
 
 Para concretar nuestro ejemplo motivador, este libro contiene una carpeta con 12 hojas de cálculo de Excel que contienen datos del paquete gapminder.
+Esta carpeta puede ser encontrada en <https://github.com/hadley/r4ds/tree/main/data/gapminder>.
 Cada archivo contiene datos de un año para 142 países.
 Podemos listarlos todos con la llamada apropiada a `list.files()`:
 

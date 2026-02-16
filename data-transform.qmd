@@ -643,7 +643,7 @@ No nos enfocamos en esta sintaxis en este capítulo porque era muy nueva cuando 
 
 1.  ¿Qué operador tiene el peor promedio de retrasos? Desafío: ¿puede desentrañar los efectos de los malos aeropuertos frente a los malos transportistas? ¿Por qué/por qué no? (Pista: piense en `flights |> group_by(carrier, dest) |> summarize(n())`)
 
-2.  Encuentra los vuelos que más se retrasan a la salida de cada destino.
+2.  Encuentra los vuelos que más se retrasan a la salida a cada destino.
 
 3.  ¿Cómo varían los retrasos a lo largo del día? Ilustra tu respuesta con un gráfico.
 

@@ -288,7 +288,7 @@ Finalmente, mencionaremos algunas estrategias generales que son útiles si readr
 ### Adivinar tipos
 
 readr usa una heurística para averiguar los tipos de columna.
-Para cada columna, extrae los valores de 1000\[\^data-import-2\] filas espaciadas uniformemente desde la primera fila hasta la última, ignorando los valores faltantes.
+Para cada columna, extrae los valores de 1000 filas \[\^data-import-2\] espaciadas uniformemente desde la primera fila hasta la última, ignorando los valores faltantes.
 Luego trabaja a través de las siguientes preguntas:
 
 \[\^importación de datos-2\]: puede anular el valor predeterminado de 1000 con el argumento `guess_max`.
@@ -368,7 +368,7 @@ readr proporciona un total de nueve tipos de columnas para su uso:
 -   `col_number()` es un analizador numérico permisivo que ignorará los componentes no numéricos y es particularmente útil para las monedas. Aprenderá más al respecto en @sec-numbers.
 -   `col_skip()` salta una columna por lo que no se incluye en el resultado.
 
-También es posible anular la columna predeterminada cambiando de `list()` a `cols()`:
+También es posible anular la heurística predeterminada que determina el tipo de forma automática cambiando de `list()` a `cols()`:
 
 ```{r}
 csv <- "

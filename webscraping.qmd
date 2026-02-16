@@ -239,7 +239,7 @@ html |> html_element("b")
 
 En la mayoría de los casos, usará `html_elements()` y `html_element()` juntos, generalmente usando `html_elements()` para identificar elementos que se convertirán en observaciones y luego usará `html_element()` para encontrar elementos que se convertirán en variables.
 Veamos esto en acción usando un ejemplo simple.
-Aquí tenemos una lista desordenada (`<ul>)` donde cada elemento de la lista (`<li>`) contiene información sobre cuatro personajes de StarWars:
+Aquí tenemos una lista desordenada (`<ul>`) donde cada elemento de la lista (`<li>`) contiene información sobre cuatro personajes de StarWars:
 
 ```{r}
 html <- minimal_html("

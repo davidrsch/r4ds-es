@@ -311,7 +311,7 @@ Una célula puede ser una de cuatro cosas:
 Al trabajar con datos de hojas de cálculo, es importante tener en cuenta que los datos subyacentes pueden ser muy diferentes de lo que ve en la celda.
 Por ejemplo, Excel no tiene noción de un número entero.
 Todos los números se almacenan como puntos flotantes, pero puede optar por mostrar los datos con un número personalizable de puntos decimales.
-De manera similar, las fechas en realidad se almacenan como números, específicamente la cantidad de segundos desde el 1 de enero de 1970.
+De manera similar, las fechas en realidad se almacenan como números, específicamente la cantidad de segundos desde el 1 de enero de 1900.
 Puede personalizar cómo muestra la fecha aplicando formato en Excel.
 De manera confusa, también es posible tener algo que parezca un número pero que en realidad sea una cadena (por ejemplo, escriba `'10` en una celda de Excel).
 
