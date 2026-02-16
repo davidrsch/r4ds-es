@@ -729,8 +729,8 @@ Desafortunadamente, ggplot2 etiqueta el eje y como "count" de forma predetermina
 ```{r}
 #| fig-alt: |
 #|  Gráficos de barras de especies de pingüinos por isla (Biscoe, Dream y Torgersen)
-#| las barras están escaladas a la misma altura, lo que lo convierte en un gráfico de frecuencias
-#| relativas. El eje y está etiquetado "proporción".
+#|  las barras están escaladas a la misma altura, lo que lo convierte en un gráfico de frecuencias
+#|  relativas. El eje y está etiquetado "proporción".
 ggplot(penguins, aes(x = island, fill = species)) +
   geom_bar(position = "fill") +
   labs(y = "proporción")
