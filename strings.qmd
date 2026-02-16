@@ -356,11 +356,11 @@ Hay dos posibles problemas, muy pocas o demasiadas piezas, por lo que `separate_
 
 ```{r}
 #| error: true
-df <- tibble(x = c("1-1-1", "1-1-2", "1-3", "1-3-2", "1"))
+df <- tibble(a = c("1-1-1", "1-1-2", "1-3", "1-3-2", "1"))
 
 df |> 
   separate_wider_delim(
-    x,
+    a,
     delim = "-",
     names = c("x", "y", "z")
   )
