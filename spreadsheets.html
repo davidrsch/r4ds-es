@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>20&nbsp; Hojas de calculo – R para la Ciencia de Datos (2e)</title>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-137d6603e742c47c828ffe5e80dd4ea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,9 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -780,7 +778,7 @@ Figura&nbsp;20.3: Hoja de cálculo llamada death.xlsx en Excel.
 <li><p>Una fecha y hora, que también puede incluir una hora como “1/11/21” o “1/11/21 3:00 PM”.</p></li>
 <li><p>Una cadena de texto, como “diez”.</p></li>
 </ul>
-<p>Al trabajar con datos de hojas de cálculo, es importante tener en cuenta que los datos subyacentes pueden ser muy diferentes de lo que ve en la celda. Por ejemplo, Excel no tiene noción de un número entero. Todos los números se almacenan como puntos flotantes, pero puede optar por mostrar los datos con un número personalizable de puntos decimales. De manera similar, las fechas en realidad se almacenan como números, específicamente la cantidad de segundos desde el 1 de enero de 1970. Puede personalizar cómo muestra la fecha aplicando formato en Excel. De manera confusa, también es posible tener algo que parezca un número pero que en realidad sea una cadena (por ejemplo, escriba <code>'10</code> en una celda de Excel).</p>
+<p>Al trabajar con datos de hojas de cálculo, es importante tener en cuenta que los datos subyacentes pueden ser muy diferentes de lo que ve en la celda. Por ejemplo, Excel no tiene noción de un número entero. Todos los números se almacenan como puntos flotantes, pero puede optar por mostrar los datos con un número personalizable de puntos decimales. De manera similar, las fechas en realidad se almacenan como números, específicamente la cantidad de segundos desde el 1 de enero de 1900. Puede personalizar cómo muestra la fecha aplicando formato en Excel. De manera confusa, también es posible tener algo que parezca un número pero que en realidad sea una cadena (por ejemplo, escriba <code>'10</code> en una celda de Excel).</p>
 <p>Estas diferencias entre cómo se almacenan los datos subyacentes y cómo se muestran pueden causar sorpresas cuando los datos se cargan en R. Por defecto, readxl adivinará el tipo de datos en una columna determinada. Un flujo de trabajo recomendado es dejar que readxl adivine los tipos de columna, confirme que está satisfecho con los tipos de columna adivinados y, si no, regrese y vuelva a importar especificando <code>col_types</code> como se muestra en <a href="#sec-reading-spreadsheets-excel" class="quarto-xref"><span>Sección 20.2.3</span></a>.</p>
 <p>Otro desafío es cuando tiene una columna en su hoja de cálculo de Excel que tiene una combinación de estos tipos, p.ej., algunas celdas son numéricas, otras de texto, otras de fechas. Al importar los datos a R, readxl tiene que tomar algunas decisiones. En estos casos, puede establecer el tipo de esta columna en <code>"list"</code>, lo que cargará la columna como una lista de vectores de longitud 1, donde se adivina el tipo de cada elemento del vector.</p>
 <div class="callout callout-style-simple callout-note">

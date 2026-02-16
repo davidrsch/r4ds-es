@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>12&nbsp; Vectores lógicos – R para la Ciencia de Datos (2e)</title>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-137d6603e742c47c828ffe5e80dd4ea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,9 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -689,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> juntos para describir cómo se conectan los valores que faltan en <code>dep_time</code>, <code>sched_dep_time</code> y <code>dep_delay</code>.</li>
 </ol></section></section><section id="álgebra-booleana" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="álgebra-booleana">
 <span class="header-section-number">12.3</span> Álgebra booleana</h2>
-<p>Una vez que tenga varios vectores lógicos, puede combinarlos usando álgebra booleana. En R, <code>&amp;</code> es “y”, <code>|</code> es “o”, <code>!</code> es “no”, y <code><a href="https://rdrr.io/r/base/Logic.html">xor()</a></code> es exclusivo o <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Por ejemplo, <code>df |&gt; filter(!is.na(x))</code> encuentra todas las filas donde no falta <code>x</code> y <code>df |&gt; filter(x &lt; -10 | x &gt; 0)</code> encuentra todas las filas donde <code>x</code> es menor que -10 o mayor que 0. <a href="#fig-bool-ops" class="quarto-xref">Figura&nbsp;<span>12.1</span></a> muestra el conjunto completo de operaciones booleanas y cómo funcionan.</p>
+<p>Una vez que tenga varios vectores lógicos, puede combinarlos usando álgebra booleana. En R, <code>&amp;</code> es “y”, <code>|</code> es “o”, <code>!</code> es “no”, y <code><a href="https://rdrr.io/r/base/Logic.html">xor()</a></code> es exclusivo o <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Por ejemplo, <code>df |&gt; filter(!is.na(x))</code> encuentra todas las filas donde no falta <code>x</code> y <code>df |&gt; filter(x &lt; -10 | x &gt; 0)</code> encuentra todas las filas donde <code>x</code> es menor que -10 o mayor que 0. <a href="#fig-bool-ops" class="quarto-xref">Figura&nbsp;<span>12.1</span></a> muestra ejemplos de operaciones booleanas comúnmente utilizadas y cómo funcionan.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-bool-ops" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Siete diagramas de Venn, cada uno explicando un operador lógico distinto. Los círculos (conjuntos) en cada uno de los diagramas de Venn representan x e y. x &amp; !y es x pero nada de y; x &amp; y es la intersección de x e y; !x &amp; y es y pero nada de x; x es todo de x; xor(x, y) es todo excepto la intersección de x e y; y es todo de y; y x | y es todo.">
@@ -697,7 +695,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="diagrams/transform.png" class="img-fluid figure-img" alt="Siete diagramas de Venn, cada uno explicando un operador lógico distinto. Los círculos (conjuntos) en cada uno de los diagramas de Venn representan x e y. x &amp; !y es x pero nada de y; x &amp; y es la intersección de x e y; !x &amp; y es y pero nada de x; x es todo de x; xor(x, y) es todo excepto la intersección de x e y; y es todo de y; y x | y es todo." width="395">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bool-ops-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;12.1: El conjunto completo de operaciones booleanas. <code>x</code> es el círculo a la izquierda, <code>y</code> es el círculo de la derecha, y la región sombreada muestra qué partes selecciona cada operador.
+Figura&nbsp;12.1: Ub conjunto de operaciones booleanas comúnmente utilizadas. <code>x</code> es el círculo a la izquierda, <code>y</code> es el círculo de la derecha, y la región sombreada muestra qué partes selecciona cada operador.
 </figcaption></figure>
 </div>
 </div>

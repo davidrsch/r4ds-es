@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>14&nbsp; Caracteres – R para la Ciencia de Datos (2e)</title>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-137d6603e742c47c828ffe5e80dd4ea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,9 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -564,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Una cadena sin procesar generalmente comienza con <code>r"(</code> y termina con <code>)"</code>. Pero si su cadena contiene <code>)"</code>, puede usar <code>r"[]"</code> o <code>r"{}"</code>, y si eso aún no es suficiente, puede insertar cualquier número de guiones para hacer los pares de apertura y cierre único, por ejemplo, <code>r"--()--"</code>, <code>r"---()---"</code>, etc. Las cadenas sin procesar son lo suficientemente flexibles para manejar cualquier texto.</p>
 </section><section id="otros-caracteres-especiales" class="level3" data-number="14.2.3"><h3 data-number="14.2.3" class="anchored" data-anchor-id="otros-caracteres-especiales">
 <span class="header-section-number">14.2.3</span> Otros caracteres especiales</h3>
-<p>Además de <code>\"</code>, <code>\'</code> y <code>\\</code>, hay otros caracteres especiales que pueden ser útiles. Los más comunes son <code>\n</code>, una nueva línea y <code>\t</code>, tabulador. A veces también verá cadenas que contienen escapes Unicode que comienzan con <code>\u</code> o <code>\U</code>. Esta es una forma de escribir caracteres no ingleses que funcionan en todos los sistemas. Puede ver la lista completa de otros caracteres especiales en <code><a href="https://rdrr.io/r/methods/methodUtilities.html">?Quote</a></code>.</p>
+<p>Además de <code>"</code>, <code>'</code> y <code>\</code>, hay otros caracteres especiales que pueden ser útiles. Los más comunes son <code>\n</code>, una nueva línea y <code>\t</code>, tabulador. A veces también verá cadenas que contienen escapes Unicode que comienzan con <code>\u</code> o <code>\U</code>. Esta es una forma de escribir caracteres no ingleses que funcionan en todos los sistemas. Puede ver la lista completa de otros caracteres especiales en <code><a href="https://rdrr.io/r/methods/methodUtilities.html">?Quote</a></code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"one\ntwo"</span>, <span class="st">"one\ttwo"</span>, <span class="st">"\u00b5"</span>, <span class="st">"\U0001f604"</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
@@ -811,16 +809,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">14.4.3</span> Diagnóstico de problemas de ensanchamiento</h3>
 <p><code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> requiere un conjunto fijo y conocido de columnas. ¿Qué sucede si alguna de las filas no tiene el número esperado de piezas? Hay dos posibles problemas, muy pocas o demasiadas piezas, por lo que <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> proporciona dos argumentos para ayudar: <code>too_few</code> y <code>too_many</code>. Primero veamos el caso <code>too_few</code> con el siguiente conjunto de datos de muestra:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1-1-1"</span>, <span class="st">"1-1-2"</span>, <span class="st">"1-3"</span>, <span class="st">"1-3-2"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1-1-1"</span>, <span class="st">"1-1-2"</span>, <span class="st">"1-3"</span>, <span class="st">"1-3-2"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `separate_wider_delim()`:</span></span>
-<span><span class="co">#&gt; ! Expected 3 pieces in each element of `x`.</span></span>
+<span><span class="co">#&gt; ! Expected 3 pieces in each element of `a`.</span></span>
 <span><span class="co">#&gt; ! 2 values were too short.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_few = "debug"` to diagnose the problem.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_few = "align_start"/"align_end"` to silence this message.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -829,39 +827,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
 <span>    too_few <span class="op">=</span> <span class="st">"debug"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Debug mode activated: adding variables `x_ok`, `x_pieces`, and</span></span>
-<span><span class="co">#&gt; `x_remainder`.</span></span>
+<span><span class="co">#&gt; Warning: Debug mode activated: adding variables `a_ok`, `a_pieces`, and</span></span>
+<span><span class="co">#&gt; `a_remainder`.</span></span>
 <span><span class="va">debug</span></span>
-<span><span class="co">#&gt; # A tibble: 5 × 6</span></span>
-<span><span class="co">#&gt;   x     y     z     x_ok  x_pieces x_remainder</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
-<span><span class="co">#&gt; 1 1-1-1 1     1     TRUE         3 ""         </span></span>
-<span><span class="co">#&gt; 2 1-1-2 1     2     TRUE         3 ""         </span></span>
-<span><span class="co">#&gt; 3 1-3   3     &lt;NA&gt;  FALSE        2 ""         </span></span>
-<span><span class="co">#&gt; 4 1-3-2 3     2     TRUE         3 ""         </span></span>
-<span><span class="co">#&gt; 5 1     &lt;NA&gt;  &lt;NA&gt;  FALSE        1 ""</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; # A tibble: 5 × 7</span></span>
+<span><span class="co">#&gt;   x     y     z     a     a_ok  a_pieces a_remainder</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt; 1 1     1     1     1-1-1 TRUE         3 ""         </span></span>
+<span><span class="co">#&gt; 2 1     1     2     1-1-2 TRUE         3 ""         </span></span>
+<span><span class="co">#&gt; 3 1     3     &lt;NA&gt;  1-3   FALSE        2 ""         </span></span>
+<span><span class="co">#&gt; 4 1     3     2     1-3-2 TRUE         3 ""         </span></span>
+<span><span class="co">#&gt; 5 1     &lt;NA&gt;  &lt;NA&gt;  1     FALSE        1 ""</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Cuando usa el modo de depuración, obtiene tres columnas adicionales agregadas a la salida: <code>x_ok</code>, <code>x_pieces</code> y <code>x_remainder</code> (si separa una variable con un nombre diferente, obtendrá un prefijo diferente). Aquí, <code>x_ok</code> te permite encontrar rápidamente las entradas que fallaron:</p>
+<p>Cuando usa el modo de depuración, obtiene tres columnas adicionales agregadas a la salida: <code>a_ok</code>, <code>a_pieces</code> y <code>a_remainder</code> (si separa una variable con un nombre diferente, obtendrá un prefijo diferente). Aquí, <code>a_ok</code> te permite encontrar rápidamente las entradas que fallaron:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">x_ok</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 6</span></span>
-<span><span class="co">#&gt;   x     y     z     x_ok  x_pieces x_remainder</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
-<span><span class="co">#&gt; 1 1-3   3     &lt;NA&gt;  FALSE        2 ""         </span></span>
-<span><span class="co">#&gt; 2 1     &lt;NA&gt;  &lt;NA&gt;  FALSE        1 ""</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">a_ok</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 7</span></span>
+<span><span class="co">#&gt;   x     y     z     a     a_ok  a_pieces a_remainder</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt; 1 1     3     &lt;NA&gt;  1-3   FALSE        2 ""         </span></span>
+<span><span class="co">#&gt; 2 1     &lt;NA&gt;  &lt;NA&gt;  1     FALSE        1 ""</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>x_pieces</code> nos dice cuántas piezas se encontraron, en comparación con las 3 esperadas (la longitud de <code>names</code>). <code>x_remainder</code> no es útil cuando hay muy pocas piezas, pero lo veremos de nuevo en breve.</p>
+<p><code>a_pieces</code> nos dice cuántas piezas se encontraron, en comparación con las 3 esperadas (la longitud de <code>names</code>). <code>a_remainder</code> no es útil cuando hay muy pocas piezas, pero lo veremos de nuevo en breve.</p>
 <p>A veces, mirar esta información de depuración revelará un problema con su estrategia de delimitación o sugerirá que necesita hacer más preprocesamiento antes de separarse. En ese caso, solucione el problema aguas arriba y asegúrese de eliminar <code>too_few = "debug"</code> para asegurarse de que los nuevos problemas se conviertan en errores.</p>
 <p>En otros casos, es posible que desee completar las piezas que faltan con “NA” y seguir adelante. Ese es el trabajo de <code>too_few = "align_start"</code> y <code>too_few = "align_end"</code> que le permiten controlar dónde deben ir los <code>NA</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
 <span>    too_few <span class="op">=</span> <span class="st">"align_start"</span></span>
@@ -877,43 +875,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Los mismos principios se aplican si tiene demasiadas piezas:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1-1-1"</span>, <span class="st">"1-1-2"</span>, <span class="st">"1-3-5-6"</span>, <span class="st">"1-3-2"</span>, <span class="st">"1-3-5-7-9"</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1-1-1"</span>, <span class="st">"1-1-2"</span>, <span class="st">"1-3-5-6"</span>, <span class="st">"1-3-2"</span>, <span class="st">"1-3-5-7-9"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; Error in `separate_wider_delim()`:</span></span>
-<span><span class="co">#&gt; ! Expected 3 pieces in each element of `x`.</span></span>
+<span><span class="co">#&gt; ! Expected 3 pieces in each element of `a`.</span></span>
 <span><span class="co">#&gt; ! 2 values were too long.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_many = "debug"` to diagnose the problem.</span></span>
 <span><span class="co">#&gt; ℹ Use `too_many = "drop"/"merge"` to silence this message.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Pero ahora, cuando depuramos el resultado, puedes ver el propósito de <code>x_remainder</code>:</p>
+<p>Pero ahora, cuando depuramos el resultado, puedes ver el propósito de <code>a_remainder</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">debug</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
 <span>    too_many <span class="op">=</span> <span class="st">"debug"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Debug mode activated: adding variables `x_ok`, `x_pieces`, and</span></span>
-<span><span class="co">#&gt; `x_remainder`.</span></span>
-<span><span class="va">debug</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">x_ok</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 6</span></span>
-<span><span class="co">#&gt;   x         y     z     x_ok  x_pieces x_remainder</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
-<span><span class="co">#&gt; 1 1-3-5-6   3     5     FALSE        4 -6         </span></span>
-<span><span class="co">#&gt; 2 1-3-5-7-9 3     5     FALSE        5 -7-9</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; Warning: Debug mode activated: adding variables `a_ok`, `a_pieces`, and</span></span>
+<span><span class="co">#&gt; `a_remainder`.</span></span>
+<span><span class="va">debug</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">a_ok</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 7</span></span>
+<span><span class="co">#&gt;   x     y     z     a         a_ok  a_pieces a_remainder</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;lgl&gt;    &lt;int&gt; &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt; 1 1     3     5     1-3-5-6   FALSE        4 -6         </span></span>
+<span><span class="co">#&gt; 2 1     3     5     1-3-5-7-9 FALSE        5 -7-9</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Tiene un conjunto ligeramente diferente de opciones para manejar demasiadas piezas: puede “soltar” silenciosamente cualquier pieza adicional o “fusionarlas” todas en la columna final:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
 <span>    too_many <span class="op">=</span> <span class="st">"drop"</span></span>
@@ -930,7 +928,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span></span>
-<span>    <span class="va">x</span>,</span>
+<span>    <span class="va">a</span>,</span>
 <span>    delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>,</span>
 <span>    too_many <span class="op">=</span> <span class="st">"merge"</span></span>

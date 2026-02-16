@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>7&nbsp; Importación de datos – R para la Ciencia de Datos (2e)</title>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-137d6603e742c47c828ffe5e80dd4ea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,9 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -791,7 +789,7 @@ Tabla&nbsp;7.1: Datos del archivo students.csv como una tabla.
 <p>Un archivo CSV no contiene ninguna información sobre el tipo de cada variable (es decir, si es un número lógico, una cadena, etc.), por lo que readr intentará adivinar el tipo. Esta sección describe cómo funciona el proceso de adivinación, cómo resolver algunos problemas comunes que hacen que falle y, si es necesario, cómo proporcionar los tipos de columna usted mismo. Finalmente, mencionaremos algunas estrategias generales que son útiles si readr está fallando catastróficamente y necesita obtener más información sobre la estructura de su archivo.</p>
 <section id="adivinar-tipos" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="adivinar-tipos">
 <span class="header-section-number">7.3.1</span> Adivinar tipos</h3>
-<p>readr usa una heurística para averiguar los tipos de columna. Para cada columna, extrae los valores de 1000[^data-import-2] filas espaciadas uniformemente desde la primera fila hasta la última, ignorando los valores faltantes. Luego trabaja a través de las siguientes preguntas:</p>
+<p>readr usa una heurística para averiguar los tipos de columna. Para cada columna, extrae los valores de 1000 filas [^data-import-2] espaciadas uniformemente desde la primera fila hasta la última, ignorando los valores faltantes. Luego trabaja a través de las siguientes preguntas:</p>
 <p>[^importación de datos-2]: puede anular el valor predeterminado de 1000 con el argumento <code>guess_max</code>.</p>
 <ul>
 <li>¿Contiene solo <code>F</code>, <code>T</code>, <code>FALSE</code> o <code>TRUE</code> (ignorando mayúsculas y minúsculas)? Si es así, es una lógica.</li>
@@ -862,7 +860,7 @@ Tabla&nbsp;7.1: Datos del archivo students.csv como una tabla.
 <span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
 <span><span class="co">#&gt;     row   col expected actual file                            </span></span>
 <span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                           </span></span>
-<span><span class="co">#&gt; 1     3     1 a double .      /tmp/RtmppelRdR/file226c65bf43c6</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; 1     3     1 a double .      /tmp/RtmpWYAfSH/file56eb7ad2fceb</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto nos dice que hubo un problema en la fila 3, columna 1 donde readr esperaba un doble pero obtuvo un <code>.</code>. Eso sugiere que este conjunto de datos usa <code>.</code> para valores faltantes. Entonces establecemos <code>na = "."</code>, la adivinación automática tiene éxito, dándonos la columna numérica que queremos:</p>
 <div class="cell">
@@ -892,7 +890,7 @@ Tabla&nbsp;7.1: Datos del archivo students.csv como una tabla.
 <li>
 <code><a href="https://readr.tidyverse.org/reference/col_skip.html">col_skip()</a></code> salta una columna por lo que no se incluye en el resultado.</li>
 </ul>
-<p>También es posible anular la columna predeterminada cambiando de <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> a <code><a href="https://readr.tidyverse.org/reference/cols.html">cols()</a></code>:</p>
+<p>También es posible anular la heurística predeterminada que determina el tipo de forma automática cambiando de <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> a <code><a href="https://readr.tidyverse.org/reference/cols.html">cols()</a></code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">csv</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">x,y,z</span></span>

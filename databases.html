@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <title>21&nbsp; Bases de datos – R para la Ciencia de Datos (2e)</title>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-137d6603e742c47c828ffe5e80dd4ea9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,9 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
@@ -587,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"diamonds"</span><span class="op">)</span></span>
 <span><span class="va">diamonds_db</span></span>
 <span><span class="co">#&gt; # Source:   table&lt;diamonds&gt; [?? x 10]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.11.0-1018-azure:R 4.4.0/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.14.0-1017-azure:R 4.4.0/:memory:]</span></span>
 <span><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></span>
@@ -624,7 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span><span class="va">big_diamonds_db</span></span>
 <span><span class="co">#&gt; # Source:   SQL [?? x 5]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.11.0-1018-azure:R 4.4.0/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.14.0-1017-azure:R 4.4.0/:memory:]</span></span>
 <span><span class="co">#&gt;   carat cut       color clarity price</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
 <span><span class="co">#&gt; 1  1.54 Premium   E     VS2     15002</span></span>
@@ -852,15 +850,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Use `na.rm = TRUE` to silence this warning</span></span>
 <span><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
 <span><span class="co">#&gt; # Source:   SQL [?? x 2]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.11.0-1018-azure:R 4.4.0/:memory:]</span></span>
+<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.14.0-1017-azure:R 4.4.0/:memory:]</span></span>
 <span><span class="co">#&gt;   dest   delay</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 IAH    4.24 </span></span>
-<span><span class="co">#&gt; 2 BQN    8.25 </span></span>
-<span><span class="co">#&gt; 3 ATL   11.3  </span></span>
-<span><span class="co">#&gt; 4 MCO    5.45 </span></span>
-<span><span class="co">#&gt; 5 LAS    0.258</span></span>
-<span><span class="co">#&gt; 6 PHX    2.10 </span></span>
+<span><span class="co">#&gt; 1 ORD    5.88 </span></span>
+<span><span class="co">#&gt; 2 FLL    8.08 </span></span>
+<span><span class="co">#&gt; 3 IAD   13.9  </span></span>
+<span><span class="co">#&gt; 4 PBI    8.56 </span></span>
+<span><span class="co">#&gt; 5 TPA    7.41 </span></span>
+<span><span class="co">#&gt; 6 DFW    0.322</span></span>
 <span><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si desea obtener más información sobre cómo funcionan los valores <code>NULL</code>, puede disfrutar de “<a href="https://modern-sql.com/concept/three-valued-logic"><em>La lógica de tres valores de SQL</em></a>” de Markus Winand.</p>
