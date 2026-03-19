@@ -5,6 +5,7 @@
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
+<meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <title>9&nbsp; Capas – R para la Ciencia de Datos (2e)</title>
 <style>
 code{white-space: pre-wrap;}
@@ -101,6 +102,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+<meta property="og:title" content="9&nbsp; Capas – R para la Ciencia de Datos (2e)">
+<meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
+<meta property="og:image" content="https://davidrsch.github.io/r4ds-es/layers_files/figure-html/unnamed-chunk-4-1.png">
+<meta property="og:site_name" content="R para la Ciencia de Datos (2e)">
+<meta property="og:image:alt" content="Dos diagramas de dispersión uno al lado del otro, ambos visualizando la eficiencia de combustible en carretera versus el tamaño del motor de los automóviles y mostrando una asociación negativa. En el gráfico de la izquierda, la variable clase (class) se asigna a la aesthetic color, dando como resultado diferentes colores para cada clase. En la gráfica de la derecha la variable clase (class) se asigna a la aesthetic shape, dando como resultado diferentes formas de caracteres de trazado para cada clase, excepto todoterreno. Cada gráfico viene con una leyenda que muestra el mapeo entre color o shape y los niveles de la variable clase (class).">
+<meta property="og:image:height" content="512">
+<meta property="og:image:width" content="768">
 </head>
 <body class="nav-sidebar floating quarto-light">
 
@@ -592,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-shapes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Mapeo entre formas y los números que las representan: 0 - cuadrado hueco, 1 - círculo hueco, 2 - triángulo hueco apuntando hacia arriba, 3 - símbolo de adición, 4 - cruz, 5 - rombo hueco, 6 - triángulo hueco apuntando hacia abajo, 7 - cruz en un cuadrado, 8 - asterisco, 9 - símbolo de adición en un rombo, 10 - símbolo de adición en un círculo, 11 - triángulos hacia arriba y hacia abajo huecos, 12 - símbolo de adición en un cuadrado, 13 - cruz superpuesta a un círculo, 14 - cuadrado y triángulo apuntando hacia arriba, 15 - cuadrado relleno, 16 - círculo relleno, 17 - triángulo relleno apuntando hacia arriba, 18 - rombo relleno, 19 - círculo relleno, 20 - viñeta (círculo más pequeño), 21 - círculo con relleno y borde, 22 - cuadrado con relleno y borde, 23 - rombo con relleno y borde, 24 - triángulo apuntando hacia arriba con relleno y borde, 25 - triángulo apuntando hacia abajo con relleno y borde.">
+<div id="fig-shapes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mapeo entre formas y los números que las representan: 0 - cuadrado hueco, 1 - círculo hueco, 2 - triángulo hueco apuntando hacia arriba, 3 - símbolo de adición, 4 - cruz, 5 - rombo hueco, 6 - triángulo hueco apuntando hacia abajo, 7 - cruz en un cuadrado, 8 - asterisco, 9 - símbolo de adición en un rombo, 10 - símbolo de adición en un círculo, 11 - triángulos hacia arriba y hacia abajo huecos, 12 - símbolo de adición en un cuadrado, 13 - cruz superpuesta a un círculo, 14 - cuadrado y triángulo apuntando hacia arriba, 15 - cuadrado relleno, 16 - círculo relleno, 17 - triángulo relleno apuntando hacia arriba, 18 - rombo relleno, 19 - círculo relleno, 20 - viñeta (círculo más pequeño), 21 - círculo con relleno y borde, 22 - cuadrado con relleno y borde, 23 - rombo con relleno y borde, 24 - triángulo apuntando hacia arriba con relleno y borde, 25 - triángulo apuntando hacia abajo con relleno y borde." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-shapes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="layers_files/figure-html/fig-shapes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Mapeo entre formas y los números que las representan: 0 - cuadrado hueco, 1 - círculo hueco, 2 - triángulo hueco apuntando hacia arriba, 3 - símbolo de adición, 4 - cruz, 5 - rombo hueco, 6 - triángulo hueco apuntando hacia abajo, 7 - cruz en un cuadrado, 8 - asterisco, 9 - símbolo de adición en un rombo, 10 - símbolo de adición en un círculo, 11 - triángulos hacia arriba y hacia abajo huecos, 12 - símbolo de adición en un cuadrado, 13 - cruz superpuesta a un círculo, 14 - cuadrado y triángulo apuntando hacia arriba, 15 - cuadrado relleno, 16 - círculo relleno, 17 - triángulo relleno apuntando hacia arriba, 18 - rombo relleno, 19 - círculo relleno, 20 - viñeta (círculo más pequeño), 21 - círculo con relleno y borde, 22 - cuadrado con relleno y borde, 23 - rombo con relleno y borde, 24 - triángulo apuntando hacia arriba con relleno y borde, 25 - triángulo apuntando hacia abajo con relleno y borde." width="576">
 </div>

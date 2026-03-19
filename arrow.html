@@ -5,6 +5,7 @@
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
+<meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <title>22&nbsp; Arrow – R para la Ciencia de Datos (2e)</title>
 <style>
 code{white-space: pre-wrap;}
@@ -101,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+<meta property="og:title" content="22&nbsp; Arrow – R para la Ciencia de Datos (2e)">
+<meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
+<meta property="og:site_name" content="R para la Ciencia de Datos (2e)">
 </head>
 <body class="nav-sidebar floating quarto-light">
 
@@ -666,7 +670,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;  19.053   2.655  18.358</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;  17.598   2.391  19.342</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ahora usemos nuestra nueva versión del conjunto de datos en el que los datos de préstamo de la biblioteca de Seattle se han dividido en 18 archivos de parquet más pequeños:</p>
 <div class="cell">
@@ -678,7 +682,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;   0.276   0.040   0.111</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;   0.285   0.037   0.112</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La aceleración de ~100x en el rendimiento se atribuye a dos factores: la partición de varios archivos y el formato de los archivos individuales:</p>
 <ul>
