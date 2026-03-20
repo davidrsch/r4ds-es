@@ -823,126 +823,21 @@ Figura&nbsp;24.1: Captura de pantalla de la página web de las mejores película
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"</span></span>
 <span><span class="va">html</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in open.connection(x, "rb"): HTTP error 503.</span></span>
 <span></span>
 <span><span class="va">table</span> <span class="op">&lt;-</span> <span class="va">html</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_element</a></span><span class="op">(</span><span class="st">"table"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_table.html">html_table</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in UseMethod("html_table"): no applicable method for 'html_table' applied to an object of class "xml_missing"</span></span>
 <span><span class="va">table</span></span>
-<span><span class="co">#&gt; function (..., exclude = if (useNA == "no") c(NA, NaN), useNA = c("no", </span></span>
-<span><span class="co">#&gt;     "ifany", "always"), dnn = list.names(...), deparse.level = 1) </span></span>
-<span><span class="co">#&gt; {</span></span>
-<span><span class="co">#&gt;     list.names &lt;- function(...) {</span></span>
-<span><span class="co">#&gt;         l &lt;- as.list(substitute(list(...)))[-1L]</span></span>
-<span><span class="co">#&gt;         if (length(l) == 1L &amp;&amp; is.list(..1) &amp;&amp; !is.null(nm &lt;- names(..1))) </span></span>
-<span><span class="co">#&gt;             return(nm)</span></span>
-<span><span class="co">#&gt;         nm &lt;- names(l)</span></span>
-<span><span class="co">#&gt;         fixup &lt;- if (is.null(nm)) </span></span>
-<span><span class="co">#&gt;             seq_along(l)</span></span>
-<span><span class="co">#&gt;         else nm == ""</span></span>
-<span><span class="co">#&gt;         dep &lt;- vapply(l[fixup], function(x) switch(deparse.level + </span></span>
-<span><span class="co">#&gt;             1, "", if (is.symbol(x)) as.character(x) else "", </span></span>
-<span><span class="co">#&gt;             deparse(x, nlines = 1)[1L]), "")</span></span>
-<span><span class="co">#&gt;         if (is.null(nm)) </span></span>
-<span><span class="co">#&gt;             dep</span></span>
-<span><span class="co">#&gt;         else {</span></span>
-<span><span class="co">#&gt;             nm[fixup] &lt;- dep</span></span>
-<span><span class="co">#&gt;             nm</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     miss.use &lt;- missing(useNA)</span></span>
-<span><span class="co">#&gt;     miss.exc &lt;- missing(exclude)</span></span>
-<span><span class="co">#&gt;     useNA &lt;- if (miss.use &amp;&amp; !miss.exc &amp;&amp; !match(NA, exclude, </span></span>
-<span><span class="co">#&gt;         nomatch = 0L)) </span></span>
-<span><span class="co">#&gt;         "ifany"</span></span>
-<span><span class="co">#&gt;     else match.arg(useNA)</span></span>
-<span><span class="co">#&gt;     doNA &lt;- useNA != "no"</span></span>
-<span><span class="co">#&gt;     if (!miss.use &amp;&amp; !miss.exc &amp;&amp; doNA &amp;&amp; match(NA, exclude, </span></span>
-<span><span class="co">#&gt;         nomatch = 0L)) </span></span>
-<span><span class="co">#&gt;         warning("'exclude' containing NA and 'useNA' != \"no\"' are a bit contradicting")</span></span>
-<span><span class="co">#&gt;     args &lt;- list(...)</span></span>
-<span><span class="co">#&gt;     if (length(args) == 1L &amp;&amp; is.list(args[[1L]])) {</span></span>
-<span><span class="co">#&gt;         args &lt;- args[[1L]]</span></span>
-<span><span class="co">#&gt;         if (length(dnn) != length(args)) </span></span>
-<span><span class="co">#&gt;             dnn &lt;- paste(dnn[1L], seq_along(args), sep = ".")</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     if (!length(args)) </span></span>
-<span><span class="co">#&gt;         stop("nothing to tabulate")</span></span>
-<span><span class="co">#&gt;     bin &lt;- 0L</span></span>
-<span><span class="co">#&gt;     lens &lt;- NULL</span></span>
-<span><span class="co">#&gt;     dims &lt;- integer()</span></span>
-<span><span class="co">#&gt;     pd &lt;- 1L</span></span>
-<span><span class="co">#&gt;     dn &lt;- NULL</span></span>
-<span><span class="co">#&gt;     for (a in args) {</span></span>
-<span><span class="co">#&gt;         if (is.null(lens)) </span></span>
-<span><span class="co">#&gt;             lens &lt;- length(a)</span></span>
-<span><span class="co">#&gt;         else if (length(a) != lens) </span></span>
-<span><span class="co">#&gt;             stop("all arguments must have the same length")</span></span>
-<span><span class="co">#&gt;         fact.a &lt;- is.factor(a)</span></span>
-<span><span class="co">#&gt;         if (doNA) </span></span>
-<span><span class="co">#&gt;             aNA &lt;- anyNA(a)</span></span>
-<span><span class="co">#&gt;         if (!fact.a) {</span></span>
-<span><span class="co">#&gt;             a0 &lt;- a</span></span>
-<span><span class="co">#&gt;             op &lt;- options(warn = 2)</span></span>
-<span><span class="co">#&gt;             on.exit(options(op))</span></span>
-<span><span class="co">#&gt;             a &lt;- factor(a, exclude = exclude)</span></span>
-<span><span class="co">#&gt;             options(op)</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         add.na &lt;- doNA</span></span>
-<span><span class="co">#&gt;         if (add.na) {</span></span>
-<span><span class="co">#&gt;             ifany &lt;- (useNA == "ifany")</span></span>
-<span><span class="co">#&gt;             anNAc &lt;- anyNA(a)</span></span>
-<span><span class="co">#&gt;             add.na &lt;- if (!ifany || anNAc) {</span></span>
-<span><span class="co">#&gt;                 ll &lt;- levels(a)</span></span>
-<span><span class="co">#&gt;                 if (add.ll &lt;- !anyNA(ll)) {</span></span>
-<span><span class="co">#&gt;                   ll &lt;- c(ll, NA)</span></span>
-<span><span class="co">#&gt;                   TRUE</span></span>
-<span><span class="co">#&gt;                 }</span></span>
-<span><span class="co">#&gt;                 else if (!ifany &amp;&amp; !anNAc) </span></span>
-<span><span class="co">#&gt;                   FALSE</span></span>
-<span><span class="co">#&gt;                 else TRUE</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             else FALSE</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         if (add.na) </span></span>
-<span><span class="co">#&gt;             a &lt;- factor(a, levels = ll, exclude = NULL)</span></span>
-<span><span class="co">#&gt;         else ll &lt;- levels(a)</span></span>
-<span><span class="co">#&gt;         a &lt;- as.integer(a)</span></span>
-<span><span class="co">#&gt;         if (fact.a &amp;&amp; !miss.exc) {</span></span>
-<span><span class="co">#&gt;             ll &lt;- ll[keep &lt;- which(match(ll, exclude, nomatch = 0L) == </span></span>
-<span><span class="co">#&gt;                 0L)]</span></span>
-<span><span class="co">#&gt;             a &lt;- match(a, keep)</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         else if (!fact.a &amp;&amp; add.na) {</span></span>
-<span><span class="co">#&gt;             if (ifany &amp;&amp; !aNA &amp;&amp; add.ll) {</span></span>
-<span><span class="co">#&gt;                 ll &lt;- ll[!is.na(ll)]</span></span>
-<span><span class="co">#&gt;                 is.na(a) &lt;- match(a0, c(exclude, NA), nomatch = 0L) &gt; </span></span>
-<span><span class="co">#&gt;                   0L</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;             else {</span></span>
-<span><span class="co">#&gt;                 is.na(a) &lt;- match(a0, exclude, nomatch = 0L) &gt; </span></span>
-<span><span class="co">#&gt;                   0L</span></span>
-<span><span class="co">#&gt;             }</span></span>
-<span><span class="co">#&gt;         }</span></span>
-<span><span class="co">#&gt;         nl &lt;- length(ll)</span></span>
-<span><span class="co">#&gt;         dims &lt;- c(dims, nl)</span></span>
-<span><span class="co">#&gt;         if (prod(dims) &gt; .Machine$integer.max) </span></span>
-<span><span class="co">#&gt;             stop("attempt to make a table with &gt;= 2^31 elements")</span></span>
-<span><span class="co">#&gt;         dn &lt;- c(dn, list(ll))</span></span>
-<span><span class="co">#&gt;         bin &lt;- bin + pd * (a - 1L)</span></span>
-<span><span class="co">#&gt;         pd &lt;- pd * nl</span></span>
-<span><span class="co">#&gt;     }</span></span>
-<span><span class="co">#&gt;     names(dn) &lt;- dnn</span></span>
-<span><span class="co">#&gt;     bin &lt;- bin[!is.na(bin)]</span></span>
-<span><span class="co">#&gt;     if (length(bin)) </span></span>
-<span><span class="co">#&gt;         bin &lt;- bin + 1L</span></span>
-<span><span class="co">#&gt;     y &lt;- array(tabulate(bin, pd), dims, dimnames = dn)</span></span>
-<span><span class="co">#&gt;     class(y) &lt;- "table"</span></span>
-<span><span class="co">#&gt;     y</span></span>
-<span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x556f6b349dd8&gt;</span></span>
-<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; # A tibble: 250 × 5</span></span>
+<span><span class="co">#&gt;   ``    `Rank &amp; Title`                    `IMDb Rating` `Your Rating`   ``   </span></span>
+<span><span class="co">#&gt;   &lt;lgl&gt; &lt;chr&gt;                                     &lt;dbl&gt; &lt;chr&gt;           &lt;lgl&gt;</span></span>
+<span><span class="co">#&gt; 1 NA    "1.\n      The Shawshank Redempt…           9.2 "12345678910\n… NA   </span></span>
+<span><span class="co">#&gt; 2 NA    "2.\n      The Godfather\n      …           9.1 "12345678910\n… NA   </span></span>
+<span><span class="co">#&gt; 3 NA    "3.\n      The Godfather: Part I…           9   "12345678910\n… NA   </span></span>
+<span><span class="co">#&gt; 4 NA    "4.\n      The Dark Knight\n    …           9   "12345678910\n… NA   </span></span>
+<span><span class="co">#&gt; 5 NA    "5.\n      12 Angry Men\n       …           8.9 "12345678910\n… NA   </span></span>
+<span><span class="co">#&gt; 6 NA    "6.\n      Schindler's List\n   …           8.9 "12345678910\n… NA   </span></span>
+<span><span class="co">#&gt; # ℹ 244 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto incluye algunas columnas vacías, pero en general hace un buen trabajo al capturar la información de la tabla. Sin embargo, necesitamos hacer un poco más de procesamiento para que sea más fácil de usar. Primero, cambiaremos el nombre de las columnas para que sea más fácil trabajar con ellas y eliminaremos los espacios en blanco superfluos en la clasificación y el título. Haremos esto con <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> (en lugar de <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code>) para renombrar y seleccionar solo estas dos columnas en un solo paso. Luego, eliminaremos las líneas nuevas y los espacios adicionales, y luego aplicaremos <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code> (de <a href="regexps.html#sec-extract-variables" class="quarto-xref"><span>Sección 15.3.4</span></a>) para extraer el título, el año y la clasificación en sus propias variables.</p>
 <div class="cell">
@@ -962,9 +857,17 @@ Figura&nbsp;24.1: Captura de pantalla de la página web de las mejores película
 <span>      year <span class="op">=</span> <span class="st">"\\d+"</span>, <span class="st">"\\)"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in UseMethod("select"): no applicable method for 'select' applied to an object of class "function"</span></span>
 <span><span class="va">ratings</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'ratings' not found</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; # A tibble: 250 × 4</span></span>
+<span><span class="co">#&gt;   rank  title                    year  rating</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                    &lt;chr&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 1     The Shawshank Redemption 1994     9.2</span></span>
+<span><span class="co">#&gt; 2 2     The Godfather            1972     9.1</span></span>
+<span><span class="co">#&gt; 3 3     The Godfather: Part II   1974     9  </span></span>
+<span><span class="co">#&gt; 4 4     The Dark Knight          2008     9  </span></span>
+<span><span class="co">#&gt; 5 5     12 Angry Men             1957     8.9</span></span>
+<span><span class="co">#&gt; 6 6     Schindler's List         1993     8.9</span></span>
+<span><span class="co">#&gt; # ℹ 244 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Incluso en este caso, donde la mayoría de los datos provienen de las celdas de la tabla, vale la pena mirar el código HTML sin formato. Si lo hace, descubrirá que podemos agregar un poco de información adicional usando uno de los atributos. Esta es una de las razones por las que vale la pena dedicar un poco de tiempo a explorar el origen de la página; puede encontrar datos adicionales o puede encontrar una ruta de análisis que sea un poco más fácil.</p>
 <div class="cell">
@@ -972,7 +875,12 @@ Figura&nbsp;24.1: Captura de pantalla de la página web de las mejores película
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="st">"td strong"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_attr.html">html_attr</a></span><span class="op">(</span><span class="st">"title"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; character(0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [1] "9.2 based on 2,536,415 user ratings"</span></span>
+<span><span class="co">#&gt; [2] "9.1 based on 1,745,675 user ratings"</span></span>
+<span><span class="co">#&gt; [3] "9.0 based on 1,211,032 user ratings"</span></span>
+<span><span class="co">#&gt; [4] "9.0 based on 2,486,931 user ratings"</span></span>
+<span><span class="co">#&gt; [5] "8.9 based on 749,563 user ratings"  </span></span>
+<span><span class="co">#&gt; [6] "8.9 based on 1,295,705 user ratings"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Podemos combinar esto con los datos tabulares y aplicar de nuevo <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_regex()</a></code> para extraer los datos que nos interesan:</p>
 <div class="cell">
@@ -991,7 +899,16 @@ Figura&nbsp;24.1: Captura de pantalla de la página web de las mejores película
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    number <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">parse_number</a></span><span class="op">(</span><span class="va">number</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'ratings' not found</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; # A tibble: 250 × 5</span></span>
+<span><span class="co">#&gt;   rank  title                    year  rating  number</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                    &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 1     The Shawshank Redemption 1994     9.2 2536415</span></span>
+<span><span class="co">#&gt; 2 2     The Godfather            1972     9.1 1745675</span></span>
+<span><span class="co">#&gt; 3 3     The Godfather: Part II   1974     9   1211032</span></span>
+<span><span class="co">#&gt; 4 4     The Dark Knight          2008     9   2486931</span></span>
+<span><span class="co">#&gt; 5 5     12 Angry Men             1957     8.9  749563</span></span>
+<span><span class="co">#&gt; 6 6     Schindler's List         1993     8.9 1295705</span></span>
+<span><span class="co">#&gt; # ℹ 244 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="sitios-dinámicos" class="level2" data-number="24.7"><h2 data-number="24.7" class="anchored" data-anchor-id="sitios-dinámicos">
 <span class="header-section-number">24.7</span> Sitios dinámicos</h2>
