@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>R para la Ciencia de Datos (2e)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -35,15 +38,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -452,14 +454,14 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Bienvenida</h1><p><img src="cover.jpg" title="R para la Ciencia de Datos (2e)" class="quarto-cover-image nolightbox img-fluid"></p>
 <p>Este es el sitio web de la segunda edición de <strong>“R para la Ciencia de Datos”</strong>. Este libro le enseñará cómo hacer ciencia de datos con R: aprenderá cómo obtener sus datos en R, convertirlos en la estructura más útil, transformarlos y visualizarlos.</p>
 <p>En este libro, encontrará ejercicios prácticos para aprender las habilidades necesarias para la ciencia de datos. Así como un químico aprende a limpiar tubos de ensayo y a abastecer un laboratorio, usted aprenderá a limpiar datos, dibujar diagramas y mucho más. Estas son las habilidades que hacen que exista la ciencia de datos y aquí encontrará las mejores prácticas para realizar estas tareas con R. Aprenderá a usar la gramática de los gráficos, la programación literaria y la investigación reproducible para ahorrar tiempo. También aprenderá a administrar los recursos cognitivos para facilitar los descubrimientos al discutir, visualizar y explorar datos.</p>
-<p>Este sitio web es y será siempre gratuito, bajo la licencia de <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/">CC BY-NC-ND 3.0</a> License. Si desea una copia física del libro, puede pedir una en <a href="https://www.amazon.com/dp/1492097403?&amp;tag=hadlwick-20">Amazon</a>. Si aprecia leer el libro gratis y desea retribuir, haga una donación a <a href="https://www.doc.govt.nz/kakapo-donate">Kākāpō Recovery</a>: el <a href="https://www.youtube.com/watch?v=9T1vfsHYiKY">kākāpō</a> (que aparece en la portada de R4DS) es un loro nativo de Nueva Zelanda en peligro de extinción; solo quedan 248.</p>
-<p>Si aprecias leer el libro gratis y quieres contribuir, haz una donación a <a href="https://www.doc.govt.nz/kakapo-donate">Kākāpō Recovery</a>: el <a href="https://www.youtube.com/watch?v=9T1vfsHYiKY">kākāpō</a> (que aparece en la portada de R4DS) es un loro en peligro crítico de extinción nativo de Nueva Zelanda; solo quedan 244.</p>
+<p>Este sitio web es y será siempre gratuito, bajo la licencia de <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/">CC BY-NC-ND 3.0</a> License. Si desea una copia física del libro, puede pedir una en <a href="https://www.amazon.com/dp/1492097403?&amp;tag=hadlwick-20">Amazon</a>.</p>
+<p>Si aprecia leer el libro gratis y desea retribuir, haga una donación a <a href="https://www.doc.govt.nz/kakapo-donate">Kākāpō Recovery</a>: el <a href="https://www.youtube.com/watch?v=9T1vfsHYiKY">kākāpō</a> (que aparece en la portada de R4DS) es un loro nativo de Nueva Zelanda en peligro de extinción; solo quedan 235.</p>
 <p>Si habla otro idioma es posible que le interesen las traducciones disponibles gratuitamente de la primera edición:</p>
 <ul>
 <li><a href="http://es.r4ds.hadley.nz">Español</a></li>
 <li><a href="https://it.r4ds.hadley.nz">Italiano</a></li>
 <li><a href="https://tr.r4ds.hadley.nz">Turco</a></li>
-<li><a href="https://pt.r4ds.hadley.nz">Portuguese</a></li>
+<li><a href="https://pt.r4ds.hadley.nz">Portugués</a></li>
 </ul>
 <p>y también hay traducciones de la segunda edición:</p>
 <ul>
@@ -470,8 +472,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="sobre-la-traducción" class="level2">
 <h2 class="anchored" data-anchor-id="sobre-la-traducción">Sobre la traducción</h2>
 <p><a href="https://amzn.to/2aHLAQ1"><img src="logo.png" alt="Cover image" width="285" align="right" style="margin: 0 1em 0 1em"></a> Esta traducción de “R para la Ciencia de Datos” es un proyecto personal de <a href="https://github.com/davidrsch">David Díaz Rodríguez</a> con el objetivo de facilitar el estudio de la Ciencia de Datos con R, tanto al propio traductor como a todas aquellas personas de habla hispana que deseen aprender a realizar Ciencia de Datos con R.</p>
-<p>Señalar que esta es una traducción textual del libro por lo que cuando los autores se refieren a sí mismo en primera persona, será Hadley Wickham, Mine Çetinkaya-Rundel &amp; Garrett Grolemund y no el traductor.</p>
-<p>La traducción fue realizada usando Google Translate y se corrigieron algunos errores gramaticales y de coherencia. Si detecta algún error relacionado con contenido de la traducción, siéntase libre de abrir un issue o un pull request en este <a href="https://github.com/davidrsch/r4dses">repositorio</a>.</p>
+<p>Señalar que esta es una traducción textual del libro por lo que cuando los autores se refieren a sí mismos en primera persona, será Hadley Wickham, Mine Çetinkaya-Rundel &amp; Garrett Grolemund y no el traductor.</p>
+<p>La traducción fue realizada usando Google Translate y se corrigieron algunos errores gramaticales y de coherencia. Si detecta algún error relacionado con contenido de la traducción, siéntase libre de abrir un issue o un pull request en este <a href="https://github.com/davidrsch/r4ds-es">repositorio</a>.</p>
 
 
 </section>

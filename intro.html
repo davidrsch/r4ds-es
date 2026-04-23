@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <title>Introducción – R para la Ciencia de Datos (2e)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -492,14 +494,14 @@ Figura&nbsp;1: En nuestro modelo del proceso de ciencia de datos, comienza con l
 <p>Usará estas herramientas en todos los proyectos de ciencia de datos, pero no son suficientes para la mayoría de los proyectos. Hay una regla aproximada de 80-20 en juego; puede abordar aproximadamente el 80 % de cada proyecto con las herramientas que aprenderá en este libro, pero necesitará otras herramientas para abordar el 20 % restante. A lo largo de este libro, le indicaremos los recursos donde puede obtener más información.</p>
 </section><section id="cómo-está-organizado-este-libro" class="level2"><h2 class="anchored" data-anchor-id="cómo-está-organizado-este-libro">Cómo está organizado este libro</h2>
 <p>La descripción anterior de las herramientas de la ciencia de datos está organizada aproximadamente según el orden en que las usa en un análisis (aunque, por supuesto, las repetirá varias veces). En nuestra experiencia, sin embargo, aprender a importar y ordenar datos primero no es óptimo porque el 80 % del tiempo es rutinario y aburrido, y el otro 20 % del tiempo es raro y frustrante. ¡Ese es un mal lugar para comenzar a aprender un nuevo tema! En su lugar, comenzaremos con la visualización y transformación de datos que ya se han importado y ordenado. De esa manera, cuando ingiere y ordena sus propios datos, su motivación se mantendrá alta porque sabe que el esfuerzo vale la pena.</p>
-<p>Dentro de cada capítulo, tratamos de adherirnos a un patrón concistente: comience con algunos ejemplos motivadores para que pueda ver el panorama general y luego profundice en los detalles. Cada sección del libro está emparejada con ejercicios para ayudarte a practicar lo que has aprendido. Aunque puede ser tentador saltarse los ejercicios, no hay mejor manera de aprender que practicar con problemas reales.</p>
+<p>Dentro de cada capítulo, tratamos de adherirnos a un patrón consistente: comience con algunos ejemplos motivadores para que pueda ver el panorama general y luego profundice en los detalles. Cada sección del libro está emparejada con ejercicios para ayudarte a practicar lo que has aprendido. Aunque puede ser tentador saltarse los ejercicios, no hay mejor manera de aprender que practicar con problemas reales.</p>
 </section><section id="lo-que-no-aprenderás" class="level2"><h2 class="anchored" data-anchor-id="lo-que-no-aprenderás">Lo que no aprenderás</h2>
 <p>Hay varios temas importantes que este libro no cubre. Creemos que es importante concentrarse despiadadamente en lo esencial para que pueda ponerse en marcha lo más rápido posible. Eso significa que este libro no puede cubrir todos los temas importantes.</p>
 <section id="modelado" class="level3"><h3 class="anchored" data-anchor-id="modelado">Modelado</h3>
 <p>El modelado es muy importante para la ciencia de datos, pero es un gran tema y, lamentablemente, no tenemos el espacio para darle la cobertura que se merece aquí. Para obtener más información sobre modelado, recomendamos <a href="https://www.tmwr.org">Tidy Modeling with R</a> de nuestros colegas Max Kuhn y Julia Silge. Este libro le enseñará la familia de paquetes tidymodels que, como puede adivinar por el nombre, comparten muchas convenciones con los paquetes tidyverse que usamos en este libro.</p>
 </section><section id="big-data" class="level3"><h3 class="anchored" data-anchor-id="big-data">Big data</h3>
 <p>Este libro se enfoca orgullosamente y principalmente en pequeños conjuntos de datos en memoria. Este es el lugar correcto para comenzar porque no puede abordar big data a menos que tenga experiencia con small data. Las herramientas que aprenderá a lo largo de la mayor parte de este libro manejarán fácilmente cientos de megabytes de datos y, con un poco de cuidado, normalmente puede usarlas para trabajar con unos pocos gigabytes de datos. También le mostraremos cómo obtener datos de bases de datos y archivos de parquet, los cuales se usan a menudo para almacenar big data. No necesariamente podrá trabajar con todo el conjunto de datos, pero eso no es un problema porque solo necesita un subconjunto o submuestra para responder la pregunta que le interesa.</p>
-<p>Si trabaja habitualmente con datos más grandes (10-100 Gb, digamos), le recomendamos obtener más información sobre [data.table] (https://github.com/Rdatatable/data.table). No lo enseñamos aquí porque usa una interfaz diferente a tidyverse y requiere que aprendas algunas convenciones diferentes. Sin embargo, es increíblemente más rápido y vale la pena invertir algo de tiempo en aprenderlo si está trabajando con grandes datos.</p>
+<p>Si trabaja habitualmente con datos más grandes (10-100 Gb, digamos), le recomendamos obtener más información sobre <a href="https://github.com/Rdatatable/data.table">data.table</a>. No lo enseñamos aquí porque usa una interfaz diferente a tidyverse y requiere que aprendas algunas convenciones diferentes. Sin embargo, es increíblemente más rápido y vale la pena invertir algo de tiempo en aprenderlo si está trabajando con grandes datos.</p>
 </section><section id="python-julia-y-amigos" class="level3"><h3 class="anchored" data-anchor-id="python-julia-y-amigos">Python, Julia, y amigos</h3>
 <p>En este libro, no aprenderá nada sobre Python, Julia o cualquier otro lenguaje de programación útil para la ciencia de datos. Esto no se debe a que pensemos que estas herramientas son malas. ¡No lo son! Y en la práctica, la mayoría de los equipos de ciencia de datos usan una combinación de lenguajes, a menudo al menos R y Python.</p>
 <p>Pero creemos firmemente que es mejor dominar una herramienta a la vez, y R es un excelente lugar para comenzar.</p>

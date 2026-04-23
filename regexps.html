@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <title>15&nbsp; Expresiones regulares – R para la Ciencia de Datos (2e)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -864,7 +866,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>
 <code>-</code> define un rango, p.ej., <code>[a-z]</code> coincide con cualquier letra minúscula y <code>[0-9]</code> coincide con cualquier número.</li>
 <li>
-<code>\</code> eescapa a los caracteres especiales, por lo que <code>[\^\-\]]</code> coincide <code>^</code>, <code>-</code>, o <code>]</code>.</li>
+<code>\</code> escapa a los caracteres especiales, por lo que <code>[\^\-\]]</code> coincide <code>^</code>, <code>-</code>, o <code>]</code>.</li>
 </ul>
 <p>Aquí hay algunos ejemplos:</p>
 <div class="cell">
@@ -1340,7 +1342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"\\.Rmd$"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; character(0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Vale la pena señalar que el lenguaje de patrones usado por base R es ligeramente diferente al usado por stringr. Esto se debe a que stringr está construido sobre el <a href="https://stringi.gagolewski.com">paquete stringi</a>, que a su vez está construido sobre el <a href="https://unicode-org.github.io%20/icu/userguide/strings/regexp.html">motor ICU</a>, mientras que las funciones básicas de R usan el <a href="https://github.com/laurikari/tre">motor TRE</a> o el <a href="https://www.pcre%20.org">motor PCRE</a>, dependiendo de si ha establecido o no <code>perl = TRUE</code>. Afortunadamente, los conceptos básicos de las expresiones regulares están tan bien establecidos que encontrará pocas variaciones cuando trabaje con los patrones que aprenderá en este libro. Solo debe ser consciente de la diferencia cuando comience a confiar en funciones avanzadas como rangos de caracteres Unicode complejos o funciones especiales que usan la sintaxis <code>(?…)</code>.</p>
+<p>Vale la pena señalar que el lenguaje de patrones usado por base R es ligeramente diferente al usado por stringr. Esto se debe a que stringr está construido sobre el <a href="https://stringi.gagolewski.com">paquete stringi</a>, que a su vez está construido sobre el <a href="https://unicode-org.github.io/icu/userguide/strings/regexp.html">motor ICU</a>, mientras que las funciones básicas de R usan el <a href="https://github.com/laurikari/tre">motor TRE</a> o el <a href="https://www.pcre.org">motor PCRE</a>, dependiendo de si ha establecido o no <code>perl = TRUE</code>. Afortunadamente, los conceptos básicos de las expresiones regulares están tan bien establecidos que encontrará pocas variaciones cuando trabaje con los patrones que aprenderá en este libro. Solo debe ser consciente de la diferencia cuando comience a confiar en funciones avanzadas como rangos de caracteres Unicode complejos o funciones especiales que usan la sintaxis <code>(?…)</code>.</p>
 </section></section><section id="resumen" class="level2" data-number="15.8"><h2 data-number="15.8" class="anchored" data-anchor-id="resumen">
 <span class="header-section-number">15.8</span> Resumen</h2>
 <p>Con cada carácter de puntuación potencialmente sobrecargado de significado, las expresiones regulares son uno de los lenguajes más compactos que existen. Definitivamente son confusos al principio, pero a medida que entrenas tus ojos para leerlos y tu cerebro para entenderlos, desbloqueas una habilidad poderosa que puedes usar en R y en muchos otros lugares.</p>

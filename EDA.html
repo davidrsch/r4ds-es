@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <title>10&nbsp; Análisis exploratorio de datos – R para la Ciencia de Datos (2e)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -758,7 +760,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Con base en EDA, ¿qué variable en el conjunto de datos de diamantes parece ser la más importante para predecir el precio de un diamante? ¿Cómo se correlaciona esa variable con el corte? ¿Por qué la combinación de esas dos relaciones hace que los diamantes de menor calidad sean más caros?</p></li>
 <li><p>En lugar de intercambiar las variables x e y, agregue <code><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip()</a></code> como una nueva capa al diagrama de caja vertical para crear uno horizontal. ¿Cómo se compara esto con intercambiar las variables?</p></li>
 <li><p>Un problema con los diagramas de caja es que se desarrollaron en una era de conjuntos de datos mucho más pequeños y tienden a mostrar una cantidad prohibitivamente grande de “valores atípicos”. Un enfoque para remediar este problema es la gráfica de valores de letras. Instale el paquete lvplot e intente usar <code>geom_lv()</code> para mostrar la distribución del precio frente al corte. ¿Qué aprendes? ¿Cómo interpretas las gráficas?</p></li>
-<li><p>Cree una visualización de los precios de los diamantes frente a una variable categórica del conjunto de datos <code>diamoonds</code> usando <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code>, luego <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> facetado, luego <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> coloreado y luego <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> coloreado. Compara y contrasta las cuatro gráficas. ¿Cuáles son los pros y los contras de cada método para visualizar la distribución de una variable numérica en función de los niveles de una variable categórica?</p></li>
+<li><p>Cree una visualización de los precios de los diamantes frente a una variable categórica del conjunto de datos <code>diamonds</code> usando <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code>, luego <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> facetado, luego <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_freqpoly()</a></code> coloreado y luego <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> coloreado. Compara y contrasta las cuatro gráficas. ¿Cuáles son los pros y los contras de cada método para visualizar la distribución de una variable numérica en función de los niveles de una variable categórica?</p></li>
 <li><p>Si tiene un conjunto de datos pequeño, a veces es útil usar <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> para evitar el trazado excesivo y ver más fácilmente la relación entre una variable continua y categórica. El paquete ggbeeswarm proporciona una serie de métodos similares a <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>. Enumérelos y describa brevemente lo que hace cada uno.</p></li>
 </ol></section></section><section id="dos-variables-categóricas" class="level3" data-number="10.5.2"><h3 data-number="10.5.2" class="anchored" data-anchor-id="dos-variables-categóricas">
 <span class="header-section-number">10.5.2</span> Dos variables categóricas</h3>

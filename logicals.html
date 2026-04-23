@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <title>12&nbsp; Vectores lógicos – R para la Ciencia de Datos (2e)</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4851d6a8b7a8c20be869f3008eb6c9c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -888,7 +890,7 @@ Figura&nbsp;12.1: Ub conjunto de operaciones booleanas comúnmente utilizadas. <
 <span><span class="co">#&gt; 6  2013     1     6   24.4   381</span></span>
 <span><span class="co">#&gt; # ℹ 359 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Esto funciona, pero ¿y si también quisiéramos calcular el retraso promedio de los vuelos que llegaron temprano? Tendríamos que realizar un paso de filtro por separado y luego descubrir cómo combinar los dos marcos de datos juntos [^ lógicos-3]. En su lugar, podría usar <code>[</code> para realizar un filtrado en línea: <code>arr_delay[arr_delay &gt; 0]</code> generará solo los retrasos de llegada positivos.</p>
+<p>Esto funciona, pero ¿y si también quisiéramos calcular el retraso promedio de los vuelos que llegaron temprano? Tendríamos que realizar un paso de filtro por separado y luego descubrir cómo combinar los dos marcos de datos juntos <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. En su lugar, podría usar <code>[</code> para realizar un filtrado en línea: <code>arr_delay[arr_delay &gt; 0]</code> generará solo los retrasos de llegada positivos.</p>
 <p>Esto lleva a:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
@@ -922,7 +924,7 @@ Figura&nbsp;12.1: Ub conjunto de operaciones booleanas comúnmente utilizadas. <
 <section id="if_else" class="level3" data-number="12.5.1"><h3 data-number="12.5.1" class="anchored" data-anchor-id="if_else">
 <span class="header-section-number">12.5.1</span> <code>if_else()</code>
 </h3>
-<p>Si quiere usar un valor cuando una condición es <code>TRUE</code> y otro valor cuando es <code>FALSE</code>, puede usar <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">dplyr::if_else()</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Siempre usarás los tres primeros argumentos de <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>. El primer argumento, <code>condition</code>, es un vector lógico, el segundo, <code>true</code>, da la salida cuando la condición es verdadera, y el tercero, <code>false</code>, da la salida si la condición es falsa.</p>
+<p>Si quiere usar un valor cuando una condición es <code>TRUE</code> y otro valor cuando es <code>FALSE</code>, puede usar <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">dplyr::if_else()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Siempre usarás los tres primeros argumentos de <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code>. El primer argumento, <code>condition</code>, es un vector lógico, el segundo, <code>true</code>, da la salida cuando la condición es verdadera, y el tercero, <code>false</code>, da la salida si la condición es falsa.</p>
 <p>Comencemos con un ejemplo simple de etiquetar un vector numérico como “+ve” (positivo) o “-ve” (negativo):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span></span>
@@ -1061,6 +1063,7 @@ Figura&nbsp;12.1: Ub conjunto de operaciones booleanas comúnmente utilizadas. <
 <li id="fn1"><p>R normalmente llama a print por usted (es decir, <code>x</code> es un atajo para <code>print(x)</code>), pero llamarlo explícitamente es útil si desea proporcionar otros argumentos.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Es decir, <code>xor(x, y)</code> es TRUE si x es TRUE, o y es TRUE, pero no ambos. Así es como solemos usar “o” en inglés. “Ambos” no suele ser una respuesta aceptable a la pregunta “¿quieres un helado o un pastel?”.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>El <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> de dplyr es muy similar al <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> de base R. Hay dos ventajas principales de <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> sobre <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>: puede elegir qué debería pasar con los valores faltantes, y es mucho más probable que <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> le dé un error significativo si sus variables tienen tipos incompatibles.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>El <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> de dplyr es muy similar al <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> de base R. Hay dos ventajas principales de <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> sobre <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>: puede elegir qué debería pasar con los valores faltantes, y es mucho más probable que <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> le dé un error significativo si sus variables tienen tipos incompatibles.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script>
 
   // Chapter name
