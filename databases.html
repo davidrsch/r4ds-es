@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
+
 <title>21&nbsp; Bases de datos – R para la Ciencia de Datos (2e)</title>
 <style>
 /* Default styles provided by pandoc.
@@ -59,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,7 +81,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,15 +108,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
-}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+}</script>
+<script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+<meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+
+
 <meta property="og:title" content="21&nbsp; Bases de datos – R para la Ciencia de Datos (2e)">
 <meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <meta property="og:site_name" content="R para la Ciencia de Datos (2e)">
 </head>
+
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -122,16 +134,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/hadley/r4ds">
             Original
             </a>
@@ -142,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -158,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
@@ -184,8 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-visualize.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span></a>
@@ -234,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
@@ -243,8 +259,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Capas</span></span></a>
@@ -263,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
@@ -272,8 +288,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vectores lógicos</span></span></a>
@@ -322,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./import.html" class="sidebar-item-text sidebar-link">
@@ -331,8 +347,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hojas de calculo</span></span></a>
@@ -363,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
@@ -372,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Funciones</span></span></a>
@@ -392,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
@@ -401,8 +417,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
@@ -415,35 +431,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Tabla de contenidos</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-<li>
-<a href="#introducci%C3%B3n" id="toc-introducción" class="nav-link active" data-scroll-target="#introducci%C3%B3n"><span class="header-section-number">21.1</span> Introducción</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">21.1</span> Introducción</a>
   <ul class="collapse">
-<li><a href="#requisitos-previos" id="toc-requisitos-previos" class="nav-link" data-scroll-target="#requisitos-previos"><span class="header-section-number">21.1.1</span> Requisitos previos</a></li>
-  </ul>
-</li>
-  <li><a href="#bases-de-datos-b%C3%A1sicos" id="toc-bases-de-datos-básicos" class="nav-link" data-scroll-target="#bases-de-datos-b%C3%A1sicos"><span class="header-section-number">21.2</span> Bases de datos básicos</a></li>
-  <li>
-<a href="#conexi%C3%B3n-a-una-base-de-datos" id="toc-conexión-a-una-base-de-datos" class="nav-link" data-scroll-target="#conexi%C3%B3n-a-una-base-de-datos"><span class="header-section-number">21.3</span> Conexión a una base de datos</a>
+  <li><a href="#requisitos-previos" id="toc-requisitos-previos" class="nav-link" data-scroll-target="#requisitos-previos"><span class="header-section-number">21.1.1</span> Requisitos previos</a></li>
+  </ul></li>
+  <li><a href="#bases-de-datos-básicos" id="toc-bases-de-datos-básicos" class="nav-link" data-scroll-target="#bases-de-datos-básicos"><span class="header-section-number">21.2</span> Bases de datos básicos</a></li>
+  <li><a href="#conexión-a-una-base-de-datos" id="toc-conexión-a-una-base-de-datos" class="nav-link" data-scroll-target="#conexión-a-una-base-de-datos"><span class="header-section-number">21.3</span> Conexión a una base de datos</a>
   <ul class="collapse">
-<li><a href="#en-este-libro" id="toc-en-este-libro" class="nav-link" data-scroll-target="#en-este-libro"><span class="header-section-number">21.3.1</span> En este libro</a></li>
+  <li><a href="#en-este-libro" id="toc-en-este-libro" class="nav-link" data-scroll-target="#en-este-libro"><span class="header-section-number">21.3.1</span> En este libro</a></li>
   <li><a href="#sec-load-data" id="toc-sec-load-data" class="nav-link" data-scroll-target="#sec-load-data"><span class="header-section-number">21.3.2</span> Cargar algunos datos</a></li>
-  <li><a href="#dbi-b%C3%A1sico" id="toc-dbi-básico" class="nav-link" data-scroll-target="#dbi-b%C3%A1sico"><span class="header-section-number">21.3.3</span> DBI básico</a></li>
-  </ul>
-</li>
-  <li><a href="#dbplyr-b%C3%A1sico" id="toc-dbplyr-básico" class="nav-link" data-scroll-target="#dbplyr-b%C3%A1sico"><span class="header-section-number">21.4</span> dbplyr básico</a></li>
-  <li>
-<a href="#sql" id="toc-sql" class="nav-link" data-scroll-target="#sql"><span class="header-section-number">21.5</span> SQL</a>
+  <li><a href="#dbi-básico" id="toc-dbi-básico" class="nav-link" data-scroll-target="#dbi-básico"><span class="header-section-number">21.3.3</span> DBI básico</a></li>
+  </ul></li>
+  <li><a href="#dbplyr-básico" id="toc-dbplyr-básico" class="nav-link" data-scroll-target="#dbplyr-básico"><span class="header-section-number">21.4</span> dbplyr básico</a></li>
+  <li><a href="#sql" id="toc-sql" class="nav-link" data-scroll-target="#sql"><span class="header-section-number">21.5</span> SQL</a>
   <ul class="collapse">
-<li><a href="#sql-b%C3%A1sico" id="toc-sql-básico" class="nav-link" data-scroll-target="#sql-b%C3%A1sico"><span class="header-section-number">21.5.1</span> SQL básico</a></li>
+  <li><a href="#sql-básico" id="toc-sql-básico" class="nav-link" data-scroll-target="#sql-básico"><span class="header-section-number">21.5.1</span> SQL básico</a></li>
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><span class="header-section-number">21.5.2</span> SELECT</a></li>
   <li><a href="#from" id="toc-from" class="nav-link" data-scroll-target="#from"><span class="header-section-number">21.5.3</span> FROM</a></li>
   <li><a href="#group-by" id="toc-group-by" class="nav-link" data-scroll-target="#group-by"><span class="header-section-number">21.5.4</span> GROUP BY</a></li>
@@ -453,14 +466,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#uniones" id="toc-uniones" class="nav-link" data-scroll-target="#uniones"><span class="header-section-number">21.5.8</span> Uniones</a></li>
   <li><a href="#otros-verbos" id="toc-otros-verbos" class="nav-link" data-scroll-target="#otros-verbos"><span class="header-section-number">21.5.9</span> Otros verbos</a></li>
   <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">21.5.10</span> Ejercicios</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#sec-sql-expressions" id="toc-sec-sql-expressions" class="nav-link" data-scroll-target="#sec-sql-expressions"><span class="header-section-number">21.6</span> Traducciones de funciones</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">21.7</span> Resumen</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">Importar</a></li><li class="breadcrumb-item"><a href="./databases.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Bases de datos</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./import.html">Importar</a></li><li class="breadcrumb-item"><a href="./databases.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Bases de datos</span></a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title"><span id="sec-import-databases" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Bases de datos</span></span></h1>
 </div>
 
@@ -475,20 +491,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introducción" class="level2" data-number="21.1"><h2 data-number="21.1" class="anchored" data-anchor-id="introducción">
-<span class="header-section-number">21.1</span> Introducción</h2>
+</header>
+
+
+<section id="introducción" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">21.1</span> Introducción</h2>
 <p>Una gran cantidad de datos reside en las bases de datos, por lo que es esencial que sepa cómo acceder a ellos. A veces, puede pedirle a alguien que descargue una instantánea en un <code>.csv</code> para usted, pero esto se vuelve doloroso rápidamente: cada vez que necesite hacer un cambio, tendrá que comunicarse con otro ser humano. Desea poder acceder directamente a la base de datos para obtener los datos que necesita, cuando los necesita.</p>
 <p>En este capítulo, primero aprenderá los conceptos básicos del paquete DBI: cómo usarlo para conectarse a una base de datos y luego recuperar datos con una consulta SQL<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <strong>SQL</strong>, abreviatura de <strong>s</strong>tructured <strong>q</strong>uery <strong>l</strong>language, es la lingua franca de las bases de datos y es un lenguaje importante que deben aprender todos los científicos de datos. Dicho esto, no vamos a comenzar con SQL, sino que le enseñaremos dbplyr, que puede traducir su código dplyr a SQL. Usaremos eso como una forma de enseñarle algunas de las características más importantes de SQL. No se convertirá en un maestro de SQL al final del capítulo, pero podrá identificar los componentes más importantes y entender lo que hacen.</p>
-<section id="requisitos-previos" class="level3" data-number="21.1.1"><h3 data-number="21.1.1" class="anchored" data-anchor-id="requisitos-previos">
-<span class="header-section-number">21.1.1</span> Requisitos previos</h3>
+<section id="requisitos-previos" class="level3" data-number="21.1.1">
+<h3 data-number="21.1.1" class="anchored" data-anchor-id="requisitos-previos"><span class="header-section-number">21.1.1</span> Requisitos previos</h3>
 <p>En este capítulo, presentaremos DBI y dbplyr. DBI es una interfaz de bajo nivel que se conecta a bases de datos y ejecuta SQL; dbplyr es una interfaz de alto nivel que traduce su código dplyr a consultas SQL y luego las ejecuta con DBI.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbplyr.tidyverse.org/">dbplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section></section><section id="bases-de-datos-básicos" class="level2" data-number="21.2"><h2 data-number="21.2" class="anchored" data-anchor-id="bases-de-datos-básicos">
-<span class="header-section-number">21.2</span> Bases de datos básicos</h2>
+</section>
+</section>
+<section id="bases-de-datos-básicos" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="bases-de-datos-básicos"><span class="header-section-number">21.2</span> Bases de datos básicos</h2>
 <p>En el nivel más simple, puede pensar en una base de datos como una colección de marcos de datos, llamados <strong>tablas</strong> en la terminología de la base de datos. Al igual que un marco de datos, una tabla de base de datos es una colección de columnas con nombre, donde cada valor en la columna es del mismo tipo. Hay tres diferencias de alto nivel entre los marcos de datos y las tablas de la base de datos:</p>
 <ul>
 <li><p>Las tablas de la base de datos se almacenan en el disco y pueden tener un tamaño arbitrario. Los marcos de datos se almacenan en la memoria y están fundamentalmente limitados (aunque ese límite sigue siendo bastante grande para muchos problemas).</p></li>
@@ -497,110 +518,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Las bases de datos se ejecutan mediante sistemas de administración de bases de datos (<strong>DBMS</strong> para abreviar), que vienen en tres formas básicas:</p>
 <ul>
-<li>
-<strong>Cliente-servidor</strong> Los DBMS se ejecutan en un poderoso servidor central, que usted conecta desde su computadora (el cliente). Son excelentes para compartir datos con varias personas en una organización. Los DBMS cliente-servidor populares incluyen PostgreSQL, MariaDB, SQL Server y Oracle.</li>
+<li><strong>Cliente-servidor</strong> Los DBMS se ejecutan en un poderoso servidor central, que usted conecta desde su computadora (el cliente). Son excelentes para compartir datos con varias personas en una organización. Los DBMS cliente-servidor populares incluyen PostgreSQL, MariaDB, SQL Server y Oracle.</li>
 <li>Los DBMS de <strong>Cloud</strong>, como Snowflake, RedShift de Amazon y BigQuery de Google, son similares a los DBMS del servidor del cliente, pero se ejecutan en la nube. Esto significa que pueden manejar fácilmente conjuntos de datos extremadamente grandes y pueden proporcionar automáticamente más recursos informáticos según sea necesario.</li>
 <li>Los DBMS <strong>en proceso</strong>, como SQLite o duckdb, se ejecutan completamente en su computadora. Son excelentes para trabajar con grandes conjuntos de datos en los que usted es el usuario principal.</li>
-</ul></section><section id="conexión-a-una-base-de-datos" class="level2" data-number="21.3"><h2 data-number="21.3" class="anchored" data-anchor-id="conexión-a-una-base-de-datos">
-<span class="header-section-number">21.3</span> Conexión a una base de datos</h2>
+</ul>
+</section>
+<section id="conexión-a-una-base-de-datos" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="conexión-a-una-base-de-datos"><span class="header-section-number">21.3</span> Conexión a una base de datos</h2>
 <p>Para conectarse a la base de datos desde R, utilizará un par de paquetes:</p>
 <ul>
 <li><p>Siempre usará DBI (<strong>d</strong>ata<strong>b</strong>ase <strong>i</strong>nterface) porque proporciona un conjunto de funciones genéricas que se conectan a la base de datos, cargan datos, ejecutan consultas SQL, etc.</p></li>
 <li><p>También utilizará un paquete diseñado para el DBMS al que se está conectando. Este paquete traduce los comandos DBI genéricos a los específicos necesarios para un DBMS dado. Por lo general, hay un paquete para cada DBMS, p. RPostgres para PostgresSQL y RMariaDB para MySQL.</p></li>
 </ul>
 <p>Si no puede encontrar un paquete específico para su DBMS, generalmente puede usar el paquete odbc en su lugar. Esto usa el protocolo ODBC soportado por muchos DBMS. odbc requiere un poco más de configuración porque también necesitará instalar un controlador ODBC e indicarle al paquete odbc dónde encontrarlo.</p>
-<p>Concretamente, crea una conexión a la base de datos usando <code><a href="https://dbi.r-dbi.org/reference/dbConnect.html">DBI::dbConnect()</a></code>. El primer argumento selecciona DBMS<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, luego el segundo argumento y los subsiguientes describen cómo conectarse a él (es decir, dónde reside y las credenciales que necesita para acceder a él). El siguiente código muestra un par de ejemplos típicos:</p>
+<p>Concretamente, crea una conexión a la base de datos usando <code>DBI::dbConnect()</code>. El primer argumento selecciona DBMS<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, luego el segundo argumento y los subsiguientes describen cómo conectarse a él (es decir, dónde reside y las credenciales que necesita para acceder a él). El siguiente código muestra un par de ejemplos típicos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
-<span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu">MariaDB</span><span class="op">(</span><span class="op">)</span>, </span>
-<span>  username <span class="op">=</span> <span class="st">"foo"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
-<span>  <span class="fu">RPostgres</span><span class="fu">::</span><span class="fu">Postgres</span><span class="op">(</span><span class="op">)</span>, </span>
-<span>  hostname <span class="op">=</span> <span class="st">"databases.mycompany.com"</span>, </span>
-<span>  port <span class="op">=</span> <span class="fl">1234</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>(), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"foo"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(), </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">hostname =</span> <span class="st">"databases.mycompany.com"</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">port =</span> <span class="dv">1234</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Los detalles precisos de la conexión varían mucho de DBMS a DBMS, por lo que lamentablemente no podemos cubrir todos los detalles aquí. Esto significa que tendrás que investigar un poco por tu cuenta. Por lo general, puede preguntar a los otros científicos de datos de su equipo o hablar con su DBA (<strong>d</strong>ata<strong>b</strong>ase <strong>a</strong>administrador). La configuración inicial a menudo requerirá un poco de manipulación (y tal vez un poco de google) para hacerlo bien, pero generalmente solo necesitará hacerlo una vez.</p>
-<section id="en-este-libro" class="level3" data-number="21.3.1"><h3 data-number="21.3.1" class="anchored" data-anchor-id="en-este-libro">
-<span class="header-section-number">21.3.1</span> En este libro</h3>
+<section id="en-este-libro" class="level3" data-number="21.3.1">
+<h3 data-number="21.3.1" class="anchored" data-anchor-id="en-este-libro"><span class="header-section-number">21.3.1</span> En este libro</h3>
 <p>Configurar un DBMS cliente-servidor o en la nube sería una molestia para este libro, por lo que en su lugar usaremos un DBMS en proceso que vive completamente en un paquete R: duckdb. Gracias a la magia de DBI, la única diferencia entre usar duckdb y cualquier otro DBMS es cómo te conectarás a la base de datos. Esto hace que sea excelente para enseñar porque puede ejecutar fácilmente este código y tomar fácilmente lo que aprende y aplicarlo en otro lugar.</p>
 <p>Conectarse a duckdb es particularmente simple porque los valores predeterminados crean una base de datos temporal que se elimina cuando sale de R. Eso es excelente para aprender porque garantiza que comenzará desde cero cada vez que reinicie R:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>duckdb es una base de datos de alto rendimiento diseñada en gran medida para las necesidades de un científico de datos. Lo usamos aquí porque es muy fácil de usar, pero también es capaz de manejar gigabytes de datos a gran velocidad. Si desea utilizar duckdb para un proyecto de análisis de datos real, también deberá proporcionar el argumento <code>dbdir</code> para crear una base de datos persistente y decirle a duckdb dónde guardarla. Asumiendo que estás usando un proyecto (<a href="workflow-scripts.html" class="quarto-xref"><span>Capítulo 6</span></a>), es razonable guardarlo en el directorio <code>duckdb</code> del proyecto actual:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://r.duckdb.org/reference/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span>, dbdir <span class="op">=</span> <span class="st">"duckdb"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>(), <span class="at">dbdir =</span> <span class="st">"duckdb"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="sec-load-data" class="level3" data-number="21.3.2"><h3 data-number="21.3.2" class="anchored" data-anchor-id="sec-load-data">
-<span class="header-section-number">21.3.2</span> Cargar algunos datos</h3>
-<p>Dado que esta es una base de datos nueva, debemos comenzar agregando algunos datos. Aquí agregaremos conjuntos de datos <code>mpg</code> y <code>diamonds</code> de ggplot2 usando <code><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">DBI::dbWriteTable()</a></code>. El uso más simple de <code><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable()</a></code> necesita tres argumentos: una conexión de base de datos, el nombre de la tabla para crear en la base de datos y un marco de datos de datos.</p>
+</section>
+<section id="sec-load-data" class="level3" data-number="21.3.2">
+<h3 data-number="21.3.2" class="anchored" data-anchor-id="sec-load-data"><span class="header-section-number">21.3.2</span> Cargar algunos datos</h3>
+<p>Dado que esta es una base de datos nueva, debemos comenzar agregando algunos datos. Aquí agregaremos conjuntos de datos <code>mpg</code> y <code>diamonds</code> de ggplot2 usando <code>DBI::dbWriteTable()</code>. El uso más simple de <code>dbWriteTable()</code> necesita tres argumentos: una conexión de base de datos, el nombre de la tabla para crear en la base de datos y un marco de datos de datos.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mpg"</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/mpg.html">mpg</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"diamonds"</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"mpg"</span>, ggplot2<span class="sc">::</span>mpg)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"diamonds"</span>, ggplot2<span class="sc">::</span>diamonds)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si está utilizando duckdb en un proyecto real, le recomendamos que aprenda sobre <code>duckdb_read_csv()</code> y <code>duckdb_register_arrow()</code>. Estos le brindan formas potentes y eficaces de cargar rápidamente datos directamente en duckdb, sin tener que cargarlos primero en R. También mostraremos una técnica útil para cargar varios archivos en una base de datos en <a href="iteration.html#sec-save-database" class="quarto-xref"><span>Sección 26.4.1</span></a>.</p>
-</section><section id="dbi-básico" class="level3" data-number="21.3.3"><h3 data-number="21.3.3" class="anchored" data-anchor-id="dbi-básico">
-<span class="header-section-number">21.3.3</span> DBI básico</h3>
-<p>Puede comprobar que los datos se cargan correctamente utilizando un par de otras funciones de DBI: <code><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables()</a></code> enumera todas las tablas de la base de datos<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> y <code><a href="https://dbi.r-dbi.org/reference/dbReadTable.html">dbReadTable()</a></code> recupera el contenido de una tabla.</p>
+</section>
+<section id="dbi-básico" class="level3" data-number="21.3.3">
+<h3 data-number="21.3.3" class="anchored" data-anchor-id="dbi-básico"><span class="header-section-number">21.3.3</span> DBI básico</h3>
+<p>Puede comprobar que los datos se cargan correctamente utilizando un par de otras funciones de DBI: <code>dbListTables()</code> enumera todas las tablas de la base de datos<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> y <code>dbReadTable()</code> recupera el contenido de una tabla.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "diamonds" "mpg"</span></span>
-<span></span>
-<span><span class="va">con</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="st">"diamonds"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 53,940 × 10</span></span>
-<span><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></span>
-<span><span class="co">#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</span></span>
-<span><span class="co">#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31</span></span>
-<span><span class="co">#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</span></span>
-<span><span class="co">#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75</span></span>
-<span><span class="co">#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</span></span>
-<span><span class="co">#&gt; # ℹ 53,934 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "diamonds" "mpg"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>con <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbReadTable</span>(<span class="st">"diamonds"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 53,940 × 10</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 53,934 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code><a href="https://dbi.r-dbi.org/reference/dbReadTable.html">dbReadTable()</a></code> devuelve un <code>data.frame</code> por lo que usamos <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble()</a></code> para convertirlo en un tibble para que se imprima bien.</p>
-<p>Si ya conoce SQL, puede usar <code><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery()</a></code> para obtener los resultados de ejecutar una consulta en la base de datos:</p>
+<p><code>dbReadTable()</code> devuelve un <code>data.frame</code> por lo que usamos <code>as_tibble()</code> para convertirlo en un tibble para que se imprima bien.</p>
+<p>Si ya conoce SQL, puede usar <code>dbGetQuery()</code> para obtener los resultados de ejecutar una consulta en la base de datos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sql</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
-<span><span class="st">  SELECT carat, cut, clarity, color, price </span></span>
-<span><span class="st">  FROM diamonds </span></span>
-<span><span class="st">  WHERE price &gt; 15000</span></span>
-<span><span class="st">"</span></span>
-<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">sql</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1,655 × 5</span></span>
-<span><span class="co">#&gt;   carat cut       clarity color price</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;   &lt;fct&gt; &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1  1.54 Premium   VS2     E     15002</span></span>
-<span><span class="co">#&gt; 2  1.19 Ideal     VVS1    F     15005</span></span>
-<span><span class="co">#&gt; 3  2.1  Premium   SI1     I     15007</span></span>
-<span><span class="co">#&gt; 4  1.69 Ideal     SI1     D     15011</span></span>
-<span><span class="co">#&gt; 5  1.5  Very Good VVS2    G     15013</span></span>
-<span><span class="co">#&gt; 6  1.73 Very Good VS1     G     15014</span></span>
-<span><span class="co">#&gt; # ℹ 1,649 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sql <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT carat, cut, clarity, color, price </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM diamonds </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE price &gt; 15000</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(<span class="fu">dbGetQuery</span>(con, sql))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1,655 × 5</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   carat cut       clarity color price</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;   &lt;fct&gt; &lt;int&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1.54 Premium   VS2     E     15002</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1.19 Ideal     VVS1    F     15005</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2.1  Premium   SI1     I     15007</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1.69 Ideal     SI1     D     15011</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1.5  Very Good VVS2    G     15013</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1.73 Very Good VS1     G     15014</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 1,649 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si nunca ha visto SQL antes, ¡no se preocupe! En breve aprenderás más al respecto. Pero si lo lee detenidamente, puede adivinar que selecciona cinco columnas del conjunto de datos de diamantes y todas las filas donde el <code>precio</code> es mayor que 15,000.</p>
-</section></section><section id="dbplyr-básico" class="level2" data-number="21.4"><h2 data-number="21.4" class="anchored" data-anchor-id="dbplyr-básico">
-<span class="header-section-number">21.4</span> dbplyr básico</h2>
+</section>
+</section>
+<section id="dbplyr-básico" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="dbplyr-básico"><span class="header-section-number">21.4</span> dbplyr básico</h2>
 <p>Ahora que nos conectamos a una base de datos y cargamos algunos datos, podemos comenzar a aprender sobre dbplyr. dbplyr es un <strong>backend</strong> de dplyr, lo que significa que sigues escribiendo código dplyr pero el backend lo ejecuta de manera diferente. En esto, dbplyr se traduce a SQL; otros backends incluyen <a href="https://dtplyr.tidyverse.org">dtplyr</a> que se traduce en <a href="https://r-datatable.com">data.table</a>, y <a href="https://multidplyr.tidyverse.org">multidplyr</a> que ejecuta su código en múltiples núcleos.</p>
-<p>Para usar dbplyr, primero debe usar <code><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl()</a></code> para crear un objeto que represente una tabla de base de datos:</p>
+<p>Para usar dbplyr, primero debe usar <code>tbl()</code> para crear un objeto que represente una tabla de base de datos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"diamonds"</span><span class="op">)</span></span>
-<span><span class="va">diamonds_db</span></span>
-<span><span class="co">#&gt; # Source:   table&lt;diamonds&gt; [?? x 10]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.17.0-1010-azure:R 4.4.0/:memory:]</span></span>
-<span><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></span>
-<span><span class="co">#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</span></span>
-<span><span class="co">#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31</span></span>
-<span><span class="co">#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</span></span>
-<span><span class="co">#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75</span></span>
-<span><span class="co">#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</span></span>
-<span><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>diamonds_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"diamonds"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>diamonds_db</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Source:   table&lt;diamonds&gt; [?? x 10]</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Database: DuckDB 1.5.2 [unknown@Linux 6.17.0-1010-azure:R 4.6.0/:memory:]</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -610,112 +636,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container">
 <p>Hay otras dos formas comunes de interactuar con una base de datos. Primero, muchas bases de datos corporativas son muy grandes, por lo que necesita cierta jerarquía para mantener todas las tablas organizadas. En ese caso, es posible que deba proporcionar un esquema, o un catálogo y un esquema, para elegir la tabla que le interesa.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://dbplyr.tidyverse.org/reference/in_schema.html">in_schema</a></span><span class="op">(</span><span class="st">"sales"</span>, <span class="st">"diamonds"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">diamonds_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://dbplyr.tidyverse.org/reference/in_schema.html">in_catalog</a></span><span class="op">(</span><span class="st">"north_america"</span>, <span class="st">"sales"</span>, <span class="st">"diamonds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>diamonds_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="fu">in_schema</span>(<span class="st">"sales"</span>, <span class="st">"diamonds"</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>diamonds_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="fu">in_catalog</span>(<span class="st">"north_america"</span>, <span class="st">"sales"</span>, <span class="st">"diamonds"</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Otras veces, es posible que desee utilizar su propia consulta SQL como punto de partida:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://dbplyr.tidyverse.org/reference/sql.html">sql</a></span><span class="op">(</span><span class="st">"SELECT * FROM diamonds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>diamonds_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="fu">sql</span>(<span class="st">"SELECT * FROM diamonds"</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>Este objeto es <strong>perezoso</strong>; cuando usa verbos dplyr en él, dplyr no hace ningún trabajo: solo registra la secuencia de operaciones que desea realizar y solo las realiza cuando es necesario. Por ejemplo, tome la siguiente canalización:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">big_diamonds_db</span> <span class="op">&lt;-</span> <span class="va">diamonds_db</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">price</span> <span class="op">&gt;</span> <span class="fl">15000</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">carat</span><span class="op">:</span><span class="va">clarity</span>, <span class="va">price</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">big_diamonds_db</span></span>
-<span><span class="co">#&gt; # Source:   SQL [?? x 5]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.17.0-1010-azure:R 4.4.0/:memory:]</span></span>
-<span><span class="co">#&gt;   carat cut       color clarity price</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1  1.54 Premium   E     VS2     15002</span></span>
-<span><span class="co">#&gt; 2  1.19 Ideal     F     VVS1    15005</span></span>
-<span><span class="co">#&gt; 3  2.1  Premium   I     SI1     15007</span></span>
-<span><span class="co">#&gt; 4  1.69 Ideal     D     SI1     15011</span></span>
-<span><span class="co">#&gt; 5  1.5  Very Good G     VVS2    15013</span></span>
-<span><span class="co">#&gt; 6  1.73 Very Good G     VS1     15014</span></span>
-<span><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>big_diamonds_db <span class="ot">&lt;-</span> diamonds_db <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(price <span class="sc">&gt;</span> <span class="dv">15000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carat<span class="sc">:</span>clarity, price)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>big_diamonds_db</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Source:   SQL [?? x 5]</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Database: DuckDB 1.5.2 [unknown@Linux 6.17.0-1010-azure:R 4.6.0/:memory:]</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   carat cut       color clarity price</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1.54 Premium   E     VS2     15002</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1.19 Ideal     F     VVS1    15005</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2.1  Premium   I     SI1     15007</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1.69 Ideal     D     SI1     15011</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1.5  Very Good G     VVS2    15013</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1.73 Very Good G     VS1     15014</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Puede decir que este objeto representa una consulta de base de datos porque imprime el nombre de DBMS en la parte superior y, aunque le dice el número de columnas, normalmente no sabe el número de filas. Esto se debe a que encontrar el número total de filas generalmente requiere ejecutar la consulta completa, algo que estamos tratando de evitar.</p>
-<p>Puede ver el código SQL generado por la función dbplyr <code><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query()</a></code>. Si conoce dplyr, ¡esta es una excelente manera de aprender SQL! Escriba algo de código dplyr, obtenga dbplyr para traducirlo a SQL y luego intente averiguar cómo coinciden los dos idiomas.</p>
+<p>Puede ver el código SQL generado por la función dbplyr <code>show_query()</code>. Si conoce dplyr, ¡esta es una excelente manera de aprender SQL! Escriba algo de código dplyr, obtenga dbplyr para traducirlo a SQL y luego intente averiguar cómo coinciden los dos idiomas.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">big_diamonds_db</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT carat, cut, color, clarity, price</span></span>
-<span><span class="co">#&gt; FROM diamonds</span></span>
-<span><span class="co">#&gt; WHERE (price &gt; 15000.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>big_diamonds_db <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT carat, cut, color, clarity, price</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM diamonds</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (price &gt; 15000.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Para recuperar todos los datos en R, llama a <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code>. Detrás de escena, esto genera el SQL, llama a <code><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery()</a></code> para obtener los datos, luego convierte el resultado en un tibble:</p>
+<p>Para recuperar todos los datos en R, llama a <code>collect()</code>. Detrás de escena, esto genera el SQL, llama a <code>dbGetQuery()</code> para obtener los datos, luego convierte el resultado en un tibble:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">big_diamonds</span> <span class="op">&lt;-</span> <span class="va">big_diamonds_db</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">big_diamonds</span></span>
-<span><span class="co">#&gt; # A tibble: 1,655 × 5</span></span>
-<span><span class="co">#&gt;   carat cut       color clarity price</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1  1.54 Premium   E     VS2     15002</span></span>
-<span><span class="co">#&gt; 2  1.19 Ideal     F     VVS1    15005</span></span>
-<span><span class="co">#&gt; 3  2.1  Premium   I     SI1     15007</span></span>
-<span><span class="co">#&gt; 4  1.69 Ideal     D     SI1     15011</span></span>
-<span><span class="co">#&gt; 5  1.5  Very Good G     VVS2    15013</span></span>
-<span><span class="co">#&gt; 6  1.73 Very Good G     VS1     15014</span></span>
-<span><span class="co">#&gt; # ℹ 1,649 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>big_diamonds <span class="ot">&lt;-</span> big_diamonds_db <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>big_diamonds</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1,655 × 5</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   carat cut       color clarity price</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1.54 Premium   E     VS2     15002</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1.19 Ideal     F     VVS1    15005</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2.1  Premium   I     SI1     15007</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1.69 Ideal     D     SI1     15011</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1.5  Very Good G     VVS2    15013</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1.73 Very Good G     VS1     15014</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 1,649 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Por lo general, usará dbplyr para seleccionar los datos que desea de la base de datos, realizando filtrado y agregación básicos utilizando las traducciones que se describen a continuación. Luego, una vez que esté listo para analizar los datos con funciones que son exclusivas de R, <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> los datos para obtener un tibble en memoria y continuar su trabajo con código R puro.</p>
-</section><section id="sql" class="level2" data-number="21.5"><h2 data-number="21.5" class="anchored" data-anchor-id="sql">
-<span class="header-section-number">21.5</span> SQL</h2>
+<p>Por lo general, usará dbplyr para seleccionar los datos que desea de la base de datos, realizando filtrado y agregación básicos utilizando las traducciones que se describen a continuación. Luego, una vez que esté listo para analizar los datos con funciones que son exclusivas de R, <code>collect()</code> los datos para obtener un tibble en memoria y continuar su trabajo con código R puro.</p>
+</section>
+<section id="sql" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="sql"><span class="header-section-number">21.5</span> SQL</h2>
 <p>El resto del capítulo le enseñará un poco de SQL a través de la lente de dbplyr. Es una introducción bastante no tradicional a SQL, pero esperamos que lo ponga rápidamente al día con los conceptos básicos. Afortunadamente, si entiende dplyr, está en un buen lugar para aprender SQL rápidamente porque muchos de los conceptos son los mismos.</p>
 <p>Exploraremos la relación entre dplyr y SQL usando un par de viejos amigos del paquete nycflights13: <code>flights</code> y <code>planes</code>. Estos conjuntos de datos son fáciles de ingresar a nuestra base de datos de aprendizaje porque dbplyr viene con una función que copia las tablas de nycflights13 a nuestra base de datos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">dbplyr</span><span class="fu">::</span><span class="fu"><a href="https://dbplyr.tidyverse.org/reference/nycflights13.html">copy_nycflights13</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Creating table: airlines</span></span>
-<span><span class="co">#&gt; Creating table: airports</span></span>
-<span><span class="co">#&gt; Creating table: flights</span></span>
-<span><span class="co">#&gt; Creating table: planes</span></span>
-<span><span class="co">#&gt; Creating table: weather</span></span>
-<span><span class="va">flights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"flights"</span><span class="op">)</span></span>
-<span><span class="va">planes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"planes"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dbplyr<span class="sc">::</span><span class="fu">copy_nycflights13</span>(con)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Creating table: airlines</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Creating table: airports</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Creating table: flights</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Creating table: planes</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Creating table: weather</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"flights"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>planes <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"planes"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="sql-básico" class="level3" data-number="21.5.1"><h3 data-number="21.5.1" class="anchored" data-anchor-id="sql-básico">
-<span class="header-section-number">21.5.1</span> SQL básico</h3>
+<section id="sql-básico" class="level3" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="sql-básico"><span class="header-section-number">21.5.1</span> SQL básico</h3>
 <p>Los componentes de nivel superior de SQL se denominan <strong>declaraciones</strong>. Las declaraciones comunes incluyen <code>CREATE</code> para definir nuevas tablas, <code>INSERT</code> para agregar datos y <code>SELECT</code> para recuperar datos. Nos centraremos en las declaraciones <code>SELECT</code>, también llamadas <strong>consultas</strong>, porque son casi exclusivamente lo que usará como científico de datos.</p>
 <p>Una consulta se compone de <strong>cláusulas</strong>. Hay cinco cláusulas importantes: <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>ORDER BY</code> y <code>GROUP BY</code>. Cada consulta debe tener las cláusulas <code>SELECT</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> y <code>FROM</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> y la consulta más simple es <code>SELECT * FROM table</code>, que selecciona todas las columnas de la tabla especificada . Esto es lo que genera dbplyr para una tabla sin adulterar :</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT *</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="va">planes</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT *</span></span>
-<span><span class="co">#&gt; FROM planes</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">show_query</span>()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT *</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>planes <span class="sc">|&gt;</span> <span class="fu">show_query</span>()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT *</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM planes</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>WHERE</code> y <code>ORDER BY</code> controlan qué filas se incluyen y cómo se ordenan:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dest</span> <span class="op">==</span> <span class="st">"IAH"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">dep_delay</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; WHERE (dest = 'IAH')</span></span>
-<span><span class="co">#&gt; ORDER BY dep_delay</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">==</span> <span class="st">"IAH"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(dep_delay) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (dest = 'IAH')</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ORDER BY dep_delay</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>GROUP BY</code> convierte la consulta en un resumen, lo que hace que se produzca la agregación:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>dep_delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dep_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT dest, AVG(dep_delay) AS dep_delay</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; GROUP BY dest</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">dep_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT dest, AVG(dep_delay) AS dep_delay</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; GROUP BY dest</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay dos diferencias importantes entre los verbos dplyr y las cláusulas SELECT:</p>
 <ul>
@@ -733,35 +760,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="select" class="level3" data-number="21.5.2"><h3 data-number="21.5.2" class="anchored" data-anchor-id="select">
-<span class="header-section-number">21.5.2</span> SELECT</h3>
-<p>La cláusula <code>SELECT</code> es el caballo de batalla de las consultas y realiza el mismo trabajo que <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> y, como aprenderá en la próxima sección, <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
-<p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> tienen traducciones muy directas a <code>SELECT</code> ya que solo afectan el lugar donde aparece una columna (si es que aparece) junto con su nombre:</p>
+</section>
+<section id="select" class="level3" data-number="21.5.2">
+<h3 data-number="21.5.2" class="anchored" data-anchor-id="select"><span class="header-section-number">21.5.2</span> SELECT</h3>
+<p>La cláusula <code>SELECT</code> es el caballo de batalla de las consultas y realiza el mismo trabajo que <code>select()</code>, <code>mutate()</code>, <code>rename()</code>, <code>relocate()</code> y, como aprenderá en la próxima sección, <code>summarize()</code>.</p>
+<p><code>select()</code>, <code>rename()</code> y <code>relocate()</code> tienen traducciones muy directas a <code>SELECT</code> ya que solo afectan el lugar donde aparece una columna (si es que aparece) junto con su nombre:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">planes</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tailnum</span>, <span class="va">type</span>, <span class="va">manufacturer</span>, <span class="va">model</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT tailnum, "type", manufacturer, model, "year"</span></span>
-<span><span class="co">#&gt; FROM planes</span></span>
-<span></span>
-<span><span class="va">planes</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tailnum</span>, <span class="va">type</span>, <span class="va">manufacturer</span>, <span class="va">model</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>year_built <span class="op">=</span> <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT tailnum, "type", manufacturer, model, "year" AS year_built</span></span>
-<span><span class="co">#&gt; FROM planes</span></span>
-<span></span>
-<span><span class="va">planes</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tailnum</span>, <span class="va">type</span>, <span class="va">manufacturer</span>, <span class="va">model</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">manufacturer</span>, <span class="va">model</span>, .before <span class="op">=</span> <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT tailnum, manufacturer, model, "type", "year"</span></span>
-<span><span class="co">#&gt; FROM planes</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>planes <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tailnum, type, manufacturer, model, year) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT tailnum, "type", manufacturer, model, "year"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM planes</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>planes <span class="sc">|&gt;</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tailnum, type, manufacturer, model, year) <span class="sc">|&gt;</span> </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">year_built =</span> year) <span class="sc">|&gt;</span> </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT tailnum, "type", manufacturer, model, "year" AS year_built</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM planes</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>planes <span class="sc">|&gt;</span> </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tailnum, type, manufacturer, model, year) <span class="sc">|&gt;</span> </span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(manufacturer, model, <span class="at">.before =</span> type) <span class="sc">|&gt;</span> </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT tailnum, manufacturer, model, "type", "year"</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM planes</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Este ejemplo también muestra cómo SQL cambia el nombre. En la terminología SQL, el cambio de nombre se denomina <strong>aliasing</strong> y se realiza con <code>AS</code>. Tenga en cuenta que, a diferencia de <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, el nombre anterior está a la izquierda y el nuevo nombre está a la derecha.</p>
+<p>Este ejemplo también muestra cómo SQL cambia el nombre. En la terminología SQL, el cambio de nombre se denomina <strong>aliasing</strong> y se realiza con <code>AS</code>. Tenga en cuenta que, a diferencia de <code>mutate()</code>, el nombre anterior está a la izquierda y el nuevo nombre está a la derecha.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -778,191 +806,196 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Las traducciones de <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> son igualmente sencillas: cada variable se convierte en una nueva expresión en <code>SELECT</code>:</p>
+<p>Las traducciones de <code>mutate()</code> son igualmente sencillas: cada variable se convierte en una nueva expresión en <code>SELECT</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    speed <span class="op">=</span> <span class="va">distance</span> <span class="op">/</span> <span class="op">(</span><span class="va">air_time</span> <span class="op">/</span> <span class="fl">60</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*, distance / (air_time / 60.0) AS speed</span></span>
-<span><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">speed =</span> distance <span class="sc">/</span> (air_time <span class="sc">/</span> <span class="dv">60</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*, distance / (air_time / 60.0) AS speed</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Volveremos a la traducción de componentes individuales (como <code>/</code>) en <a href="#sec-sql-expressions" class="quarto-xref"><span>Sección 21.6</span></a>.</p>
-</section><section id="from" class="level3" data-number="21.5.3"><h3 data-number="21.5.3" class="anchored" data-anchor-id="from">
-<span class="header-section-number">21.5.3</span> FROM</h3>
+</section>
+<section id="from" class="level3" data-number="21.5.3">
+<h3 data-number="21.5.3" class="anchored" data-anchor-id="from"><span class="header-section-number">21.5.3</span> FROM</h3>
 <p>La cláusula <code>FROM</code> define la fuente de datos. Va a ser poco interesante por un tiempo, porque solo estamos usando tablas individuales. Verá ejemplos más complejos una vez que lleguemos a las funciones de unión.</p>
-</section><section id="group-by" class="level3" data-number="21.5.4"><h3 data-number="21.5.4" class="anchored" data-anchor-id="group-by">
-<span class="header-section-number">21.5.4</span> GROUP BY</h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> se traduce a la cláusula <code>GROUP BY</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> y <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> se traduce a la cláusula <code>SELECT</code>:</p>
+</section>
+<section id="group-by" class="level3" data-number="21.5.4">
+<h3 data-number="21.5.4" class="anchored" data-anchor-id="group-by"><span class="header-section-number">21.5.4</span> GROUP BY</h3>
+<p><code>group_by()</code> se traduce a la cláusula <code>GROUP BY</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> y <code>summarize()</code> se traduce a la cláusula <code>SELECT</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    avg_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT cut, COUNT(*) AS n, AVG(price) AS avg_price</span></span>
-<span><span class="co">#&gt; FROM diamonds</span></span>
-<span><span class="co">#&gt; GROUP BY cut</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>diamonds_db <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_price =</span> <span class="fu">mean</span>(price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT cut, COUNT(*) AS n, AVG(price) AS avg_price</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM diamonds</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; GROUP BY cut</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Volveremos a lo que sucede con la traducción <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> y <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> en <a href="#sec-sql-expressions" class="quarto-xref"><span>Sección 21.6</span></a>.</p>
-</section><section id="where" class="level3" data-number="21.5.5"><h3 data-number="21.5.5" class="anchored" data-anchor-id="where">
-<span class="header-section-number">21.5.5</span> WHERE</h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> se traduce a la cláusula <code>WHERE</code>:</p>
+<p>Volveremos a lo que sucede con la traducción <code>n()</code> y <code>mean()</code> en <a href="#sec-sql-expressions" class="quarto-xref"><span>Sección 21.6</span></a>.</p>
+</section>
+<section id="where" class="level3" data-number="21.5.5">
+<h3 data-number="21.5.5" class="anchored" data-anchor-id="where"><span class="header-section-number">21.5.5</span> WHERE</h3>
+<p><code>filter()</code> se traduce a la cláusula <code>WHERE</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dest</span> <span class="op">==</span> <span class="st">"IAH"</span> <span class="op">|</span> <span class="va">dest</span> <span class="op">==</span> <span class="st">"HOU"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; WHERE (dest = 'IAH' OR dest = 'HOU')</span></span>
-<span></span>
-<span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; WHERE (arr_delay &gt; 0.0 AND arr_delay &lt; 20.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">==</span> <span class="st">"IAH"</span> <span class="sc">|</span> dest <span class="sc">==</span> <span class="st">"HOU"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (dest = 'IAH' OR dest = 'HOU')</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(arr_delay <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> arr_delay <span class="sc">&lt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (arr_delay &gt; 0.0 AND arr_delay &lt; 20.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hay algunos detalles importantes a tener en cuenta aquí:</p>
 <ul>
-<li>
-<code>|</code> se convierte en <code>OR</code> y <code>&amp;</code> se convierte en <code>AND</code>.</li>
+<li><code>|</code> se convierte en <code>OR</code> y <code>&amp;</code> se convierte en <code>AND</code>.</li>
 <li>SQL usa <code>=</code> para comparar, no <code>==</code>. SQL no tiene asignación, por lo que no hay posibilidad de confusión allí.</li>
 <li>SQL usa solo <code>''</code> para cadenas, no <code>""</code>. En SQL, <code>""</code> se usa para identificar variables, como <code>``</code> de R.</li>
 </ul>
 <p>Otro operador SQL útil es <code>IN</code>, que está muy cerca del <code>%in%</code> de R:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dest</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"IAH"</span>, <span class="st">"HOU"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; WHERE (dest IN ('IAH', 'HOU'))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dest <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"IAH"</span>, <span class="st">"HOU"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (dest IN ('IAH', 'HOU'))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>SQL usa <code>NULL</code> en lugar de <code>NA</code>. <code>NULL</code>s se comportan de manera similar a <code>NA</code>s. La principal diferencia es que, si bien son “infecciosos” en las comparaciones y la aritmética, se descartan silenciosamente al resumir. dbplyr le recordará este comportamiento la primera vez que lo presione:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>delay <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Missing values are always removed in SQL aggregation functions.</span></span>
-<span><span class="co">#&gt; Use `na.rm = TRUE` to silence this warning</span></span>
-<span><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
-<span><span class="co">#&gt; # Source:   SQL [?? x 2]</span></span>
-<span><span class="co">#&gt; # Database: DuckDB v0.10.2 [unknown@Linux 6.17.0-1010-azure:R 4.4.0/:memory:]</span></span>
-<span><span class="co">#&gt;   dest  delay</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 SFO    2.67</span></span>
-<span><span class="co">#&gt; 2 SJU    2.52</span></span>
-<span><span class="co">#&gt; 3 SNA   -7.87</span></span>
-<span><span class="co">#&gt; 4 SRQ    3.08</span></span>
-<span><span class="co">#&gt; 5 CHS   10.6 </span></span>
-<span><span class="co">#&gt; 6 SAN    3.14</span></span>
-<span><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">delay =</span> <span class="fu">mean</span>(arr_delay))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Missing values are always removed in SQL aggregation functions.</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Use `na.rm = TRUE` to silence this warning</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Source:   SQL [?? x 2]</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Database: DuckDB 1.5.2 [unknown@Linux 6.17.0-1010-azure:R 4.6.0/:memory:]</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   dest  delay</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 SFO    2.67</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 GSP   15.9 </span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 SJU    2.52</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 DCA    9.07</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 SNA   -7.87</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 GSO   14.1 </span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Si desea obtener más información sobre cómo funcionan los valores <code>NULL</code>, puede disfrutar de “<a href="https://modern-sql.com/concept/three-valued-logic"><em>La lógica de tres valores de SQL</em></a>” de Markus Winand.</p>
 <p>En general, puedes trabajar con <code>NULL</code>s usando las funciones que usarías para <code>NA</code>s en R:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">dep_delay</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; WHERE (NOT((dep_delay IS NULL)))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (NOT((dep_delay IS NULL)))</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta consulta SQL ilustra uno de los inconvenientes de dbplyr: si bien el SQL es correcto, no es tan simple como podría escribirse a mano. En este caso, podría quitar los paréntesis y usar un operador especial que sea más fácil de leer:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="ot">"dep_delay"</span> <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Tenga en cuenta que si filtra, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, una variable que creó utilizando un resumen, dbplyr generará una cláusula ‘HAVING’, en lugar de una cláusula ‘WHERE’. Esta es una de las idiosincrasias de SQL: <code>WHERE</code> se evalúa antes que <code>SELECT</code> y <code>GROUP BY</code>, por lo que SQL necesita otra cláusula que se evalúa después.</p>
+<p>Tenga en cuenta que si filtra, <code>filter()</code>, una variable que creó utilizando un resumen, dbplyr generará una cláusula ‘HAVING’, en lugar de una cláusula ‘WHERE’. Esta es una de las idiosincrasias de SQL: <code>WHERE</code> se evalúa antes que <code>SELECT</code> y <code>GROUP BY</code>, por lo que SQL necesita otra cláusula que se evalúa después.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds_db</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT cut, COUNT(*) AS n</span></span>
-<span><span class="co">#&gt; FROM diamonds</span></span>
-<span><span class="co">#&gt; GROUP BY cut</span></span>
-<span><span class="co">#&gt; HAVING (COUNT(*) &gt; 100.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>diamonds_db <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT cut, COUNT(*) AS n</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM diamonds</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; GROUP BY cut</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; HAVING (COUNT(*) &gt; 100.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="order-by" class="level3" data-number="21.5.6"><h3 data-number="21.5.6" class="anchored" data-anchor-id="order-by">
-<span class="header-section-number">21.5.6</span> ORDER BY</h3>
-<p>Ordenar filas implica una traducción directa de <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> a la cláusula <code>ORDER BY</code>:</p>
+</section>
+<section id="order-by" class="level3" data-number="21.5.6">
+<h3 data-number="21.5.6" class="anchored" data-anchor-id="order-by"><span class="header-section-number">21.5.6</span> ORDER BY</h3>
+<p>Ordenar filas implica una traducción directa de <code>arrange()</code> a la cláusula <code>ORDER BY</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">dep_delay</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT flights.*</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; ORDER BY "year", "month", "day", dep_delay DESC</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, month, day, <span class="fu">desc</span>(dep_delay)) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT flights.*</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ORDER BY "year", "month", "day", dep_delay DESC</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Observe cómo <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> se traduce a <code>DESC</code>: esta es una de las muchas funciones dplyr cuyo nombre se inspiró directamente en SQL.</p>
-</section><section id="subconsultas" class="level3" data-number="21.5.7"><h3 data-number="21.5.7" class="anchored" data-anchor-id="subconsultas">
-<span class="header-section-number">21.5.7</span> Subconsultas</h3>
+<p>Observe cómo <code>desc()</code> se traduce a <code>DESC</code>: esta es una de las muchas funciones dplyr cuyo nombre se inspiró directamente en SQL.</p>
+</section>
+<section id="subconsultas" class="level3" data-number="21.5.7">
+<h3 data-number="21.5.7" class="anchored" data-anchor-id="subconsultas"><span class="header-section-number">21.5.7</span> Subconsultas</h3>
 <p>A veces, no es posible traducir una canalización dplyr en una sola declaración <code>SELECT</code> y necesita usar una subconsulta. Una <strong>subconsulta</strong> es solo una consulta utilizada como fuente de datos en la cláusula <code>FROM</code>, en lugar de la tabla habitual.</p>
 <p>dbplyr normalmente usa subconsultas para sortear las limitaciones de SQL. Por ejemplo, las expresiones en la cláusula <code>SELECT</code> no pueden hacer referencia a columnas que se acaban de crear. Eso significa que la siguiente canalización (tonta) de dplyr debe ocurrir en dos pasos: la primera consulta (interna) calcula <code>year1</code> y luego la segunda consulta (externa) puede calcular <code>year2</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    year1 <span class="op">=</span> <span class="va">year</span> <span class="op">+</span> <span class="fl">1</span>,</span>
-<span>    year2 <span class="op">=</span> <span class="va">year1</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT q01.*, year1 + 1.0 AS year2</span></span>
-<span><span class="co">#&gt; FROM (</span></span>
-<span><span class="co">#&gt;   SELECT flights.*, "year" + 1.0 AS year1</span></span>
-<span><span class="co">#&gt;   FROM flights</span></span>
-<span><span class="co">#&gt; ) q01</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">year1 =</span> year <span class="sc">+</span> <span class="dv">1</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year2 =</span> year1 <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT q01.*, year1 + 1.0 AS year2</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM (</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SELECT flights.*, "year" + 1.0 AS year1</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   FROM flights</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ) q01</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>También verá esto si intentó filtrar, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, una variable que acaba de crear. Recuerda, aunque <code>WHERE</code> se escribe después de <code>SELECT</code>, se evalúa antes, por lo que necesitamos una subconsulta en este (tonto) ejemplo:</p>
+<p>También verá esto si intentó filtrar, <code>filter()</code>, una variable que acaba de crear. Recuerda, aunque <code>WHERE</code> se escribe después de <code>SELECT</code>, se evalúa antes, por lo que necesitamos una subconsulta en este (tonto) ejemplo:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year1 <span class="op">=</span> <span class="va">year</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year1</span> <span class="op">==</span> <span class="fl">2014</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT q01.*</span></span>
-<span><span class="co">#&gt; FROM (</span></span>
-<span><span class="co">#&gt;   SELECT flights.*, "year" + 1.0 AS year1</span></span>
-<span><span class="co">#&gt;   FROM flights</span></span>
-<span><span class="co">#&gt; ) q01</span></span>
-<span><span class="co">#&gt; WHERE (year1 = 2014.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year1 =</span> year <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year1 <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT q01.*</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM (</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SELECT flights.*, "year" + 1.0 AS year1</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   FROM flights</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ) q01</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (year1 = 2014.0)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A veces, dbplyr creará una subconsulta donde no es necesaria porque aún no sabe cómo optimizar esa traducción. A medida que dbplyr mejore con el tiempo, estos casos se volverán más raros pero probablemente nunca desaparezcan.</p>
-</section><section id="uniones" class="level3" data-number="21.5.8"><h3 data-number="21.5.8" class="anchored" data-anchor-id="uniones">
-<span class="header-section-number">21.5.8</span> Uniones</h3>
+</section>
+<section id="uniones" class="level3" data-number="21.5.8">
+<h3 data-number="21.5.8" class="anchored" data-anchor-id="uniones"><span class="header-section-number">21.5.8</span> Uniones</h3>
 <p>Si está familiarizado con las uniones de dplyr, las uniones de SQL son muy similares. Aquí hay un ejemplo simple:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">planes</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>year_built <span class="op">=</span> <span class="va">year</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">tailnum</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT</span></span>
-<span><span class="co">#&gt;   flights.*,</span></span>
-<span><span class="co">#&gt;   planes."year" AS year_built,</span></span>
-<span><span class="co">#&gt;   "type",</span></span>
-<span><span class="co">#&gt;   manufacturer,</span></span>
-<span><span class="co">#&gt;   model,</span></span>
-<span><span class="co">#&gt;   engines,</span></span>
-<span><span class="co">#&gt;   seats,</span></span>
-<span><span class="co">#&gt;   speed,</span></span>
-<span><span class="co">#&gt;   engine</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; LEFT JOIN planes</span></span>
-<span><span class="co">#&gt;   ON (flights.tailnum = planes.tailnum)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(planes <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">year_built =</span> year), <span class="fu">join_by</span>(tailnum)) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   flights.*,</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   planes."year" AS year_built,</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "type",</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   manufacturer,</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   model,</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   engines,</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   seats,</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   speed,</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   engine</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LEFT JOIN planes</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ON (flights.tailnum = planes.tailnum)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Lo principal a notar aquí es la sintaxis: las uniones SQL usan subcláusulas de la cláusula <code>FROM</code> para traer tablas adicionales, usando <code>ON</code> para definir cómo se relacionan las tablas.</p>
-<p>Los nombres de dplyr para estas funciones están tan estrechamente relacionados con SQL que puede adivinar fácilmente el SQL equivalente para <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>:</p>
+<p>Los nombres de dplyr para estas funciones están tan estrechamente relacionados con SQL que puede adivinar fácilmente el SQL equivalente para <code>inner_join()</code>, <code>right_join()</code> y <code>full_join()</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> flights.<span class="op">*</span>, <span class="ot">"type"</span>, manufacturer, model, engines, seats, speed</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">INNER</span> <span class="kw">JOIN</span> planes <span class="kw">ON</span> (flights.tailnum <span class="op">=</span> planes.tailnum)</span>
@@ -975,158 +1008,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="kw">FULL</span> <span class="kw">JOIN</span> planes <span class="kw">ON</span> (flights.tailnum <span class="op">=</span> planes.tailnum)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Es probable que necesite muchas uniones cuando trabaje con datos de una base de datos. Esto se debe a que las tablas de la base de datos a menudo se almacenan en una forma altamente normalizada, donde cada “hecho” se almacena en un solo lugar y para mantener un conjunto de datos completo para el análisis, debe navegar por una red compleja de tablas conectadas por claves primarias y externas. Si te encuentras en este escenario, el <a href="https://cynkra.github.io/dm/">paquete dm</a>, de Tobias Schieferdecker, Kirill Müller y Darko Bergant, es un salvavidas. Puede determinar automáticamente las conexiones entre tablas usando las restricciones que los administradores de bases de datos suelen proporcionar, visualizar las conexiones para que pueda ver lo que está pasando y generar las uniones que necesita para conectar una tabla con otra.</p>
-</section><section id="otros-verbos" class="level3" data-number="21.5.9"><h3 data-number="21.5.9" class="anchored" data-anchor-id="otros-verbos">
-<span class="header-section-number">21.5.9</span> Otros verbos</h3>
-<p>dbplyr también traduce otros verbos como <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>, <code>slice_*()</code> e <code><a href="https://generics.r-lib.org/reference/setops.html">intersect()</a></code>, y una creciente selección de funciones tidyr como <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> y <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>. La forma más fácil de ver el conjunto completo de lo que está disponible actualmente es visitar el sitio web de dbplyr: <a href="https://dbplyr.tidyverse.org/reference/" class="uri">https://dbplyr.tidyverse.org/reference/</a>.</p>
-</section><section id="ejercicios" class="level3" data-number="21.5.10"><h3 data-number="21.5.10" class="anchored" data-anchor-id="ejercicios">
-<span class="header-section-number">21.5.10</span> Ejercicios</h3>
+</section>
+<section id="otros-verbos" class="level3" data-number="21.5.9">
+<h3 data-number="21.5.9" class="anchored" data-anchor-id="otros-verbos"><span class="header-section-number">21.5.9</span> Otros verbos</h3>
+<p>dbplyr también traduce otros verbos como <code>distinct()</code>, <code>slice_*()</code> e <code>intersect()</code>, y una creciente selección de funciones tidyr como <code>pivot_longer()</code> y <code>pivot_wider()</code>. La forma más fácil de ver el conjunto completo de lo que está disponible actualmente es visitar el sitio web de dbplyr: <a href="https://dbplyr.tidyverse.org/reference/" class="uri">https://dbplyr.tidyverse.org/reference/</a>.</p>
+</section>
+<section id="ejercicios" class="level3" data-number="21.5.10">
+<h3 data-number="21.5.10" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">21.5.10</span> Ejercicios</h3>
 <ol type="1">
-<li><p>¿A qué se traduce <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>? ¿Qué tal <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>?</p></li>
-<li>
-<p>Explique qué hace cada una de las siguientes consultas SQL e intente recrearlas usando dbplyr.</p>
+<li><p>¿A qué se traduce <code>distinct()</code>? ¿Qué tal <code>head()</code>?</p></li>
+<li><p>Explique qué hace cada una de las siguientes consultas SQL e intente recrearlas usando dbplyr.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> dep_delay <span class="op">&lt;</span> arr_delay</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span>, distance <span class="op">/</span> (air_time <span class="op">/</span> <span class="dv">60</span>) <span class="kw">AS</span> speed</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</li>
-</ol></section></section><section id="sec-sql-expressions" class="level2" data-number="21.6"><h2 data-number="21.6" class="anchored" data-anchor-id="sec-sql-expressions">
-<span class="header-section-number">21.6</span> Traducciones de funciones</h2>
-<p>Hasta ahora nos hemos centrado en el panorama general de cómo se traducen los verbos dplyr a las cláusulas de una consulta. Ahora vamos a acercarnos un poco y hablar sobre la traducción de las funciones R que funcionan con columnas individuales, p.ej., ¿Qué pasa cuando usas <code>mean(x)</code> en <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>?</p>
-<p>Para ayudar a ver lo que está pasando, usaremos un par de pequeñas funciones auxiliares que ejecutan <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> o <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> y muestran el SQL generado. Eso hará que sea un poco más fácil explorar algunas variaciones y ver cómo los resúmenes y las transformaciones pueden diferir.</p>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+</section>
+</section>
+<section id="sec-sql-expressions" class="level2" data-number="21.6">
+<h2 data-number="21.6" class="anchored" data-anchor-id="sec-sql-expressions"><span class="header-section-number">21.6</span> Traducciones de funciones</h2>
+<p>Hasta ahora nos hemos centrado en el panorama general de cómo se traducen los verbos dplyr a las cláusulas de una consulta. Ahora vamos a acercarnos un poco y hablar sobre la traducción de las funciones R que funcionan con columnas individuales, p.ej., ¿Qué pasa cuando usas <code>mean(x)</code> en <code>summarize()</code>?</p>
+<p>Para ayudar a ver lo que está pasando, usaremos un par de pequeñas funciones auxiliares que ejecutan <code>summarize()</code> o <code>mutate()</code> y muestran el SQL generado. Eso hará que sea un poco más fácil explorar algunas variaciones y ver cómo los resúmenes y las transformaciones pueden diferir.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summarize_query</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="va">mutate_query</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">...</span>, .keep <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>summarize_query <span class="ot">&lt;-</span> <span class="cf">function</span>(df, ...) {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(...) <span class="sc">|&gt;</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">show_query</span>()</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>mutate_query <span class="ot">&lt;-</span> <span class="cf">function</span>(df, ...) {</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(..., <span class="at">.keep =</span> <span class="st">"none"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">show_query</span>()</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>¡Vamos a sumergirnos con algunos resúmenes! Si observa el código siguiente, notará que algunas funciones de resumen, como <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, tienen una traducción relativamente simple, mientras que otras, como <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>, son mucho más complejas. La complejidad suele ser mayor para las operaciones que son comunes en las estadísticas pero menos comunes en las bases de datos.</p>
+<p>¡Vamos a sumergirnos con algunos resúmenes! Si observa el código siguiente, notará que algunas funciones de resumen, como <code>mean()</code>, tienen una traducción relativamente simple, mientras que otras, como <code>median()</code>, son mucho más complejas. La complejidad suele ser mayor para las operaciones que son comunes en las estadísticas pero menos comunes en las bases de datos.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
-<span>  <span class="fu">summarize_query</span><span class="op">(</span></span>
-<span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">arr_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by "year" and "month". You can override</span></span>
-<span><span class="co">#&gt; using the `.groups` argument.</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT</span></span>
-<span><span class="co">#&gt;   "year",</span></span>
-<span><span class="co">#&gt;   "month",</span></span>
-<span><span class="co">#&gt;   "day",</span></span>
-<span><span class="co">#&gt;   AVG(arr_delay) AS mean,</span></span>
-<span><span class="co">#&gt;   PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY arr_delay) AS median</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; GROUP BY "year", "month", "day"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span>  </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_query</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `summarise()` has grouped output by "year" and "month". You can override</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; using the `.groups` argument.</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "year",</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "month",</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "day",</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   AVG(arr_delay) AS mean,</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   MEDIAN(arr_delay) AS median</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; GROUP BY "year", "month", "day"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>La traducción de las funciones de resumen se vuelve más complicada cuando las usa dentro de un <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> porque tienen que convertirse en las llamadas funciones de <strong>ventana</strong>. En SQL, convierte una función de agregación ordinaria en una función de ventana agregando <code>OVER</code> después de ella:</p>
+<p>La traducción de las funciones de resumen se vuelve más complicada cuando las usa dentro de un <code>mutate()</code> porque tienen que convertirse en las llamadas funciones de <strong>ventana</strong>. En SQL, convierte una función de agregación ordinaria en una función de ventana agregando <code>OVER</code> después de ella:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
-<span>  <span class="fu">mutate_query</span><span class="op">(</span></span>
-<span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">arr_delay</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT</span></span>
-<span><span class="co">#&gt;   "year",</span></span>
-<span><span class="co">#&gt;   "month",</span></span>
-<span><span class="co">#&gt;   "day",</span></span>
-<span><span class="co">#&gt;   AVG(arr_delay) OVER (PARTITION BY "year", "month", "day") AS mean</span></span>
-<span><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, month, day) <span class="sc">|&gt;</span>  </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_query</span>(</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "year",</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "month",</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "day",</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   AVG(arr_delay) OVER (PARTITION BY "year", "month", "day") AS mean</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En SQL, la cláusula <code>GROUP BY</code> se usa exclusivamente para resúmenes, por lo que aquí puede ver que la agrupación se ha movido desde la cláusula <code>GROUP BY</code> a <code>OVER</code>.</p>
-<p>Las funciones de ventana incluyen todas las funciones que miran hacia adelante o hacia atrás, como <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> que miran el valor “anterior” o “siguiente” respectivamente:</p>
+<p>Las funciones de ventana incluyen todas las funciones que miran hacia adelante o hacia atrás, como <code>lead()</code> y <code>lag()</code> que miran el valor “anterior” o “siguiente” respectivamente:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dest</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">time_hour</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate_query</span><span class="op">(</span></span>
-<span>    lead <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span>,</span>
-<span>    lag <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">arr_delay</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT</span></span>
-<span><span class="co">#&gt;   dest,</span></span>
-<span><span class="co">#&gt;   LEAD(arr_delay, 1, NULL) OVER (PARTITION BY dest ORDER BY time_hour) AS lead,</span></span>
-<span><span class="co">#&gt;   LAG(arr_delay, 1, NULL) OVER (PARTITION BY dest ORDER BY time_hour) AS lag</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="co">#&gt; ORDER BY time_hour</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">|&gt;</span>  </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(time_hour) <span class="sc">|&gt;</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_query</span>(</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lead =</span> <span class="fu">lead</span>(arr_delay),</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lag =</span> <span class="fu">lag</span>(arr_delay)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   dest,</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   LEAD(arr_delay, 1, NULL) OVER (PARTITION BY dest ORDER BY time_hour) AS lead,</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   LAG(arr_delay, 1, NULL) OVER (PARTITION BY dest ORDER BY time_hour) AS lag</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ORDER BY time_hour</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Aquí es importante arreglar, <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>, los datos, porque las tablas SQL no tienen un orden intrínseco. De hecho, si no usa <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>, ¡podría recuperar las filas en un orden diferente cada vez! Aviso para las funciones de ventana, la información de pedido se repite: la cláusula <code>ORDER BY</code> de la consulta principal no se aplica automáticamente a las funciones de ventana.</p>
-<p>Otra función SQL importante es <code>CASE WHEN</code>. Se usa como la traducción de <code><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>, la función dplyr que inspiró directamente. Aquí hay un par de ejemplos simples:</p>
+<p>Aquí es importante arreglar, <code>arrange()</code>, los datos, porque las tablas SQL no tienen un orden intrínseco. De hecho, si no usa <code>arrange()</code>, ¡podría recuperar las filas en un orden diferente cada vez! Aviso para las funciones de ventana, la información de pedido se repite: la cláusula <code>ORDER BY</code> de la consulta principal no se aplica automáticamente a las funciones de ventana.</p>
+<p>Otra función SQL importante es <code>CASE WHEN</code>. Se usa como la traducción de <code>if_else()</code> y <code>case_when()</code>, la función dplyr que inspiró directamente. Aquí hay un par de ejemplos simples:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate_query</span><span class="op">(</span></span>
-<span>    description <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">arr_delay</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="st">"delayed"</span>, <span class="st">"on-time"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT CASE WHEN (arr_delay &gt; 0.0) THEN 'delayed' WHEN NOT (arr_delay &gt; 0.0) THEN 'on-time' END AS description</span></span>
-<span><span class="co">#&gt; FROM flights</span></span>
-<span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate_query</span><span class="op">(</span></span>
-<span>    description <span class="op">=</span> </span>
-<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>        <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">5</span> <span class="op">~</span> <span class="st">"early"</span>, </span>
-<span>        <span class="va">arr_delay</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"on-time"</span>,</span>
-<span>        <span class="va">arr_delay</span> <span class="op">&gt;=</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"late"</span></span>
-<span>      <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT CASE</span></span>
-<span><span class="co">#&gt; WHEN (arr_delay &lt; -5.0) THEN 'early'</span></span>
-<span><span class="co">#&gt; WHEN (arr_delay &lt; 5.0) THEN 'on-time'</span></span>
-<span><span class="co">#&gt; WHEN (arr_delay &gt;= 5.0) THEN 'late'</span></span>
-<span><span class="co">#&gt; END AS description</span></span>
-<span><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_query</span>(</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">if_else</span>(arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"delayed"</span>, <span class="st">"on-time"</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT CASE WHEN (arr_delay &gt; 0.0) THEN 'delayed' WHEN NOT (arr_delay &gt; 0.0) THEN 'on-time' </span><span class="re">END</span><span class="co"> AS description</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_query</span>(</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> </span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>        arr_delay <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">5</span> <span class="sc">~</span> <span class="st">"early"</span>, </span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>        arr_delay <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"on-time"</span>,</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>        arr_delay <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"late"</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT CASE</span></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHEN (arr_delay &lt; -5.0) THEN 'early'</span></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHEN (arr_delay &lt; 5.0) THEN 'on-time'</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHEN (arr_delay &gt;= 5.0) THEN 'late'</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span><span class="re">END</span><span class="co"> AS description</span></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>CASE WHEN</code> también se usa para algunas otras funciones que no tienen una traducción directa de R a SQL. Un buen ejemplo de esto es <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code>:</p>
+<p><code>CASE WHEN</code> también se usa para algunas otras funciones que no tienen una traducción directa de R a SQL. Un buen ejemplo de esto es <code>cut()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate_query</span><span class="op">(</span></span>
-<span>    description <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span></span>
-<span>      <span class="va">arr_delay</span>, </span>
-<span>      breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="cn">Inf</span><span class="op">)</span>, </span>
-<span>      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"early"</span>, <span class="st">"on-time"</span>, <span class="st">"late"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span><span class="co">#&gt; SELECT CASE</span></span>
-<span><span class="co">#&gt; WHEN (arr_delay &lt;= -5.0) THEN 'early'</span></span>
-<span><span class="co">#&gt; WHEN (arr_delay &lt;= 5.0) THEN 'on-time'</span></span>
-<span><span class="co">#&gt; WHEN (arr_delay &gt; 5.0) THEN 'late'</span></span>
-<span><span class="co">#&gt; END AS description</span></span>
-<span><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_query</span>(</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span>  <span class="fu">cut</span>(</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>      arr_delay, </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="cn">Inf</span>), </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"early"</span>, <span class="st">"on-time"</span>, <span class="st">"late"</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT CASE</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHEN (arr_delay &lt;= -5.0) THEN 'early'</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHEN (arr_delay &lt;= 5.0) THEN 'on-time'</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHEN (arr_delay &gt; 5.0) THEN 'late'</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span><span class="re">END</span><span class="co"> AS description</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM flights</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>dbplyr también traduce funciones comunes de manipulación de cadenas y fecha y hora, sobre las que puede obtener información en <code>vignette("funcion-de-traduccion", package = "dbplyr")</code>. Las traducciones de dbplyr ciertamente no son perfectas, y hay muchas funciones de R que aún no están traducidas, pero dbplyr hace un trabajo sorprendentemente bueno al cubrir las funciones que usará la mayor parte del tiempo..</p>
-</section><section id="resumen" class="level2" data-number="21.7"><h2 data-number="21.7" class="anchored" data-anchor-id="resumen">
-<span class="header-section-number">21.7</span> Resumen</h2>
+</section>
+<section id="resumen" class="level2" data-number="21.7">
+<h2 data-number="21.7" class="anchored" data-anchor-id="resumen"><span class="header-section-number">21.7</span> Resumen</h2>
 <p>En este capítulo aprendió cómo acceder a los datos de las bases de datos. Nos enfocamos en dbplyr, un “backend” de dplyr que le permite escribir el código dplyr con el que está familiarizado y hacer que se traduzca automáticamente a SQL. Usamos esa traducción para enseñarle un poco de SQL; es importante aprender algo de SQL porque es <em>el</em> lenguaje más utilizado para trabajar con datos y conocer algunos le facilitará la comunicación con otras personas de datos que no usan R. Si ha terminado este capítulo y desea obtener más información sobre SQL. Tenemos dos recomendaciones:</p>
 <ul>
-<li>
-<a href="https://sqlfordatascientists.com"><em>SQL for Data Scientists</em></a> de Renée M. P. Teate es una introducción a SQL diseñada específicamente para las necesidades de los científicos de datos e incluye ejemplos del tipo de datos altamente interconectados que es probable que encuentre en organizaciones reales.</li>
-<li>
-<a href="https://www.practicalsql.com"><em>Practical SQL</em></a> de Anthony DeBarros está escrito desde la perspectiva de un periodista de datos (un científico de datos especializado en contar historias convincentes) y entra en más detalles sobre cómo obtener sus datos en una base de datos y ejecutar su propio DBMS.</li>
+<li><a href="https://sqlfordatascientists.com"><em>SQL for Data Scientists</em></a> de Renée M. P. Teate es una introducción a SQL diseñada específicamente para las necesidades de los científicos de datos e incluye ejemplos del tipo de datos altamente interconectados que es probable que encuentre en organizaciones reales.</li>
+<li><a href="https://www.practicalsql.com"><em>Practical SQL</em></a> de Anthony DeBarros está escrito desde la perspectiva de un periodista de datos (un científico de datos especializado en contar historias convincentes) y entra en más detalles sobre cómo obtener sus datos en una base de datos y ejecutar su propio DBMS.</li>
 </ul>
 <p>En el próximo capítulo, aprenderemos sobre otro backend de dplyr para trabajar con datos de gran tamaño: arrow. Arrow está diseñado para trabajar con archivos grandes en disco y es un complemento natural para las bases de datos.</p>
 
 
-</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
 <ol>
 <li id="fn1"><p>SQL es pronunciado “s”-“q”-“l” o “sequel”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Por lo general, esta es la única función que usará del paquete del cliente, por lo que recomendamos usar <code>::</code> para extraer esa función, en lugar de cargar el paquete completo con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Por lo general, esta es la única función que usará del paquete del cliente, por lo que recomendamos usar <code>::</code> para extraer esa función, en lugar de cargar el paquete completo con <code>library()</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Al menos, todas las tablas que tiene permiso para ver.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>De manera confusa, según el contexto, <code>SELECT</code> es una declaración o una cláusula. Para evitar esta confusión, generalmente usaremos la consulta <code>SELECT</code> en lugar de la instrucción <code>SELECT</code>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Ok, técnicamente, solo se requiere <code>SELECT</code>, ya que puedes escribir consultas como <code>SELECT 1+1</code> para realizar cálculos básicos. Pero si quieres trabajar con datos (¡como siempre lo haces!) también necesitarás una cláusula <code>FROM</code>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>Esto no es coincidencia: el nombre de la función dplyr se inspiró en la cláusula SQL.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></main><!-- /main --><script>
+</ol>
+</section>
+
+</main> <!-- /main -->
+
+<script>
 
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
@@ -1193,7 +1235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   act_link_T.innerHTML += edit_issue_T;
 
 
-</script><script id="quarto-html-after-body" type="application/javascript">
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1592,7 +1636,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="./spreadsheets.html" class="pagination-link" aria-label="Hojas de calculo">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hojas de calculo</span></span>
       </a>          
@@ -1604,7 +1650,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>R para la Ciencia de Datos (2e) fue escrito por Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund.</p>
 </div>   
@@ -1616,6 +1663,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

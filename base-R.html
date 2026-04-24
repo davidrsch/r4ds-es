@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
+
 <title>27&nbsp; Una guía para R base – R para la Ciencia de Datos (2e)</title>
 <style>
 /* Default styles provided by pandoc.
@@ -59,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,7 +81,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,19 +108,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
-}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+}</script>
+<script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+<meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+
+
 <meta property="og:title" content="27&nbsp; Una guía para R base – R para la Ciencia de Datos (2e)">
 <meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <meta property="og:image" content="https://davidrsch.github.io/r4ds-es/diagrams/pepper.png">
 <meta property="og:site_name" content="R para la Ciencia de Datos (2e)">
-<meta property="og:image:alt" content="Tres fotos. A la izquierda hay una foto de un pimentero de vidrio. En lugar del pimentero que contiene pimienta, contiene un solo paquete de pimienta. En el medio hay una foto de un solo paquete de pimienta. A la derecha hay una foto del contenido de un paquete de pimienta.">
+<meta property="og:image:alt" content="Tres fotos. A la izquierda hay una foto de un pimentero de vidrio. En  lugar del pimentero que contiene pimienta, contiene un solo paquete  de pimienta. En el medio hay una foto de un solo paquete de pimienta. A la derecha hay una foto del contenido de un paquete de  pimienta.">
 <meta property="og:image:height" content="504">
 <meta property="og:image:width" content="1470">
 </head>
+
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -126,16 +138,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/hadley/r4ds">
             Original
             </a>
@@ -146,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -162,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
@@ -188,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-visualize.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span></a>
@@ -238,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
@@ -247,8 +263,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Capas</span></span></a>
@@ -267,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
@@ -276,8 +292,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vectores lógicos</span></span></a>
@@ -326,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./import.html" class="sidebar-item-text sidebar-link">
@@ -335,8 +351,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hojas de calculo</span></span></a>
@@ -367,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
@@ -376,8 +392,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Funciones</span></span></a>
@@ -396,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
@@ -405,8 +421,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
@@ -419,47 +435,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Tabla de contenidos</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-<li>
-<a href="#introducci%C3%B3n" id="toc-introducción" class="nav-link active" data-scroll-target="#introducci%C3%B3n"><span class="header-section-number">27.1</span> Introducción</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">27.1</span> Introducción</a>
   <ul class="collapse">
-<li><a href="#requisitos-previos" id="toc-requisitos-previos" class="nav-link" data-scroll-target="#requisitos-previos"><span class="header-section-number">27.1.1</span> Requisitos previos</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#sec-subset-many" id="toc-sec-subset-many" class="nav-link" data-scroll-target="#sec-subset-many"><span class="header-section-number">27.2</span> Selección de varios elementos con <code>[</code></a>
+  <li><a href="#requisitos-previos" id="toc-requisitos-previos" class="nav-link" data-scroll-target="#requisitos-previos"><span class="header-section-number">27.1.1</span> Requisitos previos</a></li>
+  </ul></li>
+  <li><a href="#sec-subset-many" id="toc-sec-subset-many" class="nav-link" data-scroll-target="#sec-subset-many"><span class="header-section-number">27.2</span> Selección de varios elementos con <code>[</code></a>
   <ul class="collapse">
-<li><a href="#subconjunto-de-vectores" id="toc-subconjunto-de-vectores" class="nav-link" data-scroll-target="#subconjunto-de-vectores"><span class="header-section-number">27.2.1</span> Subconjunto de vectores</a></li>
+  <li><a href="#subconjunto-de-vectores" id="toc-subconjunto-de-vectores" class="nav-link" data-scroll-target="#subconjunto-de-vectores"><span class="header-section-number">27.2.1</span> Subconjunto de vectores</a></li>
   <li><a href="#subconjuntos-de-data-frames" id="toc-subconjuntos-de-data-frames" class="nav-link" data-scroll-target="#subconjuntos-de-data-frames"><span class="header-section-number">27.2.2</span> Subconjuntos de data frames</a></li>
   <li><a href="#equivalentes-de-dplyr" id="toc-equivalentes-de-dplyr" class="nav-link" data-scroll-target="#equivalentes-de-dplyr"><span class="header-section-number">27.2.3</span> equivalentes de dplyr</a></li>
   <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">27.2.4</span> Ejercicios</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#sec-subset-one" id="toc-sec-subset-one" class="nav-link" data-scroll-target="#sec-subset-one"><span class="header-section-number">27.3</span> Seleccionando un solo elemento con <code>$</code> y <code>[[</code></a>
+  </ul></li>
+  <li><a href="#sec-subset-one" id="toc-sec-subset-one" class="nav-link" data-scroll-target="#sec-subset-one"><span class="header-section-number">27.3</span> Seleccionando un solo elemento con <code>$</code> y <code>[[</code></a>
   <ul class="collapse">
-<li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">27.3.1</span> Data frames</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">27.3.1</span> Data frames</a></li>
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"><span class="header-section-number">27.3.2</span> Tibbles</a></li>
   <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">27.3.3</span> Listas</a></li>
   <li><a href="#ejercicios-1" id="toc-ejercicios-1" class="nav-link" data-scroll-target="#ejercicios-1"><span class="header-section-number">27.3.4</span> Ejercicios</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#familia-apply" id="toc-familia-apply" class="nav-link" data-scroll-target="#familia-apply"><span class="header-section-number">27.4</span> Familia apply</a></li>
   <li><a href="#bucles-for" id="toc-bucles-for" class="nav-link" data-scroll-target="#bucles-for"><span class="header-section-number">27.5</span> Bucles <code>for</code></a></li>
-  <li><a href="#gr%C3%A1ficas" id="toc-gráficas" class="nav-link" data-scroll-target="#gr%C3%A1ficas"><span class="header-section-number">27.6</span> Gráficas</a></li>
+  <li><a href="#gráficas" id="toc-gráficas" class="nav-link" data-scroll-target="#gráficas"><span class="header-section-number">27.6</span> Gráficas</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">27.7</span> Resumen</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Programa</a></li><li class="breadcrumb-item"><a href="./base-R.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Una guía para R base</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./program.html">Programa</a></li><li class="breadcrumb-item"><a href="./base-R.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Una guía para R base</span></a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title"><span id="sec-base-r" class="quarto-section-identifier"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Una guía para R base</span></span></h1>
 </div>
 
@@ -474,482 +490,489 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introducción" class="level2" data-number="27.1"><h2 data-number="27.1" class="anchored" data-anchor-id="introducción">
-<span class="header-section-number">27.1</span> Introducción</h2>
+</header>
+
+
+<section id="introducción" class="level2" data-number="27.1">
+<h2 data-number="27.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">27.1</span> Introducción</h2>
 <p>Para finalizar la sección de programación, le daremos un recorrido rápido por las funciones básicas de R más importantes que no trataremos en este libro. Estas herramientas son particularmente útiles a medida que programa más y lo ayudarán a leer el código que encontrará en la naturaleza.</p>
-<p>Este es un buen lugar para recordarle que tidyverse no es la única forma de resolver problemas de ciencia de datos. Enseñamos el tidyverse en este libro porque los paquetes de tidyverse comparten una filosofía de diseño común, aumentando la consistencia entre las funciones y haciendo que cada nueva función o paquete sea un poco más fácil de aprender y usar. No es posible usar tidyverse sin usar base R, por lo que en realidad ya te hemos enseñado un <strong>montón</strong> de funciones base R: desde <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> para cargar paquetes, hasta <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> y <code><a href="https://rdrr.io/r/base/mean.html">mean ()</a></code> para resúmenes numéricos, hasta los tipos de datos factor, fecha y POSIXct y, por supuesto, todos los operadores básicos como <code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>, <code>|</code>, <code>&amp;</code>, y <code>!</code>. En lo que no nos hemos centrado hasta ahora son los flujos de trabajo básicos de R, por lo que destacaremos algunos de ellos en este capítulo.</p>
+<p>Este es un buen lugar para recordarle que tidyverse no es la única forma de resolver problemas de ciencia de datos. Enseñamos el tidyverse en este libro porque los paquetes de tidyverse comparten una filosofía de diseño común, aumentando la consistencia entre las funciones y haciendo que cada nueva función o paquete sea un poco más fácil de aprender y usar. No es posible usar tidyverse sin usar base R, por lo que en realidad ya te hemos enseñado un <strong>montón</strong> de funciones base R: desde <code>library()</code> para cargar paquetes, hasta <code>sum()</code> y <code>mean ()</code> para resúmenes numéricos, hasta los tipos de datos factor, fecha y POSIXct y, por supuesto, todos los operadores básicos como <code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>, <code>|</code>, <code>&amp;</code>, y <code>!</code>. En lo que no nos hemos centrado hasta ahora son los flujos de trabajo básicos de R, por lo que destacaremos algunos de ellos en este capítulo.</p>
 <p>Después de leer este libro, aprenderá otros enfoques para los mismos problemas usando base R, data.table y otros paquetes. Sin duda, encontrará estos otros enfoques cuando comience a leer el código R escrito por otros, especialmente si está usando StackOverflow. Está 100 % bien escribir código que use una combinación de enfoques, ¡y no dejes que nadie te diga lo contrario!</p>
 <p>En este capítulo, nos centraremos en cuatro grandes temas: creación de subconjuntos con <code>[</code>, creación de subconjuntos con <code>[[</code> y <code>$</code>, la familia de funciones apply y bucles <code>for</code>. Para terminar, discutiremos brevemente dos funciones de gráficas esenciales.</p>
-<section id="requisitos-previos" class="level3" data-number="27.1.1"><h3 data-number="27.1.1" class="anchored" data-anchor-id="requisitos-previos">
-<span class="header-section-number">27.1.1</span> Requisitos previos</h3>
+<section id="requisitos-previos" class="level3" data-number="27.1.1">
+<h3 data-number="27.1.1" class="anchored" data-anchor-id="requisitos-previos"><span class="header-section-number">27.1.1</span> Requisitos previos</h3>
 <p>Este paquete se centra en la base R, por lo que no tiene requisitos previos reales, pero cargaremos el tidyverse para explicar algunas de las diferencias.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section></section><section id="sec-subset-many" class="level2" data-number="27.2"><h2 data-number="27.2" class="anchored" data-anchor-id="sec-subset-many">
-<span class="header-section-number">27.2</span> Selección de varios elementos con <code>[</code>
-</h2>
+</section>
+</section>
+<section id="sec-subset-many" class="level2" data-number="27.2">
+<h2 data-number="27.2" class="anchored" data-anchor-id="sec-subset-many"><span class="header-section-number">27.2</span> Selección de varios elementos con <code>[</code></h2>
 <p><code>[</code> se usa para extraer subcomponentes de vectores y marcos de datos, y se llama <code>x[i]</code> o <code>x[i, j]</code>. En esta sección, le presentaremos el poder de <code>[</code>, primero mostrándole cómo puede usarlo con vectores, luego cómo los mismos principios se extienden de manera sencilla a estructuras bidimensionales (2d) como marcos de datos. Luego, lo ayudaremos a consolidar ese conocimiento al mostrar cómo varios verbos dplyr son casos especiales de <code>[</code>.</p>
-<section id="subconjunto-de-vectores" class="level3" data-number="27.2.1"><h3 data-number="27.2.1" class="anchored" data-anchor-id="subconjunto-de-vectores">
-<span class="header-section-number">27.2.1</span> Subconjunto de vectores</h3>
+<section id="subconjunto-de-vectores" class="level3" data-number="27.2.1">
+<h3 data-number="27.2.1" class="anchored" data-anchor-id="subconjunto-de-vectores"><span class="header-section-number">27.2.1</span> Subconjunto de vectores</h3>
 <p>Hay cinco tipos principales de elementos con los que puede crear subconjuntos de un vector, es decir, que pueden ser la <code>i</code> en <code>x[i]</code>:</p>
 <ol type="1">
-<li>
-<p><strong>Un vector de enteros positivos</strong>. Subdividir con enteros positivos mantiene los elementos en esas posiciones:</p>
+<li><p><strong>Un vector de enteros positivos</strong>. Subdividir con enteros positivos mantiene los elementos en esas posiciones:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>, <span class="st">"four"</span>, <span class="st">"five"</span><span class="op">)</span></span>
-<span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] "three" "two"   "five"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>, <span class="st">"four"</span>, <span class="st">"five"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "three" "two"   "five"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Al repetir una posición, en realidad puede hacer una salida más larga que la entrada, lo que hace que el término “subconjunto” sea un poco inapropiado.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] "one"  "one"  "five" "five" "five" "two"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</li>
-<li>
-<p><strong>Un vector de enteros negativos</strong>. Los valores negativos colocan los elementos en las posiciones especificadas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>)]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "one"  "one"  "five" "five" "five" "two"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p><strong>Un vector de enteros negativos</strong>. Los valores negativos colocan los elementos en las posiciones especificadas:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">3</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] "two"  "four"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</li>
-<li>
-<p><strong>Un vector lógico</strong>. La creación de subconjuntos con un vector lógico mantiene todos los valores correspondientes a un valor <code>TRUE</code>. Esto suele ser útil junto con las funciones de comparación.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">5</span>)]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "two"  "four"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p><strong>Un vector lógico</strong>. La creación de subconjuntos con un vector lógico mantiene todos los valores correspondientes a un valor <code>TRUE</code>. Esto suele ser útil junto con las funciones de comparación.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">3</span>, <span class="cn">NA</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Todos los valores no faltante de x</span></span>
-<span><span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] 10  3  5  8  1</span></span>
-<span></span>
-<span><span class="co"># Todos los valore de x pares (¡o faltante!)</span></span>
-<span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] 10 NA  8 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="cn">NA</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Todos los valores no faltante de x</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10  3  5  8  1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Todos los valore de x pares (¡o faltante!)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10 NA  8 NA</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>A diferencia de <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, los índices <code>NA</code> se incluirán en la salida como <code>NA</code>s.</p>
-</li>
-<li>
-<p><strong>Un vector de caracteres</strong>. Si tiene un vector con nombre, puede crear subconjuntos con un vector de caracteres:</p>
+<p>A diferencia de <code>filter()</code>, los índices <code>NA</code> se incluirán en la salida como <code>NA</code>s.</p></li>
+<li><p><strong>Un vector de caracteres</strong>. Si tiene un vector con nombre, puede crear subconjuntos con un vector de caracteres:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>abc <span class="op">=</span> <span class="fl">1</span>, def <span class="op">=</span> <span class="fl">2</span>, xyz <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"xyz"</span>, <span class="st">"def"</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt; xyz def </span></span>
-<span><span class="co">#&gt;   5   2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">abc =</span> <span class="dv">1</span>, <span class="at">def =</span> <span class="dv">2</span>, <span class="at">xyz =</span> <span class="dv">5</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="st">"xyz"</span>, <span class="st">"def"</span>)]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; xyz def </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   5   2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Al igual que con la creación de subconjuntos con números enteros positivos, puede usar un vector de caracteres para duplicar entradas individuales.</p>
-</li>
+<p>Al igual que con la creación de subconjuntos con números enteros positivos, puede usar un vector de caracteres para duplicar entradas individuales.</p></li>
 <li><p><strong>Nada</strong>. El último tipo de subconjunto es nada, <code>x[]</code>, que devuelve la <code>x</code> completa. Esto no es útil para crear subconjuntos de vectores, pero como veremos en breve, es útil para crear subconjuntos de estructuras 2d como tibbles.</p></li>
-</ol></section><section id="subconjuntos-de-data-frames" class="level3" data-number="27.2.2"><h3 data-number="27.2.2" class="anchored" data-anchor-id="subconjuntos-de-data-frames">
-<span class="header-section-number">27.2.2</span> Subconjuntos de data frames</h3>
+</ol>
+</section>
+<section id="subconjuntos-de-data-frames" class="level3" data-number="27.2.2">
+<h3 data-number="27.2.2" class="anchored" data-anchor-id="subconjuntos-de-data-frames"><span class="header-section-number">27.2.2</span> Subconjuntos de data frames</h3>
 <p>Hay bastantes formas diferentes<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> de usar <code>[</code> con un marco de datos, pero la forma más importante es seleccionar filas y columnas de forma independiente con <code>df[rows, cols]</code>. Aquí <code>rows</code> y <code>cols</code> son vectores como se describe arriba. Por ejemplo, <code>df[rows, ]</code> y <code>df[, cols]</code> seleccionan solo filas o solo columnas, utilizando el subconjunto vacío para conservar la otra dimensión.</p>
 <p>Aquí hay un par de ejemplos:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, </span>
-<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span>, </span>
-<span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Selecciona la primera fila y la segunda columna</span></span>
-<span><span class="va">df</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 1</span></span>
-<span><span class="co">#&gt;   y    </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 a</span></span>
-<span></span>
-<span><span class="co"># Selecciona todas las filas y las columnas x e y</span></span>
-<span><span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span> , <span class="st">"y"</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
-<span><span class="co">#&gt;       x y    </span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1     1 a    </span></span>
-<span><span class="co">#&gt; 2     2 e    </span></span>
-<span><span class="co">#&gt; 3     3 f</span></span>
-<span></span>
-<span><span class="co"># Selecciona las filas donde `x` es mayor que 1 y todas las columnas</span></span>
-<span><span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
-<span><span class="co">#&gt;       x y         z</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     2 e     0.834</span></span>
-<span><span class="co">#&gt; 2     3 f     0.601</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecciona la primera fila y la segunda columna</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 1</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   y    </span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecciona todas las filas y las columnas x e y</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>df[, <span class="fu">c</span>(<span class="st">"x"</span> , <span class="st">"y"</span>)]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y    </span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1 a    </span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2 e    </span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3 f</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecciona las filas donde `x` es mayor que 1 y todas las columnas</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>x <span class="sc">&gt;</span> <span class="dv">1</span>, ]</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x y         z</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     2 e     0.834</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     3 f     0.601</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Volveremos a <code>$</code> en breve, pero debería poder adivinar lo que hace <code>df$x</code> a partir del contexto: extrae la variable <code>x</code> de <code>df</code>. Necesitamos usarlo aquí porque <code>[</code> no usa una evaluación ordenada, por lo que debe ser explícito sobre la fuente de la variable <code>x</code>.</p>
 <p>Hay una diferencia importante entre tibbles y marcos de datos cuando se trata de <code>[</code>. En este libro, hemos usado principalmente tibbles, que <em>son</em> marcos de datos, pero ajustan algunos comportamientos para hacer su vida un poco más fácil. En la mayoría de los lugares, puede usar “tibble” y “marco de datos” indistintamente, por lo que cuando queramos llamar la atención sobre el marco de datos integrado de R, escribiremos <code>data.frame</code>. Si <code>df</code> es un <code>data.frame</code>, <code>df[, cols]</code> devolverá un vector si <code>col</code> selecciona una sola columna y un marco de datos si selecciona más de una columna. Si <code>df</code> es un tibble, entonces <code>[</code> siempre devolverá un tibble.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="va">df1</span><span class="op">[</span>, <span class="st">"x"</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] 1 2 3</span></span>
-<span></span>
-<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="va">df2</span><span class="op">[</span>, <span class="st">"x"</span><span class="op">]</span></span>
-<span><span class="co">#&gt; # A tibble: 3 × 1</span></span>
-<span><span class="co">#&gt;       x</span></span>
-<span><span class="co">#&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1     1</span></span>
-<span><span class="co">#&gt; 2     2</span></span>
-<span><span class="co">#&gt; 3     3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df1[, <span class="st">"x"</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>df2[, <span class="st">"x"</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 1</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Una forma de evitar esta ambigüedad con <code>data.frame</code>s es especificar explícitamente <code>drop = FALSE</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df1</span><span class="op">[</span>, <span class="st">"x"</span> , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
-<span><span class="co">#&gt;   x</span></span>
-<span><span class="co">#&gt; 1 1</span></span>
-<span><span class="co">#&gt; 2 2</span></span>
-<span><span class="co">#&gt; 3 3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df1[, <span class="st">"x"</span> , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   x</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="equivalentes-de-dplyr" class="level3" data-number="27.2.3"><h3 data-number="27.2.3" class="anchored" data-anchor-id="equivalentes-de-dplyr">
-<span class="header-section-number">27.2.3</span> equivalentes de dplyr</h3>
+</section>
+<section id="equivalentes-de-dplyr" class="level3" data-number="27.2.3">
+<h3 data-number="27.2.3" class="anchored" data-anchor-id="equivalentes-de-dplyr"><span class="header-section-number">27.2.3</span> equivalentes de dplyr</h3>
 <p>Varios verbos dplyr son casos especiales de <code>[</code>:</p>
 <ul>
-<li>
-<p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> es equivalente a subdividir las filas con un vector lógico, teniendo cuidado de excluir los valores faltantes:</p>
+<li><p><code>filter()</code> es equivalente a subdividir las filas con un vector lógico, teniendo cuidado de excluir los valores faltantes:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
-<span>  y <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, </span>
-<span>  z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># igual que</span></span>
-<span><span class="va">df</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">df</span><span class="op">$</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="cn">NA</span>), </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">runif</span>(<span class="dv">5</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># igual que</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>df[<span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>x) <span class="sc">&amp;</span> df<span class="sc">$</span>x <span class="sc">&gt;</span> <span class="dv">1</span>, ]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Otra técnica común en la naturaleza es usar <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> por su efecto secundario de descartar valores faltantes: <code>df[which(df$x &gt; 1), ]</code>.</p>
-</li>
-<li>
-<p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> es equivalente a dividir las filas en subconjuntos con un vector entero, generalmente creado con <code><a href="https://rdrr.io/r/base/order.html">order()</a></code>:</p>
+<p>Otra técnica común en la naturaleza es usar <code>which()</code> por su efecto secundario de descartar valores faltantes: <code>df[which(df$x &gt; 1), ]</code>.</p></li>
+<li><p><code>arrange()</code> es equivalente a dividir las filas en subconjuntos con un vector entero, generalmente creado con <code>order()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># igual que</span></span>
-<span><span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">x</span>, <span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span>, <span class="op">]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(x, y)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># igual que</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">order</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y), ]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Puede usar <code>order(decreasing = TRUE)</code> para ordenar todas las columnas en orden descendente o <code>-rank(col)</code> para ordenar las columnas en orden decreciente individualmente.</p>
-</li>
-<li>
-<p>Tanto <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> como <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> son similares a subdividir las columnas con un vector de caracteres:</p>
+<p>Puede usar <code>order(decreasing = TRUE)</code> para ordenar todas las columnas en orden descendente o <code>-rank(col)</code> para ordenar las columnas en orden decreciente individualmente.</p></li>
+<li><p>Tanto <code>select()</code> como <code>relocate()</code> son similares a subdividir las columnas con un vector de caracteres:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">z</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># igual que</span></span>
-<span><span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"z"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">select</span>(x, z)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># igual que</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>df[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"z"</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
 </ul>
-<p>Base R también proporciona una función que combina las características de <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> llamada <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>:</p>
+<p>Base R también proporciona una función que combina las características de <code>filter()</code> y <code>select()</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> llamada <code>subset()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
-<span><span class="co">#&gt;   y           z</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 a     0.157  </span></span>
-<span><span class="co">#&gt; 2 b     0.00740</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(y, z)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   y           z</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 a     0.157  </span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 b     0.00740</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># same as</span></span>
-<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># same as</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">subset</span>(x <span class="sc">&gt;</span> <span class="dv">1</span>, <span class="fu">c</span>(y, z))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta función fue la inspiración para gran parte de la sintaxis de dplyr.</p>
-</section><section id="ejercicios" class="level3" data-number="27.2.4"><h3 data-number="27.2.4" class="anchored" data-anchor-id="ejercicios">
-<span class="header-section-number">27.2.4</span> Ejercicios</h3>
+</section>
+<section id="ejercicios" class="level3" data-number="27.2.4">
+<h3 data-number="27.2.4" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">27.2.4</span> Ejercicios</h3>
 <ol type="1">
-<li>
-<p>Crear funciones que tomen un vector como entrada y retorno:</p>
+<li><p>Crear funciones que tomen un vector como entrada y retorno:</p>
 <ol type="a">
 <li>Los elementos en posiciones pares.</li>
 <li>Todos los elementos excepto el último valor.</li>
 <li>Solo valores pares (y sin valores faltantes).</li>
+</ol></li>
+<li><p>¿Por qué <code>x[-which(x &gt; 0)]</code> no es lo mismo que <code>x[x &lt;= 0]</code>? Lea la documentación de <code>which()</code> y haga algunos experimentos para averiguarlo..</p></li>
 </ol>
-</li>
-<li><p>¿Por qué <code>x[-which(x &gt; 0)]</code> no es lo mismo que <code>x[x &lt;= 0]</code>? Lea la documentación de <code><a href="https://rdrr.io/r/base/which.html">which()</a></code> y haga algunos experimentos para averiguarlo..</p></li>
-</ol></section></section><section id="sec-subset-one" class="level2" data-number="27.3"><h2 data-number="27.3" class="anchored" data-anchor-id="sec-subset-one">
-<span class="header-section-number">27.3</span> Seleccionando un solo elemento con <code>$</code> y <code>[[</code>
-</h2>
+</section>
+</section>
+<section id="sec-subset-one" class="level2" data-number="27.3">
+<h2 data-number="27.3" class="anchored" data-anchor-id="sec-subset-one"><span class="header-section-number">27.3</span> Seleccionando un solo elemento con <code>$</code> y <code>[[</code></h2>
 <p><code>[</code>, que selecciona muchos elementos, se combina con <code>[[</code> y <code>$</code>, que extraen un solo elemento. En esta sección, le mostraremos cómo usar <code>[[</code> y <code>$</code> para extraer columnas de los marcos de datos, analizaremos un par de diferencias más entre <code>data.frames</code> y tibbles, y enfatizaremos algunas diferencias importantes entre <code>[</code> y <code>[[</code> cuando se usa con listas.</p>
-<section id="data-frames" class="level3" data-number="27.3.1"><h3 data-number="27.3.1" class="anchored" data-anchor-id="data-frames">
-<span class="header-section-number">27.3.1</span> Data frames</h3>
+<section id="data-frames" class="level3" data-number="27.3.1">
+<h3 data-number="27.3.1" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">27.3.1</span> Data frames</h3>
 <p><code>[[</code> y <code>$</code> se puede usar para extraer columnas de un marco de datos. <code>[[</code> puede acceder por posición o por nombre, y <code>$</code> está especializado para acceder por nombre:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
-<span>  x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
-<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">21</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># por posiciónn</span></span>
-<span><span class="va">tb</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] 1 2 3 4</span></span>
-<span></span>
-<span><span class="co"># por nombre</span></span>
-<span><span class="va">tb</span><span class="op">[[</span><span class="st">"x"</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] 1 2 3 4</span></span>
-<span><span class="va">tb</span><span class="op">$</span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 1 2 3 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">21</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># por posiciónn</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>tb[[<span class="dv">1</span>]]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># por nombre</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>tb[[<span class="st">"x"</span>]]</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>x</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>También se pueden usar para crear nuevas columnas, el equivalente base R de <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>:</p>
+<p>También se pueden usar para crear nuevas columnas, el equivalente base R de <code>mutate()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tb</span><span class="op">$</span><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">tb</span><span class="op">$</span><span class="va">x</span> <span class="op">+</span> <span class="va">tb</span><span class="op">$</span><span class="va">y</span></span>
-<span><span class="va">tb</span></span>
-<span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
-<span><span class="co">#&gt;       x     y     z</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     1    10    11</span></span>
-<span><span class="co">#&gt; 2     2     4     6</span></span>
-<span><span class="co">#&gt; 3     3     1     4</span></span>
-<span><span class="co">#&gt; 4     4    21    25</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>z <span class="ot">&lt;-</span> tb<span class="sc">$</span>x <span class="sc">+</span> tb<span class="sc">$</span>y</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tb</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4 × 3</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       x     y     z</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     1    10    11</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     2     4     6</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     3     1     4</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     4    21    25</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Hay varios otros enfoques básicos de R para crear nuevas columnas, incluidos <code><a href="https://rdrr.io/r/base/transform.html">transform()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> y <code><a href="https://rdrr.io/r/base/with.html">within()</a></code>. Hadley reunió algunos ejemplos en <a href="https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf" class="uri">https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf</a>.</p>
-<p>Usar <code>$</code> directamente es conveniente cuando se realizan resúmenes rápidos. Por ejemplo, si solo desea encontrar el tamaño del diamante más grande o los posibles valores de <code>cut</code>, no es necesario usar <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>:</p>
+<p>Hay varios otros enfoques básicos de R para crear nuevas columnas, incluidos <code>transform()</code>, <code>with()</code> y <code>within()</code>. Hadley reunió algunos ejemplos en <a href="https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf" class="uri">https://gist.github.com/hadley/1986a273e384fb2d4d752c18ed71bedf</a>.</p>
+<p>Usar <code>$</code> directamente es conveniente cuando se realizan resúmenes rápidos. Por ejemplo, si solo desea encontrar el tamaño del diamante más grande o los posibles valores de <code>cut</code>, no es necesario usar <code>summarize()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 5.01</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Fair"      "Good"      "Very Good" "Premium"   "Ideal"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(diamonds<span class="sc">$</span>carat)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.01</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(diamonds<span class="sc">$</span>cut)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Fair"      "Good"      "Very Good" "Premium"   "Ideal"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>dplyr también proporciona un equivalente a <code>[[</code>/<code>$</code> que no mencionamos en <a href="data-transform.html" class="quarto-xref"><span>Capítulo 3</span></a>: <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>. <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> toma un nombre de variable o una posición de variable y devuelve solo esa columna. Eso significa que podríamos reescribir el código anterior para usar pipe:</p>
+<p>dplyr también proporciona un equivalente a <code>[[</code>/<code>$</code> que no mencionamos en <a href="data-transform.html" class="quarto-xref"><span>Capítulo 3</span></a>: <code>pull()</code>. <code>pull()</code> toma un nombre de variable o una posición de variable y devuelve solo esa columna. Eso significa que podríamos reescribir el código anterior para usar pipe:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 5.01</span></span>
-<span></span>
-<span><span class="va">diamonds</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Fair"      "Good"      "Very Good" "Premium"   "Ideal"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">pull</span>(carat) <span class="sc">|&gt;</span> <span class="fu">max</span>()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5.01</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">pull</span>(cut) <span class="sc">|&gt;</span> <span class="fu">levels</span>()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Fair"      "Good"      "Very Good" "Premium"   "Ideal"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="tibbles" class="level3" data-number="27.3.2"><h3 data-number="27.3.2" class="anchored" data-anchor-id="tibbles">
-<span class="header-section-number">27.3.2</span> Tibbles</h3>
+</section>
+<section id="tibbles" class="level3" data-number="27.3.2">
+<h3 data-number="27.3.2" class="anchored" data-anchor-id="tibbles"><span class="header-section-number">27.3.2</span> Tibbles</h3>
 <p>Hay un par de diferencias importantes entre tibbles y <code>data.frame</code>s base cuando se trata de <code>$</code>. Los marcos de datos coinciden con el prefijo de cualquier nombre de variable (la llamada <strong>coincidencia parcial</strong>) y no se quejan si una columna no existe:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">df</span><span class="op">$</span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 1</span></span>
-<span><span class="va">df</span><span class="op">$</span><span class="va">z</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> <span class="dv">1</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>x</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>z</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Los Tibbles son más estrictos: solo coinciden exactamente con los nombres de las variables y generarán una advertencia si la columna a la que intenta acceder no existe:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">tb</span><span class="op">$</span><span class="va">x</span></span>
-<span><span class="co">#&gt; Warning: Unknown or uninitialised column: `x`.</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span><span class="va">tb</span><span class="op">$</span><span class="va">z</span></span>
-<span><span class="co">#&gt; Warning: Unknown or uninitialised column: `z`.</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x1 =</span> <span class="dv">1</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>x</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Unknown or uninitialised column: `x`.</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>z</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Unknown or uninitialised column: `z`.</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Por eso a veces bromeamos diciendo que los tibbles son holgazanes y hoscos: hacen menos y se quejan más.</p>
-</section><section id="listas" class="level3" data-number="27.3.3"><h3 data-number="27.3.3" class="anchored" data-anchor-id="listas">
-<span class="header-section-number">27.3.3</span> Listas</h3>
+</section>
+<section id="listas" class="level3" data-number="27.3.3">
+<h3 data-number="27.3.3" class="anchored" data-anchor-id="listas"><span class="header-section-number">27.3.3</span> Listas</h3>
 <p><code>[[</code> y <code>$</code> también son muy importantes para trabajar con listas, y es importante comprender en qué se diferencian de <code>[</code>. Ilustremos las diferencias con una lista llamada <code>l</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
-<span>  a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, </span>
-<span>  b <span class="op">=</span> <span class="st">"a string"</span>, </span>
-<span>  c <span class="op">=</span> <span class="va">pi</span>, </span>
-<span>  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">5</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="st">"a string"</span>, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> pi, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">list</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
-<li>
-<p><code>[</code> extrae una sublista. No importa cuántos elementos extraiga, el resultado siempre será una lista.</p>
+<li><p><code>[</code> extrae una sublista. No importa cuántos elementos extraiga, el resultado siempre será una lista.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 2</span></span>
-<span><span class="co">#&gt;  $ a: int [1:3] 1 2 3</span></span>
-<span><span class="co">#&gt;  $ b: chr "a string"</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 1</span></span>
-<span><span class="co">#&gt;  $ a: int [1:3] 1 2 3</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 1</span></span>
-<span><span class="co">#&gt;  $ d:List of 2</span></span>
-<span><span class="co">#&gt;   ..$ : num -1</span></span>
-<span><span class="co">#&gt;   ..$ : num -5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ a: int [1:3] 1 2 3</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ b: chr "a string"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l[<span class="dv">1</span>])</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 1</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ a: int [1:3] 1 2 3</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l[<span class="dv">4</span>])</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 1</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ d:List of 2</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : num -1</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : num -5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Al igual que con los vectores, puede crear subconjuntos con un vector lógico, entero o de caracteres.</p>
-</li>
-<li>
-<p><code>[[</code> y <code>$</code> extrae un solo componente de una lista. Eliminan un nivel de jerarquía de la lista.</p>
+<p>Al igual que con los vectores, puede crear subconjuntos con un vector lógico, entero o de caracteres.</p></li>
+<li><p><code>[[</code> y <code>$</code> extrae un solo componente de una lista. Eliminan un nivel de jerarquía de la lista.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  int [1:3] 1 2 3</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 2</span></span>
-<span><span class="co">#&gt;  $ : num -1</span></span>
-<span><span class="co">#&gt;  $ : num -5</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">l</span><span class="op">$</span><span class="va">a</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  int [1:3] 1 2 3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l[[<span class="dv">1</span>]])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  int [1:3] 1 2 3</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l[[<span class="dv">4</span>]])</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num -1</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num -5</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(l<span class="sc">$</span>a)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  int [1:3] 1 2 3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
 </ul>
 <p>La diferencia entre <code>[</code> y <code>[[</code> es particularmente importante para las listas porque <code>[[</code> profundiza en la lista mientras que <code>[</code> devuelve una nueva lista más pequeña. Para ayudarlo a recordar la diferencia, eche un vistazo al pimentero inusual que se muestra en <a href="#fig-pepper" class="quarto-xref">Figura&nbsp;<span>27.1</span></a>. Si este pimentero es su lista <code>pepper</code>, entonces <code>pepper[1]</code> es un pimentero que contiene un solo paquete de pimienta. <code>pepper[2]</code> se vería igual, pero contendría el segundo paquete. <code>pepper[1:2]</code> sería un pimentero que contiene dos paquetes de pimienta. <code>pepper[[1]]</code> extraería el propio paquete de pimienta.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pepper" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tres fotos. A la izquierda hay una foto de un pimentero de vidrio. En lugar del pimentero que contiene pimienta, contiene un solo paquete de pimienta. En el medio hay una foto de un solo paquete de pimienta. A la derecha hay una foto del contenido de un paquete de pimienta.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-pepper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/pepper.png" class="img-fluid figure-img" style="width:100.0%" alt="Tres fotos. A la izquierda hay una foto de un pimentero de vidrio. En lugar del pimentero que contiene pimienta, contiene un solo paquete de pimienta. En el medio hay una foto de un solo paquete de pimienta. A la derecha hay una foto del contenido de un paquete de pimienta.">
+<div id="fig-pepper" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tres fotos. A la izquierda hay una foto de un pimentero de vidrio. En  lugar del pimentero que contiene pimienta, contiene un solo paquete  de pimienta. En el medio hay una foto de un solo paquete de pimienta. A la derecha hay una foto del contenido de un paquete de  pimienta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pepper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/pepper.png" class="img-fluid figure-img" style="width:100.0%" alt="Tres fotos. A la izquierda hay una foto de un pimentero de vidrio. En  lugar del pimentero que contiene pimienta, contiene un solo paquete  de pimienta. En el medio hay una foto de un solo paquete de pimienta. A la derecha hay una foto del contenido de un paquete de  pimienta.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pepper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;27.1: (Izquierda) Un pimentero que Hadley encontró una vez en su habitación de hotel. (Centro) <code>pepper[1]</code> (Derecha) <code>pepper[[1]]</code>
-</figcaption></figure>
+</figcaption>
+</figure>
 </div>
 </div>
 </div>
 <p>Este mismo principio se aplica cuando usa 1d <code>[</code> con un marco de datos: <code>df["x"]</code> devuelve un marco de datos de una columna y <code>df[["x"]]</code> devuelve un vector.</p>
-</section><section id="ejercicios-1" class="level3" data-number="27.3.4"><h3 data-number="27.3.4" class="anchored" data-anchor-id="ejercicios-1">
-<span class="header-section-number">27.3.4</span> Ejercicios</h3>
+</section>
+<section id="ejercicios-1" class="level3" data-number="27.3.4">
+<h3 data-number="27.3.4" class="anchored" data-anchor-id="ejercicios-1"><span class="header-section-number">27.3.4</span> Ejercicios</h3>
 <ol type="1">
 <li><p>¿Qué sucede cuando usas <code>[[</code> con un entero positivo que es más grande que la longitud del vector? ¿Qué sucede cuando creas un subconjunto con un nombre que no existe?</p></li>
 <li><p>¿Qué sería <code>pepper[[1]][1]</code>? ¿Qué pasa con <code>pepper[[1]][[1]]</code>?</p></li>
-</ol></section></section><section id="familia-apply" class="level2" data-number="27.4"><h2 data-number="27.4" class="anchored" data-anchor-id="familia-apply">
-<span class="header-section-number">27.4</span> Familia apply</h2>
-<p>En <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>, aprendió técnicas tidyverse para la iteración como <code><a href="https://dplyr.tidyverse.org/reference/across.html">dplyr::across()</a></code> y la familia de funciones map. En esta sección, aprenderá sobre sus equivalentes básicos, la <strong>familia apply</strong>. En este contexto, aplicar y mapear son sinónimos porque otra forma de decir “mapear una función sobre cada elemento de un vector” es “aplicar una función sobre cada elemento de un vector”. Aquí le daremos una descripción general rápida de esta familia para que pueda reconocerlos en la naturaleza.</p>
-<p>El miembro más importante de esta familia es <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, que es muy similar a <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. De hecho, debido a que no hemos usado ninguna de las características más avanzadas de <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>, puede reemplazar cada llamada <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> en <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a> con <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>.</p>
-<p>No hay una base R equivalente exacta a <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> pero puedes acercarte usando <code>[</code> con <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>. Esto funciona porque, bajo el capó, los marcos de datos son listas de columnas, por lo que llamar a <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> en un marco de datos aplica la función a cada columna.</p>
+</ol>
+</section>
+</section>
+<section id="familia-apply" class="level2" data-number="27.4">
+<h2 data-number="27.4" class="anchored" data-anchor-id="familia-apply"><span class="header-section-number">27.4</span> Familia apply</h2>
+<p>En <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>, aprendió técnicas tidyverse para la iteración como <code>dplyr::across()</code> y la familia de funciones map. En esta sección, aprenderá sobre sus equivalentes básicos, la <strong>familia apply</strong>. En este contexto, aplicar y mapear son sinónimos porque otra forma de decir “mapear una función sobre cada elemento de un vector” es “aplicar una función sobre cada elemento de un vector”. Aquí le daremos una descripción general rápida de esta familia para que pueda reconocerlos en la naturaleza.</p>
+<p>El miembro más importante de esta familia es <code>lapply()</code>, que es muy similar a <code>purrr::map()</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. De hecho, debido a que no hemos usado ninguna de las características más avanzadas de <code>map()</code>, puede reemplazar cada llamada <code>map()</code> en <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a> con <code>lapply()</code>.</p>
+<p>No hay una base R equivalente exacta a <code>across()</code> pero puedes acercarte usando <code>[</code> con <code>lapply()</code>. Esto funciona porque, bajo el capó, los marcos de datos son listas de columnas, por lo que llamar a <code>lapply()</code> en un marco de datos aplica la función a cada columna.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="st">"a"</span>, d <span class="op">=</span> <span class="st">"b"</span>, e <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Primero encuentra columnas numéricas</span></span>
-<span><span class="va">num_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">is.numeric</span><span class="op">)</span></span>
-<span><span class="va">num_cols</span></span>
-<span><span class="co">#&gt;     a     b     c     d     e </span></span>
-<span><span class="co">#&gt;  TRUE  TRUE FALSE FALSE  TRUE</span></span>
-<span></span>
-<span><span class="co"># Luego transforme cada columna con lapply() y luego reemplace los valores originales</span></span>
-<span><span class="va">df</span><span class="op">[</span>, <span class="va">num_cols</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span>, <span class="va">num_cols</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="va">df</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
-<span><span class="co">#&gt;       a     b c     d         e</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     2     4 a     b         8</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="st">"a"</span>, <span class="at">d =</span> <span class="st">"b"</span>, <span class="at">e =</span> <span class="dv">4</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Primero encuentra columnas numéricas</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>num_cols <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, is.numeric)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>num_cols</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     a     b     c     d     e </span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  TRUE  TRUE FALSE FALSE  TRUE</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Luego transforme cada columna con lapply() y luego reemplace los valores originales</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>df[, num_cols] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(df[, num_cols, <span class="at">drop =</span> <span class="cn">FALSE</span>], \(x) x <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 5</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       a     b c     d         e</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     2     4 a     b         8</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>El código anterior usa una nueva función, <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>. Es similar a <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> pero siempre intenta simplificar el resultado, de ahí la <code>s</code> en su nombre, produciendo aquí un vector lógico en lugar de una lista. No recomendamos usarlo para programar, porque la simplificación puede fallar y generar un tipo inesperado, pero generalmente está bien para uso interactivo. purrr tiene una función similar llamada <code><a href="https://purrr.tidyverse.org/reference/map.html">map_vec()</a></code> que no mencionamos en <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>.</p>
-<p>Base R proporciona una versión más estricta de <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> llamada <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code>, abreviatura de <strong>v</strong>ector apply. Toma un argumento adicional que especifica el tipo esperado, lo que garantiza que la simplificación ocurra de la misma manera, independientemente de la entrada. Por ejemplo, podríamos reemplazar la llamada <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> anterior con <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> donde especificamos que esperamos que <code><a href="https://rdrr.io/r/base/numeric.html">is.numeric()</a></code> devuelva un vector lógico de longitud 1:</p>
+<p>El código anterior usa una nueva función, <code>sapply()</code>. Es similar a <code>lapply()</code> pero siempre intenta simplificar el resultado, de ahí la <code>s</code> en su nombre, produciendo aquí un vector lógico en lugar de una lista. No recomendamos usarlo para programar, porque la simplificación puede fallar y generar un tipo inesperado, pero generalmente está bien para uso interactivo. purrr tiene una función similar llamada <code>map_vec()</code> que no mencionamos en <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>.</p>
+<p>Base R proporciona una versión más estricta de <code>sapply()</code> llamada <code>vapply()</code>, abreviatura de <strong>v</strong>ector apply. Toma un argumento adicional que especifica el tipo esperado, lo que garantiza que la simplificación ocurra de la misma manera, independientemente de la entrada. Por ejemplo, podríamos reemplazar la llamada <code>sapply()</code> anterior con <code>vapply()</code> donde especificamos que esperamos que <code>is.numeric()</code> devuelva un vector lógico de longitud 1:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">is.numeric</span>, <span class="fu"><a href="https://rdrr.io/r/base/logical.html">logical</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     a     b     c     d     e </span></span>
-<span><span class="co">#&gt;  TRUE  TRUE FALSE FALSE  TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(df, is.numeric, <span class="fu">logical</span>(<span class="dv">1</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     a     b     c     d     e </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  TRUE  TRUE FALSE FALSE  TRUE</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>La distinción entre <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> y <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> es realmente importante cuando están dentro de una función (porque hace una gran diferencia en la solidez de la función ante entradas inusuales), pero generalmente no importa en el análisis de datos.</p>
-<p>Otro miembro importante de la familia apply es <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>, que calcula un solo resumen agrupado:</p>
+<p>La distinción entre <code>sapply()</code> y <code>vapply()</code> es realmente importante cuando están dentro de una función (porque hace una gran diferencia en la solidez de la función ante entradas inusuales), pero generalmente no importa en el análisis de datos.</p>
+<p>Otro miembro importante de la familia apply es <code>tapply()</code>, que calcula un solo resumen agrupado:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 5 × 2</span></span>
-<span><span class="co">#&gt;   cut       price</span></span>
-<span><span class="co">#&gt;   &lt;ord&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Fair      4359.</span></span>
-<span><span class="co">#&gt; 2 Good      3929.</span></span>
-<span><span class="co">#&gt; 3 Very Good 3982.</span></span>
-<span><span class="co">#&gt; 4 Premium   4584.</span></span>
-<span><span class="co">#&gt; 5 Ideal     3458.</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">price</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span>, <span class="va">mean</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      Fair      Good Very Good   Premium     Ideal </span></span>
-<span><span class="co">#&gt;  4358.758  3928.864  3981.760  4584.258  3457.542</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">price =</span> <span class="fu">mean</span>(price))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 2</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   cut       price</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;ord&gt;     &lt;dbl&gt;</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Fair      4359.</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Good      3929.</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Very Good 3982.</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Premium   4584.</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Ideal     3458.</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(diamonds<span class="sc">$</span>price, diamonds<span class="sc">$</span>cut, mean)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Fair      Good Very Good   Premium     Ideal </span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4358.758  3928.864  3981.760  4584.258  3457.542</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Desafortunadamente, <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> devuelve sus resultados en un vector con nombre que requiere algo de gimnasia si desea recopilar múltiples resúmenes y agrupar variables en un marco de datos (ciertamente es posible no hacer esto y solo trabajar con vectores flotantes libres, pero en nuestro experiencia que sólo retrasa el trabajo). Si desea ver cómo podría usar <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> u otras técnicas básicas para realizar otros resúmenes agrupados, Hadley ha recopilado algunas técnicas <a href="https://gist.github.com/hadley/c430501804349d382ce90754936ab8ec">en un gist</a> .</p>
-<p>El último miembro de la familia apply es el titular <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, que funciona con matrices y arreglos. En particular, tenga cuidado con <code>apply(df, 2, something)</code>, que es una forma lenta y potencialmente peligrosa de hacer <code>lapply(df, something)</code>. Esto rara vez surge en la ciencia de datos porque generalmente trabajamos con marcos de datos y no con matrices.</p>
-</section><section id="bucles-for" class="level2" data-number="27.5"><h2 data-number="27.5" class="anchored" data-anchor-id="bucles-for">
-<span class="header-section-number">27.5</span> Bucles <code>for</code>
-</h2>
+<p>Desafortunadamente, <code>tapply()</code> devuelve sus resultados en un vector con nombre que requiere algo de gimnasia si desea recopilar múltiples resúmenes y agrupar variables en un marco de datos (ciertamente es posible no hacer esto y solo trabajar con vectores flotantes libres, pero en nuestro experiencia que sólo retrasa el trabajo). Si desea ver cómo podría usar <code>tapply()</code> u otras técnicas básicas para realizar otros resúmenes agrupados, Hadley ha recopilado algunas técnicas <a href="https://gist.github.com/hadley/c430501804349d382ce90754936ab8ec">en un gist</a> .</p>
+<p>El último miembro de la familia apply es el titular <code>apply()</code>, que funciona con matrices y arreglos. En particular, tenga cuidado con <code>apply(df, 2, something)</code>, que es una forma lenta y potencialmente peligrosa de hacer <code>lapply(df, something)</code>. Esto rara vez surge en la ciencia de datos porque generalmente trabajamos con marcos de datos y no con matrices.</p>
+</section>
+<section id="bucles-for" class="level2" data-number="27.5">
+<h2 data-number="27.5" class="anchored" data-anchor-id="bucles-for"><span class="header-section-number">27.5</span> Bucles <code>for</code></h2>
 <p>Los bucles <code>for</code> son el bloque de construcción fundamental de la iteración que tanto la familia apply como la función map utilizan bajo el capó. Los bucles <code>for</code> son herramientas poderosas y generales que es importante aprender a medida que se convierte en un programador de R más experimentado. La estructura básica de un bucle <code>for</code> se ve así:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">element</span> <span class="kw">in</span> <span class="va">vector</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># hacer algo con el elemento</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (element <span class="cf">in</span> vector) {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># hacer algo con el elemento</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>El uso más directo de los bucles <code>for</code> es lograr el mismo efecto que <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code>: llamar a alguna función con un efecto secundario en cada elemento de una lista. Por ejemplo, en <a href="iteration.html#sec-save-database" class="quarto-xref"><span>Sección 26.4.1</span></a> en lugar de caminar:</p>
+<p>El uso más directo de los bucles <code>for</code> es lograr el mismo efecto que <code>walk()</code>: llamar a alguna función con un efecto secundario en cada elemento de una lista. Por ejemplo, en <a href="iteration.html#sec-save-database" class="quarto-xref"><span>Sección 26.4.1</span></a> en lugar de caminar:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">walk</a></span><span class="op">(</span><span class="va">append_file</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>paths <span class="sc">|&gt;</span> <span class="fu">walk</span>(append_file)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Podríamos haber usado un bucle <code>for</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">path</span> <span class="kw">in</span> <span class="va">paths</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">append_file</span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (path <span class="cf">in</span> paths) {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">append_file</span>(path)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Las cosas se vuelven un poco más complicadas si desea guardar la salida del bucle <code>for</code>, por ejemplo, leyendo todos los archivos de Excel en un directorio como hicimos en <a href="iteration.html" class="quarto-xref"><span>Capítulo 26</span></a>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="st">"data/gapminder"</span>, pattern <span class="op">=</span> <span class="st">"\\.xlsx$"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">paths</span>, <span class="fu">readxl</span><span class="fu">::</span><span class="va"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>paths <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="st">"data/gapminder"</span>, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.xlsx$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, readxl<span class="sc">::</span>read_excel)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Hay algunas técnicas diferentes que puede usar, pero le recomendamos que sea explícito sobre cómo se verá la salida por adelantado. En este caso, vamos a querer una lista de la misma longitud que <code>paths</code>, que podemos crear con <code><a href="https://rdrr.io/r/base/vector.html">vector()</a></code>:</p>
+<p>Hay algunas técnicas diferentes que puede usar, pero le recomendamos que sea explícito sobre cómo se verá la salida por adelantado. En este caso, vamos a querer una lista de la misma longitud que <code>paths</code>, que podemos crear con <code>vector()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="fu">length</span>(paths))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Luego, en lugar de iterar sobre los elementos de <code>paths</code>, iteramos sobre sus índices, usando <code><a href="https://rdrr.io/r/base/seq.html">seq_along()</a></code> para generar un índice para cada elemento de las rutas:</p>
+<p>Luego, en lugar de iterar sobre los elementos de <code>paths</code>, iteramos sobre sus índices, usando <code>seq_along()</code> para generar un índice para cada elemento de las rutas:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(paths)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Usar los índices es importante porque nos permite vincular cada posición en la entrada con la posición correspondiente en la salida:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">files</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(paths)) {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  files[[i]] <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(paths[[i]])</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Para combinar la lista de tibbles en un solo tibble puedes usar <code><a href="https://rdrr.io/r/base/do.call.html">do.call()</a></code> + <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>:</p>
+<p>Para combinar la lista de tibbles en un solo tibble puedes usar <code>do.call()</code> + <code>rbind()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">files</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1,704 × 5</span></span>
-<span><span class="co">#&gt;   country     continent lifeExp      pop gdpPercap</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 Afghanistan Asia         28.8  8425333      779.</span></span>
-<span><span class="co">#&gt; 2 Albania     Europe       55.2  1282697     1601.</span></span>
-<span><span class="co">#&gt; 3 Algeria     Africa       43.1  9279525     2449.</span></span>
-<span><span class="co">#&gt; 4 Angola      Africa       30.0  4232095     3521.</span></span>
-<span><span class="co">#&gt; 5 Argentina   Americas     62.5 17876956     5911.</span></span>
-<span><span class="co">#&gt; 6 Australia   Oceania      69.1  8691212    10040.</span></span>
-<span><span class="co">#&gt; # ℹ 1,698 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">do.call</span>(rbind, files)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1,704 × 5</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   country     continent lifeExp      pop gdpPercap</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Afghanistan Asia         28.8  8425333      779.</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Albania     Europe       55.2  1282697     1601.</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Algeria     Africa       43.1  9279525     2449.</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Angola      Africa       30.0  4232095     3521.</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Argentina   Americas     62.5 17876956     5911.</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Australia   Oceania      69.1  8691212    10040.</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 1,698 more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>En lugar de hacer una lista y guardar los resultados a medida que avanzamos, un enfoque más simple es construir el marco de datos pieza por pieza:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">path</span> <span class="kw">in</span> <span class="va">paths</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (path <span class="cf">in</span> paths) {</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">rbind</span>(out, readxl<span class="sc">::</span><span class="fu">read_excel</span>(path))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recomendamos evitar este patrón porque puede volverse muy lento cuando el vector es muy largo. Esta es la fuente del bulo persistente de que los bucles <code>for</code> son lentos: no lo son, pero el crecimiento iterativo de un vector sí lo es.</p>
-</section><section id="gráficas" class="level2" data-number="27.6"><h2 data-number="27.6" class="anchored" data-anchor-id="gráficas">
-<span class="header-section-number">27.6</span> Gráficas</h2>
+</section>
+<section id="gráficas" class="level2" data-number="27.6">
+<h2 data-number="27.6" class="anchored" data-anchor-id="gráficas"><span class="header-section-number">27.6</span> Gráficas</h2>
 <p>Muchos usuarios de R que no usan tidyverse igualmente prefieren ggplot2 para gráficar debido a características útiles como valores predeterminados sensibles, leyendas automáticas y una apariencia moderna. Sin embargo, las funciones gráficas base R aún pueden ser útiles porque son muy concisas; se necesita escribir muy poco para hacer un gráfico exploratorio básico.</p>
-<p>Hay dos tipos principales de gráficos base que verá en la naturaleza: diagramas de dispersión e histogramas, producidos con <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> y <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> respectivamente. Aquí hay un ejemplo rápido del conjunto de datos de diamantes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Izquierda</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Derecha</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">price</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Hay dos tipos principales de gráficos base que verá en la naturaleza: diagramas de dispersión e histogramas, producidos con <code>plot()</code> y <code>hist()</code> respectivamente. Aquí hay un ejemplo rápido del conjunto de datos de diamantes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Izquierda</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(diamonds<span class="sc">$</span>carat)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Derecha</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(diamonds<span class="sc">$</span>carat, diamonds<span class="sc">$</span>price)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="base-R_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" alt="A la izquierda, histograma de quilates de diamantes, que van de 0 a 5 quilates. La distribución es unimodal y sesgada a la derecha. A la derecha, diagrama de dispersión de precio frente a quilates de diamantes, que muestra una relación positiva que se despliega a medida que aumentan el precio y los quilates. El gráfico de dispersión muestra muy pocos diamantes de más de 3 quilates en comparación con los diamantes de entre 0 y 3 quilates." width="384"></p>
+<p><img src="base-R_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" alt="A la izquierda, histograma de quilates de diamantes, que van de 0 a 5 quilates.  La distribución es unimodal y sesgada a la derecha. A la derecha, diagrama de  dispersión de precio frente a quilates de diamantes, que muestra una relación  positiva que se despliega a medida que aumentan el precio y los quilates. El gráfico  de dispersión muestra muy pocos diamantes de más de 3 quilates en comparación  con los diamantes de entre 0 y 3 quilates." width="384"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="base-R_files/figure-html/unnamed-chunk-38-2.png" class="img-fluid" alt="A la izquierda, histograma de quilates de diamantes, que van de 0 a 5 quilates. La distribución es unimodal y sesgada a la derecha. A la derecha, diagrama de dispersión de precio frente a quilates de diamantes, que muestra una relación positiva que se despliega a medida que aumentan el precio y los quilates. El gráfico de dispersión muestra muy pocos diamantes de más de 3 quilates en comparación con los diamantes de entre 0 y 3 quilates." width="384"></p>
+<p><img src="base-R_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid" alt="A la izquierda, histograma de quilates de diamantes, que van de 0 a 5 quilates.  La distribución es unimodal y sesgada a la derecha. A la derecha, diagrama de  dispersión de precio frente a quilates de diamantes, que muestra una relación  positiva que se despliega a medida que aumentan el precio y los quilates. El gráfico  de dispersión muestra muy pocos diamantes de más de 3 quilates en comparación  con los diamantes de entre 0 y 3 quilates." width="384"></p>
 </div>
 </div>
 </div>
 <p>Tenga en cuenta que las funciones de trazado base funcionan con vectores, por lo que debe extraer columnas del marco de datos utilizando <code>$</code> o alguna otra técnica.</p>
-</section><section id="resumen" class="level2" data-number="27.7"><h2 data-number="27.7" class="anchored" data-anchor-id="resumen">
-<span class="header-section-number">27.7</span> Resumen</h2>
+</section>
+<section id="resumen" class="level2" data-number="27.7">
+<h2 data-number="27.7" class="anchored" data-anchor-id="resumen"><span class="header-section-number">27.7</span> Resumen</h2>
 <p>En este capítulo, le mostramos una selección de funciones básicas de R útiles para la creación de subconjuntos y la iteración. En comparación con los enfoques discutidos en otras partes del libro, estas funciones tienden a tener más un sabor de “vector” que un sabor de “marco de datos” porque las funciones base de R tienden a tomar vectores individuales, en lugar de un marco de datos y alguna especificación de columna. Esto a menudo hace que la vida sea más fácil para la programación y, por lo tanto, se vuelve más importante a medida que escribe más funciones y comienza a escribir sus propios paquetes.</p>
 <p>Este capítulo concluye la sección de programación del libro. Ha tenido un comienzo sólido en su viaje para convertirse no solo en un científico de datos que usa R, sino en un científico de datos que puede <em>programar</em> en R. Esperamos que estos capítulos hayan despertado su interés en la programación y que desee aprender más fuera de este libro.</p>
 
 
-</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
 <ol>
 <li id="fn1"><p>Lea <a href="https://adv-r.hadley.nz/subsetting.html#subset-multiple" class="uri">https://adv-r.hadley.nz/subsetting.html#subset-multiple</a> para ver cómo también puede crear subconjuntos de un marco de datos como si fuera un objeto 1d y cómo puede crear subconjuntos con una matriz.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Pero no maneja marcos de datos agrupados de manera diferente y no admite funciones auxiliares de selección como <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Pero no maneja marcos de datos agrupados de manera diferente y no admite funciones auxiliares de selección como <code>starts_with()</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Simplemente carece de características convenientes como barras de progreso e informar qué elemento causó el problema si hay un error.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></main><!-- /main --><script>
+</ol>
+</section>
+
+</main> <!-- /main -->
+
+<script>
 
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
@@ -1016,7 +1039,9 @@ Figura&nbsp;27.1: (Izquierda) Un pimentero que Hadley encontró una vez en su ha
   act_link_T.innerHTML += edit_issue_T;
 
 
-</script><script id="quarto-html-after-body" type="application/javascript">
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1415,7 +1440,9 @@ Figura&nbsp;27.1: (Izquierda) Un pimentero que Hadley encontró una vez en su ha
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="./iteration.html" class="pagination-link" aria-label="Iteración">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Iteración</span></span>
       </a>          
@@ -1427,7 +1454,8 @@ Figura&nbsp;27.1: (Izquierda) Un pimentero que Hadley encontró una vez en su ha
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>R para la Ciencia de Datos (2e) fue escrito por Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund.</p>
 </div>   
@@ -1439,6 +1467,8 @@ Figura&nbsp;27.1: (Izquierda) Un pimentero que Hadley encontró una vez en su ha
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

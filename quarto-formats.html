@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
+
 <title>29&nbsp; Formatos Quarto – R para la Ciencia de Datos (2e)</title>
 <style>
 /* Default styles provided by pandoc.
@@ -59,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,7 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,12 +107,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
-}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script><link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script><script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+}</script>
+<script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+<meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
+
+
 <meta property="og:title" content="29&nbsp; Formatos Quarto – R para la Ciencia de Datos (2e)">
 <meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <meta property="og:image" content="https://davidrsch.github.io/r4ds-es/quarto/quarto-shiny.png">
@@ -116,10 +130,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:image:height" content="390">
 <meta property="og:image:width" content="1300">
 </head>
+
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -130,16 +147,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/hadley/r4ds">
             Original
             </a>
@@ -150,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -166,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
@@ -192,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-visualize.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span></a>
@@ -242,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
@@ -251,8 +272,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Capas</span></span></a>
@@ -271,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
@@ -280,8 +301,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vectores lógicos</span></span></a>
@@ -330,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./import.html" class="sidebar-item-text sidebar-link">
@@ -339,8 +360,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hojas de calculo</span></span></a>
@@ -371,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
@@ -380,8 +401,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Funciones</span></span></a>
@@ -400,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
@@ -409,8 +430,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
@@ -423,33 +444,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Tabla de contenidos</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-<li><a href="#introducci%C3%B3n" id="toc-introducción" class="nav-link active" data-scroll-target="#introducci%C3%B3n"><span class="header-section-number">29.1</span> Introducción</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">29.1</span> Introducción</a></li>
   <li><a href="#opciones-de-salida" id="toc-opciones-de-salida" class="nav-link" data-scroll-target="#opciones-de-salida"><span class="header-section-number">29.2</span> Opciones de salida</a></li>
   <li><a href="#documentos" id="toc-documentos" class="nav-link" data-scroll-target="#documentos"><span class="header-section-number">29.3</span> Documentos</a></li>
   <li><a href="#presentaciones" id="toc-presentaciones" class="nav-link" data-scroll-target="#presentaciones"><span class="header-section-number">29.4</span> Presentaciones</a></li>
-  <li>
-<a href="#interactividad" id="toc-interactividad" class="nav-link" data-scroll-target="#interactividad"><span class="header-section-number">29.5</span> Interactividad</a>
+  <li><a href="#interactividad" id="toc-interactividad" class="nav-link" data-scroll-target="#interactividad"><span class="header-section-number">29.5</span> Interactividad</a>
   <ul class="collapse">
-<li><a href="#htmlwidgets" id="toc-htmlwidgets" class="nav-link" data-scroll-target="#htmlwidgets"><span class="header-section-number">29.5.1</span> htmlwidgets</a></li>
+  <li><a href="#htmlwidgets" id="toc-htmlwidgets" class="nav-link" data-scroll-target="#htmlwidgets"><span class="header-section-number">29.5.1</span> htmlwidgets</a></li>
   <li><a href="#shiny" id="toc-shiny" class="nav-link" data-scroll-target="#shiny"><span class="header-section-number">29.5.2</span> Shiny</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#sitios-web-y-libros" id="toc-sitios-web-y-libros" class="nav-link" data-scroll-target="#sitios-web-y-libros"><span class="header-section-number">29.6</span> Sitios web y libros</a></li>
   <li><a href="#otros-formatos" id="toc-otros-formatos" class="nav-link" data-scroll-target="#otros-formatos"><span class="header-section-number">29.7</span> Otros formatos</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">29.8</span> Resumen</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./communicate.html">Comunicar</a></li><li class="breadcrumb-item"><a href="./quarto-formats.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Formatos Quarto</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./communicate.html">Comunicar</a></li><li class="breadcrumb-item"><a href="./quarto-formats.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Formatos Quarto</span></a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title"><span id="sec-quarto-formats" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Formatos Quarto</span></span></h1>
 </div>
 
@@ -464,28 +489,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introducción" class="level2" data-number="29.1"><h2 data-number="29.1" class="anchored" data-anchor-id="introducción">
-<span class="header-section-number">29.1</span> Introducción</h2>
+</header>
+
+
+<section id="introducción" class="level2" data-number="29.1">
+<h2 data-number="29.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">29.1</span> Introducción</h2>
 <p>Hasta ahora, ha visto que Quarto se usa para producir documentos HTML. Este capítulo ofrece una breve descripción general de algunos de los muchos otros tipos de salida que puede producir con Quarto.</p>
 <p>Hay dos formas de configurar la salida de un documento:</p>
 <ol type="1">
-<li>
-<p>De forma permanente, modificando el encabezado YAML:</p>
+<li><p>De forma permanente, modificando el encabezado YAML:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Diamond sizes"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</li>
-<li>
-<p>De forma transitoria, llamando <code>quarto::quarto_render()</code> a mano:</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>De forma transitoria, llamando <code>quarto::quarto_render()</code> a mano:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">quarto</span><span class="fu">::</span><span class="fu">quarto_render</span><span class="op">(</span><span class="st">"diamond-sizes.qmd"</span>, output_format <span class="op">=</span> <span class="st">"docx"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"diamond-sizes.qmd"</span>, <span class="at">output_format =</span> <span class="st">"docx"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto es útil si desea producir múltiples tipos de salida mediante programación, ya que el argumento <code>output_format</code> también puede tomar una lista de valores.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">quarto</span><span class="fu">::</span><span class="fu">quarto_render</span><span class="op">(</span><span class="st">"diamond-sizes.qmd"</span>, output_format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"docx"</span>, <span class="st">"pdf"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</li>
-</ol></section><section id="opciones-de-salida" class="level2" data-number="29.2"><h2 data-number="29.2" class="anchored" data-anchor-id="opciones-de-salida">
-<span class="header-section-number">29.2</span> Opciones de salida</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"diamond-sizes.qmd"</span>, <span class="at">output_format =</span> <span class="fu">c</span>(<span class="st">"docx"</span>, <span class="st">"pdf"</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+</ol>
+</section>
+<section id="opciones-de-salida" class="level2" data-number="29.2">
+<h2 data-number="29.2" class="anchored" data-anchor-id="opciones-de-salida"><span class="header-section-number">29.2</span> Opciones de salida</h2>
 <p>Quarto ofrece una amplia gama de formatos de salida. Puedes encontrar la lista completa en <a href="https://quarto.org/docs/output-formats/all-formats.html" class="uri">https://quarto.org/docs/output-formats/all-formats.html</a>. Muchos formatos comparten algunas opciones de salida (p.&nbsp;ej., <code>toc: true</code> para incluir una tabla de contenido), pero otros tienen opciones que son específicas del formato (p.&nbsp;ej., <code>code-fold: true</code> colapsa fragmentos de código en un <code>&lt;details&gt;</code> etiqueta para la salida HTML para que el usuario pueda mostrarla a pedido, no es aplicable en un documento PDF o Word).</p>
 <p>Para anular las opciones predeterminadas, debe usar un campo <code>format</code> expandido. Por ejemplo, si quisiera representar un <code>html</code> con una tabla de contenido flotante, usaría:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
@@ -502,10 +528,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Tenga en cuenta la sintaxis especial (<code>pdf: default</code>) si no desea anular ninguna opción predeterminada.</p>
 <p>Para representar todos los formatos especificados en el YAML de un documento, puede usar <code>output_format = "all"</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">quarto</span><span class="fu">::</span><span class="fu">quarto_render</span><span class="op">(</span><span class="st">"diamond-sizes.qmd"</span>, output_format <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"diamond-sizes.qmd"</span>, <span class="at">output_format =</span> <span class="st">"all"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="documentos" class="level2" data-number="29.3"><h2 data-number="29.3" class="anchored" data-anchor-id="documentos">
-<span class="header-section-number">29.3</span> Documentos</h2>
+</section>
+<section id="documentos" class="level2" data-number="29.3">
+<h2 data-number="29.3" class="anchored" data-anchor-id="documentos"><span class="header-section-number">29.3</span> Documentos</h2>
 <p>El capítulo anterior se centró en la salida <code>html</code> predeterminada. Hay varias variaciones básicas sobre ese tema, generando diferentes tipos de documentos. Por ejemplo:</p>
 <ul>
 <li><p><code>pdf</code> crea un PDF con LaTeX (un sistema de diseño de documentos de código abierto), que deberá instalar. RStudio le preguntará si aún no lo tiene.</p></li>
@@ -522,8 +549,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</section><section id="presentaciones" class="level2" data-number="29.4"><h2 data-number="29.4" class="anchored" data-anchor-id="presentaciones">
-<span class="header-section-number">29.4</span> Presentaciones</h2>
+</section>
+<section id="presentaciones" class="level2" data-number="29.4">
+<h2 data-number="29.4" class="anchored" data-anchor-id="presentaciones"><span class="header-section-number">29.4</span> Presentaciones</h2>
 <p>También puede usar Quarto para producir presentaciones. Obtiene menos control visual que con una herramienta como Keynote o PowerPoint, pero insertar automáticamente los resultados de su código R en una presentación puede ahorrar una gran cantidad de tiempo. Las presentaciones funcionan dividiendo su contenido en diapositivas, con una nueva diapositiva que comienza en cada segundo encabezado de nivel (<code>##</code>). Además, los encabezados de primer nivel (<code>#</code>) indican el comienzo de una nueva sección con una diapositiva de título de sección que, de manera predeterminada, está centrada en el medio.</p>
 <p>Quarto admite una variedad de formatos de presentación, que incluyen:</p>
 <ol type="1">
@@ -532,18 +560,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>beamer</code> - Presentación en PDF con LaTeX Beamer.</p></li>
 </ol>
 <p>Puede leer más sobre la creación de presentaciones con Quarto en <a href="https://quarto.org/docs/presentations/">https://quarto.org/docs/presentations</a>.</p>
-</section><section id="interactividad" class="level2" data-number="29.5"><h2 data-number="29.5" class="anchored" data-anchor-id="interactividad">
-<span class="header-section-number">29.5</span> Interactividad</h2>
+</section>
+<section id="interactividad" class="level2" data-number="29.5">
+<h2 data-number="29.5" class="anchored" data-anchor-id="interactividad"><span class="header-section-number">29.5</span> Interactividad</h2>
 <p>Al igual que cualquier documento HTML, los documentos HTML creados con Quarto también pueden contener componentes interactivos. Aquí presentamos dos opciones para incluir interactividad en sus documentos Quarto: htmlwidgets y Shiny.</p>
-<section id="htmlwidgets" class="level3" data-number="29.5.1"><h3 data-number="29.5.1" class="anchored" data-anchor-id="htmlwidgets">
-<span class="header-section-number">29.5.1</span> htmlwidgets</h3>
+<section id="htmlwidgets" class="level3" data-number="29.5.1">
+<h3 data-number="29.5.1" class="anchored" data-anchor-id="htmlwidgets"><span class="header-section-number">29.5.1</span> htmlwidgets</h3>
 <p>HTML es un formato interactivo y puede aprovechar esa interactividad con <strong>htmlwidgets</strong>, funciones de R que producen visualizaciones HTML interactivas. Por ejemplo, tome el mapa del <strong>leaflet</strong> a continuación. Si está viendo esta página en la web, puede arrastrar el mapa, acercar y alejar, etc. Obviamente, no puede hacer eso en un libro, por lo que Quarto inserta automáticamente una captura de pantalla estática para usted.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html">setView</a></span><span class="op">(</span><span class="fl">174.764</span>, <span class="op">-</span><span class="fl">36.877</span>, zoom <span class="op">=</span> <span class="fl">16</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html">addMarkers</a></span><span class="op">(</span><span class="fl">174.764</span>, <span class="op">-</span><span class="fl">36.877</span>, popup <span class="op">=</span> <span class="st">"Maungawhau"</span><span class="op">)</span> </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="fl">174.764</span>, <span class="sc">-</span><span class="fl">36.877</span>, <span class="at">zoom =</span> <span class="dv">16</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="fl">174.764</span>, <span class="sc">-</span><span class="fl">36.877</span>, <span class="at">popup =</span> <span class="st">"Maungawhau"</span>) </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:433px;"></div>
 <script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-36.877,174.764],16,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[-36.877,174.764,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Maungawhau",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-36.877,-36.877],"lng":[174.764,174.764]}},"evals":[],"jsHooks":[]}</script>
@@ -558,8 +587,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://rich-iannone.github.io/DiagrammeR"><strong>DiagrammeR</strong></a> para diagramas (como diagramas de flujo y diagramas de enlace de nodo simples).</p></li>
 </ul>
 <p>Para obtener más información sobre los htmlwidgets y ver una lista completa de los paquetes que los proporcionan, visite <a href="https://www.htmlwidgets.org" class="uri">https://www.htmlwidgets.org</a>.</p>
-</section><section id="shiny" class="level3" data-number="29.5.2"><h3 data-number="29.5.2" class="anchored" data-anchor-id="shiny">
-<span class="header-section-number">29.5.2</span> Shiny</h3>
+</section>
+<section id="shiny" class="level3" data-number="29.5.2">
+<h3 data-number="29.5.2" class="anchored" data-anchor-id="shiny"><span class="header-section-number">29.5.2</span> Shiny</h3>
 <p>htmlwidgets proporcionar interactividad <strong>del lado del cliente</strong> — toda la interactividad ocurre en el navegador, independientemente de R. Por un lado, eso es genial porque puedes distribuir el archivo HTML sin ninguna conexión con R. Sin embargo, eso limita fundamentalmente lo que puede hacer con las cosas que se han implementado en HTML y JavaScript. Un enfoque alternativo es usar <strong>shiny</strong>, un paquete que le permite crear interactividad usando código R, no JavaScript.</p>
 <p>Para llamar al código Shiny desde un documento Quarto, agregue <code>server: shiny</code> al encabezado YAML:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Shiny Web App"</span></span>
@@ -567,16 +597,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">server</span><span class="kw">:</span><span class="at"> shiny</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Luego puede usar las funciones de entrada “input” para agregar componentes interactivos al documento:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/">shiny</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"What is your name?"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"How old are you?"</span>, <span class="cn">NA</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"What is your name?"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">numericInput</span>(<span class="st">"age"</span>, <span class="st">"How old are you?"</span>, <span class="cn">NA</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">150</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y también necesita un fragmento de código con la opción de fragmento <code>context: server</code> que contiene el código que debe ejecutarse en un servidor Shiny.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="quarto/quarto-shiny.png" class="img-fluid figure-img" alt="Dos cuadros de entrada uno encima del otro. Uno de arriba dice: &quot;What is your name?&quot;, el de abajo, &quot;How old are you?&quot;." width="650"></p>
+<figure class="figure">
+<p><img src="quarto/quarto-shiny.png" class="img-fluid figure-img" alt="Dos cuadros de entrada uno encima del otro. Uno de arriba dice: &quot;What is your name?&quot;, el de abajo, &quot;How old are you?&quot;." width="650"></p>
 </figure>
 </div>
 </div>
@@ -584,16 +615,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Luego puede hacer referencia a los valores con <code>input$name</code> y <code>input$age</code>, y el código que los usa se volverá a ejecutar automáticamente cada vez que cambien.</p>
 <p>No podemos mostrarle una aplicación brillante en vivo aquí porque las interacciones brillantes ocurren en el <strong>lado del servidor</strong>. Esto significa que puede escribir aplicaciones interactivas sin saber JavaScript, pero necesita un servidor para ejecutarlas. Esto introduce un problema logístico: las aplicaciones Shiny necesitan un servidor Shiny para ejecutarse en línea. Cuando ejecuta aplicaciones Shiny en su propia computadora, Shiny configura automáticamente un servidor Shiny para usted, pero necesita un servidor Shiny público si desea publicar este tipo de interactividad en línea. Esa es la compensación fundamental de shiny: puede hacer cualquier cosa en un documento brillante que pueda hacer en R, pero requiere que alguien esté ejecutando R.</p>
 <p>Para aprender más sobre Shiny, recomendamos leer Mastering Shiny de Hadley Wickham, <a href="https://mastering-shiny.org/">https://mastering-shiny.org</a>.</p>
-</section></section><section id="sitios-web-y-libros" class="level2" data-number="29.6"><h2 data-number="29.6" class="anchored" data-anchor-id="sitios-web-y-libros">
-<span class="header-section-number">29.6</span> Sitios web y libros</h2>
+</section>
+</section>
+<section id="sitios-web-y-libros" class="level2" data-number="29.6">
+<h2 data-number="29.6" class="anchored" data-anchor-id="sitios-web-y-libros"><span class="header-section-number">29.6</span> Sitios web y libros</h2>
 <p>Con un poco de infraestructura adicional, puede usar Quarto para generar un sitio web completo o un libro:</p>
 <ul>
 <li><p>Coloque sus archivos <code>.qmd</code> en un solo directorio. <code>index.qmd</code> se convertirá en la página de inicio.</p></li>
-<li>
-<p>Agregue un archivo YAML llamado <code>_quarto.yml</code> que proporciona la navegación para el sitio. En este archivo, establezca el tipo de <code>project</code> en <code>book</code> o <code>website</code>, por ejemplo:</p>
+<li><p>Agregue un archivo YAML llamado <code>_quarto.yml</code> que proporciona la navegación para el sitio. En este archivo, establezca el tipo de <code>project</code> en <code>book</code> o <code>website</code>, por ejemplo:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</li>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 <p>Por ejemplo, el siguiente archivo <code>_quarto.yml</code> crea un sitio web a partir de tres archivos fuente: <code>index.qmd</code> (la página de inicio), <code>viridis-colors.qmd</code> y <code>terrain-colors.qmd</code>.</p>
 <div class="cell">
@@ -633,16 +664,18 @@ format:
 </div>
 <p>Le recomendamos que utilice un proyecto de RStudio para sus sitios web y libros. Basado en el archivo <code>_quarto.yml</code>, RStudio reconocerá el tipo de proyecto en el que está trabajando y agregará una pestaña Build al IDE que puede usar para renderizar y obtener una vista previa de sus sitios web y libros. Tanto los sitios web como los libros también se pueden renderizar usando <code>quarto::quarto_render()</code>.</p>
 <p>Lea más sobre sitios web de Quarto en <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a> y sobre libros en <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-</section><section id="otros-formatos" class="level2" data-number="29.7"><h2 data-number="29.7" class="anchored" data-anchor-id="otros-formatos">
-<span class="header-section-number">29.7</span> Otros formatos</h2>
+</section>
+<section id="otros-formatos" class="level2" data-number="29.7">
+<h2 data-number="29.7" class="anchored" data-anchor-id="otros-formatos"><span class="header-section-number">29.7</span> Otros formatos</h2>
 <p>Quarto ofrece aún más formatos de salida:</p>
 <ul>
 <li><p>Puede escribir artículos de revistas usando Plantillas de revistas en cuarto: <a href="https://quarto.org/docs/journals/templates.html" class="uri">https://quarto.org/docs/journals/templates.html</a>.</p></li>
 <li><p>Puede exportar documentos Quarto a Jupyter Notebooks con <code>formato: ipynb</code>: <a href="https://quarto.org/docs/reference/formats/ipynb.html" class="uri">https://quarto.org/docs/reference/formats/ipynb.html</a>.</p></li>
 </ul>
 <p>Vea <a href="https://quarto.org/docs/output-formats/all-formats.html" class="uri">https://quarto.org/docs/output-formats/all-formats.html</a> para una lista de incluso más formatos.</p>
-</section><section id="resumen" class="level2" data-number="29.8"><h2 data-number="29.8" class="anchored" data-anchor-id="resumen">
-<span class="header-section-number">29.8</span> Resumen</h2>
+</section>
+<section id="resumen" class="level2" data-number="29.8">
+<h2 data-number="29.8" class="anchored" data-anchor-id="resumen"><span class="header-section-number">29.8</span> Resumen</h2>
 <p>En este capítulo le presentamos una variedad de opciones para comunicar sus resultados con Quarto, desde documentos estáticos e interactivos hasta presentaciones, sitios web y libros.</p>
 <p>Para aprender más sobre la comunicación efectiva en estos diferentes formatos, recomendamos los siguientes recursos:</p>
 <ul>
@@ -654,7 +687,11 @@ format:
 </ul>
 
 
-</section></main><!-- /main --><script>
+</section>
+
+</main> <!-- /main -->
+
+<script>
 
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
@@ -721,7 +758,9 @@ format:
   act_link_T.innerHTML += edit_issue_T;
 
 
-</script><script id="quarto-html-after-body" type="application/javascript">
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1120,7 +1159,9 @@ format:
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="./quarto.html" class="pagination-link" aria-label="Quarto">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Quarto</span></span>
       </a>          
@@ -1129,7 +1170,8 @@ format:
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>R para la Ciencia de Datos (2e) fue escrito por Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund.</p>
 </div>   
@@ -1141,6 +1183,8 @@ format:
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

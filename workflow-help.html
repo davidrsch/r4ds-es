@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
+
 <title>8&nbsp; Flujo de trabajo: obtener ayuda – R para la Ciencia de Datos (2e)</title>
 <style>
 /* Default styles provided by pandoc.
@@ -59,6 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,7 +81,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-3a75679a4c9320585fe744a3c07baabd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,15 +108,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
-}</script><script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script><meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+}</script>
+<script defer="" data-domain="r4ds.hadley.nz" src="https://plausible.io/js/plausible.js"></script>
+<meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
+
+
 <meta property="og:title" content="8&nbsp; Flujo de trabajo: obtener ayuda – R para la Ciencia de Datos (2e)">
 <meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <meta property="og:site_name" content="R para la Ciencia de Datos (2e)">
 </head>
+
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -122,16 +134,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R para la Ciencia de Datos (2e)</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
+          <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/hadley/r4ds">
             Original
             </a>
@@ -142,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-</div>
+    </div>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -158,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
@@ -184,8 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-visualize.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span></a>
@@ -234,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./visualize.html" class="sidebar-item-text sidebar-link">
@@ -243,8 +259,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Capas</span></span></a>
@@ -263,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./transform.html" class="sidebar-item-text sidebar-link">
@@ -272,8 +288,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./logicals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vectores lógicos</span></span></a>
@@ -322,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./import.html" class="sidebar-item-text sidebar-link">
@@ -331,8 +347,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hojas de calculo</span></span></a>
@@ -363,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./program.html" class="sidebar-item-text sidebar-link">
@@ -372,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Funciones</span></span></a>
@@ -392,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./communicate.html" class="sidebar-item-text sidebar-link">
@@ -401,8 +417,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
@@ -415,23 +431,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Tabla de contenidos</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-<li><a href="#google-es-tu-amigo" id="toc-google-es-tu-amigo" class="nav-link active" data-scroll-target="#google-es-tu-amigo"><span class="header-section-number">8.1</span> Google es tu amigo</a></li>
+  <li><a href="#google-es-tu-amigo" id="toc-google-es-tu-amigo" class="nav-link active" data-scroll-target="#google-es-tu-amigo"><span class="header-section-number">8.1</span> Google es tu amigo</a></li>
   <li><a href="#haciendo-un-reprex" id="toc-haciendo-un-reprex" class="nav-link" data-scroll-target="#haciendo-un-reprex"><span class="header-section-number">8.2</span> Haciendo un reprex</a></li>
   <li><a href="#invertir-en-ti-mismo" id="toc-invertir-en-ti-mismo" class="nav-link" data-scroll-target="#invertir-en-ti-mismo"><span class="header-section-number">8.3</span> Invertir en ti mismo</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">8.4</span> Resumen</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./whole-game.html">El Juego Completo</a></li><li class="breadcrumb-item"><a href="./workflow-help.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Flujo de trabajo: obtener ayuda</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./whole-game.html">El Juego Completo</a></li><li class="breadcrumb-item"><a href="./workflow-help.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Flujo de trabajo: obtener ayuda</span></a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title"><span id="sec-workflow-getting-help" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Flujo de trabajo: obtener ayuda</span></span></h1>
 </div>
 
@@ -446,16 +468,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Este libro no es una isla; no existe un solo recurso que te permita dominar R. A medida que comience a aplicar las técnicas descritas en este libro a sus propios datos, pronto encontrará preguntas que no respondemos. Esta sección describe algunos consejos sobre cómo obtener ayuda y ayudarlo a seguir aprendiendo.</p>
-<section id="google-es-tu-amigo" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="google-es-tu-amigo">
-<span class="header-section-number">8.1</span> Google es tu amigo</h2>
+</header>
+
+
+<p>Este libro no es una isla; no existe un solo recurso que te permita dominar R. A medida que comience a aplicar las técnicas descritas en este libro a sus propios datos, pronto encontrará preguntas que no respondemos. Esta sección describe algunos consejos sobre cómo obtener ayuda y ayudarlo a seguir aprendiendo.</p>
+<section id="google-es-tu-amigo" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="google-es-tu-amigo"><span class="header-section-number">8.1</span> Google es tu amigo</h2>
 <p>Si te quedas atascado, empieza con Google. Por lo general, agregar “R” a una consulta es suficiente para restringirla a resultados relevantes: si la búsqueda no es útil, a menudo significa que no hay resultados específicos de R disponibles. Además, agregar nombres de paquetes como “tidyverse” o “ggplot2” ayudará a reducir los resultados a un código que también le resulte más familiar, por ejemplo, “cómo hacer un diagrama de caja en R” frente a “cómo hacer un diagrama de caja en R con ggplot2”. Google es particularmente útil para los mensajes de error. Si recibe un mensaje de error y no tiene idea de lo que significa, intente buscarlo en Google. Lo más probable es que alguien más se haya confundido en el pasado, y habrá ayuda en algún lugar de la web. (Si el mensaje de error no está en inglés, ejecute <code>Sys.setenv(LANGUAGE = "en")</code> y vuelva a ejecutar el código; es más probable que encuentre ayuda para los mensajes de error en inglés).</p>
 <p>Si Google no ayuda, prueba <a href="https://stackoverflow.com">Stack Overflow</a>. Comience dedicando un poco de tiempo a buscar una respuesta existente, incluida <code>[R]</code>, para restringir su búsqueda a preguntas y respuestas que usen R.</p>
-</section><section id="haciendo-un-reprex" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="haciendo-un-reprex">
-<span class="header-section-number">8.2</span> Haciendo un reprex</h2>
+</section>
+<section id="haciendo-un-reprex" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="haciendo-un-reprex"><span class="header-section-number">8.2</span> Haciendo un reprex</h2>
 <p>Si tu búsqueda en Google no encuentra nada útil, es una muy buena idea preparar un <strong>reprex,</strong> abreviatura de ejemplo mínimo reproducible (en inglés, <strong>repr</strong>oducible <strong>ex</strong>ample). Un buen reprex facilita que otras personas te ayuden y, a menudo, resolverás el problema por ti mismo mientras lo haces. Hay dos partes para crear un reprex:</p>
 <ul>
-<li><p>Primero, debe hacer que su código sea reproducible. Esto significa que necesita capturar todo, es decir, incluir cualquier llamada a <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> y crear todos los objetos necesarios. La forma más fácil de asegurarse de que ha hecho esto es usar el paquete reprex.</p></li>
+<li><p>Primero, debe hacer que su código sea reproducible. Esto significa que necesita capturar todo, es decir, incluir cualquier llamada a <code>library()</code> y crear todos los objetos necesarios. La forma más fácil de asegurarse de que ha hecho esto es usar el paquete reprex.</p></li>
 <li><p>En segundo lugar, debe hacerlo mínimo. Elimina todo lo que no esté directamente relacionado con tu problema. Esto generalmente implica crear un objeto de R mucho más pequeño y simple que el que enfrenta en la vida real o incluso usar datos integrados.</p></li>
 </ul>
 <p>¡Eso suena como un monton de trabajo! Y puede ser, pero tiene una gran recompensa:</p>
@@ -465,11 +491,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Al crear un reprex a mano, es fácil pasar por alto algo accidentalmente, lo que significa que su código no se puede ejecutar en la computadora de otra persona. Evite este problema utilizando el paquete reprex, que se instala como parte de tidyverse. Digamos que copia este código en su portapapeles (o, en RStudio Server o Cloud, selecciónelo):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Luego llame a <code>reprex()</code>, donde la salida predeterminada tiene formato para GitHub:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">reprex</span><span class="fu">::</span><span class="fu"><a href="https://reprex.tidyverse.org/reference/reprex.html">reprex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>reprex<span class="sc">::</span><span class="fu">reprex</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Se mostrará una vista previa de HTML muy bien representada en el Visor de RStudio (si está en RStudio) o en su navegador predeterminado de lo contrario. El reprex se copia automáticamente en su portapapeles (en RStudio Server o Cloud, deberá copiarlo usted mismo):</p>
 <pre><code>``` r
 y &lt;- 1:4
@@ -478,46 +504,48 @@ mean(y)
 ```</code></pre>
 <p>Este texto tiene un formato especial, llamado Markdown, que se puede pegar en sitios como StackOverflow o Github y automáticamente lo renderizarán para que parezca código. Así es como se vería ese Markdown representado en GitHub:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 2.5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Cualquier otra persona puede copiar, pegar y ejecutar esto inmediatamente.</p>
 <p>Hay tres cosas que debe incluir para que su ejemplo sea reproducible: paquetes requeridos, datos y código.</p>
 <ol type="1">
 <li><p>Los <strong>paquetes</strong> deben cargarse en la parte superior del script para que sea fácil ver cuáles necesita el ejemplo. Este es un buen momento para comprobar que está utilizando la última versión de cada paquete; es posible que haya descubierto un error que se solucionó desde que instaló o actualizó el paquete por última vez. Para los paquetes en tidyverse, la forma más fácil de verificar es ejecutar <code>tidyverse_update()</code>.</p></li>
-<li>
-<p>La forma más fácil de incluir <strong>datos</strong> es usar <code><a href="https://rdrr.io/r/base/dput.html">dput()</a></code> para generar el código de R necesario para recrearlo. Por ejemplo, para recrear el conjunto de datos <code>mtcars</code> en R, realice los siguientes pasos:</p>
+<li><p>La forma más fácil de incluir <strong>datos</strong> es usar <code>dput()</code> para generar el código de R necesario para recrearlo. Por ejemplo, para recrear el conjunto de datos <code>mtcars</code> en R, realice los siguientes pasos:</p>
 <ol type="1">
 <li>Ejecute <code>dput(mtcars)</code> en R</li>
 <li>Copie la salida</li>
 <li>En reprex, escriba <code>mtcars &lt;-</code>, luego pegue.</li>
 </ol>
-<p>Trate de usar el subconjunto más pequeño de sus datos que aún revele el problema.</p>
-</li>
-<li>
-<p>Dedique un poco de tiempo a asegurarse de que su <strong>código</strong> sea fácil de leer para otros:</p>
+<p>Trate de usar el subconjunto más pequeño de sus datos que aún revele el problema.</p></li>
+<li><p>Dedique un poco de tiempo a asegurarse de que su <strong>código</strong> sea fácil de leer para otros:</p>
 <ul>
 <li><p>Asegúrese de haber utilizado espacios y de que los nombres de las variables sean concisos pero informativos.</p></li>
 <li><p>Utilice comentarios para indicar dónde radica su problema.</p></li>
 <li><p>Haz tu mejor esfuerzo para eliminar todo lo que no esté relacionado con el problema.</p></li>
 </ul>
-<p>Cuanto más corto sea su código, más fácil será de entender y más fácil de arreglar.</p>
-</li>
+<p>Cuanto más corto sea su código, más fácil será de entender y más fácil de arreglar.</p></li>
 </ol>
 <p>Termine comprobando que realmente ha creado un ejemplo reproducible iniciando una nueva sesión de R y copiando y pegando su secuencia de comandos.</p>
 <p>Crear reprexes no es trivial, y se necesitará algo de práctica para aprender a crear reprexes buenos y realmente mínimos.</p>
 <p>Sin embargo, aprender a hacer preguntas que incluyan el código e invertir el tiempo para hacerlo reproducible seguirá dando sus frutos a medida que aprenda y domine R.</p>
-</section><section id="invertir-en-ti-mismo" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="invertir-en-ti-mismo">
-<span class="header-section-number">8.3</span> Invertir en ti mismo</h2>
+</section>
+<section id="invertir-en-ti-mismo" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="invertir-en-ti-mismo"><span class="header-section-number">8.3</span> Invertir en ti mismo</h2>
 <p>También debe pasar algún tiempo preparándose para resolver problemas antes de que ocurran. Invertir un poco de tiempo en aprender R cada día valdrá la pena a largo plazo. Una forma es seguir lo que hace el equipo de tidyverse en el <a href="https://www.tidyverse.org/blog/">blog de tidyverse</a>. Para mantenerse al día con la comunidad R de manera más amplia, recomendamos leer <a href="https://rweekly.org">R Weekly</a>: es un esfuerzo de la comunidad para agregar las noticias más interesantes de la comunidad de R cada semana.</p>
-</section><section id="resumen" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="resumen">
-<span class="header-section-number">8.4</span> Resumen</h2>
+</section>
+<section id="resumen" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="resumen"><span class="header-section-number">8.4</span> Resumen</h2>
 <p>Este capítulo concluye la parte de El Juego Completo del libro. Ahora ha visto las partes más importantes del proceso de ciencia de datos: visualización, transformación, limpieza e importación. Ahora tiene una visión holística de todo el proceso y comenzamos a entrar en los detalles de las piezas pequeñas.</p>
 <p>La siguiente parte del libro, Visualizar, profundiza en la gramática de los gráficos y la creación de visualizaciones de datos con ggplot2, muestra cómo usar las herramientas que ha aprendido hasta ahora para realizar análisis exploratorios de datos e introduce buenas prácticas para crear gráficos para comunicarse.</p>
 
 
-</section></main><!-- /main --><script>
+</section>
+
+</main> <!-- /main -->
+
+<script>
 
   // Chapter name
   const currentChapterFile = window.location.pathname.split('/').pop().replace('.html', '');
@@ -584,7 +612,9 @@ mean(y)
   act_link_T.innerHTML += edit_issue_T;
 
 
-</script><script id="quarto-html-after-body" type="application/javascript">
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -983,7 +1013,9 @@ mean(y)
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="./data-import.html" class="pagination-link" aria-label="Importación de datos">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Importación de datos</span></span>
       </a>          
@@ -995,7 +1027,8 @@ mean(y)
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>R para la Ciencia de Datos (2e) fue escrito por Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund.</p>
 </div>   
@@ -1007,6 +1040,8 @@ mean(y)
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
