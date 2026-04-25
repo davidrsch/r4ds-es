@@ -332,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltanres</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltantes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -651,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 -0.703 -0.265 -0.522 0.413     5</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Esto es un poco detallado, por lo que R viene con un atajo útil: para este tipo de función desechable, o <strong>anónima</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, puede reemplazar <code>función</code> con <code>\</code>[^iteration-2 ]:</p>
+<p>Esto es un poco detallado, por lo que R viene con un atajo útil: para este tipo de función desechable, o <strong>anónima</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, puede reemplazar <code>función</code> con <code>\(x)</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_miss <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
@@ -690,7 +690,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="nombres-de-columna" class="level3" data-number="26.2.4">
 <h3 data-number="26.2.4" class="anchored" data-anchor-id="nombres-de-columna"><span class="header-section-number">26.2.4</span> Nombres de columna</h3>
-<p>El resultado de <code>across()</code> se nombra de acuerdo con la especificación provista en el argumento <code>.names</code>. Podríamos especificar el nuestro si quisiéramos que el nombre de la función fuera primero <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<p>El resultado de <code>across()</code> se nombra de acuerdo con la especificación provista en el argumento <code>.names</code>. Podríamos especificar el nuestro si quisiéramos que el nombre de la función fuera primero <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_miss <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
@@ -875,7 +875,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">d_wts =</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Actualmente no hay forma de hacer esto con <code>across()</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, pero es relativamente sencillo con <code>pivot_longer()</code>:</p>
+<p>Actualmente no hay forma de hacer esto con <code>across()</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, pero es relativamente sencillo con <code>pivot_longer()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df_paired <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
@@ -937,7 +937,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="leer-varios-archivos" class="level2" data-number="26.3">
 <h2 data-number="26.3" class="anchored" data-anchor-id="leer-varios-archivos"><span class="header-section-number">26.3</span> Leer varios archivos</h2>
-<p>En la sección anterior, aprendiste a usar <code>dplyr::across()</code> para repetir una transformación en varias columnas. En esta sección, aprenderá cómo usar <code>purrr::map()</code> para hacer algo con cada archivo en un directorio. Empecemos con un poco de motivación: imagine que tiene un directorio lleno de hojas de cálculo de Excel<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> que desea leer. Podrías hacerlo con copiar y pegar:</p>
+<p>En la sección anterior, aprendiste a usar <code>dplyr::across()</code> para repetir una transformación en varias columnas. En esta sección, aprenderá cómo usar <code>purrr::map()</code> para hacer algo con cada archivo en un directorio. Empecemos con un poco de motivación: imagine que tiene un directorio lleno de hojas de cálculo de Excel<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> que desea leer.</p>
+<p>Podrías hacerlo con copiar y pegar:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data2019 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/y2019.xlsx"</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data2020 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/y2020.xlsx"</span>)</span>
@@ -1221,7 +1222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> paths <span class="sc">|&gt;</span> </span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(readxl<span class="sc">::</span>read_excel) </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Luego, una estrategia muy útil es capturar la estructura de los data frames para que pueda explorarla usando sus habilidades de ciencia de datos. Una forma de hacerlo es con esta útil función <code>df_types</code> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> que devuelve un tibble con una fila para cada columna:</p>
+<p>Luego, una estrategia muy útil es capturar la estructura de los data frames para que pueda explorarla usando sus habilidades de ciencia de datos. Una forma de hacerlo es con esta útil función <code>df_types</code> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> que devuelve un tibble con una fila para cada columna:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_types <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
@@ -1354,12 +1355,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Database: DuckDB 1.5.2 [unknown@Linux 6.17.0-1010-azure:R 4.6.0/:memory:]</span></span>
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    year     n</span></span>
 <span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1952   142</span></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1957   142</span></span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1962   142</span></span>
-<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1972   142</span></span>
-<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1967   142</span></span>
-<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1977   142</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1967   142</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1977   142</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1987   142</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1952   142</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1957   142</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  1962   142</span></span>
 <span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ more rows</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -1443,7 +1444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Ahora podemos usar <code>map()</code> para crear una lista de muchos gráficos[^iterationn-6] y sus posibles rutas de archivo:</p>
+<p>Ahora podemos usar <code>map()</code> para crear una lista de muchos gráficos<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> y sus posibles rutas de archivo:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>by_clarity <span class="ot">&lt;-</span> by_clarity <span class="sc">|&gt;</span> </span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -1485,10 +1486,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <ol>
 <li id="fn1"><p>Anónimo, porque nunca le dimos explícitamente un nombre con <code>&lt;-</code>. Otro término que usan los programadores para esto es “función lambda”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>actualmente no puede cambiar el orden de las columnas, pero podría reordenarlas después usando <code>relocate()</code> o similar.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Tal vez habrá un día, pero actualmente no vemos cómo.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>no vamos a explicar cómo funciona, pero si miras los documentos de las funciones utilizadas, deberías poder descifrarlo.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>no vamos a explicar cómo funciona, pero si miras los documentos de las funciones utilizadas, deberías poder descifrarlo.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>En código más antiguo es posible que veas una sintaxis como <code>~ .x + 1</code>. Es otra forma de escribir funciones anónimas, pero solo funciona dentro de las funciones de tidyverse y siempre usa el nombre de variable <code>.x</code>. Ahora recomendamos la sintaxis base, <code>\(x) x + 1</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>actualmente no puede cambiar el orden de las columnas, pero podría reordenarlas después usando <code>relocate()</code> o similar.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Tal vez habrá un día, pero actualmente no vemos cómo.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Si en cambio tuvieras un directorio de archivos csv con el mismo formato, puedes usar la técnica de la <span class="quarto-unresolved-ref">?sec-readr-multiple</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>no vamos a explicar cómo funciona, pero si miras los documentos de las funciones utilizadas, deberías poder descifrarlo.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Puedes imprimir <code>by_clarity$plot</code> para obtener una animación rudimentaria: verás un gráfico por cada elemento de <code>plots</code>. NOTA: esto no ocurrió en el caso de los autores.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

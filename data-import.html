@@ -328,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltanres</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltantes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -898,9 +898,9 @@ Tabla&nbsp;7.1: Datos del archivo students.csv como una tabla.
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">problems</span>(df)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 5</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     row   col expected actual file                                         </span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                                        </span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     3     1 a double .      /tmp/RtmpsFLKKH/vroom-chr-to-file-6ba9abbedad</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     row   col expected actual file                                          </span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                                         </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     3     1 a double .      /tmp/Rtmp9m7bP2/vroom-chr-to-file-21da4e063731</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto nos dice que hubo un problema en la fila 3, columna 1 donde readr esperaba un doble pero obtuvo un <code>.</code>. Eso sugiere que este conjunto de datos usa <code>.</code> para valores faltantes. Entonces establecemos <code>na = "."</code>, la adivinación automática tiene éxito, dándonos la columna numérica que queremos:</p>
 <div class="cell">

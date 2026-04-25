@@ -9,7 +9,7 @@
 <meta name="author" content="Hadley Wickham, Mine Çetinkaya-Rundel, y Garrett Grolemund">
 <meta name="description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 
-<title>18&nbsp; Valores faltanres – R para la Ciencia de Datos (2e)</title>
+<title>18&nbsp; Valores faltantes – R para la Ciencia de Datos (2e)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="google-site-verification" content="kphyQu6n4JhBUuoLZxnJpD9dbw9q5FLwqXb9AkI2fhU">
 
 
-<meta property="og:title" content="18&nbsp; Valores faltanres – R para la Ciencia de Datos (2e)">
+<meta property="og:title" content="18&nbsp; Valores faltantes – R para la Ciencia de Datos (2e)">
 <meta property="og:description" content="Traducción al español de “R for Data Science” (2ª ed.) de Hadley Wickham, Mine Çetinkaya-Rundel y Garrett Grolemund. Aprende a importar, organizar, transformar, visualizar y comunicar datos con R y el tidyverse.">
 <meta property="og:image" content="https://davidrsch.github.io/r4ds-es/missing-values_files/figure-html/unnamed-chunk-16-1.png">
 <meta property="og:site_name" content="R para la Ciencia de Datos (2e)">
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transformar</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltanres</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transformar</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltantes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -332,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./missing-values.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltanres</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltantes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -471,9 +471,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transformar</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltanres</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transform.html">Transformar</a></li><li class="breadcrumb-item"><a href="./missing-values.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltantes</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-missing-values" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltanres</span></span></h1>
+<h1 class="title"><span id="sec-missing-values" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Valores faltantes</span></span></h1>
 </div>
 
 
@@ -764,7 +764,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x2)</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Todas las funciones de resumen funcionan con vectores de longitud cero, pero pueden devolver resultados sorprendentes a primera vista. Aquí vemos que <code>mean(age)</code> devuelve <code>NaN</code> porque <code>mean(age)</code> = <code>sum(age)/length(age)</code> que aquí es 0/0. <code>max()</code> y <code>min()</code> devuelven -Inf e Inf para vectores vacíos, por lo que si combina los resultados con un vector no vacío de nuevos datos y vuelve a calcular, obtendrá el mínimo o el máximo de los nuevos datos[^ valores perdidos-1].</p>
+<p>Todas las funciones de resumen funcionan con vectores de longitud cero, pero pueden devolver resultados sorprendentes a primera vista. Aquí vemos que <code>mean(age)</code> devuelve <code>NaN</code> porque <code>mean(age)</code> = <code>sum(age)/length(age)</code> que aquí es 0/0. <code>max()</code> y <code>min()</code> devuelven -Inf e Inf para vectores vacíos, por lo que si combina los resultados con un vector no vacío de nuevos datos y vuelve a calcular, obtendrá el mínimo o el máximo de los nuevos datos<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <p>A veces, un enfoque más simple es realizar el resumen y luego hacer explícitas las faltas implícitas con <code>complete()</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>health <span class="sc">|&gt;</span> </span>
@@ -791,6 +791,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En el siguiente capítulo, abordamos el último capítulo de esta parte del libro: las uniones. Este es un pequeño cambio con respecto a los capítulos hasta ahora porque vamos a discutir las herramientas que funcionan con marcos de datos como un todo, no algo que se coloca dentro de un marco de datos.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>En otras palabras, <code>min(c(x, y))</code> siempre es igual a <code>min(min(x), min(y))</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
