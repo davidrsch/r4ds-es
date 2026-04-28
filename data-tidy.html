@@ -619,7 +619,7 @@ Figura&nbsp;5.1: Las siguientes tres reglas hacen que un conjunto de datos esté
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">5.2.1</span> Ejercicios</h3>
 <ol type="1">
 <li><p>Para cada una de las tablas de muestra, describa lo que representa cada observación y cada columna.</p></li>
-<li><p>Haz un bosquejo del proceso que usarías para calcular la <code>rate</code> desde <code>table2</code>. Deberá realizar cuatro operaciones:</p>
+<li><p>Haz un bosquejo del proceso que usarías para calcular la <code>rate</code> desde <code>table2</code> y <code>table3</code>. Deberá realizar cuatro operaciones:</p>
 <ol type="a">
 <li>Extraiga el número de casos de TB por país por año.</li>
 <li>Extraiga la población coincidente por país por año.</li>
@@ -830,7 +830,7 @@ Figura&nbsp;5.5: El número de valores se conserva (no se repite), pero se desen
 </section>
 <section id="muchas-variables-en-los-nombres-de-las-columnas" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="muchas-variables-en-los-nombres-de-las-columnas"><span class="header-section-number">5.3.3</span> Muchas variables en los nombres de las columnas</h3>
-<p>Una situación más desafiante ocurre cuando tiene múltiples piezas de información abarrotadas en los nombres de las columnas y desea almacenarlas en nuevas variables separadas. Por ejemplo, tome el conjunto de datos <code>who2</code>, la fuente de <code>table_1</code> y amigos que vió con anterioridad:</p>
+<p>Una situación más desafiante ocurre cuando tiene múltiples piezas de información abarrotadas en los nombres de las columnas y desea almacenarlas en nuevas variables separadas. Por ejemplo, tome el conjunto de datos <code>who2</code>, la fuente de <code>table1</code> y amigos que vió con anterioridad:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>who2</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 7,240 × 58</span></span>
@@ -1114,7 +1114,7 @@ Figura&nbsp;5.7: Pivotar con <code>names_to = c(".value", "num")</code> divide l
 <h2 data-number="5.5" class="anchored" data-anchor-id="resumen"><span class="header-section-number">5.5</span> Resumen</h2>
 <p>En este capítulo aprendiste sobre datos ordenados: datos que tienen variables en columnas y observaciones en filas. Los datos ordenados facilitan el trabajo en el tidyverse, porque es una estructura consistente que la mayoría de las funciones entienden, el principal desafío es transformar los datos de cualquier estructura en la que los reciba a un formato ordenado. Con ese fin, aprendió sobre <code>pivot_longer()</code> y <code>pivot_wider()</code>, que le permiten ordenar muchos conjuntos de datos desordenados. Los ejemplos que presentamos aquí son una selección de los de <code>vignette("pivot", package = "tidyr")</code>, por lo que si encuentra un problema con el que este capítulo no le ayuda, esa viñeta es un buen lugar para probar próximo.</p>
 <p>Otro desafío es que, para un conjunto de datos dado, puede ser imposible etiquetar la versión más larga o más amplia como la “ordenada”. Esto es en parte un reflejo de nuestra definición de datos ordenados, donde dijimos que los datos ordenados tienen una variable en cada columna, pero en realidad no definimos qué es una variable (y es sorprendentemente difícil hacerlo). Está totalmente bien ser pragmático y decir que una variable es lo que hace que su análisis sea más fácil. Entonces, si no sabe cómo hacer algunos cálculos, considere cambiar la organización de sus datos; ¡no tenga miedo de desordenar, transformar y volver a ordenar según sea necesario!</p>
-<p>Si disfrutó de este capítulo y desea obtener más información sobre la teoría subyacente, puede obtener más información sobre la historia y los fundamentos teóricos en el artículo <a href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a> publicado. en el Journal of Statistical Software.</p>
+<p>Si disfrutó de este capítulo y desea obtener más información sobre la teoría subyacente, puede obtener más información sobre la historia y los fundamentos teóricos en el artículo <a href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a> publicado en el Journal of Statistical Software.</p>
 <p>Ahora que está escribiendo una cantidad sustancial de código R, es hora de aprender más sobre cómo organizar su código en archivos y directorios. En el próximo capítulo, aprenderá todo acerca de las ventajas de los scripts y proyectos, y algunas de las muchas herramientas que brindan para facilitarle la vida.</p>
 
 

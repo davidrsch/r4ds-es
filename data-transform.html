@@ -796,7 +796,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>En una canalización única para cada condición, busque todos los vuelos que cumplan la condición:</p>
 <ul>
 <li>Tuvo un retraso de llegada de dos o más horas.</li>
-<li>Voló a Houston (<code>IAH</code> o <code>HOU</code>) C. Fueron operados por United, American o Delta</li>
+<li>Voló a Houston (<code>IAH</code> o <code>HOU</code>)</li>
+<li>Fueron operados por United, American o Delta</li>
 <li>Salida en verano (julio, agosto y septiembre)</li>
 <li>Llegó más de dos horas tarde, pero no se fue tarde</li>
 <li>Se retrasaron al menos una hora, pero recuperaron más de 30 minutos en vuelo</li>
@@ -973,7 +974,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ejercicios-1" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="ejercicios-1"><span class="header-section-number">3.3.5</span> Ejercicios</h3>
 <ol type="1">
-<li><p>Compare <code>dep_time</code>, <code>sched_dep_time</code>, and <code>dep_delay</code>.</p></li>
+<li><p>Compare <code>dep_time</code>, <code>sched_dep_time</code> y <code>dep_delay</code>. ¿Cómo esperarías que se relacionen esos tres números?</p></li>
 <li><p>Haga una lluvia de ideas sobre tantas formas como sea posible para seleccionar <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code> y <code>arr_delay</code> de <code>flights</code>.</p></li>
 <li><p>¿Qué sucede si especifica el nombre de la misma variable varias veces en una llamada <code>select()</code>?</p></li>
 <li><p>¿Qué hace la función <code>any_of()</code>? ¿Por qué podría ser útil junto con este vector?</p>
@@ -1044,7 +1045,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Si bien ambas formas tienen su tiempo y lugar, la canalización generalmente produce un código de análisis de datos que es más fácil de escribir y leer.</p>
 <p>Para agregar la canalización a su código, recomendamos usar el atajo de teclado incorporado Ctrl/Cmd + Shift + M. Deberá realizar un cambio en sus opciones de RStudio para usar <code>|&gt;</code> en lugar de <code>%&gt;%</code> como se muestra en <a href="#fig-pipe-options" class="quarto-xref">Figura&nbsp;<span>3.1</span></a>; más sobre <code>%&gt;%</code> en breve.</p>
-<p>485</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pipe-options" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Captura de pantalla que muestra la opción &quot;Use native pipe operator&quot; que puede encontrarse en el panel &quot;Editing&quot; de las opciones de &quot;Code&quot;.">
@@ -1193,7 +1193,7 @@ Figura&nbsp;3.1: Para insertar <code>|&gt;</code>, asegúrese de que la opción 
 <span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 102 more rows</span></span>
 <span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 11 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, …</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Tenga en cuenta que hay 105 destinos, pero aquí tenemos 108 filas. ¿Qué pasa? <code>slice_min()</code> y <code>slice_max()</code> mantienen valores empatados por lo que <code>n = 1</code> significa darme todas las filas con el valor más alto. Si desea exactamente una fila por grupo, puede configurar <code>whit_ties = FALSE</code>.</p>
+<p>Tenga en cuenta que hay 105 destinos, pero aquí tenemos 108 filas. ¿Qué pasa? <code>slice_min()</code> y <code>slice_max()</code> mantienen valores empatados por lo que <code>n = 1</code> significa darme todas las filas con el valor más alto. Si desea exactamente una fila por grupo, puede configurar <code>with_ties = FALSE</code>.</p>
 <p>Esto es similar a calcular el retraso máximo con <code>summarize()</code>, pero obtienes la fila correspondiente completa (o filas si hay un empate) en lugar de la estadística de resumen única.</p>
 </section>
 <section id="agrupación-por-múltiples-variables" class="level3" data-number="3.5.4">
@@ -1291,7 +1291,7 @@ Figura&nbsp;3.1: Para insertar <code>|&gt;</code>, asegúrese de que la opción 
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>.by</code> funciona con todos los verbos y tiene la ventaja de que no necesita usar el argumento <code>.groups</code> para suprimir el mensaje de agrupación o <code>ungroup()</code> cuando haya terminado.</p>
-<p>No nos enfocamos en esta sintaxis en este capítulo porque era muy nueva cuando se escribió el libro. Queríamos mencionarlo porque creemos que es muy prometedor y es probable que sea bastante popular. Puede obtener más información al respecto en la [publicación de blog de dplyr 1.1.0] (https://www.tidyverse.org/blog/2023/02/dplyr-1-1-0-per-operation-grouping/).</p>
+<p>No nos enfocamos en esta sintaxis en este capítulo porque era muy nueva cuando se escribió el libro. Queríamos mencionarlo porque creemos que es muy prometedor y es probable que sea bastante popular. Puede obtener más información al respecto en la <a href="https://www.tidyverse.org/blog/2023/02/dplyr-1-1-0-per-operation-grouping/">publicación de blog de dplyr 1.1.0</a>.</p>
 </section>
 <section id="ejercicios-2" class="level3" data-number="3.5.7">
 <h3 data-number="3.5.7" class="anchored" data-anchor-id="ejercicios-2"><span class="header-section-number">3.5.7</span> Ejercicios</h3>
