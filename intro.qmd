@@ -43,8 +43,7 @@ En resumen, cuando sus datos están ordenados, cada columna es una variable y ca
 Los datos ordenados son importantes porque una estructura coherente le permite centrar sus esfuerzos en responder preguntas sobre los datos, sin luchar para obtener los datos en la forma correcta para diferentes funciones.
 
 Una vez que tenga datos ordenados, el próximo paso común es **transformarlos**.
-La transformación incluye la reducción de las observaciones de interés (como todas las personas en una ciudad o todos los datos del último año), la creación de nuevas variables que son funciones de las variables existentes (como la velocidad de cálculo a partir de la distancia y el tiempo) y el cálculo de un conjunto de estadísticas de resumen.
-(como la mediana o la media).
+La transformación incluye la reducción de las observaciones de interés (como todas las personas en una ciudad o todos los datos del último año), la creación de nuevas variables que son funciones de las variables existentes (como calcular velocidad a partir de distancia y tiempo) y el cálculo de un conjunto de estadísticas de resumen (como la mediana o la media).
 Juntos, ordenar y transformar se denominan **disputar** (o manipular) porque obtener sus datos en una forma en la que es natural trabajar con ellos a menudo se siente como una pelea.
 
 Una vez que tenga datos ordenados con las variables que necesita, hay dos motores principales de generación de conocimiento: visualización y modelado.
