@@ -14,6 +14,7 @@ jobs:
 
     env:
       RSPM: https://packagemanager.posit.co/cran/latest
+      GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
 
     steps:
       - name: Check out repository
@@ -52,6 +53,8 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
