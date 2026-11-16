@@ -29,7 +29,7 @@ library(tidyverse)
 library(nycflights13)
 ```
 
-## Haciendo úmeros
+## Haciendo números
 
 En la mayoría de los casos, obtendrá números ya registrados en uno de los tipos numéricos de R: entero o doble.
 En algunos casos, sin embargo, los encontrará como cadenas, posiblemente porque los creó al girar desde los encabezados de columna o porque algo salió mal en su proceso de importación de datos.
@@ -326,7 +326,7 @@ round(x / 0.25) * 0.25
 
 ### Cortar números en rangos
 
-Use `cut()`[^numbers-1] para dividir (también conocido como bin) un vector numérico en cubos discretos:
+Utilice `cut()`[^numbers-1] para dividir (también conocido como bin) un vector numérico en cubos discretos:
 
 [^numbers-1]: ggplot2 proporciona algunos ayudantes para casos comunes en `cut_interval()`, `cut_number()` y `cut_width()`.
     ggplot2 es un lugar ciertamente extraño para que vivan estas funciones, pero son útiles como parte del cálculo del histograma y se escribieron antes de que existieran otras partes del tidyverse.

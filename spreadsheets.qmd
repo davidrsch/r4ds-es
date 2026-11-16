@@ -257,7 +257,7 @@ Dado que muchos usan hojas de cálculo de Excel para la presentación, así como
 #| fig-alt: >
 #|   Una mirada a la hoja de cálculo de muertes en Excel. La hoja de cálculo tiene 
 #|   cuatro filas en la parte superior que contienen información que no 
-#|   es de datos; el texto 'For the same of consistency in the data layout, which is 
+#|   es de datos; el texto 'For the sake of consistency in the data layout, which is 
 #|   really a beautiful thing, I will keep making notes up here.' se distribuye entre 
 #|   las celdas de estas cuatro filas superiores. Luego, hay un marco de datos que 
 #|   incluye información sobre la muerte de 10 personas famosas, incluidos sus 
@@ -311,7 +311,7 @@ Una célula puede ser una de cuatro cosas:
 Al trabajar con datos de hojas de cálculo, es importante tener en cuenta que los datos subyacentes pueden ser muy diferentes de lo que ve en la celda.
 Por ejemplo, Excel no tiene noción de un número entero.
 Todos los números se almacenan como puntos flotantes, pero puede optar por mostrar los datos con un número personalizable de puntos decimales.
-De manera similar, las fechas en realidad se almacenan como números, específicamente la cantidad de segundos desde el 1 de enero de 1900.
+De manera similar, las fechas en realidad se almacenan como números, específicamente la cantidad de días desde el 1 de enero de 1900.
 Puede personalizar cómo muestra la fecha aplicando formato en Excel.
 De manera confusa, también es posible tener algo que parezca un número pero que en realidad sea una cadena (por ejemplo, escriba `'10` en una celda de Excel).
 
