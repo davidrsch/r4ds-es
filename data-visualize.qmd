@@ -801,7 +801,7 @@ Aprenderá sobre muchas otros geoms para visualizar distribuciones de variables 
 
 ### Ejercicios
 
-1.  El marco de datos `mpg` que se incluye con el paquete ggplot2 contiene observaciones `r nrow(mpg)` recopiladas por la Agencia de Protección Ambiental de los EE.
+1.  El marco de datos `mpg` que se incluye con el paquete `ggplot2`, contiene observaciones `r nrow(mpg)` recopiladas por la Agencia de Protección Ambiental de los EE.
     ¿Qué variables en `mpg` son categóricas?
     ¿Qué variables son númericas?
     (Sugerencia: escriba `?mpg` para leer la documentación del conjunto de datos).

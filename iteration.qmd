@@ -928,7 +928,7 @@ write_csv(by_clarity$data[[1]], by_clarity$path[[1]])
 write_csv(by_clarity$data[[2]], by_clarity$path[[2]])
 write_csv(by_clarity$data[[3]], by_clarity$path[[3]])
 ...
-write_csv(by_clarity$by_clarity[[8]], by_clarity$path[[8]])
+write_csv(by_clarity$data[[8]], by_clarity$path[[8]])
 ```
 
 Esto es un poco diferente a nuestros usos anteriores de `map()` porque hay dos argumentos que están cambiando, no solo uno.

@@ -646,7 +646,7 @@ No nos enfocamos en esta sintaxis en este capítulo porque era muy nueva cuando 
 
 3.  ¿Cómo varían los retrasos a lo largo del día? Ilustra tu respuesta con un gráfico.
 
-4.  ¿Qué sucede si proporcionas una `n` negativa a `slice_min()` y amigos?
+4.  ¿Qué sucede si proporcionas un valor negativo para `n` a `slice_min()` y funciones similares?
 
 5.  Explique lo que hace `count()` en términos de los verbos dplyr que acaba de aprender. ¿Qué hace el argumento `sort` para `count()`?
 

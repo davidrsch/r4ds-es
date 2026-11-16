@@ -36,7 +36,7 @@ library(tidyverse)
 
 > "El mayor valor de una imagen es cuando nos obliga a notar lo que nunca esperábamos ver." --- John Tukey
 
-Recuerde que el marco de datos `mpg` incluido con el paquete ggplot2 contiene observaciones `r nrow(mpg)` en modelos de automóviles `r mpg |> distinct(model) |> nrow()`.
+Recuerde que el marco de datos `mpg`, incluido con el paquete `ggplot2` contiene `r nrow(mpg)` observaciones de `r mpg |> distinct(model) |> nrow()` modelos de automóviles.
 
 ```{r}
 mpg

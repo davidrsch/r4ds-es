@@ -127,7 +127,7 @@ Necesitamos usarlo aquí porque `[` no usa una evaluación ordenada, por lo que 
 Hay una diferencia importante entre tibbles y marcos de datos cuando se trata de `[`.
 En este libro, hemos usado principalmente tibbles, que *son* marcos de datos, pero ajustan algunos comportamientos para hacer su vida un poco más fácil.
 En la mayoría de los lugares, puede usar "tibble" y "marco de datos" indistintamente, por lo que cuando queramos llamar la atención sobre el marco de datos integrado de R, escribiremos `data.frame`.
-Si `df` es un `data.frame`, `df[, cols]` devolverá un vector si `col` selecciona una sola columna y un marco de datos si selecciona más de una columna.
+Si `df` es un `data.frame`, `df[, cols]` devolverá un vector si `cols` selecciona una sola columna y un marco de datos si selecciona más de una columna.
 Si `df` es un tibble, entonces `[` siempre devolverá un tibble.
 
 ```{r}
